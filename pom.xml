@@ -7,19 +7,27 @@
     <groupId>com.jing.msc</groupId>
     <artifactId>best-msc</artifactId>
     <version>0.0.0.1-alpha</version>
-    <modules>
-        <module>best-msc-common</module>
-    </modules>
     <name>best-msc</name>
     <packaging>pom</packaging>
+
+    <modules>
+        <module>best-msc-common</module>
+        <module>best-msc-cobweb</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring-boot.mybatis-plus>3.4.2</spring-boot.mybatis-plus>
+        <spring-boot.mybatis-plus-generator>3.4.1</spring-boot.mybatis-plus-generator>
+        <velocity-engine-version>2.3</velocity-engine-version>
         <swagger3-version>3.0.0</swagger3-version>
+        <knife4j-version>3.0.2</knife4j-version>
         <fastjson-version>1.2.76</fastjson-version>
+
+        <mysql-version>8.0.21</mysql-version>
+        <druid-version>1.2.4</druid-version>
 
         <commons.io.version>2.8.0</commons.io.version>
         <commons.fileupload.version>1.4</commons.fileupload.version>
@@ -49,7 +57,9 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.4.4</version>
+                <version>2.4.5</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
 
             <!-- mybatis-plus 依赖配置 -->
@@ -59,11 +69,43 @@
                 <version>${spring-boot.mybatis-plus}</version>
             </dependency>
 
+            <!-- mybatis-plus 代码生成器 -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${spring-boot.mybatis-plus-generator}</version>
+            </dependency>
+            <!--模板引擎-->
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-engine-core</artifactId>
+                <version>${velocity-engine-version}</version>
+            </dependency>
+
             <!-- swagger3 依赖配置 -->
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger2</artifactId>
                 <version>${swagger3-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <!--在引用时请在maven中央仓库搜索3.X最新版本号-->
+                <version>${knife4j-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid-version}</version>
             </dependency>
 
             <!-- IO 常用工具类 -->
@@ -87,6 +129,17 @@
                 <version>${fastjson-version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.jing.msc</groupId>
+                <artifactId>best-msc-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.jing.msc</groupId>
+                <artifactId>best-msc-swagger</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -101,9 +154,9 @@
                     <!-- 源代码使用的开发版本 -->
                     <target>${maven.compiler.target}</target>
                     <!-- 需要生成的目标 class 文件的编译版本 -->
-                    <source>${maven.compiler.target}</source>
+                    <source>${maven.compiler.source}</source>
 
-                    <encoding>project.build.sourceEncoding</encoding>
+                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
         </plugins>
