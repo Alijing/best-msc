@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>best-msc</artifactId>
+        <groupId>com.jing.msc</groupId>
+        <version>0.0.0.1-alpha</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>best-msc-cobweb</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.jing.msc</groupId>
+            <artifactId>best-msc-swagger</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.jing.msc</groupId>
+            <artifactId>best-msc-core</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>
