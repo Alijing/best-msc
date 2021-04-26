@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.jing.common.swagger.config.SwaggerConfig,\
+  com.jing.common.swagger.config.JsonConfig
