@@ -51,7 +51,7 @@ public class BaseModel<T extends BaseModel<T>> extends Model<BaseModel<T>> imple
     private Integer version;
 
     @Override
-    protected Serializable pkVal() {
+    public Serializable pkVal() {
         return this.id;
     }
 

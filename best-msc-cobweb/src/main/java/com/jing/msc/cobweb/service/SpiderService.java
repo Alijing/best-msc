@@ -1,5 +1,8 @@
 package com.jing.msc.cobweb.service;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author : jing
  * @projectName : best-msc
@@ -9,4 +12,10 @@ package com.jing.msc.cobweb.service;
  */
 public interface SpiderService {
 
+    void generate(Integer step);
+
+
+    List<Map<String, Object>> selectAllTable(String tableSchema);
+
+    List<Map<String, String>> selectAllFiled(String tableName);
 }

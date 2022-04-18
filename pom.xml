@@ -19,8 +19,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <spring-boot.mybatis-plus>3.4.2</spring-boot.mybatis-plus>
-        <spring-boot.mybatis-plus-generator>3.4.1</spring-boot.mybatis-plus-generator>
+        <spring-boot.mybatis-plus>3.5.1</spring-boot.mybatis-plus>
+        <spring-boot.mybatis-plus-generator>3.5.2</spring-boot.mybatis-plus-generator>
         <velocity-engine-version>2.3</velocity-engine-version>
         <swagger3-version>3.0.0</swagger3-version>
         <knife4j-version>3.0.2</knife4j-version>

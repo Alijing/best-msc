@@ -17,6 +17,7 @@ import javax.validation.constraints.NotEmpty;
 @TableName("sys_spider")
 @ApiModel(value = "系统登录用户实体", description = "系统登录用户实体")
 public class Spider extends BaseModel<Spider> {
+    private static final long serialVersionUID = 8779419867388416179L;
     /**
      * 登录账号
      */

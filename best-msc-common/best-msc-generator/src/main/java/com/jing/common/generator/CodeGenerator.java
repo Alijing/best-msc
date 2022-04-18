@@ -1,15 +1,16 @@
 package com.jing.common.generator;
 
-import com.baomidou.mybatisplus.annotation.DbType;
-import com.baomidou.mybatisplus.core.toolkit.StringPool;
-import com.baomidou.mybatisplus.generator.AutoGenerator;
-import com.baomidou.mybatisplus.generator.InjectionConfig;
-import com.baomidou.mybatisplus.generator.config.*;
-import com.baomidou.mybatisplus.generator.config.po.TableInfo;
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.generator.FastAutoGenerator;
+import com.baomidou.mybatisplus.generator.IFill;
+import com.baomidou.mybatisplus.generator.config.OutputFile;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
+import com.baomidou.mybatisplus.generator.engine.VelocityTemplateEngine;
+import com.baomidou.mybatisplus.generator.fill.Column;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -22,115 +23,58 @@ import java.util.List;
 public class CodeGenerator {
 
     public static void main(String[] args) {
-        // 代码生成器
-        AutoGenerator mpg = new AutoGenerator();
-        // 全局配置
-        GlobalConfig gc = new GlobalConfig();
+        String url = "jdbc:mysql://localhost:3306/jg_om_dev?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8";
+        String userName = "root";
+        String password = "Fullsee@123";
+        String moduleName = "jiaogaunom";
         String projectPath = System.getProperty("user.dir") + "/best-msc-common/best-msc-generator";
-        gc.setOutputDir(projectPath + "/src/main/java");
-        gc.setAuthor("Jing");
-        gc.setOpen(false);
-        gc.setFileOverride(true);
-        // 去掉 service 接口的首字母 I
-        gc.setServiceName("%sService");
-        gc.setDateType(DateType.ONLY_DATE);
-        gc.setSwagger2(true);
-        gc.setBaseColumnList(true);
-        gc.setActiveRecord(true);
-        mpg.setGlobalConfig(gc);
-
-        // 数据源配置
-        DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://localhost:3306/dev_jing_msc?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8");
-        dsc.setDriverName("com.mysql.cj.jdbc.Driver");
-        dsc.setUsername("root");
-        dsc.setPassword("Fullsee@123");
-        dsc.setDbType(DbType.MYSQL);
-        mpg.setDataSource(dsc);
-
-        // 包配置
-        PackageConfig pc = new PackageConfig();
-        pc.setModuleName("cobweb");
-        pc.setParent("com.jing.msc");
-        pc.setController("controller");
-        pc.setEntity("entity");
-        pc.setService("service");
-        pc.setMapper("dao");
-        mpg.setPackageInfo(pc);
-
-        // 自定义配置
-        InjectionConfig cfg = new InjectionConfig() {
-            @Override
-            public void initMap() {
-                // to do nothing
-            }
-        };
-
-        // 如果模板引擎是 velocity
-        String templatePath = "/templates/mapper.xml.vm";
-
-        // 自定义输出配置
-        List<FileOutConfig> focList = new ArrayList<>();
-        // 自定义配置会被优先输出
-        focList.add(new FileOutConfig(templatePath) {
-            @Override
-            public String outputFile(TableInfo tableInfo) {
-                // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                return projectPath + "/src/main/resources/mapper/" + pc.getModuleName()
-                        + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
-            }
-        });
-        /*
-        cfg.setFileCreate(new IFileCreate() {
-            @Override
-            public boolean isCreate(ConfigBuilder configBuilder, FileType fileType, String filePath) {
-                // 判断自定义文件夹是否需要创建
-                checkDir("调用默认方法创建的目录，自定义目录用");
-                if (fileType == FileType.MAPPER) {
-                    // 已经生成 mapper 文件判断存在，不想重新生成返回 false
-                    return !new File(filePath).exists();
-                }
-                // 允许生成模板文件
-                return true;
-            }
-        });
-        */
-        cfg.setFileOutConfigList(focList);
-        mpg.setCfg(cfg);
-
-        // 配置模板
-        TemplateConfig templateConfig = new TemplateConfig();
-
-        // 配置自定义输出模板
-        //指定自定义模板路径，注意不要带上.ftl/.vm, 会根据使用的模板引擎自动识别
-        templateConfig.setEntity("templates/entity.java");
-        templateConfig.setMapper("templates/mapper.java");
-        templateConfig.setXml("templates/mapper.xml");
-        templateConfig.setService("templates/service.java");
-        templateConfig.setServiceImpl("templates/serviceImpl.java");
-        templateConfig.setController("templates/controller.java");
-        mpg.setTemplate(templateConfig);
-
-        // 策略配置
-        StrategyConfig strategy = new StrategyConfig();
-        strategy.setNaming(NamingStrategy.underline_to_camel);
-        strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-        strategy.setSuperEntityClass("com.jing.common.core.base.BaseModel");
-        // restful api 风格
-        strategy.setRestControllerStyle(true);
-        // url 中驼峰转连字符
-        strategy.setControllerMappingHyphenStyle(true);
-        // 写于父类中的公共字段
-
-
-        strategy.setSuperEntityColumns("id", "creator_id", "create_time", "reviser_id", "revision_time", "logic_flag", "version");
-        strategy.setInclude("sys_spider");
-        strategy.setControllerMappingHyphenStyle(true);
-        strategy.setTablePrefix("sys" + "_");
-        mpg.setStrategy(strategy);
-//        mpg.setTemplateEngine(new FreemarkerTemplateEngine());
-        mpg.execute();
+        String outputPath = projectPath + "/src/main/java";
+        String xmlPath = projectPath + "/src/main/resources/mapper/" + moduleName;
+        FastAutoGenerator.create(url, userName, password)
+                .globalConfig(builder -> {
+                    builder.author("jing")
+                            .enableSwagger()
+                            .fileOverride()
+                            .outputDir(outputPath)
+                            .dateType(DateType.ONLY_DATE)
+                            .disableOpenDir();
+                })
+                .packageConfig(builder -> {
+                    // 设置父包名
+                    builder.parent("com.jing.msc")
+                            // 设置父包模块名
+                            .moduleName(moduleName)
+                            // 设置mapperXml生成路径
+                            .pathInfo(Collections.singletonMap(OutputFile.xml, xmlPath));
+                })
+                .strategyConfig(builder -> {
+                    // 设置需要生成的表名
+                    builder.addInclude("TB_JG_OM_ASPECT")
+                            // 设置过滤表前缀
+                            .addTablePrefix("TB_JG_OM_", "c_")
+                            .entityBuilder()
+                            .naming(NamingStrategy.no_change)
+                            .columnNaming(NamingStrategy.underline_to_camel)
+                            .enableTableFieldAnnotation()
+                            .logicDeleteColumnName("logic_del")
+                            .logicDeletePropertyName("logicDel")
+                            .addTableFills(tableFills())
+                            .serviceBuilder()
+                            .formatServiceFileName("%sService");
+                })
+                // 使用Freemarker引擎模板，默认的是Velocity引擎模板
+                .templateEngine(new VelocityTemplateEngine())
+                .execute();
     }
 
+
+    private static List<IFill> tableFills() {
+        List<IFill> fills = new ArrayList<>();
+        fills.add(new Column("create_time", FieldFill.INSERT));
+        fills.add(new Column("create_by", FieldFill.INSERT));
+        fills.add(new Column("update_by", FieldFill.INSERT_UPDATE));
+        fills.add(new Column("update_time", FieldFill.INSERT_UPDATE));
+        return fills;
+    }
 
 }

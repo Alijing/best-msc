@@ -5,4 +5,13 @@
     <sql id="Base_Column_List">
         `id`, `account`, `name`, `password`, `phone`, `creator_id`, `create_time`, `reviser_id`, `revision_time`, `logic_flag`
     </sql>
+
+    <select id="selectAllTable" resultType="java.util.Map">
+        SELECT `table_name` AS tableName
+        FROM information_schema.tables
+        where table_schema = #{tableSchema} AND `TABLE_TYPE` = 'BASE TABLE'
+    </select>
+    <select id="selectAllFiled" resultType="java.util.Map">
+        SHOW FULL COLUMNS FROM ${tableName}
+    </select>
 </mapper>

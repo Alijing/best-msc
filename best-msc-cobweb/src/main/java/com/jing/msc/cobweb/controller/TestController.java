@@ -1,5 +1,6 @@
 package com.jing.msc.cobweb.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.jing.common.core.base.BaseResp;
 import com.jing.msc.cobweb.entity.Spider;
@@ -37,6 +38,7 @@ public class TestController {
     @GetMapping(value = "/spider", produces = "application/json;charset=UTF-8")
     public BaseResp<List<Spider>> allSpider() {
         List<Spider> list = service.list();
+        logger.error("-->>>>  : " + JSON.toJSONString(list));
         return BaseResp.ok(list);
     }
 
@@ -48,6 +50,22 @@ public class TestController {
             boolean update = service.saveOrUpdate(info);
             List<Spider> list = service.list();
             return BaseResp.ok(list);
+        } catch (Exception e) {
+            logger.error("-->>>>  : ", e);
+            if (e instanceof DuplicateKeyException) {
+                return BaseResp.fail("账号已存在，请重新输入");
+            }
+        }
+        return BaseResp.fail();
+    }
+
+    @ApiOperation(value = "通过表名生成SQL")
+    @ApiOperationSupport(author = "Jing", order = 1)
+    @GetMapping(value = "/spider/generator/{step}", produces = "application/json;charset=UTF-8")
+    public BaseResp<List<Spider>> updateSpider(@PathVariable("step") Integer step) {
+        try {
+            service.generate(step);
+            return BaseResp.ok();
         } catch (Exception e) {
             logger.error("-->>>>  : ", e);
             if (e instanceof DuplicateKeyException) {
