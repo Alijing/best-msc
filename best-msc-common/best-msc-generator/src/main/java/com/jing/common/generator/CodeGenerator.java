@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.generator.engine.VelocityTemplateEngine;
 import com.baomidou.mybatisplus.generator.fill.Column;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -26,47 +27,67 @@ public class CodeGenerator {
         String url = "jdbc:mysql://localhost:3306/jg_om_dev?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8";
         String userName = "root";
         String password = "Fullsee@123";
+
+        // 设置父包名
+        String pkg = "com.fullsee.integratedbis";
+        // 设置父包模块名
         String moduleName = "jiaogaunom";
+
         String projectPath = System.getProperty("user.dir") + "/best-msc-common/best-msc-generator";
         String outputPath = projectPath + "/src/main/java";
+
+        // 设置mapperXml生成路径
         String xmlPath = projectPath + "/src/main/resources/mapper/" + moduleName;
         FastAutoGenerator.create(url, userName, password)
-                .globalConfig(builder -> {
-                    builder.author("jing")
-                            .enableSwagger()
-                            .fileOverride()
-                            .outputDir(outputPath)
-                            .dateType(DateType.ONLY_DATE)
-                            .disableOpenDir();
-                })
-                .packageConfig(builder -> {
-                    // 设置父包名
-                    builder.parent("com.jing.msc")
-                            // 设置父包模块名
-                            .moduleName(moduleName)
-                            // 设置mapperXml生成路径
-                            .pathInfo(Collections.singletonMap(OutputFile.xml, xmlPath));
-                })
-                .strategyConfig(builder -> {
-                    // 设置需要生成的表名
-                    builder.addInclude("TB_JG_OM_ASPECT")
-                            // 设置过滤表前缀
-                            .addTablePrefix("TB_JG_OM_", "c_")
-                            .entityBuilder()
-                            .naming(NamingStrategy.no_change)
-                            .columnNaming(NamingStrategy.underline_to_camel)
-                            .enableTableFieldAnnotation()
-                            .logicDeleteColumnName("logic_del")
-                            .logicDeletePropertyName("logicDel")
-                            .addTableFills(tableFills())
-                            .serviceBuilder()
-                            .formatServiceFileName("%sService");
-                })
+                .globalConfig(builder ->
+                        builder.author("jing")
+                                .enableSwagger()
+                                .fileOverride()
+                                .outputDir(outputPath)
+                                .dateType(DateType.ONLY_DATE)
+                                .disableOpenDir())
+                .packageConfig(builder ->
+                        builder.parent(pkg)
+                                .moduleName(moduleName)
+                                .pathInfo(Collections.singletonMap(OutputFile.xml, xmlPath)))
+                .strategyConfig(builder ->
+                        builder.addInclude(includes())
+                                .addTablePrefix(tablePrefix())
+                                .entityBuilder()
+                                .naming(NamingStrategy.no_change)
+                                .columnNaming(NamingStrategy.underline_to_camel)
+                                .enableTableFieldAnnotation()
+                                .logicDeleteColumnName("logic_del")
+                                .logicDeletePropertyName("logicDel")
+                                .addTableFills(tableFills())
+                                .serviceBuilder()
+                                .formatServiceFileName("%sService"))
                 // 使用Freemarker引擎模板，默认的是Velocity引擎模板
                 .templateEngine(new VelocityTemplateEngine())
                 .execute();
     }
 
+    /**
+     * 设置需要生成的表名
+     *
+     * @return 需要生成的表名
+     * @author jing
+     * @date 2022/4/19 10:40
+     */
+    private static List<String> includes() {
+        return Arrays.asList("TB_JG_OM_ASPECT", "TB_JG_OM_DEVICE");
+    }
+
+    /**
+     * 设置过滤表前缀
+     *
+     * @return 表前缀
+     * @author jing
+     * @date 2022/4/19 10:40
+     */
+    private static List<String> tablePrefix() {
+        return Arrays.asList("TB_JG_OM_", "TB_SYSTEM_");
+    }
 
     private static List<IFill> tableFills() {
         List<IFill> fills = new ArrayList<>();
