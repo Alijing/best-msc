@@ -31,7 +31,7 @@ public class CodeGenerator {
         // 设置父包名
         String pkg = "com.fullsee.integratedbis";
         // 设置父包模块名
-        String moduleName = "jiaogaunom";
+        String moduleName = "jiaoguanom";
 
         String projectPath = System.getProperty("user.dir") + "/best-msc-common/best-msc-generator";
         String outputPath = projectPath + "/src/main/java";
@@ -75,7 +75,7 @@ public class CodeGenerator {
      * @date 2022/4/19 10:40
      */
     private static List<String> includes() {
-        return Arrays.asList("TB_JG_OM_ASPECT", "TB_JG_OM_DEVICE");
+        return Arrays.asList("TB_JG_OM_BATTALION", "");
     }
 
     /**

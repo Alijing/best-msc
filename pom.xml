@@ -130,6 +130,22 @@
             </dependency>
 
             <dependency>
+                <groupId>us.codecraft</groupId>
+                <artifactId>webmagic-core</artifactId>
+                <version>0.7.3</version>
+            </dependency>
+            <dependency>
+                <groupId>us.codecraft</groupId>
+                <artifactId>webmagic-extension</artifactId>
+                <version>0.7.3</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>3.4.2</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.jing.msc</groupId>
                 <artifactId>best-msc-core</artifactId>
                 <version>${project.version}</version>

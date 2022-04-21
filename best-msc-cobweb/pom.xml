@@ -20,6 +20,22 @@
             <groupId>com.jing.msc</groupId>
             <artifactId>best-msc-core</artifactId>
         </dependency>
+
+
+        <dependency>
+            <groupId>us.codecraft</groupId>
+            <artifactId>webmagic-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>us.codecraft</groupId>
+            <artifactId>webmagic-extension</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+
+
     </dependencies>
 
 </project>
