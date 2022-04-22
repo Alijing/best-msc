@@ -47,6 +47,14 @@ public interface NovelService extends IService<Novel> {
      */
     void download(Long novelId, HttpServletResponse response);
 
+    /**
+     * 修改章节名称
+     *
+     * @param novelId 小说Id
+     * @return 是否成功
+     * @author jing
+     * @date 2022/4/22 16:49
+     */
+    BaseResp<Boolean> changeChapterName(Long novelId);
 
-    void changeChapterName(Long novelId, HttpServletResponse response);
 }

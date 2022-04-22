@@ -73,7 +73,7 @@ public class CrawlingServiceImpl implements CrawlingService {
         queryWrapper.eq("status", 0);
         List<NovelChapter> chapters = chapterService.list(queryWrapper);
         if (null == chapters) {
-            return BaseResp.fail("都爬取完啦，不用爬啦");
+            return BaseResp.fail("无可更新内容的章节，不用爬啦");
         }
         for (NovelChapter ch : chapters) {
             Spider.create(contentProcessor)

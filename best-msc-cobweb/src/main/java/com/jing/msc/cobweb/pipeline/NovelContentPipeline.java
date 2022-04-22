@@ -1,5 +1,6 @@
 package com.jing.msc.cobweb.pipeline;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.jing.msc.cobweb.entity.NovelChapter;
 import com.jing.msc.cobweb.entity.NovelContent;
@@ -38,6 +39,12 @@ public class NovelContentPipeline implements Pipeline {
         if (null == content) {
             return;
         }
+        QueryWrapper<NovelContent> wrapper = new QueryWrapper<>();
+        wrapper.eq("chapter_id", content.getChapterId());
+        NovelContent one = service.getOne(wrapper);
+        if (null != one) {
+            content.setId(one.getId());
+        }
         boolean save = service.saveOrUpdate(content);
         logger.info("小说章节内容保存结果 : " + save);
         if (!save) {
@@ -49,7 +56,6 @@ public class NovelContentPipeline implements Pipeline {
         updateWrapper.eq("id", content.getChapterId());
         boolean update = chapterService.update(chapter, updateWrapper);
         logger.info("小说章节状态更新结果 : " + update);
-
     }
 
 }

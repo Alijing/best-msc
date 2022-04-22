@@ -20,12 +20,13 @@
       <el-table-column prop="nextChapterValueStyle" label="下一页链接样式"/>
       <el-table-column prop="contentStyle" label="章节内容样式"/>
       <el-table-column prop="createTime" label="创建时间"/>
-      <el-table-column fixed="right" label="操作" width="200">
+      <el-table-column fixed="right" label="操作" width="320">
         <template slot-scope="scope">
           <el-button @click="editNovelDialogShow(scope.row)" type="text">编辑</el-button>
-          <el-button v-if="scope.row.status == 0" @click="crawlChapter(scope.row)" type="text">获取章节</el-button>
-          <el-button v-if="scope.row.status == 1" @click="crawlChapterContent(scope.row)" type="text">获取内容</el-button>
-          <el-button v-if="scope.row.status == 2" @click="download(scope.row)" type="text">下载</el-button>
+          <el-button @click="crawlChapter(scope.row)" type="text">获取章节</el-button>
+          <el-button @click="changeChapterName(scope.row)" type="text">修改章节名称</el-button>
+          <el-button @click="crawlChapterContent(scope.row)" type="text">获取内容</el-button>
+          <el-button @click="download(scope.row)" type="text">下载</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -47,7 +48,7 @@
 </template>
 
 <script>
-import {novels, crawlingChapter, crawlingChapterContent} from '@/request/api'; // 导入自定义api接口
+import {novels, crawlingChapter, changeChapterName, crawlingChapterContent} from '@/request/api'; // 导入自定义api接口
 import NovelEdit from "./NovelEdit";
 
 export default {
@@ -111,6 +112,19 @@ export default {
           message: '恭喜你，后台已开始爬取章节',
           type: 'success'
         });
+        self.initData();
+      }, err => {
+        self.loading = false;
+        self.$message.error('错了哦，' + err.msg);
+      });
+    },
+    changeChapterName(novel) {
+      let self = this;
+      changeChapterName(novel.id).then(resp => {
+        self.$message({
+          message: '恭喜你，章节名称已经修改成功',
+          type: 'success'
+        });
       }, err => {
         self.loading = false;
         self.$message.error('错了哦，' + err.msg);
@@ -123,6 +137,7 @@ export default {
           message: '恭喜你，后台已开始爬取章节内容',
           type: 'success'
         });
+        self.initData();
       }, err => {
         self.loading = false;
         self.$message.error('错了哦，' + err.msg);

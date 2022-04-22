@@ -103,11 +103,12 @@ public class NovelController {
     }
 
     @GetMapping("change/chapter/name/{novelId}")
-    public void changeChapterName(@PathVariable("novelId") Long novelId, HttpServletResponse response) {
+    public BaseResp<Boolean> changeChapterName(@PathVariable("novelId") Long novelId) {
         try {
-            novelService.changeChapterName(novelId, response);
+            return novelService.changeChapterName(novelId);
         } catch (Exception e) {
             logger.error("", e);
+            return BaseResp.fail(e.getMessage());
         }
     }
 

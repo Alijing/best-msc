@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -90,10 +91,11 @@ public class NovelServiceImpl extends ServiceImpl<NovelMapper, Novel> implements
     }
 
     @Override
-    public void changeChapterName(Long novelId, HttpServletResponse response) {
+    public BaseResp<Boolean> changeChapterName(Long novelId) {
         QueryWrapper<NovelChapter> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("novel_id", novelId);
         List<NovelChapter> chapters = chapterService.list(queryWrapper);
+        List<NovelChapter> candidate = new ArrayList<>();
         for (int i = 1; i <= chapters.size(); i++) {
             NovelChapter chapter = chapters.get(i - 1);
             String name = chapter.getName().replaceAll("\\[", "")
@@ -102,10 +104,22 @@ public class NovelServiceImpl extends ServiceImpl<NovelMapper, Novel> implements
                     .replaceAll("】", "")
                     .replaceAll("\\(", "")
                     .replaceAll("\\)", "");
-            chapter.setName("第" + NumberChangeUtil.digital2Chinese(i) + "章 " + name);
+            String cpr = "第" + NumberChangeUtil.digital2Chinese(i) + "章 ";
+            if (name.contains(cpr)) {
+                continue;
+            }
+            chapter.setName(cpr + name);
+            candidate.add(chapter);
         }
-        boolean b = chapterService.updateBatchById(chapters);
-        logger.info("修改章节名称结果 : " + b);
+        if (candidate.size() < 1) {
+            return BaseResp.ok(true);
+        }
+        boolean update = chapterService.updateBatchById(candidate);
+        logger.info("修改章节名称结果 : " + update);
+        if (update) {
+            return BaseResp.ok(true);
+        }
+        return BaseResp.fail(false, "章节名称修改失败，请联系管理员");
     }
 
 }
