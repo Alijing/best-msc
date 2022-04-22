@@ -1,8 +1,12 @@
-import {post, get, put, patch} from "./http";
+import {post, get, put, patch, download} from "./http";
 
-export const novels = params => get('/novel/list', null);
+export const novels = params => post('/novel/list', params);
 export const novelInfoById = params => get('/novel/info/' + params, null);
 export const novelUpdate = params => post('/novel/update', params);
+
+export const crawlingChapter = params => get('/novel/crawling/chapter/' + params, params);
+export const crawlingChapterContent = params => get('/novel/crawling/content/' + params, params);
+
 
 
 

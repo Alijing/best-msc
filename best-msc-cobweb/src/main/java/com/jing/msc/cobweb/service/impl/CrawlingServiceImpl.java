@@ -1,6 +1,7 @@
 package com.jing.msc.cobweb.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.jing.common.core.base.BaseResp;
 import com.jing.msc.cobweb.entity.Novel;
 import com.jing.msc.cobweb.entity.NovelChapter;
 import com.jing.msc.cobweb.pipeline.NovelChapterPipeline;
@@ -49,10 +50,10 @@ public class CrawlingServiceImpl implements CrawlingService {
     private NovelChapterService chapterService;
 
     @Override
-    public void crawlingNovelChapter(Long novelId) {
+    public BaseResp<Object> crawlingNovelChapter(Long novelId) {
         Novel novel = novelService.getById(novelId);
         if (null == novel) {
-            return;
+            return BaseResp.fail("该小说不存在");
         }
         MagicSpider.create(chapterProcessor)
                 //从https://qd.anjuke.com/community/开始爬取
@@ -62,16 +63,17 @@ public class CrawlingServiceImpl implements CrawlingService {
                 .addPipeline(chapterPipeline)
                 .thread(1)
                 .run();
+        return BaseResp.ok();
     }
 
     @Override
-    public void crawlingNovelContent(Long novelId) {
+    public BaseResp<Object> crawlingNovelContent(Long novelId) {
         QueryWrapper<NovelChapter> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("novel_id", novelId);
         queryWrapper.eq("status", 0);
         List<NovelChapter> chapters = chapterService.list(queryWrapper);
         if (null == chapters) {
-            return;
+            return BaseResp.fail("都爬取完啦，不用爬啦");
         }
         for (NovelChapter ch : chapters) {
             Spider.create(contentProcessor)
@@ -82,8 +84,7 @@ public class CrawlingServiceImpl implements CrawlingService {
                     .thread(1)
                     .run();
         }
-
+        return BaseResp.ok();
     }
-
 
 }

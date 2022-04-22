@@ -38,7 +38,7 @@ public class NovelContentPipeline implements Pipeline {
         if (null == content) {
             return;
         }
-        boolean save = service.save(content);
+        boolean save = service.saveOrUpdate(content);
         logger.info("小说章节内容保存结果 : " + save);
         if (!save) {
             return;

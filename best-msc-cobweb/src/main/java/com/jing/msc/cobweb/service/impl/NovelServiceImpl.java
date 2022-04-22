@@ -2,6 +2,7 @@ package com.jing.msc.cobweb.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jing.common.core.base.BaseResp;
 import com.jing.msc.cobweb.dao.NovelMapper;
 import com.jing.msc.cobweb.entity.Novel;
 import com.jing.msc.cobweb.entity.NovelChapter;
@@ -14,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletResponse;
@@ -29,8 +31,8 @@ import java.util.List;
  * @date : 2021/11/11 16:50
  * @description :
  */
-@Transactional(rollbackFor = Exception.class)
 @Service("novelService")
+@Transactional(propagation = Propagation.NESTED, rollbackFor = Exception.class)
 public class NovelServiceImpl extends ServiceImpl<NovelMapper, Novel> implements NovelService {
 
     private final Logger logger = LoggerFactory.getLogger(NovelServiceImpl.class);
@@ -40,6 +42,25 @@ public class NovelServiceImpl extends ServiceImpl<NovelMapper, Novel> implements
 
     @Autowired
     private NovelContentService contentService;
+
+    @Override
+    public BaseResp<List<Novel>> novels(Novel novel) {
+        QueryWrapper<Novel> wrapper = new QueryWrapper<>();
+        wrapper.orderByDesc("create_time");
+        if (null != novel.getName()) {
+            wrapper.like("name", novel.getName());
+        }
+        return BaseResp.ok(list(wrapper));
+    }
+
+    @Override
+    public BaseResp<Long> saveOrUpdateNovel(Novel novel) {
+        boolean update = saveOrUpdate(novel);
+        if (update) {
+            return BaseResp.ok(novel.getId());
+        }
+        return BaseResp.fail("失败");
+    }
 
     @Override
     public void download(Long novelId, HttpServletResponse response) {

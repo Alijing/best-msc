@@ -1,5 +1,7 @@
 package com.jing.msc.cobweb.service;
 
+import com.jing.common.core.base.BaseResp;
+
 /**
  * @author : jing
  * @projectName : magic
@@ -16,7 +18,7 @@ public interface CrawlingService {
      * @author jing
      * @date 2021/11/12 10:28
      */
-    void crawlingNovelChapter(Long novelId);
+    BaseResp<Object> crawlingNovelChapter(Long novelId);
 
     /**
      * 爬取 小说 所有章节内容
@@ -25,6 +27,6 @@ public interface CrawlingService {
      * @author jing
      * @date 2021/11/12 10:28
      */
-    void crawlingNovelContent(Long novelId);
+    BaseResp<Object> crawlingNovelContent(Long novelId);
 
 }

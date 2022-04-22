@@ -6,6 +6,7 @@ import com.jing.msc.cobweb.entity.NovelChapter;
 import com.jing.msc.cobweb.service.NovelChapterService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -18,8 +19,8 @@ import java.util.List;
  * @date : 2021/11/12 10:26
  * @description :
  */
-@Transactional(rollbackFor = Exception.class)
 @Service("novelChapterService")
+@Transactional(propagation = Propagation.NESTED, rollbackFor = Exception.class)
 public class NovelChapterServiceImpl extends ServiceImpl<NovelChapterMapper, NovelChapter> implements NovelChapterService {
 
     @Override

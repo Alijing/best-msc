@@ -50,6 +50,10 @@ public class Novel implements Serializable {
      */
     private String contentStyle;
     /**
+     * 爬取状态（0：未爬取，1：已爬取）
+     */
+    private Integer status;
+    /**
      * 创建时间
      */
     private String createTime;
@@ -138,6 +142,14 @@ public class Novel implements Serializable {
 
     public void setContentStyle(String contentStyle) {
         this.contentStyle = contentStyle;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public String getCreateTime() {

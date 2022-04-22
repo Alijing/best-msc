@@ -32,7 +32,7 @@ public class NovelChapterPipeline implements Pipeline {
     public void process(ResultItems resultItems, Task task) {
         List<NovelChapter> chapters = resultItems.get(MagicEnum.NOVEL_CHAPTER.getKey());
         if (chapters != null && chapters.size() > 0) {
-            boolean saveBatch = service.saveBatch(chapters);
+            boolean saveBatch = service.saveOrUpdateBatch(chapters);
             logger.info("小说章节保存结果 : " + saveBatch);
         }
     }

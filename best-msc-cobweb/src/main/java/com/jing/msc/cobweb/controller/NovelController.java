@@ -1,6 +1,5 @@
 package com.jing.msc.cobweb.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.jing.common.core.base.BaseResp;
 import com.jing.msc.cobweb.entity.Novel;
@@ -36,15 +35,10 @@ public class NovelController {
 
     @ApiOperation(value = "查询所有小说信息")
     @ApiOperationSupport(author = "Jing", order = 2)
-    @GetMapping("/list")
+    @PostMapping("/list")
     public BaseResp<List<Novel>> novels(@RequestBody Novel info) {
         try {
-            if (null != info.getName()) {
-                QueryWrapper<Novel> wrapper = new QueryWrapper<>();
-                wrapper.like("name", info.getName());
-                return BaseResp.ok(novelService.list(wrapper));
-            }
-            return BaseResp.ok(novelService.list());
+            return novelService.novels(info);
         } catch (Exception e) {
             logger.error("", e);
             return BaseResp.fail(e.getMessage());
@@ -56,12 +50,7 @@ public class NovelController {
     @PostMapping("/update")
     public BaseResp<Long> update(@RequestBody Novel novel) {
         try {
-            logger.info(novel.toString());
-            boolean update = novelService.saveOrUpdate(novel);
-            if (update) {
-                return BaseResp.ok(novel.getId());
-            }
-            return BaseResp.fail("失败");
+            return novelService.saveOrUpdateNovel(novel);
         } catch (Exception e) {
             logger.error("", e);
             return BaseResp.fail(e.getMessage());
@@ -82,23 +71,25 @@ public class NovelController {
     }
 
 
-    @ApiOperation(value = "查询所有用户信息")
+    @ApiOperation(value = "爬取章节")
     @ApiOperationSupport(author = "Jing", order = 2)
     @GetMapping("crawling/chapter/{novelId}")
-    public void crawlingChapter(@PathVariable("novelId") Long novelId) {
+    public BaseResp<Object> crawlingChapter(@PathVariable("novelId") Long novelId) {
         try {
-            crawlingService.crawlingNovelChapter(novelId);
+            return crawlingService.crawlingNovelChapter(novelId);
         } catch (Exception e) {
             logger.error("", e);
+            return BaseResp.fail(e.getMessage());
         }
     }
 
     @GetMapping("crawling/content/{novelId}")
-    public void crawlingContent(@PathVariable("novelId") Long novelId) {
+    public BaseResp<Object> crawlingContent(@PathVariable("novelId") Long novelId) {
         try {
-            crawlingService.crawlingNovelContent(novelId);
+            return crawlingService.crawlingNovelContent(novelId);
         } catch (Exception e) {
             logger.error("", e);
+            return BaseResp.fail(e.getMessage());
         }
     }
 

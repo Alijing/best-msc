@@ -9,6 +9,9 @@
       </el-form-item>
       <el-form-item label="章节条目样式" prop="chapterStyle">
         <el-input v-model="novelInfo.chapterStyle"/>
+        <span class="add-editor-formitem-tips" style="font-size: 12px;">
+          <i class="el-icon-warning-outline"></i>&nbsp;&nbsp;//div[@class='bdsub']/dl/dd/table/tbody/tr/td[@class='L']
+        </span>
       </el-form-item>
       <el-form-item label="章节名称样式" prop="chapterValueStyle">
         <el-input v-model="novelInfo.chapterValueStyle"/>
@@ -23,7 +26,7 @@
         <el-input v-model="novelInfo.contentStyle"/>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm('novelInfoForm')">立即创建</el-button>
+        <el-button type="primary" @click="submitForm('novelInfoForm')">保存</el-button>
         <el-button @click="resetForm('novelInfoForm')">重置</el-button>
       </el-form-item>
     </el-form>
@@ -107,6 +110,7 @@ export default {
               type: 'success'
             });
             if (resp.data) {
+              self.dialogVisible = false;
               self.$emit('refreshNovelTable');
             }
           }, err => {
@@ -121,6 +125,7 @@ export default {
       this.$refs[formName].resetFields();
     },
     dialogClosed() {
+      this.novelInfo = null;
       this.$emit('editDialogClosed');
     }
   },

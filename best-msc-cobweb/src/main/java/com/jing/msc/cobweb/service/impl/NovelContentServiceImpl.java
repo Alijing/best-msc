@@ -5,6 +5,7 @@ import com.jing.msc.cobweb.dao.NovelContentMapper;
 import com.jing.msc.cobweb.entity.NovelContent;
 import com.jing.msc.cobweb.service.NovelContentService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -14,8 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
  * @date : 2021/11/12 10:26
  * @description :
  */
-@Transactional(rollbackFor = Exception.class)
 @Service("novelContentService")
+@Transactional(propagation = Propagation.NESTED, rollbackFor = Exception.class)
 public class NovelContentServiceImpl extends ServiceImpl<NovelContentMapper, NovelContent> implements NovelContentService {
 
 
