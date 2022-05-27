@@ -1,6 +1,7 @@
 package com.jing.common.generator;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.IFill;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
@@ -42,26 +43,32 @@ public class CodeGenerator {
                 .globalConfig(builder ->
                         builder.author("jing")
                                 .enableSwagger()
-                                .fileOverride()
                                 .outputDir(outputPath)
                                 .dateType(DateType.ONLY_DATE)
-                                .disableOpenDir())
+                                .disableOpenDir()
+                                .commentDate("yyyy-MM-dd HH:mm:ss")
+                )
                 .packageConfig(builder ->
                         builder.parent(pkg)
                                 .moduleName(moduleName)
-                                .pathInfo(Collections.singletonMap(OutputFile.xml, xmlPath)))
+                                .pathInfo(Collections.singletonMap(OutputFile.xml, xmlPath))
+                )
                 .strategyConfig(builder ->
                         builder.addInclude(includes())
                                 .addTablePrefix(tablePrefix())
                                 .entityBuilder()
-                                .naming(NamingStrategy.no_change)
+                                .naming(NamingStrategy.underline_to_camel)
                                 .columnNaming(NamingStrategy.underline_to_camel)
                                 .enableTableFieldAnnotation()
                                 .logicDeleteColumnName("logic_del")
                                 .logicDeletePropertyName("logicDel")
                                 .addTableFills(tableFills())
+                                .idType(IdType.ASSIGN_ID)
+                                .enableRemoveIsPrefix()
+                                .fileOverride()
                                 .serviceBuilder()
-                                .formatServiceFileName("%sService"))
+                                .formatServiceFileName("%sService")
+                )
                 // 使用Freemarker引擎模板，默认的是Velocity引擎模板
                 .templateEngine(new VelocityTemplateEngine())
                 .execute();
@@ -75,7 +82,7 @@ public class CodeGenerator {
      * @date 2022/4/19 10:40
      */
     private static List<String> includes() {
-        return Arrays.asList("TB_JG_OM_BATTALION", "");
+        return Arrays.asList("TB_JG_OM_DEVICE_PASSING", "");
     }
 
     /**

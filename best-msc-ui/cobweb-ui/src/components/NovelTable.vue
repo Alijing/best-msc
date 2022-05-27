@@ -11,14 +11,14 @@
       </el-form-item>
     </el-form>
 
-    <el-table :data="tableData" style="width: 100%" height="720" v-loading="loading">
+    <el-table :data="tableData" style="width: 100%" height="720" v-loading="loading" stripe>
       <el-table-column prop="name" label="名称"/>
       <el-table-column prop="path" label="地址"/>
-      <el-table-column prop="chapterStyle" label="章节条目样式"/>
-      <el-table-column prop="chapterValueStyle" label="章节名称样式"/>
-      <el-table-column prop="nextChapterStyle" label="下一页样式"/>
-      <el-table-column prop="nextChapterValueStyle" label="下一页链接样式"/>
-      <el-table-column prop="contentStyle" label="章节内容样式"/>
+<!--      <el-table-column prop="chapterStyle" label="章节条目样式"/>-->
+<!--      <el-table-column prop="chapterValueStyle" label="章节名称样式"/>-->
+<!--      <el-table-column prop="nextChapterStyle" label="下一页样式"/>-->
+<!--      <el-table-column prop="nextChapterValueStyle" label="下一页链接样式"/>-->
+<!--      <el-table-column prop="contentStyle" label="章节内容样式"/>-->
       <el-table-column prop="createTime" label="创建时间"/>
       <el-table-column fixed="right" label="操作" width="320">
         <template slot-scope="scope">
