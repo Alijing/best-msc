@@ -51,40 +51,50 @@ public class CrawlingServiceImpl implements CrawlingService {
 
     @Override
     public BaseResp<Object> crawlingNovelChapter(Long novelId) {
-        Novel novel = novelService.getById(novelId);
-        if (null == novel) {
-            return BaseResp.fail("该小说不存在");
+        try {
+            Novel novel = novelService.getById(novelId);
+            if (null == novel) {
+                return BaseResp.error("该小说不存在");
+            }
+            MagicSpider.create(chapterProcessor)
+                    //从https://qd.anjuke.com/community/开始爬取
+                    .addUrl(novel.getPath())
+                    .setTarget(novelId)
+                    // 使用自定义的Pipeline
+                    .addPipeline(chapterPipeline)
+                    .thread(1)
+                    .run();
+            return BaseResp.ok();
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            return BaseResp.error(e.getMessage());
         }
-        MagicSpider.create(chapterProcessor)
-                //从https://qd.anjuke.com/community/开始爬取
-                .addUrl(novel.getPath())
-                .setTarget(novelId)
-                // 使用自定义的Pipeline
-                .addPipeline(chapterPipeline)
-                .thread(1)
-                .run();
-        return BaseResp.ok();
     }
 
     @Override
     public BaseResp<Object> crawlingNovelContent(Long novelId) {
-        QueryWrapper<NovelChapter> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("novel_id", novelId);
-        queryWrapper.eq("status", 0);
-        List<NovelChapter> chapters = chapterService.list(queryWrapper);
-        if (null == chapters) {
-            return BaseResp.fail("无可更新内容的章节，不用爬啦");
+        try {
+            QueryWrapper<NovelChapter> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("novel_id", novelId);
+            queryWrapper.eq("status", 0);
+            List<NovelChapter> chapters = chapterService.list(queryWrapper);
+            if (null == chapters) {
+                return BaseResp.error("无可更新内容的章节，不用爬啦");
+            }
+            for (NovelChapter ch : chapters) {
+                Spider.create(contentProcessor)
+                        //从https://qd.anjuke.com/community/开始爬取
+                        .addUrl(ch.getPath())
+                        // 使用自定义的Pipeline
+                        .addPipeline(contentPipeline)
+                        .thread(1)
+                        .run();
+            }
+            return BaseResp.ok();
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            return BaseResp.error(e.getMessage());
         }
-        for (NovelChapter ch : chapters) {
-            Spider.create(contentProcessor)
-                    //从https://qd.anjuke.com/community/开始爬取
-                    .addUrl(ch.getPath())
-                    // 使用自定义的Pipeline
-                    .addPipeline(contentPipeline)
-                    .thread(1)
-                    .run();
-        }
-        return BaseResp.ok();
     }
 
 }

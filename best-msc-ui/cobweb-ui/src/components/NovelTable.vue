@@ -14,11 +14,11 @@
     <el-table :data="tableData" style="width: 100%" height="720" v-loading="loading" stripe>
       <el-table-column prop="name" label="名称"/>
       <el-table-column prop="path" label="地址"/>
-<!--      <el-table-column prop="chapterStyle" label="章节条目样式"/>-->
-<!--      <el-table-column prop="chapterValueStyle" label="章节名称样式"/>-->
-<!--      <el-table-column prop="nextChapterStyle" label="下一页样式"/>-->
-<!--      <el-table-column prop="nextChapterValueStyle" label="下一页链接样式"/>-->
-<!--      <el-table-column prop="contentStyle" label="章节内容样式"/>-->
+      <!--      <el-table-column prop="chapterStyle" label="章节条目样式"/>-->
+      <!--      <el-table-column prop="chapterValueStyle" label="章节名称样式"/>-->
+      <!--      <el-table-column prop="nextChapterStyle" label="下一页样式"/>-->
+      <!--      <el-table-column prop="nextChapterValueStyle" label="下一页链接样式"/>-->
+      <!--      <el-table-column prop="contentStyle" label="章节内容样式"/>-->
       <el-table-column prop="createTime" label="创建时间"/>
       <el-table-column fixed="right" label="操作" width="320">
         <template slot-scope="scope">
@@ -34,11 +34,11 @@
     <el-pagination
       background
       layout="total, prev, pager, next, jumper"
-      :total="total"
+      :total="queryPar.total"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
-      :current-page.sync="currentPage"
-      :page-size="pageSize">
+      :current-page.sync="queryPar.currentPage"
+      :page-size="queryPar.pageSize">
     </el-pagination>
 
     <novel-edit v-if="dialogVisible" :novelId="novelId"
@@ -61,11 +61,11 @@ export default {
       dialogVisible: false,
       novelId: null,
       queryPar: {
-        name: null
+        name: null,
+        total: 500,
+        pageSize: 30,
+        currentPage: 1,
       },
-      total: 500,
-      pageSize: 30,
-      currentPage: 5,
     }
   },
   mounted() {
@@ -81,7 +81,7 @@ export default {
         }
       }, err => {
         self.loading = false;
-        self.$message.error('错了哦，' + err.msg);
+        self.$message.error('错了哦，' + err.message);
       });
     },
     editNovelDialogShow(row) {
@@ -115,7 +115,7 @@ export default {
         self.initData();
       }, err => {
         self.loading = false;
-        self.$message.error('错了哦，' + err.msg);
+        self.$message.error('错了哦，' + err.message);
       });
     },
     changeChapterName(novel) {
@@ -127,7 +127,7 @@ export default {
         });
       }, err => {
         self.loading = false;
-        self.$message.error('错了哦，' + err.msg);
+        self.$message.error('错了哦，' + err.message);
       });
     },
     crawlChapterContent(novel) {
@@ -140,7 +140,7 @@ export default {
         self.initData();
       }, err => {
         self.loading = false;
-        self.$message.error('错了哦，' + err.msg);
+        self.$message.error('错了哦，' + err.message);
       });
     },
     download(novel) {

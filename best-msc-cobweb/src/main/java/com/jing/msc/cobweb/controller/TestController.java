@@ -53,10 +53,10 @@ public class TestController {
         } catch (Exception e) {
             logger.error("-->>>>  : ", e);
             if (e instanceof DuplicateKeyException) {
-                return BaseResp.fail("账号已存在，请重新输入");
+                return BaseResp.error("账号已存在，请重新输入");
             }
         }
-        return BaseResp.fail();
+        return BaseResp.error();
     }
 
     @ApiOperation(value = "通过表名生成SQL")
@@ -69,10 +69,10 @@ public class TestController {
         } catch (Exception e) {
             logger.error("-->>>>  : ", e);
             if (e instanceof DuplicateKeyException) {
-                return BaseResp.fail("账号已存在，请重新输入");
+                return BaseResp.error("账号已存在，请重新输入");
             }
         }
-        return BaseResp.fail();
+        return BaseResp.error();
     }
 
 }

@@ -13,6 +13,7 @@ import java.io.Serializable;
  */
 @TableName("novel_info")
 public class Novel implements Serializable {
+    private static final long serialVersionUID = 8964955463358958822L;
     /**
      * 主键Id
      */

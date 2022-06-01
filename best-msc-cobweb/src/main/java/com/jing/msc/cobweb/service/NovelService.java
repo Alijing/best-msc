@@ -4,6 +4,7 @@ package com.jing.msc.cobweb.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.jing.common.core.base.BaseResp;
 import com.jing.msc.cobweb.entity.Novel;
+import com.jing.msc.cobweb.entity.vo.NovelVo;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -25,7 +26,7 @@ public interface NovelService extends IService<Novel> {
      * @author jing
      * @date 2022/4/21 15:16
      */
-    BaseResp<List<Novel>> novels(Novel novel);
+    BaseResp<List<Novel>> novels(NovelVo novel) throws Exception;
 
     /**
      * 新增或编辑小说信息

@@ -3,8 +3,10 @@ package com.jing.msc.cobweb.controller;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.jing.common.core.base.BaseResp;
 import com.jing.msc.cobweb.entity.Novel;
+import com.jing.msc.cobweb.entity.vo.NovelVo;
 import com.jing.msc.cobweb.service.CrawlingService;
 import com.jing.msc.cobweb.service.NovelService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +24,7 @@ import java.util.List;
  * @description :
  */
 @RestController
+@Api(tags = "小说相关接口")
 @RequestMapping("novel")
 public class NovelController {
 
@@ -36,25 +39,15 @@ public class NovelController {
     @ApiOperation(value = "查询所有小说信息")
     @ApiOperationSupport(author = "Jing", order = 2)
     @PostMapping("/list")
-    public BaseResp<List<Novel>> novels(@RequestBody Novel info) {
-        try {
-            return novelService.novels(info);
-        } catch (Exception e) {
-            logger.error("", e);
-            return BaseResp.fail(e.getMessage());
-        }
+    public BaseResp<List<Novel>> novels(@RequestBody NovelVo info) throws Exception {
+        return novelService.novels(info);
     }
 
     @ApiOperation(value = "新增或编辑小说信息")
     @ApiOperationSupport(author = "Jing", order = 2)
     @PostMapping("/update")
     public BaseResp<Long> update(@RequestBody Novel novel) {
-        try {
-            return novelService.saveOrUpdateNovel(novel);
-        } catch (Exception e) {
-            logger.error("", e);
-            return BaseResp.fail(e.getMessage());
-        }
+        return novelService.saveOrUpdateNovel(novel);
     }
 
 
@@ -62,12 +55,7 @@ public class NovelController {
     @ApiOperationSupport(author = "Jing", order = 2)
     @GetMapping("info/{novelId}")
     public BaseResp<Novel> novelInfoById(@PathVariable("novelId") Long novelId) {
-        try {
-            return BaseResp.ok(novelService.getById(novelId));
-        } catch (Exception e) {
-            logger.error("", e);
-            return BaseResp.fail(e.getMessage());
-        }
+        return BaseResp.ok(novelService.getById(novelId));
     }
 
 
@@ -75,41 +63,22 @@ public class NovelController {
     @ApiOperationSupport(author = "Jing", order = 2)
     @GetMapping("crawling/chapter/{novelId}")
     public BaseResp<Object> crawlingChapter(@PathVariable("novelId") Long novelId) {
-        try {
-            return crawlingService.crawlingNovelChapter(novelId);
-        } catch (Exception e) {
-            logger.error("", e);
-            return BaseResp.fail(e.getMessage());
-        }
+        return crawlingService.crawlingNovelChapter(novelId);
     }
 
     @GetMapping("crawling/content/{novelId}")
     public BaseResp<Object> crawlingContent(@PathVariable("novelId") Long novelId) {
-        try {
-            return crawlingService.crawlingNovelContent(novelId);
-        } catch (Exception e) {
-            logger.error("", e);
-            return BaseResp.fail(e.getMessage());
-        }
+        return crawlingService.crawlingNovelContent(novelId);
     }
 
     @GetMapping("download/{novelId}")
     public void download(@PathVariable("novelId") Long novelId, HttpServletResponse response) {
-        try {
-            novelService.download(novelId, response);
-        } catch (Exception e) {
-            logger.error("", e);
-        }
+        novelService.download(novelId, response);
     }
 
     @GetMapping("change/chapter/name/{novelId}")
     public BaseResp<Boolean> changeChapterName(@PathVariable("novelId") Long novelId) {
-        try {
-            return novelService.changeChapterName(novelId);
-        } catch (Exception e) {
-            logger.error("", e);
-            return BaseResp.fail(e.getMessage());
-        }
+        return novelService.changeChapterName(novelId);
     }
 
 

@@ -30,7 +30,7 @@ axios.interceptors.response.use(
     if (response.status === 200) {
       let code = response.data.code;
       switch (code) {
-        case 200:
+        case 20000:
           return Promise.resolve(response);
         default:
           return Promise.reject(response.data);

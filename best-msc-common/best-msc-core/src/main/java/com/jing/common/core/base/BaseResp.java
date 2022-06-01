@@ -1,6 +1,6 @@
 package com.jing.common.core.base;
 
-import com.jing.common.core.constant.Constants;
+import com.jing.common.core.enums.ResultEnum;
 
 import java.io.Serializable;
 
@@ -12,87 +12,209 @@ import java.io.Serializable;
  * @description : 接口响应基类
  */
 public class BaseResp<T> implements Serializable {
-
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 成功
-     */
-    public static final int SUCCESS = Constants.SUCCESS;
+    private Boolean success;
 
-    /**
-     * 失败
-     */
-    public static final int FAIL = Constants.FAIL;
+    private Integer code;
 
-    private int code;
-
-    private String msg;
+    private String message;
 
     private T data;
 
+    /**
+     * 总共多少条记录
+     */
+    private Long total;
+    /**
+     * 当前页
+     */
+    private Long currentPage;
+    /**
+     * 每页条数
+     */
+    private Long pageSize;
+
+    private BaseResp() {
+    }
+
+    /**
+     * 通用 返回成功
+     *
+     * @return 响应结果
+     * @author jing
+     * @date 2022/5/31 10:27
+     */
     public static <T> BaseResp<T> ok() {
-        return restResult(null, SUCCESS, null);
+        BaseResp<T> br = new BaseResp<>();
+        br.setSuccess(ResultEnum.SUCCESS.getSuccess());
+        br.setCode(ResultEnum.SUCCESS.getCode());
+        br.setMessage(ResultEnum.SUCCESS.getMessage());
+        return br;
     }
 
+    /**
+     * 通用 返回成功
+     *
+     * @return 响应结果
+     * @author jing
+     * @date 2022/5/31 10:27
+     */
     public static <T> BaseResp<T> ok(T data) {
-        return restResult(data, SUCCESS, null);
+        BaseResp<T> br = new BaseResp<>();
+        br.setSuccess(ResultEnum.SUCCESS.getSuccess());
+        br.setCode(ResultEnum.SUCCESS.getCode());
+        br.setMessage(ResultEnum.SUCCESS.getMessage());
+        br.setData(data);
+        return br;
     }
 
-    public static <T> BaseResp<T> ok(T data, String msg) {
-        return restResult(data, SUCCESS, msg);
+    /**
+     * 通用返回失败，未知错误
+     *
+     * @return 失败，未知错误
+     * @author jing
+     * @date 2022/5/31 10:30
+     */
+    public static <T> BaseResp<T> error() {
+        BaseResp<T> br = new BaseResp<>();
+        br.setSuccess(ResultEnum.UNKNOWN_ERROR.getSuccess());
+        br.setCode(ResultEnum.UNKNOWN_ERROR.getCode());
+        br.setMessage(ResultEnum.UNKNOWN_ERROR.getMessage());
+        return br;
     }
 
-    public static <T> BaseResp<T> fail() {
-        return restResult(null, FAIL, null);
+    /**
+     * 通用返回失败，未知错误
+     *
+     * @return 失败，未知错误
+     * @author jing
+     * @date 2022/5/31 10:30
+     */
+    public static <T> BaseResp<T> error(Integer code) {
+        BaseResp<T> br = new BaseResp<>();
+        br.setSuccess(ResultEnum.UNKNOWN_ERROR.getSuccess());
+        br.setCode(code);
+        br.setMessage(ResultEnum.UNKNOWN_ERROR.getMessage());
+        return br;
     }
 
-    public static <T> BaseResp<T> fail(String msg) {
-        return restResult(null, FAIL, msg);
+    /**
+     * 通用返回失败，未知错误
+     *
+     * @return 失败，未知错误
+     * @author jing
+     * @date 2022/5/31 10:30
+     */
+    public static <T> BaseResp<T> error(String message) {
+        BaseResp<T> br = new BaseResp<>();
+        br.setSuccess(ResultEnum.UNKNOWN_ERROR.getSuccess());
+        br.setCode(ResultEnum.UNKNOWN_ERROR.getCode());
+        br.setMessage(message);
+        return br;
     }
 
-    public static <T> BaseResp<T> fail(T data) {
-        return restResult(data, FAIL, null);
+    /**
+     * 通用返回失败，未知错误
+     *
+     * @return 失败，未知错误
+     * @author jing
+     * @date 2022/5/31 10:30
+     */
+    public static <T> BaseResp<T> error(Integer code, String message) {
+        BaseResp<T> br = new BaseResp<>();
+        br.setSuccess(ResultEnum.UNKNOWN_ERROR.getSuccess());
+        br.setCode(code);
+        br.setMessage(message);
+        return br;
     }
 
-    public static <T> BaseResp<T> fail(T data, String msg) {
-        return restResult(data, FAIL, msg);
+    /**
+     * 设置结果，形参为结果枚举
+     *
+     * @param result 结果枚举
+     * @return 响应
+     * @author jing
+     * @date 2022/5/31 10:32
+     */
+    public static <T> BaseResp<T> setResult(ResultEnum result) {
+        BaseResp<T> br = new BaseResp<>();
+        br.setSuccess(result.getSuccess());
+        br.setCode(result.getCode());
+        br.setMessage(result.getMessage());
+        return br;
     }
 
-    public static <T> BaseResp<T> fail(int code, String msg) {
-        return restResult(null, code, msg);
+    /**
+     * 自定义返回结果
+     *
+     * @param success 结果
+     * @return 类本身
+     * @author jing
+     * @date 2022/5/31 10:44
+     */
+    public BaseResp<T> success(Boolean success) {
+        this.setSuccess(success);
+        return this;
     }
 
-
-    private static <T> BaseResp<T> restResult(T data, int code, String msg) {
-        BaseResp<T> apiResult = new BaseResp<>();
-        apiResult.setCode(code);
-        apiResult.setData(data);
-        apiResult.setMsg(msg);
-        return apiResult;
+    public Boolean getSuccess() {
+        return success;
     }
 
-    public int getCode() {
+    public void setSuccess(Boolean success) {
+        this.success = success;
+    }
+
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getMessage() {
+        return message;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public T getData() {
         return data;
     }
 
-    public void setData(T data) {
+    public BaseResp<T> setData(T data) {
         this.data = data;
+        return this;
+    }
+
+    public Long getTotal() {
+        return total;
+    }
+
+    public BaseResp<T> setTotal(Long total) {
+        this.total = total;
+        return this;
+    }
+
+    public Long getCurrentPage() {
+        return currentPage;
+    }
+
+    public BaseResp<T> setCurrentPage(Long currentPage) {
+        this.currentPage = currentPage;
+        return this;
+    }
+
+    public Long getPageSize() {
+        return pageSize;
+    }
+
+    public BaseResp<T> setPageSize(Long pageSize) {
+        this.pageSize = pageSize;
+        return this;
     }
 }
