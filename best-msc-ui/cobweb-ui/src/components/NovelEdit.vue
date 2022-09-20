@@ -71,12 +71,12 @@ export default {
         chapterValueStyle: [
           {required: true, message: '请输入章节名称样式', trigger: 'blur'}
         ],
-        nextChapterStyle: [
-          {required: true, message: '请输入下一页样式', trigger: 'blur'}
-        ],
-        nextChapterValueStyle: [
-          {required: true, message: '请输入下一页链接样式', trigger: 'blur'}
-        ],
+        // nextChapterStyle: [
+        //   {required: true, message: '请输入下一页样式', trigger: 'blur'}
+        // ],
+        // nextChapterValueStyle: [
+        //   {required: true, message: '请输入下一页链接样式', trigger: 'blur'}
+        // ],
         contentStyle: [
           {required: true, message: '请输入章节内容样式', trigger: 'blur'}
         ],

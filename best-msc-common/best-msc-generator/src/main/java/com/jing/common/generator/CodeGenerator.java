@@ -25,14 +25,14 @@ import java.util.List;
 public class CodeGenerator {
 
     public static void main(String[] args) {
-        String url = "jdbc:mysql://localhost:3306/jg_om_dev?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8";
+        String url = "jdbc:mysql://localhost:3306/zd_cems_dev?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8";
         String userName = "root";
         String password = "Fullsee@123";
 
         // 设置父包名
         String pkg = "com.fullsee.integratedbis";
         // 设置父包模块名
-        String moduleName = "jiaoguanom";
+        String moduleName = "cems";
 
         String projectPath = System.getProperty("user.dir") + "/best-msc-common/best-msc-generator";
         String outputPath = projectPath + "/src/main/java";
@@ -82,7 +82,7 @@ public class CodeGenerator {
      * @date 2022/4/19 10:40
      */
     private static List<String> includes() {
-        return Arrays.asList("TB_JG_OM_DEVICE_PASSING", "");
+        return Arrays.asList("tb_cems_radio_template", "");
     }
 
     /**
@@ -93,7 +93,7 @@ public class CodeGenerator {
      * @date 2022/4/19 10:40
      */
     private static List<String> tablePrefix() {
-        return Arrays.asList("TB_JG_OM_", "TB_SYSTEM_");
+        return Arrays.asList("TB_CEMS_", "TB_SYSTEM_");
     }
 
     private static List<IFill> tableFills() {

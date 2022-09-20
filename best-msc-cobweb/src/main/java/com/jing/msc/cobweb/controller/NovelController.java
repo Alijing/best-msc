@@ -58,6 +58,17 @@ public class NovelController {
         return BaseResp.ok(novelService.getById(novelId));
     }
 
+    @ApiOperation(value = "通过 ID 复制小说爬取配置")
+    @ApiOperationSupport(author = "Jing", order = 2)
+    @GetMapping("info/copy/{novelId}")
+    public BaseResp<Boolean> novelCopy(@PathVariable("novelId") Long novelId) {
+        Novel byId = novelService.getById(novelId);
+        byId.setId(null);
+        byId.setName("新复制的小说");
+        byId.setPath("http://xxxxx");
+        return BaseResp.ok(novelService.save(byId));
+    }
+
 
     @ApiOperation(value = "爬取章节")
     @ApiOperationSupport(author = "Jing", order = 2)

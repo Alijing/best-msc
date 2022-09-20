@@ -20,9 +20,10 @@
       <!--      <el-table-column prop="nextChapterValueStyle" label="下一页链接样式"/>-->
       <!--      <el-table-column prop="contentStyle" label="章节内容样式"/>-->
       <el-table-column prop="createTime" label="创建时间"/>
-      <el-table-column fixed="right" label="操作" width="320">
+      <el-table-column fixed="right" label="操作" width="350">
         <template slot-scope="scope">
           <el-button @click="editNovelDialogShow(scope.row)" type="text">编辑</el-button>
+          <el-button @click="copyNovel(scope.row)" type="text">复制</el-button>
           <el-button @click="crawlChapter(scope.row)" type="text">获取章节</el-button>
           <el-button @click="changeChapterName(scope.row)" type="text">修改章节名称</el-button>
           <el-button @click="crawlChapterContent(scope.row)" type="text">获取内容</el-button>
@@ -48,7 +49,7 @@
 </template>
 
 <script>
-import {novels, crawlingChapter, changeChapterName, crawlingChapterContent} from '@/request/api'; // 导入自定义api接口
+import {novels, copyNovel, crawlingChapter, changeChapterName, crawlingChapterContent} from '@/request/api'; // 导入自定义api接口
 import NovelEdit from "./NovelEdit";
 
 export default {
@@ -89,6 +90,17 @@ export default {
       if (row) {
         this.novelId = row.id;
       }
+    },
+    copyNovel(novel) {
+      let self = this;
+      copyNovel(novel.id).then(resp => {
+        if (resp.data) {
+          self.$message.info('复制成功！');
+          self.refreshNovelTable();
+        }
+      }, err => {
+        self.$message.error('错了哦，' + err.msg);
+      });
     },
     editDialogClosed() {
       this.dialogVisible = false;
