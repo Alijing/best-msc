@@ -9,6 +9,11 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'HelloWorld',
+      component: HelloWorld
+    },
+    {
+      path: '/novel',
       name: 'NovelTable',
       component: NovelTable
     }

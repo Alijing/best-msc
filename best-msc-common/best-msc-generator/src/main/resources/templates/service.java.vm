@@ -9,7 +9,7 @@ import ${superServiceClassPackage};
  * </p>
  * @author : jing
  * @packageName : ${package.Service}
- * @date : ${date}
+ * @since : ${date}
  * @description :
  */
 #if(${kotlin})

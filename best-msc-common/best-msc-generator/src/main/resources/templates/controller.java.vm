@@ -18,7 +18,7 @@ import ${superControllerClassPackage};
  * </p>
  * @author : jing
  * @packageName : ${package.Controller}
- * @date : ${date}
+ * @since : ${date}
  * @description :
  */
 #if(${restControllerStyle})

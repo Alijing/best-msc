@@ -51,6 +51,14 @@ public class Novel implements Serializable {
      */
     private String contentStyle;
     /**
+     * 内容下一页 css 样式
+     */
+    private String nextContentStyle;
+    /**
+     * 内容下一页链接 css 样式
+     */
+    private String nextContentValueStyle;
+    /**
      * 爬取状态（0：未爬取，1：已爬取）
      */
     private Integer status;
@@ -143,6 +151,22 @@ public class Novel implements Serializable {
 
     public void setContentStyle(String contentStyle) {
         this.contentStyle = contentStyle;
+    }
+
+    public String getNextContentStyle() {
+        return nextContentStyle;
+    }
+
+    public void setNextContentStyle(String nextContentStyle) {
+        this.nextContentStyle = nextContentStyle;
+    }
+
+    public String getNextContentValueStyle() {
+        return nextContentValueStyle;
+    }
+
+    public void setNextContentValueStyle(String nextContentValueStyle) {
+        this.nextContentValueStyle = nextContentValueStyle;
     }
 
     public Integer getStatus() {

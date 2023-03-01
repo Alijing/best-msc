@@ -84,7 +84,8 @@ public class NovelChapterProcessor implements MagicPageProcessor {
 
     @Override
     public Site getSite() {
-        site.setCharset("GBK");
+//        site.setCharset("GBK");
+        site.setCharset("UTF-8");
         return site;
     }
 

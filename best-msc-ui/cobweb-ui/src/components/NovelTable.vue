@@ -110,7 +110,6 @@ export default {
       this.initData();
     },
     doQuery(formName) {
-      let self = this;
       this.initData();
     },
     reset(formName) {
