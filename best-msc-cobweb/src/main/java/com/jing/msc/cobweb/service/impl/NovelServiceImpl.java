@@ -9,11 +9,14 @@ import com.jing.msc.cobweb.dao.NovelMapper;
 import com.jing.msc.cobweb.entity.Novel;
 import com.jing.msc.cobweb.entity.NovelChapter;
 import com.jing.msc.cobweb.entity.NovelContent;
+import com.jing.msc.cobweb.entity.NovelCrawlConfig;
 import com.jing.msc.cobweb.entity.vo.NovelVo;
 import com.jing.msc.cobweb.service.NovelChapterService;
 import com.jing.msc.cobweb.service.NovelContentService;
+import com.jing.msc.cobweb.service.NovelCrawlConfigService;
 import com.jing.msc.cobweb.service.NovelService;
 import com.jing.msc.cobweb.util.NumberChangeUtil;
+import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +30,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author : jing
@@ -40,6 +44,9 @@ import java.util.List;
 public class NovelServiceImpl extends ServiceImpl<NovelMapper, Novel> implements NovelService {
 
     private final Logger logger = LoggerFactory.getLogger(NovelServiceImpl.class);
+
+    @Autowired
+    private NovelCrawlConfigService crawlConfigService;
 
     @Autowired
     private NovelChapterService chapterService;
@@ -60,17 +67,31 @@ public class NovelServiceImpl extends ServiceImpl<NovelMapper, Novel> implements
     }
 
     @Override
-    public BaseResp<Long> saveOrUpdateNovel(Novel novel) {
-        try {
-            boolean update = saveOrUpdate(novel);
-            if (update) {
-                return BaseResp.ok(novel.getId());
-            }
-            return BaseResp.error();
-        } catch (Exception e) {
-            logger.error(e.getMessage(), e);
-            return BaseResp.error(e.getMessage());
+    public BaseResp<Boolean> batchDelete(NovelVo novel) {
+        if (CollectionUtils.isEmpty(novel.getBatchId())) {
+            return BaseResp.ok();
         }
+        removeBatchByIds(novel.getBatchId());
+
+        QueryWrapper<NovelCrawlConfig> configWrapper = new QueryWrapper<>();
+        configWrapper.in("novel_id", novel.getBatchId());
+        crawlConfigService.remove(configWrapper);
+
+        QueryWrapper<NovelChapter> chapterWrapper = new QueryWrapper<>();
+        chapterWrapper.select("id, novel_id");
+        chapterWrapper.in("novel_id", novel.getBatchId());
+        List<NovelChapter> chapters = chapterService.list(chapterWrapper);
+        chapterService.remove(chapterWrapper);
+
+        if (CollectionUtils.isEmpty(chapters)) {
+            return BaseResp.ok();
+        }
+
+        List<Long> chapterId = chapters.stream().map(NovelChapter::getId).collect(Collectors.toList());
+        QueryWrapper<NovelContent> contentWrapper = new QueryWrapper<>();
+        contentWrapper.in("chapter_id", chapterId);
+        contentService.remove(contentWrapper);
+        return BaseResp.ok();
     }
 
     @Override

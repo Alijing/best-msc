@@ -15,9 +15,11 @@
         <module>best-msc-core</module>
         <module>best-msc-swagger</module>
         <module>best-msc-generator</module>
+        <module>best-msc-log</module>
     </modules>
 
     <description>
         best-msc-common通用模块
     </description>
+
 </project>

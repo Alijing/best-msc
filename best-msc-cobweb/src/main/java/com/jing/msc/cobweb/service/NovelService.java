@@ -26,17 +26,17 @@ public interface NovelService extends IService<Novel> {
      * @author jing
      * @date 2022/4/21 15:16
      */
-    BaseResp<List<Novel>> novels(NovelVo novel) throws Exception;
+    BaseResp<List<Novel>> novels(NovelVo novel);
 
     /**
-     * 新增或编辑小说信息
+     * 通过 id 批量删除
      *
-     * @param novel novel
-     * @return ID
+     * @param novel 待删除的 id
+     * @return 是否成功
      * @author jing
-     * @date 2022/4/21 15:24
+     * @date 2023/3/31 16:37
      */
-    BaseResp<Long> saveOrUpdateNovel(Novel novel);
+    BaseResp<Boolean> batchDelete(NovelVo novel);
 
     /**
      * 下载小说

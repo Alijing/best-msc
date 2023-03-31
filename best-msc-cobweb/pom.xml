@@ -20,6 +20,10 @@
             <groupId>com.jing.msc</groupId>
             <artifactId>best-msc-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.jing.msc</groupId>
+            <artifactId>best-msc-log</artifactId>
+        </dependency>
 
 
         <dependency>

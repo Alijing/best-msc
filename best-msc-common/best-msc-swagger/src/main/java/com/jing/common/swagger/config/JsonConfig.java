@@ -7,9 +7,9 @@ import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
-import com.jing.common.swagger.serialize.CustomToStringSerializer;
+import com.jing.common.swagger.serialize.JsonLongSerializer;
+import com.jing.common.swagger.serialize.JsonDateSerializer;
 import com.jing.common.swagger.serialize.LocalDateTimeDeserializer;
-import com.jing.common.swagger.serialize.LocalDateTimeSerializer;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +20,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -51,11 +52,18 @@ public class JsonConfig {
         config.setParserConfig(parserConfig);
         // 全局 json 响应日期序列化 --> LocalDateTime
         SerializeConfig serializeConfig = new SerializeConfig();
-        serializeConfig.put(LocalDateTime.class, new LocalDateTimeSerializer("yyyy-MM-dd HH:mm:ss"));
+        // 统一处理日期格式
+        serializeConfig.put(Date.class, new JsonDateSerializer());
+        serializeConfig.put(java.sql.Date.class, new JsonDateSerializer());
+        serializeConfig.put(java.sql.Timestamp.class, new JsonDateSerializer());
+        serializeConfig.put(LocalDateTime.class, new JsonDateSerializer());
 
-        serializeConfig.put(Long.class, CustomToStringSerializer.instance);
-        serializeConfig.put(Long.TYPE, CustomToStringSerializer.instance);
+        // long型转换字符串，解决数据库19位长度，前端js仅支持15位的问题
+        serializeConfig.put(Long.class, JsonLongSerializer.instance);
+        serializeConfig.put(Long.TYPE, JsonLongSerializer.instance);
+        // BigInteger型转换字符串，解决数据库19位长度，前端js仅支持15位的问题
         serializeConfig.put(BigDecimal.class, BigDecimalCodec.instance);
+        // BigInteger型转换字符串，解决数据库19位长度，前端js仅支持15位的问题
         serializeConfig.put(BigInteger.class, BigIntegerCodec.instance);
 
         config.setSerializeConfig(serializeConfig);

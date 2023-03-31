@@ -1,12 +1,12 @@
 package com.jing.msc.cobweb.processor;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.jing.msc.cobweb.entity.Novel;
 import com.jing.msc.cobweb.entity.NovelChapter;
 import com.jing.msc.cobweb.entity.NovelContent;
+import com.jing.msc.cobweb.entity.NovelCrawlConfig;
 import com.jing.msc.cobweb.enums.MagicEnum;
 import com.jing.msc.cobweb.service.NovelChapterService;
-import com.jing.msc.cobweb.service.NovelService;
+import com.jing.msc.cobweb.service.NovelCrawlConfigService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,7 +41,7 @@ public class NovelContentProcessor implements PageProcessor {
     private NovelChapterService service;
 
     @Autowired
-    private NovelService novelService;
+    private NovelCrawlConfigService crawlConfigService;
 
     @Override
     public void process(Page page) {
@@ -52,7 +52,9 @@ public class NovelContentProcessor implements PageProcessor {
             return;
         }
 
-        Novel novel = novelService.getById(chapter.getNovelId());
+        QueryWrapper<NovelCrawlConfig> configWrapper = new QueryWrapper<>();
+        configWrapper.eq("novel_id", chapter.getNovelId());
+        NovelCrawlConfig config = crawlConfigService.getOne(configWrapper);
 
         Selectable xpath = page.getHtml().xpath(chapter.getContentStyle());
         String content = xpath.toString()
@@ -61,18 +63,18 @@ public class NovelContentProcessor implements PageProcessor {
                 .replaceAll("</dd>", "");
         NovelContent novelContent = new NovelContent(chapter.getId(), content);
 
-        if (StringUtils.isNotBlank(novel.getNextContentStyle())) {
-            nextContent(novel, page);
+        if (StringUtils.isNotBlank(config.getNextContentStyle())) {
+            nextContent(config, page);
         }
 
         page.putField(MagicEnum.NOVEL_CONTENT.getKey(), novelContent);
     }
 
-    private void nextContent(Novel novel, Page page) {
+    private void nextContent(NovelCrawlConfig config, Page page) {
         List<String> targetRequests = new ArrayList<>();
-        List<Selectable> nextNodes = page.getHtml().xpath(novel.getNextContentStyle()).nodes();
+        List<Selectable> nextNodes = page.getHtml().xpath(config.getNextContentStyle()).nodes();
         for (Selectable selectable : nextNodes) {
-            String name = selectable.xpath(novel.getNextContentValueStyle()).toString();
+            String name = selectable.xpath(config.getNextContentValueStyle()).toString();
             boolean contains = Arrays.asList(NEXT_PAGE_NAME).contains(name);
             if (contains) {
                 String path = selectable.links().get();

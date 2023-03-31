@@ -1,15 +1,15 @@
 <template>
   <el-dialog title="小说信息" :visible.sync="dialogVisible" @closed="dialogClosed">
-    <el-form :model="novelInfo" :rules="rules" ref="novelInfoForm" label-width="140px" class="demo-ruleForm">
+    <el-form :model="novelConfig" :rules="rules" ref="novelConfigForm" label-width="140px" class="demo-ruleForm">
       <el-row>
         <el-col :span="12">
           <el-form-item label="小说名称" prop="name">
-            <el-input v-model="novelInfo.name"/>
+            <el-input v-model="novelConfig.name"/>
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="小说地址" prop="path">
-            <el-input v-model="novelInfo.path"/>
+            <el-input v-model="novelConfig.path"/>
           </el-form-item>
         </el-col>
       </el-row>
@@ -18,7 +18,7 @@
       <el-row>
         <el-col :span="12">
           <el-form-item label="目录样式" prop="chapterStyle">
-            <el-input v-model="novelInfo.chapterStyle"/>
+            <el-input v-model="novelConfig.chapterStyle"/>
             <span class="add-editor-formitem-tips" style="font-size: 12px;">
           <i class="el-icon-warning-outline"></i>&nbsp;&nbsp;//div[@id=list-chapterAll]/dd
         </span>
@@ -26,7 +26,7 @@
         </el-col>
         <el-col :span="12">
           <el-form-item label="目录文本样式" prop="chapterValueStyle">
-            <el-input v-model="novelInfo.chapterValueStyle"/>
+            <el-input v-model="novelConfig.chapterValueStyle"/>
           </el-form-item>
         </el-col>
       </el-row>
@@ -34,12 +34,12 @@
       <el-row>
         <el-col :span="12">
           <el-form-item label="下一页样式" prop="nextChapterStyle">
-            <el-input v-model="novelInfo.nextChapterStyle"/>
+            <el-input v-model="novelConfig.nextChapterStyle"/>
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="下一页链接样式" prop="nextChapterValueStyle">
-            <el-input v-model="novelInfo.nextChapterValueStyle"/>
+            <el-input v-model="novelConfig.nextChapterValueStyle"/>
           </el-form-item>
         </el-col>
       </el-row>
@@ -49,7 +49,7 @@
       <el-row>
         <el-col :span="12">
           <el-form-item label="获取方式" prop="type">
-            <el-select v-model="novelInfo.type" clearable placeholder="请选择" @change="novelTypeChange">
+            <el-select v-model="novelConfig.type" clearable placeholder="请选择" @change="novelTypeChange">
               <el-option
                 v-for="item in novelTypes"
                 :key="item.value"
@@ -61,7 +61,7 @@
         </el-col>
         <el-col :span="12" v-if="defaultType">
           <el-form-item label="内容样式" prop="contentStyle">
-            <el-input v-model="novelInfo.contentStyle"/>
+            <el-input v-model="novelConfig.contentStyle"/>
           </el-form-item>
         </el-col>
       </el-row>
@@ -69,12 +69,12 @@
       <el-row v-if="defaultType">
         <el-col :span="12">
           <el-form-item label="下一页样式" prop="nextContentStyle">
-            <el-input v-model="novelInfo.nextContentStyle"/>
+            <el-input v-model="novelConfig.nextContentStyle"/>
           </el-form-item>
         </el-col>
         <el-col :span="12">
           <el-form-item label="下一页链接样式" prop="nextContentValueStyle">
-            <el-input v-model="novelInfo.nextContentValueStyle"/>
+            <el-input v-model="novelConfig.nextContentValueStyle"/>
           </el-form-item>
         </el-col>
       </el-row>
@@ -82,12 +82,12 @@
       <el-row v-if="!defaultType">
         <el-col :span="8">
           <el-form-item label="接口地址" prop="contentStyle">
-            <el-input v-model="novelInfo.ifPath"/>
+            <el-input v-model="novelConfig.ifPath"/>
           </el-form-item>
         </el-col>
         <el-col :span="8">
           <el-form-item label="请求方式" prop="nextContentStyle">
-            <el-select v-model="novelInfo.method" clearable placeholder="请选择">
+            <el-select v-model="novelConfig.method" clearable placeholder="请选择">
               <el-option
                 v-for="item in methods"
                 :key="item.value"
@@ -99,7 +99,7 @@
         </el-col>
         <el-col :span="8">
           <el-form-item label="参数获取" prop="nextContentStyle">
-            <el-select v-model="novelInfo.param" clearable placeholder="请选择">
+            <el-select v-model="novelConfig.param" clearable placeholder="请选择">
               <el-option
                 v-for="item in params"
                 :key="item.value"
@@ -112,8 +112,8 @@
       </el-row>
 
       <el-form-item>
-        <el-button type="primary" @click="submitForm('novelInfoForm')">保存</el-button>
-        <el-button @click="resetForm('novelInfoForm')">重置</el-button>
+        <el-button type="primary" @click="submitForm('novelConfigForm')">保存</el-button>
+        <el-button @click="resetForm('novelConfigForm')">重置</el-button>
       </el-form-item>
     </el-form>
   </el-dialog>
@@ -121,13 +121,13 @@
 
 <script>
 
-import {novelUpdate, novelInfoById} from '@/request/api'; // 导入自定义api接口
+import {crawlConfigUpdate, crawlConfigByNovelId} from '@/request/api'; // 导入自定义api接口
 
 export default {
   name: "NovelEdit",
   props: {
-    novelId: {
-      type: Number,
+    novel: {
+      type: Object,
       required: false
     }
   },
@@ -146,7 +146,7 @@ export default {
       params: [
         {value: 0, label: '地址栏获取'},
       ],
-      novelInfo: {
+      novelConfig: {
         name: '',
         path: '',
         chapterStyle: '',
@@ -193,16 +193,20 @@ export default {
     };
   },
   mounted() {
-    if (this.novelId) {
-      this.loadNovelInfo();
+    if (this.novel) {
+      if (this.novel) {
+        this.novelConfig = Object.assign({}, this.novel);
+        this.novelConfig.novelId = this.novel.id;
+      }
+      this.loadNovelConfig();
     }
   },
   methods: {
-    loadNovelInfo() {
+    loadNovelConfig() {
       let self = this;
-      novelInfoById(self.novelId).then(resp => {
+      crawlConfigByNovelId(self.novel.id).then(resp => {
         if (resp.data) {
-          self.novelInfo = resp.data;
+          self.novelConfig = Object.assign({}, self.novel, resp.data);
         }
       }, err => {
         self.$message.error('错了哦，' + err.msg);
@@ -212,8 +216,7 @@ export default {
       let self = this;
       self.$refs[formName].validate((valid) => {
         if (valid) {
-          let self = this;
-          novelUpdate(self.novelInfo).then(resp => {
+          crawlConfigUpdate(self.novelConfig).then(resp => {
             self.$message({
               message: '恭喜你，这是一条成功消息',
               type: 'success'
@@ -245,7 +248,7 @@ export default {
       this.$refs[formName].resetFields();
     },
     dialogClosed() {
-      this.novelInfo = null;
+      this.novelConfig = null;
       this.$emit('editDialogClosed');
     }
   },

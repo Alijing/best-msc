@@ -2,15 +2,19 @@ package com.jing.msc.cobweb.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jing.common.core.base.BaseResp;
+import com.jing.common.swagger.util.JSONUtil;
 import com.jing.msc.cobweb.config.HttpClientDownloader;
 import com.jing.msc.cobweb.entity.Novel;
 import com.jing.msc.cobweb.entity.NovelChapter;
+import com.jing.msc.cobweb.entity.NovelCrawlConfig;
+import com.jing.msc.cobweb.entity.vo.CrawlConfig;
 import com.jing.msc.cobweb.pipeline.NovelChapterPipeline;
 import com.jing.msc.cobweb.pipeline.NovelContentPipeline;
 import com.jing.msc.cobweb.processor.NovelChapterProcessor;
 import com.jing.msc.cobweb.processor.NovelContentProcessor;
 import com.jing.msc.cobweb.service.CrawlingService;
 import com.jing.msc.cobweb.service.NovelChapterService;
+import com.jing.msc.cobweb.service.NovelCrawlConfigService;
 import com.jing.msc.cobweb.service.NovelService;
 import com.jing.msc.cobweb.spider.MagicSpider;
 import org.slf4j.Logger;
@@ -49,6 +53,54 @@ public class CrawlingServiceImpl implements CrawlingService {
 
     @Autowired
     private NovelChapterService chapterService;
+
+    @Autowired
+    private NovelCrawlConfigService crawlConfigService;
+
+    @Override
+    public NovelCrawlConfig crawlConfigByNovelId(Long novelId) {
+        if (novelId == null) {
+            return null;
+        }
+        QueryWrapper<NovelCrawlConfig> configWrapper = new QueryWrapper<>();
+        configWrapper.eq("novel_id", novelId);
+        return crawlConfigService.getOne(configWrapper);
+    }
+
+    @Override
+    public BaseResp<Boolean> saveOrUpdateConfig(CrawlConfig config) {
+        try {
+            String json = JSONUtil.toJson(config);
+            Novel novel = JSONUtil.toBean(json, Novel.class);
+            novel.setId(config.getNovelId());
+            boolean update = novelService.saveOrUpdate(novel);
+            if (!update) {
+                return BaseResp.error();
+            }
+            NovelCrawlConfig crawlConfig = JSONUtil.toBean(json, NovelCrawlConfig.class);
+            update = crawlConfigService.saveOrUpdate(crawlConfig);
+            return BaseResp.ok(update);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            return BaseResp.error(e.getMessage());
+        }
+    }
+
+    @Override
+    public boolean configCopy(Long novelId) {
+        Novel byId = novelService.getById(novelId);
+        byId.setId(null);
+        byId.setName("新复制的小说");
+        byId.setPath("http://xxxxx");
+        boolean save = novelService.save(byId);
+        if (!save) {
+            return false;
+        }
+        NovelCrawlConfig config = crawlConfigByNovelId(novelId);
+        config.setNovelId(byId.getId());
+        config.setStatus(0);
+        return crawlConfigService.save(config);
+    }
 
     @Override
     public BaseResp<Object> crawlingNovelChapter(Long novelId) {

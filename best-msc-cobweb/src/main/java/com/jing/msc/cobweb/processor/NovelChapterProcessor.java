@@ -1,9 +1,10 @@
 package com.jing.msc.cobweb.processor;
 
-import com.jing.msc.cobweb.entity.Novel;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jing.msc.cobweb.entity.NovelChapter;
+import com.jing.msc.cobweb.entity.NovelCrawlConfig;
 import com.jing.msc.cobweb.enums.MagicEnum;
-import com.jing.msc.cobweb.service.NovelService;
+import com.jing.msc.cobweb.service.NovelCrawlConfigService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,33 +35,35 @@ public class NovelChapterProcessor implements MagicPageProcessor {
     private Site site = Site.me().setRetryTimes(3).setSleepTime(100);
 
     @Autowired
-    private NovelService service;
+    private NovelCrawlConfigService crawlConfigService;
 
     @Override
     public void process(Page page, Object target) {
         if (null == target) {
             return;
         }
-        Novel novel = service.getById(target.toString());
-        if (null == novel || StringUtils.isBlank(novel.getChapterStyle())) {
+        QueryWrapper<NovelCrawlConfig> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("novel_id", target.toString());
+        NovelCrawlConfig config = crawlConfigService.getOne(queryWrapper);
+        if (null == config || StringUtils.isBlank(config.getChapterStyle())) {
             return;
         }
 
-        List<Selectable> selectableList = page.getHtml().xpath(novel.getChapterStyle()).nodes();
+        List<Selectable> selectableList = page.getHtml().xpath(config.getChapterStyle()).nodes();
         List<NovelChapter> chapters = new ArrayList<>();
         for (Selectable selectable : selectableList) {
-            String name = selectable.xpath(novel.getChapterValueStyle()).toString();
+            String name = selectable.xpath(config.getChapterValueStyle()).toString();
             String path = selectable.links().get();
             if (StringUtils.isNotBlank(name) && StringUtils.isNotBlank(path)) {
-                NovelChapter chapter = new NovelChapter(null, name, path, novel.getId(), novel.getContentStyle());
+                NovelChapter chapter = new NovelChapter(null, name, path, config.getNovelId(), config.getContentStyle());
                 chapters.add(chapter);
             }
         }
-        if (StringUtils.isNotBlank(novel.getNextChapterStyle())) {
+        if (StringUtils.isNotBlank(config.getNextChapterStyle())) {
             List<String> targetRequests = new ArrayList<>();
-            List<Selectable> nextNodes = page.getHtml().xpath(novel.getNextChapterStyle()).nodes();
+            List<Selectable> nextNodes = page.getHtml().xpath(config.getNextChapterStyle()).nodes();
             for (Selectable selectable : nextNodes) {
-                String name = selectable.xpath(novel.getNextChapterValueStyle()).toString();
+                String name = selectable.xpath(config.getNextChapterValueStyle()).toString();
                 boolean contains = Arrays.asList(NEXT_PAGE_NAME).contains(name);
                 if (contains) {
                     String path = selectable.links().get();

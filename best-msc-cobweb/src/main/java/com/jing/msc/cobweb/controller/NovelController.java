@@ -2,9 +2,9 @@ package com.jing.msc.cobweb.controller;
 
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.jing.common.core.base.BaseResp;
+import com.jing.common.log.aspect.WebLog;
 import com.jing.msc.cobweb.entity.Novel;
 import com.jing.msc.cobweb.entity.vo.NovelVo;
-import com.jing.msc.cobweb.service.CrawlingService;
 import com.jing.msc.cobweb.service.NovelService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -31,25 +31,15 @@ public class NovelController {
     private final Logger logger = LoggerFactory.getLogger(NovelController.class);
 
     @Autowired
-    private CrawlingService crawlingService;
-
-    @Autowired
     private NovelService novelService;
 
+    @WebLog(description = "查询所有小说信息")
     @ApiOperation(value = "查询所有小说信息")
-    @ApiOperationSupport(author = "Jing", order = 2)
+    @ApiOperationSupport(author = "Jing", order = 1)
     @PostMapping("/list")
-    public BaseResp<List<Novel>> novels(@RequestBody NovelVo info) throws Exception {
+    public BaseResp<List<Novel>> novels(@RequestBody NovelVo info) {
         return novelService.novels(info);
     }
-
-    @ApiOperation(value = "新增或编辑小说信息")
-    @ApiOperationSupport(author = "Jing", order = 2)
-    @PostMapping("/update")
-    public BaseResp<Long> update(@RequestBody Novel novel) {
-        return novelService.saveOrUpdateNovel(novel);
-    }
-
 
     @ApiOperation(value = "通过 ID 查询小说信息")
     @ApiOperationSupport(author = "Jing", order = 2)
@@ -58,28 +48,12 @@ public class NovelController {
         return BaseResp.ok(novelService.getById(novelId));
     }
 
-    @ApiOperation(value = "通过 ID 复制小说爬取配置")
-    @ApiOperationSupport(author = "Jing", order = 2)
-    @GetMapping("info/copy/{novelId}")
-    public BaseResp<Boolean> novelCopy(@PathVariable("novelId") Long novelId) {
-        Novel byId = novelService.getById(novelId);
-        byId.setId(null);
-        byId.setName("新复制的小说");
-        byId.setPath("http://xxxxx");
-        return BaseResp.ok(novelService.save(byId));
-    }
-
-
-    @ApiOperation(value = "爬取章节")
-    @ApiOperationSupport(author = "Jing", order = 2)
-    @GetMapping("crawling/chapter/{novelId}")
-    public BaseResp<Object> crawlingChapter(@PathVariable("novelId") Long novelId) {
-        return crawlingService.crawlingNovelChapter(novelId);
-    }
-
-    @GetMapping("crawling/content/{novelId}")
-    public BaseResp<Object> crawlingContent(@PathVariable("novelId") Long novelId) {
-        return crawlingService.crawlingNovelContent(novelId);
+    @WebLog(description = "批量删除小说信息")
+    @ApiOperation(value = "批量删除小说信息")
+    @ApiOperationSupport(author = "Jing", order = 3)
+    @PostMapping("batch/delete")
+    public BaseResp<Boolean> batchDelete(@RequestBody NovelVo info) {
+        return novelService.batchDelete(info);
     }
 
     @GetMapping("download/{novelId}")
@@ -91,6 +65,5 @@ public class NovelController {
     public BaseResp<Boolean> changeChapterName(@PathVariable("novelId") Long novelId) {
         return novelService.changeChapterName(novelId);
     }
-
 
 }

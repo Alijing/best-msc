@@ -6,12 +6,15 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="doQuery('queryForm')">查询</el-button>
+        <el-button type="primary" @click="reset('queryForm')">重置</el-button>
         <el-button type="primary" @click="editNovelDialogShow()">新增</el-button>
-        <el-button @click="reset('queryForm')">重置</el-button>
+        <el-button type="primary" @click="batchDelete()">批量删除</el-button>
       </el-form-item>
     </el-form>
 
-    <el-table :data="tableData" style="width: 100%" height="720" v-loading="loading" stripe>
+    <el-table :data="tableData" style="width: 100%" height="720" v-loading="loading" stripe
+              @selection-change="handleSelectionChange">
+      <el-table-column type="selection" width="55"/>
       <el-table-column prop="name" label="名称"/>
       <el-table-column prop="path" label="地址"/>
       <!--      <el-table-column prop="chapterStyle" label="章节条目样式"/>-->
@@ -42,14 +45,22 @@
       :page-size="queryPar.pageSize">
     </el-pagination>
 
-    <novel-edit v-if="dialogVisible" :novelId="novelId"
+    <novel-edit v-if="dialogVisible" :novel="novel"
                 @editDialogClosed="editDialogClosed"
                 @refreshNovelTable="refreshNovelTable"/>
   </div>
 </template>
 
 <script>
-import {novels, copyNovel, crawlingChapter, changeChapterName, crawlingChapterContent} from '@/request/api'; // 导入自定义api接口
+import {
+  novels,
+  novelBatchDelete,
+  copyNovel,
+  crawlingChapter,
+  changeChapterName,
+  crawlingChapterContent
+} from '@/request/api'; // 导入自定义api接口
+
 import NovelEdit from "./NovelEdit";
 
 export default {
@@ -60,7 +71,8 @@ export default {
       loading: true,
       tableData: [],
       dialogVisible: false,
-      novelId: null,
+      novel: null,
+      selectNovelId: [],
       queryPar: {
         name: null,
         total: 500,
@@ -88,7 +100,7 @@ export default {
     editNovelDialogShow(row) {
       this.dialogVisible = true;
       if (row) {
-        this.novelId = row.id;
+        this.novel = row;
       }
     },
     copyNovel(novel) {
@@ -115,6 +127,30 @@ export default {
     reset(formName) {
       this.$refs[formName].resetFields();
       this.initData();
+    },
+    batchDelete() {
+      let self = this;
+      if (!this.selectNovelId || this.selectNovelId.length < 1) {
+        self.$message.info('请选择需要删除的记录');
+        return;
+      }
+      self.$confirm('此操作将永久删除, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        self.loading = true;
+        novelBatchDelete({batchId: this.selectNovelId}).then(resp => {
+          self.refreshNovelTable();
+          self.loading = false;
+          self.$message.success('已成功删除');
+        }, err => {
+          self.loading = false;
+          self.$message.error('错了哦，' + err.message);
+        });
+      }).catch(() => {
+        self.$message({type: 'info', message: '已取消删除'});
+      });
     },
     crawlChapter(novel) {
       let self = this;
@@ -164,6 +200,14 @@ export default {
     handleCurrentChange(val) {
       console.log(`当前页: ${val}`);
     },
+    handleSelectionChange(val) {
+      if (val) {
+        this.selectNovelId = [];
+        val.forEach((it) => {
+          this.selectNovelId.push(it.id);
+        });
+      }
+    }
   }
 }
 </script>

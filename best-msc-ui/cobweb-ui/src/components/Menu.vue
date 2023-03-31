@@ -49,7 +49,6 @@ export default {
   },
   data() {
     return {
-      isCollapse: false,
       items: [
         {
           icon: "el-icon-s-home",

@@ -155,6 +155,11 @@
                 <artifactId>best-msc-swagger</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.jing.msc</groupId>
+                <artifactId>best-msc-log</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>

@@ -15,11 +15,11 @@ import java.lang.reflect.Type;
  * @date : 2021/4/25 17:26
  * @description :
  */
-public class CustomToStringSerializer extends ToStringSerializer {
+public class JsonLongSerializer extends ToStringSerializer {
 
-    public final static CustomToStringSerializer instance = new CustomToStringSerializer();
+    public final static JsonLongSerializer instance = new JsonLongSerializer();
 
-    public CustomToStringSerializer() {
+    public JsonLongSerializer() {
     }
 
     @Override
