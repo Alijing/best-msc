@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -52,9 +53,16 @@ public class GlobalExceptionHandler {
 
     @ResponseBody
     @ExceptionHandler(HttpClientErrorException.class)
-    public BaseResp<Object> error(IndexOutOfBoundsException e) {
+    public BaseResp<Object> error(HttpClientErrorException e) {
         logger.error(e.getMessage(), e);
         return BaseResp.setResult(ResultEnum.HTTP_CLIENT_ERROR);
+    }
+
+    @ResponseBody
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public BaseResp<Object> error(HttpRequestMethodNotSupportedException e) {
+        logger.error(e.getMessage(), e);
+        return BaseResp.setResult(ResultEnum.METHOD_NOT_ALLOWED);
     }
 
     /**

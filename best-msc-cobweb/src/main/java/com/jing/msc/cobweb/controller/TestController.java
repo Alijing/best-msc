@@ -9,9 +9,9 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -46,33 +46,25 @@ public class TestController {
     @ApiOperationSupport(author = "Jing", order = 1)
     @PostMapping(value = "/spider/update", produces = "application/json;charset=UTF-8")
     public BaseResp<List<Spider>> updateSpider(@Validated @RequestBody Spider info) {
-        try {
-            boolean update = service.saveOrUpdate(info);
-            List<Spider> list = service.list();
-            return BaseResp.ok(list);
-        } catch (Exception e) {
-            logger.error("-->>>>  : ", e);
-            if (e instanceof DuplicateKeyException) {
-                return BaseResp.error("账号已存在，请重新输入");
-            }
-        }
-        return BaseResp.error();
+        boolean update = service.saveOrUpdate(info);
+        List<Spider> list = service.list();
+        return BaseResp.ok(list);
     }
 
     @ApiOperation(value = "通过表名生成SQL")
     @ApiOperationSupport(author = "Jing", order = 1)
     @GetMapping(value = "/spider/generator/{step}", produces = "application/json;charset=UTF-8")
     public BaseResp<List<Spider>> updateSpider(@PathVariable("step") Integer step) {
-        try {
-            service.generate(step);
-            return BaseResp.ok();
-        } catch (Exception e) {
-            logger.error("-->>>>  : ", e);
-            if (e instanceof DuplicateKeyException) {
-                return BaseResp.error("账号已存在，请重新输入");
-            }
-        }
-        return BaseResp.error();
+        service.generate(step);
+        return BaseResp.ok();
+    }
+
+    @ApiOperation(value = "通过 excel 导入")
+    @ApiOperationSupport(author = "Jing", order = 1)
+    @PostMapping(value = "/read/excel")
+    public BaseResp<Boolean> readExcel(Integer type, MultipartFile file) {
+        service.readResGroupExcel(type, file);
+        return BaseResp.ok();
     }
 
 }

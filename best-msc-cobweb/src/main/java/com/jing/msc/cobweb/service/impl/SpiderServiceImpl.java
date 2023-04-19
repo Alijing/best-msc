@@ -1,14 +1,20 @@
 package com.jing.msc.cobweb.service.impl;
 
+import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jing.common.core.enums.ResultEnum;
+import com.jing.common.core.exception.CustomException;
 import com.jing.msc.cobweb.dao.SpiderMapper;
 import com.jing.msc.cobweb.entity.Spider;
+import com.jing.msc.cobweb.entity.test.ResGroup;
+import com.jing.msc.cobweb.listener.ResGroupReadListener;
 import com.jing.msc.cobweb.service.SpiderService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.util.*;
@@ -222,6 +228,37 @@ public class SpiderServiceImpl extends ServiceImpl<SpiderMapper, Spider> impleme
             return new ArrayList<>();
         }
     }
+
+    @Override
+    public void readResGroupExcel(Integer type, MultipartFile file) {
+        try {
+            logger.info("--------- type : {} ", type);
+            EasyExcel.read(file.getInputStream(), ResGroup.class, new ResGroupReadListener(this)).sheet().doRead();
+        } catch (IOException e) {
+            throw new CustomException(ResultEnum.IOException);
+        }
+    }
+
+    @Override
+    public void buildInsertSql(List<ResGroup> groups, int startIdx, long parentId) {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < groups.size(); i++) {
+            ResGroup it = groups.get(i);
+            builder.append("INSERT INTO `tb_dict_region` (`id`, `name`, `pinyin`, `code`, `letter`, `parent_id`, `remarks`, `sort_no`) ");
+            builder.append("VALUES (").append(startIdx).append(", ")
+                    .append("'").append(it.getName()).append("', 'Pin Yin', ")
+                    .append("'").append(it.getCode()).append("', 'PY', ").append(parentId).append(", ")
+                    .append("'").append(it.getCode()).append("', ").append(i).append(".00);")
+                    .append("\n");
+            startIdx++;
+        }
+
+        logger.info("-------------- builder ------------------ \n");
+        logger.info("\n" + builder);
+        logger.info("-------------- builder ------------------ \n");
+    }
+
+
 }
 
 

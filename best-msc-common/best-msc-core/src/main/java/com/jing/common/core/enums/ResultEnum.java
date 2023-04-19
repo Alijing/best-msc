@@ -18,6 +18,8 @@ public enum ResultEnum {
     HTTP_CLIENT_ERROR(false, 20004, "空指针异常"),
     SQL_EXCEPTION(false, 20005, "sql执行异常"),
     DUPLICATE_KEY(false, 20006, "sql执行异常"),
+    METHOD_NOT_ALLOWED(false, 20007, "请求方式不支持异常"),
+    IOException(false, 20008, "IO 异常"),
 
     ;
 
