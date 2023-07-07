@@ -1,6 +1,6 @@
 package com.jing.msc.cobweb;
 
-import com.jing.common.swagger.annotation.EnableCustomSwagger;
+import com.jing.common.core.annotation.EnableCustomSwagger;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,7 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @EnableCustomSwagger
 @SpringBootApplication(scanBasePackages = {"com.jing"})
-@MapperScan("com.jing.msc.cobweb.dao")
+@MapperScan({"com.jing.msc.security.mapper", "com.jing.msc.cobweb.dao"})
 public class CobwebApp8135 {
 
     public static void main(String[] args) {

@@ -3,8 +3,8 @@ package com.jing.msc.cobweb.controller;
 import com.alibaba.fastjson.JSON;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.jing.common.core.base.BaseResp;
-import com.jing.msc.cobweb.entity.Spider;
 import com.jing.msc.cobweb.service.impl.SpiderServiceImpl;
+import com.jing.msc.security.entity.Spider;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -51,19 +51,22 @@ public class TestController {
         return BaseResp.ok(list);
     }
 
-    @ApiOperation(value = "通过表名生成SQL")
-    @ApiOperationSupport(author = "Jing", order = 1)
-    @GetMapping(value = "/spider/generator/{step}", produces = "application/json;charset=UTF-8")
-    public BaseResp<List<Spider>> updateSpider(@PathVariable("step") Integer step) {
-        service.generate(step);
-        return BaseResp.ok();
-    }
-
     @ApiOperation(value = "通过 excel 导入")
     @ApiOperationSupport(author = "Jing", order = 1)
     @PostMapping(value = "/read/excel")
     public BaseResp<Boolean> readExcel(Integer type, MultipartFile file) {
         service.readResGroupExcel(type, file);
+        return BaseResp.ok();
+    }
+
+    @ApiOperation(value = "生成 sql ")
+    @ApiOperationSupport(author = "Jing", order = 1)
+    @GetMapping(value = "/generator/sql/{targetNodeId}/{startId}/{fieldNum}")
+    public BaseResp<Boolean> generateSql(
+            @PathVariable("targetNodeId") Integer targetNodeId,
+            @PathVariable("startId") Integer startId,
+            @PathVariable("fieldNum") Integer fieldNum) {
+        service.generateSql(startId, targetNodeId, fieldNum);
         return BaseResp.ok();
     }
 

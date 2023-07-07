@@ -2,7 +2,7 @@ package com.jing.msc.cobweb.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jing.common.core.base.BaseResp;
-import com.jing.common.swagger.util.JSONUtil;
+import com.jing.common.core.util.JSONUtil;
 import com.jing.msc.cobweb.config.HttpClientDownloader;
 import com.jing.msc.cobweb.entity.Novel;
 import com.jing.msc.cobweb.entity.NovelChapter;

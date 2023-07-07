@@ -25,12 +25,12 @@ import java.util.List;
 public class CodeGenerator {
 
     public static void main(String[] args) {
-        String url = "jdbc:mysql://localhost:3306/dev_jing_msc?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8";
+        String url = "jdbc:mysql://localhost:3306/inoutbound?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8";
         String userName = "root";
         String password = "Fullsee@123";
 
         // 设置父包名
-        String pkg = "com.jing.msc.cobweb";
+        String pkg = "com.fullsee.integratedbis";
         // 设置父包模块名
         String moduleName = "";
 
@@ -82,7 +82,7 @@ public class CodeGenerator {
      * @date 2022/4/19 10:40
      */
     private static List<String> includes() {
-        return Arrays.asList("novel_crawl_config", "");
+        return Arrays.asList("tb_cems_back_detail");
     }
 
     /**
@@ -93,7 +93,7 @@ public class CodeGenerator {
      * @date 2022/4/19 10:40
      */
     private static List<String> tablePrefix() {
-        return Arrays.asList("tb_common_", "TB_SYSTEM_");
+        return Arrays.asList("tb_common_", "TB_SYSTEM_", "tb_cems_", "tb_basic_");
     }
 
     private static List<IFill> tableFills() {

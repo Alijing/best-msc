@@ -1,4 +1,4 @@
-package com.jing.msc.cobweb.entity;
+package com.jing.msc.security.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.jing.common.core.base.BaseModel;
@@ -72,4 +72,13 @@ public class Spider extends BaseModel<Spider> {
         this.phone = phone;
     }
 
+    @Override
+    public String toString() {
+        return "Spider{" +
+                "account='" + account + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
 }

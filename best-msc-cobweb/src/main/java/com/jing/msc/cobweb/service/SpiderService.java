@@ -1,10 +1,11 @@
 package com.jing.msc.cobweb.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.jing.msc.cobweb.entity.test.ResGroup;
+import com.jing.msc.security.entity.Spider;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author : jing
@@ -13,15 +14,7 @@ import java.util.Map;
  * @date : 2021/4/23 14:42
  * @description : 系统登录用户相关服务类
  */
-public interface SpiderService {
-
-    void generate(Integer step);
-
-
-    List<Map<String, Object>> selectAllTable(String tableSchema);
-
-    List<Map<String, String>> selectAllFiled(String tableName);
-
+public interface SpiderService extends IService<Spider> {
 
     /**
      * 读取 excel 文件中的数据
@@ -44,4 +37,14 @@ public interface SpiderService {
      */
     void buildInsertSql(List<ResGroup> groups, int startIdx, long parentId);
 
+    /**
+     * 生成 sql
+     *
+     * @param startId      开始id
+     * @param targetNodeId 开始id
+     * @param fieldNum     字段个数
+     * @author jing
+     * @date 2023/5/8 16:44
+     */
+    void generateSql(int startId, int targetNodeId, int fieldNum);
 }

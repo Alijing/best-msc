@@ -1,3 +1,5 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.jing.common.core.config.MybatisPlusConfig,\
-  com.jing.common.core.config.CustomMetaObjectHandler
+  com.jing.common.core.config.CustomMetaObjectHandler,\
+  com.jing.common.core.config.SwaggerConfig,\
+  com.jing.common.core.config.JsonConfig

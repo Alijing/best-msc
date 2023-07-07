@@ -19,4 +19,10 @@ public class Constants {
      */
     public static final Integer FAIL = 500;
 
+
+    /**
+     * 存储登录成功用户信息的 redis key
+     */
+    public static final String LOGIN_USER_KEY = "msc:login:";
+
 }

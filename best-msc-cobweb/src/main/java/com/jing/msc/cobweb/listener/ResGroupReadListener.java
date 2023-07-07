@@ -7,10 +7,7 @@ import com.jing.msc.cobweb.service.SpiderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -24,9 +21,7 @@ public class ResGroupReadListener implements ReadListener<ResGroup> {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private final Map<String, String> region2 = new HashMap<>();
-
-    private final Map<String, String> region3 = new HashMap<>();
+    private final Map<String, Map<String, String>> region = new HashMap<>();
 
     /**
      * 假设这个是一个DAO，当然有业务逻辑这个也可以是一个service。当然如果不用存储这个对象没用。
@@ -50,13 +45,17 @@ public class ResGroupReadListener implements ReadListener<ResGroup> {
      */
     @Override
     public void invoke(ResGroup group, AnalysisContext context) {
-        String substring = group.getCode().substring(0, 6);
-        if ("1102".equals(substring.substring(0, 4))) {
-            region2.put(substring, group.getName());
+        String level2 = group.getCode().substring(0, 4);
+        String level3 = group.getCode().substring(0, 6);
+        String suffix = group.getCode().substring(6, 8);
+        Map<String, String> children = region.get(level2);
+        if (null == children) {
+            children = new HashMap<>();
         }
-        if ("1103".equals(substring.substring(0, 4))) {
-            region3.put(substring, group.getName());
+        if (0 == Integer.parseInt(suffix)) {
+            children.put(level3, group.getName());
         }
+        region.put(level2, children);
     }
 
     /**
@@ -66,15 +65,17 @@ public class ResGroupReadListener implements ReadListener<ResGroup> {
      */
     @Override
     public void doAfterAllAnalysed(AnalysisContext context) {
-        List<ResGroup> groups2 = region2.entrySet().stream().map(it -> new ResGroup(it.getValue(), it.getKey()))
-                .sorted(Comparator.comparingInt(o -> Integer.parseInt(o.getCode()))).collect(Collectors.toList());
-        // 这里也要保存数据，确保最后遗留的数据也存储到数据库
-        service.buildInsertSql(groups2, 2000, 200);
+        List<String> keys = new ArrayList<>();
+        region.forEach((key, value) -> keys.add(key));
+        keys.sort(Comparator.comparingInt(Integer::parseInt));
+        keys.remove(0);
+        for (int i = 0; i < keys.size(); i++) {
+            String key = keys.get(i);
+            List<ResGroup> groups = region.get(key).entrySet().stream().map(it -> new ResGroup(it.getValue(), it.getKey()))
+                    .sorted(Comparator.comparingInt(o -> Integer.parseInt(o.getCode()))).collect(Collectors.toList());
+            service.buildInsertSql(groups, Integer.parseInt((i + 1) + "000"), Integer.parseInt((i + 1) + "00"));
+        }
 
-        List<ResGroup> groups3 = region3.entrySet().stream().map(it -> new ResGroup(it.getValue(), it.getKey()))
-                .sorted(Comparator.comparingInt(o -> Integer.parseInt(o.getCode()))).collect(Collectors.toList());
-        // 这里也要保存数据，确保最后遗留的数据也存储到数据库
-        service.buildInsertSql(groups3, 3000, 300);
     }
 
 }

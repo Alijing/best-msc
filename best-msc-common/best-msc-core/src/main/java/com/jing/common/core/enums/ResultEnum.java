@@ -20,6 +20,10 @@ public enum ResultEnum {
     DUPLICATE_KEY(false, 20006, "sql执行异常"),
     METHOD_NOT_ALLOWED(false, 20007, "请求方式不支持异常"),
     IOException(false, 20008, "IO 异常"),
+    User_Not_Found(false, 20009, "用户名或密码错误，请检查是否正确"),
+    Login_Failure(false, 20010, "登录失败"),
+    Token_Illegal(false, 20011, "token 非法"),
+    UN_Login(false, 20012, "用户未登录"),
 
     ;
 
