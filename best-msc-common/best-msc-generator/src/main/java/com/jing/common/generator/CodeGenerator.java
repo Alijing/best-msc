@@ -25,7 +25,7 @@ import java.util.List;
 public class CodeGenerator {
 
     public static void main(String[] args) {
-        String url = "jdbc:mysql://localhost:3306/inoutbound?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8";
+        String url = "jdbc:mysql://localhost:3308/psma_dev?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8";
         String userName = "root";
         String password = "Fullsee@123";
 
@@ -82,8 +82,9 @@ public class CodeGenerator {
      * @date 2022/4/19 10:40
      */
     private static List<String> includes() {
-        return Arrays.asList("tb_cems_back_detail");
+        return Arrays.asList("TB_COMMON_DICT", "TB_COMMON_DICT_ITEM","TB_PSMA_GOODS");
     }
+
 
     /**
      * 设置过滤表前缀
@@ -93,14 +94,16 @@ public class CodeGenerator {
      * @date 2022/4/19 10:40
      */
     private static List<String> tablePrefix() {
-        return Arrays.asList("tb_common_", "TB_SYSTEM_", "tb_cems_", "tb_basic_");
+        return Arrays.asList("tb_common_", "TB_SYSTEM_", "tb_cems_", "tb_basic_", "sys_", "tb_vioms_", "tb_psma_");
     }
 
     private static List<IFill> tableFills() {
         List<IFill> fills = new ArrayList<>();
         fills.add(new Column("create_time", FieldFill.INSERT));
         fills.add(new Column("create_by", FieldFill.INSERT));
+        fills.add(new Column("creator", FieldFill.INSERT));
         fills.add(new Column("update_by", FieldFill.INSERT_UPDATE));
+        fills.add(new Column("updater", FieldFill.INSERT_UPDATE));
         fills.add(new Column("update_time", FieldFill.INSERT_UPDATE));
         return fills;
     }

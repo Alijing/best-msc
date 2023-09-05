@@ -39,11 +39,14 @@ public class NovelContentPipeline implements Pipeline {
         if (null == content) {
             return;
         }
+        // TODO 如果是下一页内容
+        String next = content.getContent();
         QueryWrapper<NovelContent> wrapper = new QueryWrapper<>();
         wrapper.eq("chapter_id", content.getChapterId());
         NovelContent one = service.getOne(wrapper);
         if (null != one) {
             content.setId(one.getId());
+            content.setContent(one.getContent() + next);
         }
         boolean save = service.saveOrUpdate(content);
         logger.info("小说章节内容保存结果 : " + save);

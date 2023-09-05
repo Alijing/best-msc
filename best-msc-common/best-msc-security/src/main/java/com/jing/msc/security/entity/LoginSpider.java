@@ -1,9 +1,13 @@
 package com.jing.msc.security.entity;
 
+import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author : jing
@@ -18,16 +22,25 @@ public class LoginSpider implements UserDetails {
 
     private Spider spider;
 
+    private List<String> permissions;
+
+    private List<SimpleGrantedAuthority> authorities;
+
     public LoginSpider() {
     }
 
-    public LoginSpider(Spider spider) {
+    public LoginSpider(Spider spider, List<String> permissions) {
         this.spider = spider;
+        this.permissions = permissions;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        if (!CollectionUtils.isEmpty(authorities)) {
+            return authorities;
+        }
+        authorities = permissions.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+        return authorities;
     }
 
     @Override

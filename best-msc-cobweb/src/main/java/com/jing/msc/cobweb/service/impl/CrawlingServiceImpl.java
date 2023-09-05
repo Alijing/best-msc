@@ -135,24 +135,24 @@ public class CrawlingServiceImpl implements CrawlingService {
             if (null == chapters) {
                 return BaseResp.error("无可更新内容的章节，不用爬啦");
             }
-            Spider.create(contentProcessor)
-                    //从https://qd.anjuke.com/community/开始爬取
-                    .addUrl(chapters.get(0).getPath())
-                    // 使用自定义的Pipeline
-                    .addPipeline(contentPipeline)
-                    .setDownloader(new HttpClientDownloader())
-                    .thread(1)
-                    .run();
-//            for (NovelChapter ch : chapters) {
-//                Spider.create(contentProcessor)
-//                        //从https://qd.anjuke.com/community/开始爬取
-//                        .addUrl(ch.getPath())
-//                        // 使用自定义的Pipeline
-//                        .addPipeline(contentPipeline)
-//                        .setDownloader(new HttpClientDownloader())
-//                        .thread(1)
-//                        .run();
-//            }
+//            Spider.create(contentProcessor)
+//                    //从https://qd.anjuke.com/community/开始爬取
+//                    .addUrl(chapters.get(0).getPath())
+//                    // 使用自定义的Pipeline
+//                    .addPipeline(contentPipeline)
+//                    .setDownloader(new HttpClientDownloader())
+//                    .thread(1)
+//                    .run();
+            for (NovelChapter ch : chapters) {
+                Spider.create(contentProcessor)
+                        //从https://qd.anjuke.com/community/开始爬取
+                        .addUrl(ch.getPath())
+                        // 使用自定义的Pipeline
+                        .addPipeline(contentPipeline)
+                        .setDownloader(new HttpClientDownloader())
+                        .thread(1)
+                        .run();
+            }
             return BaseResp.ok();
         } catch (Exception e) {
             logger.error(e.getMessage(), e);

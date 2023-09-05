@@ -9,6 +9,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -34,6 +35,7 @@ public class TestController {
     private SpiderServiceImpl service;
 
     @ApiOperation(value = "查询所有用户信息")
+    @PreAuthorize("hasAuthority('test11')")
     @ApiOperationSupport(author = "Jing", order = 2)
     @GetMapping(value = "/spider", produces = "application/json;charset=UTF-8")
     public BaseResp<List<Spider>> allSpider() {

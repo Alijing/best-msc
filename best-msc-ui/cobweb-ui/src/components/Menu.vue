@@ -56,6 +56,17 @@ export default {
           title: "系统首页",
         },
         {
+          icon: "el-icon-dessert",
+          index: "1",
+          title: "斌斌",
+          subs: [
+            {
+              index: "/deliveryOrderMerge",
+              title: "配送单合并",
+            },
+          ],
+        },
+        {
           icon: "el-icon-document",
           index: "9",
           title: "小说模块",

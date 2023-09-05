@@ -13,6 +13,7 @@
     <modules>
         <module>best-msc-common</module>
         <module>best-msc-cobweb</module>
+        <module>best-msc-binbin</module>
     </modules>
 
     <properties>

@@ -10,19 +10,19 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {
-      // '/api': {
-      //   // 此处的写法，目的是为了 将 /api 替换成 https://www.baidu.com/
-      //   target: 'https://www.baidu.com/',
-      //   // 允许跨域
-      //   changeOrigin: true,
-      //   ws: true,
-      //   // 这个定义要访问的路径，名字随便写
-      //   pathRewrite: {
-      //     '^/api': ''
-      //   }
-      // }
-    },
+    // proxyTable: {
+    //   '/msc': {
+    //     // 此处的写法，目的是为了 将 /api 替换成 https://www.baidu.com/
+    //     target: apiConfig.baseURL,
+    //     // 允许跨域
+    //     changeOrigin: true,
+    //     ws: true,
+    //     // 这个定义要访问的路径，名字随便写
+    //     pathRewrite: {
+    //       '^/msc': ''
+    //     }
+    //   }
+    // },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
@@ -55,7 +55,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
 
     /**
      * Source Maps

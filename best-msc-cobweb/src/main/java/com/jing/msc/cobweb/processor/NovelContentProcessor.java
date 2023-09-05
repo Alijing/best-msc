@@ -46,7 +46,10 @@ public class NovelContentProcessor implements PageProcessor {
     @Override
     public void process(Page page) {
         QueryWrapper<NovelChapter> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("path", page.getUrl().toString());
+        // 处理分页
+        String replace = page.getUrl().toString().replace(".html", "");
+        String[] split = replace.split("_");
+        queryWrapper.eq("path", split[0] + ".html");
         NovelChapter chapter = service.getOne(queryWrapper);
         if (null == chapter || StringUtils.isBlank(chapter.getContentStyle())) {
             return;

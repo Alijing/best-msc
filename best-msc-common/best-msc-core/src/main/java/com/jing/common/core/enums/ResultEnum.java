@@ -24,6 +24,7 @@ public enum ResultEnum {
     Login_Failure(false, 20010, "登录失败"),
     Token_Illegal(false, 20011, "token 非法"),
     UN_Login(false, 20012, "用户未登录"),
+    ACCESS_DENIED(false, 20013, "用户未授权，不允许访问"),
 
     ;
 

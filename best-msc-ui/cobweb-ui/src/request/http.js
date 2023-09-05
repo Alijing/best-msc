@@ -1,7 +1,6 @@
 import axios from 'axios'
 import {Message} from 'element-ui';
 import apiConfig from '../../config/api.config'
-import de from "element-ui/src/locale/lang/de";
 
 axios.defaults.baseURL = apiConfig.baseURL;
 // 请求超时 请求头
@@ -25,72 +24,82 @@ axios.interceptors.request.use(
 
 
 // 响应拦截器
-axios.interceptors.response.use(
-  response => {
-    if (response.status === 200) {
-      let code = response.data.code;
-      switch (code) {
-        case 20000:
-          return Promise.resolve(response);
-        default:
-          return Promise.reject(response.data);
-      }
-    } else {
-      return Promise.reject(response);
-    }
-  },
-  // 服务器状态码不是200的情况
-  error => {
-    if (error.response.status) {
-      switch (error.response.status) {
-        // 401: 未登录
-        case 401:
-          router.replace({
-            path: '/login',
-            query: {redirect: router.currentRoute.fullPath}
-          });
-          break;
-        case 403:
-          Message({
-            type: 'error',
-            message: '登录过期，请重新登录',
-            offset: 60,
-            duration: 1000
-          });
-          // 清除token
-          localStorage.removeItem('token');
-          store.commit('loginSuccess', null);
-          setTimeout(() => {
-            router.replace({
-              path: '/login',// 跳转登录页面，并将要浏览的页面fullPath传过去，登录成功后跳转需要访问的页面
-              query: {
-                redirect: router.currentRoute.fullPath
-              }
-            });
-          }, 1000);
-          break;
-        // 404请求不存在
-        case 404:
-          Message({
-            type: 'error',
-            message: '地址不存在',
-            offset: 60,
-            duration: 1000
-          });
-          break;
-        // 其他错误，直接抛出错误提示
-        default:
-          Message({
-            type: 'error',
-            message: error.response.data.msg,
-            offset: 60,
-            duration: 1000
-          });
-      }
-      return Promise.reject(error.response);
-    }
-  }
-);
+// axios.interceptors.response.use(
+//   response => {
+//     console.log('---' + response)
+//     // 下载文件直接返回
+//     if (response.type === 'application/octet-stream') {
+//       return response
+//     }
+//
+//     if (response.type === 'application/vnd.ms-excel') {
+//       return response
+//     }
+//     if (response.status === 200) {
+//       let code = response.data.code;
+//       switch (code) {
+//         case 20000:
+//           return Promise.resolve(response);
+//         default:
+//           return Promise.reject(response.data);
+//       }
+//     } else {
+//       return Promise.reject(response);
+//     }
+//   },
+//   // 服务器状态码不是200的情况
+//   error => {
+//     console.log('---' + error)
+//     if (error.response.status) {
+//       switch (error.response.status) {
+//         // 401: 未登录
+//         case 401:
+//           router.replace({
+//             path: '/login',
+//             query: {redirect: router.currentRoute.fullPath}
+//           });
+//           break;
+//         case 403:
+//           Message({
+//             type: 'error',
+//             message: '登录过期，请重新登录',
+//             offset: 60,
+//             duration: 1000
+//           });
+//           // 清除token
+//           localStorage.removeItem('token');
+//           store.commit('loginSuccess', null);
+//           setTimeout(() => {
+//             router.replace({
+//               path: '/login',// 跳转登录页面，并将要浏览的页面fullPath传过去，登录成功后跳转需要访问的页面
+//               query: {
+//                 redirect: router.currentRoute.fullPath
+//               }
+//             });
+//           }, 1000);
+//           break;
+//         // 404请求不存在
+//         case 404:
+//           Message({
+//             type: 'error',
+//             message: '地址不存在',
+//             offset: 60,
+//             duration: 1000
+//           });
+//           break;
+//         // 其他错误，直接抛出错误提示
+//         default:
+//           Message({
+//             type: 'error',
+//             message: error.response.data.msg,
+//             offset: 60,
+//             duration: 1000
+//           });
+//       }
+//       return Promise.reject(error.response);
+//     }
+//   }
+// );
 
 /**
  * Get请求
@@ -183,4 +192,35 @@ export function fileUpload(url, params) {
   })
 }
 
+/**
+ * 文件下载
+ * @param url
+ * @param params
+ * @param callback
+ * @param timeout
+ */
+export function download(url, params, callback, timeout) {
+  return axios({
+    url: url,
+    method: 'post',
+    data: params,
+    responseType: 'blob',
+    timeout: timeout
+  }).then((resp) => {
+    let split = resp.headers['content-type'].split(';');
+    if (split[0] === 'application/octet-stream') {
+      let fileName = resp.headers['content-disposition'].split('filename=')[1];
+      let url = window.URL.createObjectURL(new Blob([resp.data]));
+      let link = document.createElement('a');
+      link.style.display = 'none';
+      link.href = url;
+      decodeURIComponent(fileName)
+      link.setAttribute('download', fileName);
+      document.body.appendChild(link);
+      link.click();
+    }
+  }).catch(error => {
+    console.log('-- >>>> error : ' + error);
+  })
+}
 

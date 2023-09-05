@@ -37,7 +37,7 @@ public class GlobalExceptionHandler {
     public BaseResp<Object> error(Exception e) {
         logger.error(e.getMessage(), e);
         // 通用异常结果
-        String description = e.getCause().getMessage();
+        String description = e.getMessage();
         return BaseResp.error(description);
     }
 
