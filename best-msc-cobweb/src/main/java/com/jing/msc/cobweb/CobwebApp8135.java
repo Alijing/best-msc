@@ -4,7 +4,6 @@ import com.jing.common.core.annotation.EnableCustomSwagger;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 /**
  * @author : jing
@@ -14,7 +13,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
  * @description :
  */
 @EnableCustomSwagger
-@SpringBootApplication(scanBasePackages = {"com.jing"}, exclude = {DataSourceAutoConfiguration.class})
+@SpringBootApplication(scanBasePackages = {"com.jing"})
 @MapperScan({"com.jing.msc.security.mapper", "com.jing.msc.cobweb.dao"})
 public class CobwebApp8135 {
 
