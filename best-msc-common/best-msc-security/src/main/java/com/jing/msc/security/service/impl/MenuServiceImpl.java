@@ -1,9 +1,9 @@
-package com.jing.msc.cobweb.service.sys.impl;
+package com.jing.msc.security.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.jing.msc.cobweb.dao.sys.MenuMapper;
-import com.jing.msc.cobweb.entity.sys.Menu;
-import com.jing.msc.cobweb.service.sys.MenuService;
+import com.jing.msc.security.entity.Menu;
+import com.jing.msc.security.mapper.MenuMapper;
+import com.jing.msc.security.service.MenuService;
 import org.springframework.stereotype.Service;
 
 /**

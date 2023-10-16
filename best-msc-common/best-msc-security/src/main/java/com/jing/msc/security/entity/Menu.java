@@ -1,4 +1,4 @@
-package com.jing.msc.cobweb.entity.sys;
+package com.jing.msc.security.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.annotations.ApiModel;

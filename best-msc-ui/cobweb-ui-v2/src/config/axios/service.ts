@@ -1,6 +1,13 @@
 import config, {defaultRequestInterceptors, defaultResponseInterceptors} from './config'
 import axios, {CreateAxiosDefaults} from "axios";
 import {RequestConfig, AxiosInstance, AxiosResponse, InternalAxiosRequestConfig} from "./types";
+import {useStorage} from "@/hooks/web/useStorage";
+import {useAppStore} from "@/store/modules/app";
+import {ElMessage} from "element-plus";
+
+const {getStorage} = useStorage();
+
+const appStore = useAppStore();
 
 const {interceptors, baseUrl} = config;
 
@@ -17,6 +24,7 @@ const axiosInstance: AxiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use((res: InternalAxiosRequestConfig) => {
     const controller = new AbortController();
+    res.headers.Authorization = getStorage(appStore.getUserInfo)
     const url = res.url || '';
     res.signal = controller.signal;
     abortControllerMap.set(url, controller)
@@ -27,10 +35,16 @@ axiosInstance.interceptors.response.use((res: AxiosResponse) => {
     const url = res.config.url || '';
     abortControllerMap.delete(url)
     return res.data
-}, (err: any) => err)
+}, (err: any) => {
+    return Promise.reject(err.response);
+})
 
-axiosInstance.interceptors.request.use(requestInterceptors || defaultRequestInterceptors)
-axiosInstance.interceptors.response.use(responseInterceptors || defaultResponseInterceptors)
+axiosInstance.interceptors.request.use(requestInterceptors || defaultRequestInterceptors, (err: any) => {
+    console.log('req err2:' + err)
+})
+axiosInstance.interceptors.response.use(responseInterceptors || defaultResponseInterceptors, (err: any) => {
+    ElMessage.error('服务异常，请联系管理员')
+})
 
 const service = {
     request: (config: RequestConfig) => {
@@ -38,7 +52,6 @@ const service = {
             if (config.interceptors?.requestInterceptors) {
                 config = config.interceptors.requestInterceptors(config as any)
             }
-            console.log('-- ' + config)
             axiosInstance.request(config)
                 .then((res) => {
                     resolve(res)

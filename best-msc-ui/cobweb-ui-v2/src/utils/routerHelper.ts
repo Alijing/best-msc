@@ -1,4 +1,10 @@
-import type {RouteMeta, RouteRecordNormalized, RouteRecordRaw, RouterOptions} from "vue-router";
+import type {
+    RouteLocationNormalized,
+    RouteMeta,
+    RouteRecordNormalized,
+    RouteRecordRaw,
+    RouterOptions
+} from "vue-router";
 import {isUrl} from "@/utils/is";
 import {createRouter, createWebHashHistory} from "vue-router";
 import {omit, cloneDeep} from "lodash-es"
@@ -14,6 +20,22 @@ export const getParentLayout = () => {
     return () => new Promise((resolve => {
         resolve({name: 'ParentLayout'})
     }))
+}
+
+export const getRawRoute = (route: RouteLocationNormalized): RouteLocationNormalized => {
+    if (!route) {
+        return route;
+    }
+    const {matched, ...opt} = route;
+    return {
+        ...opt,
+        matched: (matched ?
+            matched.map((item) => ({
+                meta:item.meta,
+                name:item.name,
+                path:item.path,
+            })) : undefined) as RouteRecordNormalized[]
+    }
 }
 
 /**

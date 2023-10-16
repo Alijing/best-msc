@@ -11,6 +11,7 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -36,6 +37,7 @@ public class NovelController {
     @WebLog(description = "查询所有小说信息")
     @ApiOperation(value = "查询所有小说信息")
     @ApiOperationSupport(author = "Jing", order = 1)
+    @PreAuthorize("@sgex.hasAuthority('sys:novel:list1111')")
     @PostMapping("/list")
     public BaseResp<List<Novel>> novels(@RequestBody NovelVo info) {
         return novelService.novels(info);

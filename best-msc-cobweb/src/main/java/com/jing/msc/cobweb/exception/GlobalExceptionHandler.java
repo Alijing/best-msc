@@ -1,11 +1,15 @@
-package com.jing.common.core.exception;
+package com.jing.msc.cobweb.exception;
 
 import com.jing.common.core.base.BaseResp;
 import com.jing.common.core.enums.ResultEnum;
+import com.jing.common.core.exception.CustomException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -44,6 +48,20 @@ public class GlobalExceptionHandler {
     /**
      * -------- 指定异常处理方法 --------
      */
+    @ResponseBody
+    @ExceptionHandler(AccessDeniedException.class)
+    public BaseResp<Object> error(AccessDeniedException e) {
+        logger.error(e.getMessage(), e);
+        return BaseResp.error(HttpStatus.FORBIDDEN.value(), "您的权限不足，请联系管理员授权");
+    }
+
+    @ResponseBody
+    @ExceptionHandler(AuthenticationException.class)
+    public BaseResp<Object> error(AuthenticationException e) {
+        logger.error(e.getMessage(), e);
+        return BaseResp.error(HttpStatus.UNAUTHORIZED.value(), "用户认证失败请重新登录");
+    }
+
     @ResponseBody
     @ExceptionHandler(NullPointerException.class)
     public BaseResp<Object> error(NullPointerException e) {

@@ -28,5 +28,5 @@ public interface SecurityUserService {
      * @author jing
      * @date 2023/7/4 14:09
      */
-    BaseResp<String> logout();
+    BaseResp<Boolean> logout();
 }

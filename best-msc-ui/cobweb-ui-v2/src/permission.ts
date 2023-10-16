@@ -5,7 +5,7 @@ import {useNProgress} from "@/hooks/web/useNProgress"
 import {uswPageLoading} from "@/hooks/web/usePageLoading"
 import router from "@/router"
 import type {RouteRecordRaw} from "vue-router"
-import {useTitle} from "@vueuse/core/index"
+import {useTitle} from "@/hooks/web/useTitle";
 
 const permissionStore = usePermissionStoreWithOut()
 

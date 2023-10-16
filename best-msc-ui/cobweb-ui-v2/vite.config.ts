@@ -6,12 +6,16 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import progress from 'vite-plugin-progress'
 // import EslintPlugin from 'vite-plugin-eslint'
 import {ViteEjsPlugin} from "vite-plugin-ejs"
+import PurgeIcons from 'vite-plugin-purge-icons'
+import {createSvgIconsPlugin} from "vite-plugin-svg-icons";
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 // import DefineOptions from 'unplugin-vue-define-options/vite'
 import {ElementPlusResolver} from "unplugin-vue-components/resolvers"
 import {createStyleImportPlugin, ElementPlusResolve} from "vite-plugin-style-import"
 import UnoCSS from 'unocss/vite'
+import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
+
 
 // https://vitejs.dev/config/
 let root = process.cwd();
@@ -31,7 +35,11 @@ export default ({command, mode}: ConfigEnv): UserConfig => {
     return {
         base: env.VITE_BASE_PATH,
         plugins: [
-            vue(),
+            vue({
+                script: {
+                    defineModel: true
+                }
+            }),
             vueJsx(),
             AutoImport({
                 resolvers: [ElementPlusResolver()],
@@ -55,6 +63,11 @@ export default ({command, mode}: ConfigEnv): UserConfig => {
                     }
                 ]
             }),
+            VueI18nPlugin({
+                runtimeOnly: true,
+                compositionOnly: true,
+                include: [resolve(__dirname, 'src/locales/**')]
+            }),
             // EslintPlugin({
             //     cache: false,
             //     // 检查的文件
@@ -65,6 +78,12 @@ export default ({command, mode}: ConfigEnv): UserConfig => {
             //     ]
             // }),
             // DefineOptions(),
+            PurgeIcons(),
+            createSvgIconsPlugin({
+                iconDirs: [pathResolve('src/assets/svgs')],
+                symbolId: 'icon-[dir]-[name]',
+                svgoOptions: true
+            }),
             ViteEjsPlugin({
                 title: env.VITE_APP_TITLE
             }),
@@ -82,7 +101,7 @@ export default ({command, mode}: ConfigEnv): UserConfig => {
 
         // 起个别名，在引用资源时，可以用'@/资源路径'直接访问
         resolve: {
-            extensions: ['.mjs', 'js', '.ts', '.jsx', '.tsx', '.json', '.less', '.css'],
+            extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.less', '.css'],
             alias: [
                 {
                     find: 'vue-i18n',
@@ -133,8 +152,13 @@ export default ({command, mode}: ConfigEnv): UserConfig => {
                 'element-plus/es/locale/lang/en',
                 '@vueuse/core',
                 'axios',
+                'qs',
+                'echarts',
+                'echarts-wordcloud',
                 '@wangeditor/editor',
-                '@wangeditor/editor-for-vue'
+                '@wangeditor/editor-for-vue',
+                '@zxcvbn-ts/core',
+                'dayjs',
             ]
         }
 

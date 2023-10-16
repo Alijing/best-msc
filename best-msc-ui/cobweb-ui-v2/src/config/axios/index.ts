@@ -7,7 +7,6 @@ const {defaultHeaders} = config;
 
 const request = (options: AxiosConfig) => {
     const {url, method, params, data, headersType, responseType} = options
-    console.log('-- ' + url)
     return service.request({
         url: url,
         method,

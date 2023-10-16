@@ -6,7 +6,12 @@ import {
     InternalAxiosRequestConfig
 } from "./types"
 import {ElMessage} from "element-plus"
-// import qs from 'qs'
+import qs from 'qs'
+import router, {resetRouter} from '@/router'
+import {useStorage} from "@/hooks/web/useStorage";
+
+
+const {clear} = useStorage()
 
 const config: AxiosConfig = {
     /**
@@ -25,7 +30,7 @@ const config: AxiosConfig = {
     /**
      * 接口成功返回状态码
      */
-    code: 0,
+    code: 20000,
     /**
      * 接口请求超时时间
      */
@@ -38,11 +43,10 @@ const config: AxiosConfig = {
     interceptors: {}
 } as AxiosConfig
 
-
 const defaultRequestInterceptors = (config: InternalAxiosRequestConfig) => {
     if ('post' === config.method &&
         'application/x-www-form-urlencoded' === (config.headers as AxiosRequestHeaders)["Content-Type"]) {
-        // config.data = qs.stringify(config.data)
+        config.data = qs.stringify(config.data)
     }
     if ('get' === config.method && config.params) {
         let url = config.url as string;
@@ -65,13 +69,32 @@ const defaultRequestInterceptors = (config: InternalAxiosRequestConfig) => {
 }
 
 const defaultResponseInterceptors = (response: AxiosResponse<any>) => {
+    ElMessage.error(response.data.message)
     if ('blob' === response?.config?.responseType) {
         // 如果是文件流，直接过
         return response
-    } else if (config.code === response.data.code) {
-        return response.data
-    } else {
-        ElMessage.error(response.data.message)
+    }
+    switch (response.code) {
+        case config.code:
+            return response.data;
+        case 401:
+            ElMessage.error(response.message)
+            clear()
+            resetRouter() // 重置静态路由表
+            router.push({
+                name: "Login",
+                query: {
+                    redirect: router.currentRoute.value.fullPath // router对象自带的属性
+                }
+            })
+            break;
+        case 403:
+            ElMessage.error(response.message)
+            router.push({name: 'Analysis'})
+            break;
+        default:
+            ElMessage.error(response.message)
+            break;
     }
 };
 (error: AxiosError) => {

@@ -80,4 +80,16 @@ public class LoginSpider implements UserDetails {
     public void setSpider(Spider spider) {
         this.spider = spider;
     }
+
+    public List<String> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(List<String> permissions) {
+        this.permissions = permissions;
+    }
+
+    public void setAuthorities(List<SimpleGrantedAuthority> authorities) {
+        this.authorities = authorities;
+    }
 }

@@ -103,7 +103,7 @@ const schema = reactive<FormSchema[]>([
               <>
                 <div class="w-[100%]">
                   <ElButton loading={loading.value} type="primary" class="w-[100%]" onClick={signIn}>
-                    {t('login.login')}
+                    {t('router.login')}
                   </ElButton>
                 </div>
               </>
@@ -126,7 +126,6 @@ const signIn = async () => {
     addRoute(route as RouteRecordRaw)
   })
   permissionStore.setIsAddRouters(true)
-  console.log('++++' + redirect.value, permissionStore.addRouters[0].path)
   push({path: redirect.value || permissionStore.addRouters[0].path})
 
   const formRef = await getElFormExpose();
@@ -135,11 +134,10 @@ const signIn = async () => {
       loading.value = true
       const formData = await getFormData<UserType>()
       try {
-        formData.currentPage = 1
-        formData.pageSize = 6
+        formData.account = formData.username
         const resp = await loginApi(formData)
         if (resp) {
-          setStorage(appStore.getUserInfo, resp.data)
+          setStorage(appStore.getUserInfo, resp)
         }
         // 是否使用动态路由
         if (appStore.getDynamicRouter) {

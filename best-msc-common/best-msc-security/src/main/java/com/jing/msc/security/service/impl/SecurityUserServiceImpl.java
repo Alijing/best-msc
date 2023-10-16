@@ -53,11 +53,11 @@ public class SecurityUserServiceImpl implements SecurityUserService {
     }
 
     @Override
-    public BaseResp<String> logout() {
+    public BaseResp<Boolean> logout() {
         UsernamePasswordAuthenticationToken authenticationToken = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
         LoginSpider loginSpider = (LoginSpider) authenticationToken.getPrincipal();
         redisCache.deleteObject(Constants.LOGIN_USER_KEY + loginSpider.getSpider().getId());
-        return BaseResp.ok();
+        return BaseResp.ok(true);
     }
 
 

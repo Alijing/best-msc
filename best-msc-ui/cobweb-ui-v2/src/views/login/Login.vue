@@ -30,12 +30,12 @@ const toLogin = () => {
       <div class="relative flex mx-auto h-100vh">
         <div :class="`${prefixCls}__left flex-1 bg-gray-500 bg-opacity-20 relative p-30px lt-xl:hidden`">
           <div class="flex items-center relative text-white">
-            <img src="@/assets/svg/logo.svg" alt="" class="w-48px h-48px mr-10px"/>
+            <img src="@/assets/svgs/logo.svg" alt="" class="w-48px h-48px mr-10px"/>
             <span class="text-20px font-bold">{{ underlineToHump(appStore.getTitle) }}</span>
           </div>
           <div class="flex justify-center items-center h-[calc(100%-60px)]">
             <TransitionGroup appear tag="div" enter-active-class="animate__animated animate__bounceInLeft">
-              <img src="@/assets/svg/login-box-bg.svg" alt="" key="1" class="w-350px"/>
+              <img src="@/assets/svgs/login-box-bg.svg" alt="" key="1" class="w-350px"/>
               <div class="text-3xl text-white">欢迎使用本系统</div>
             </TransitionGroup>
           </div>

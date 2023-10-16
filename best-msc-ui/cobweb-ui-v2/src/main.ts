@@ -1,6 +1,9 @@
 // 引入 windi css
 import '@/plugins/unocss'
 
+// 导入全局的svg图标
+import '@/plugins/svgIcon'
+
 // 初始化多语言
 import {setupI18n} from "@/plugins/vueI18n";
 
@@ -41,6 +44,9 @@ const setupAll = async () => {
     setupElementPlus(app)
 
     setupRouter(app)
+
+    // app.config.globalProperties.$echarts = echarts; //vue3的挂载方式 https://blog.csdn.net/weixin_42728767/article/details/130401563
+    // app.provide('$echarts', echarts); // vue3采用provide, inject方式使用
 
     app.mount('#app')
 }

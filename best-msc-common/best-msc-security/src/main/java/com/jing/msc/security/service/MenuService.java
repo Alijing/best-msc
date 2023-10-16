@@ -1,7 +1,7 @@
-package com.jing.msc.cobweb.service.sys;
+package com.jing.msc.security.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.jing.msc.cobweb.entity.sys.Menu;
+import com.jing.msc.security.entity.Menu;
 
 /**
  * <p>

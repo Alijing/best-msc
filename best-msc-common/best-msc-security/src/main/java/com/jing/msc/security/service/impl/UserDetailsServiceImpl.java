@@ -2,9 +2,9 @@ package com.jing.msc.security.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.jing.common.core.enums.ResultEnum;
-import com.jing.common.core.exception.CustomException;
 import com.jing.msc.security.entity.LoginSpider;
 import com.jing.msc.security.entity.Spider;
+import com.jing.msc.security.mapper.MenuMapper;
 import com.jing.msc.security.mapper.SpiderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,8 +12,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,6 +28,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private SpiderMapper spiderMapper;
 
+    @Autowired
+    private MenuMapper menuMapper;
+
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         // 查询用户信息
@@ -37,10 +38,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         wrapper.eq(Spider::getAccount, userName);
         Spider spider = spiderMapper.selectOne(wrapper);
         if (Objects.isNull(spider)) {
-            throw new CustomException(ResultEnum.User_Not_Found.getCode(), "用户名或密码错误，请检查是否正确");
+            throw new RuntimeException(ResultEnum.User_Not_Found.getMessage());
         }
-        // TODO 查询用户权限信息
-        List<String> permissions = new ArrayList<>(Arrays.asList("test", "admin"));
+        List<String> permissions = menuMapper.selectPermsByUserId(spider.getId());
         return new LoginSpider(spider, permissions);
     }
 

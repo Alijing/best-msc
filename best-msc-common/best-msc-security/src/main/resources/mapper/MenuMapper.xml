@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jing.msc.security.mapper.MenuMapper">
+    <select id="selectPermsByUserId" resultType="java.lang.String">
+        SELECT DISTINCT M.perm_key
+        FROM sys_spider_role_ref SR
+                 LEFT JOIN sys_role R ON SR.role_id = R.id
+                 LEFT JOIN sys_role_menu_ref RM ON SR.role_id = RM.role_id
+                 LEFT JOIN sys_menu M ON m.id = RM.menu_id
+        WHERE SR.spider_id = #{spiderId}
+          AND R.status = 0
+          AND M.status = 0
+    </select>
+</mapper>

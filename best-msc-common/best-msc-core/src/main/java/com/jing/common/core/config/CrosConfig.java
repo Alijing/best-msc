@@ -1,4 +1,4 @@
-package com.jing.msc.cobweb.config;
+package com.jing.common.core.config;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;

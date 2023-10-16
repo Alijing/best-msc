@@ -36,7 +36,7 @@ public class SecurityUserController {
     @ApiOperation(value = "用户注销接口")
     @ApiOperationSupport(author = "Jing", order = 2)
     @GetMapping(value = "logout")
-    public BaseResp<String> logout() {
+    public BaseResp<Boolean> logout() {
         return userService.logout();
     }
 
