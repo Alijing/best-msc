@@ -175,6 +175,34 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
             }
         ]
     } as AppRouteRecordRaw,
+    {
+        path: '/sys',
+        component: Layout,
+        redirect: '/level/menu1/menu1-1/menu1-1-1',
+        name: 'System',
+        meta: {
+            title: '系统管理',
+            icon: 'clarity:book-solid'
+        },
+        children: [
+            {
+                path: 'department',
+                name: 'Department',
+                component: () => import('@/views/sys/department/Department.vue'),
+                meta: {
+                    title: '部门管理'
+                }
+            },
+            {
+                path: 'novel2',
+                name: 'Novel2',
+                component: () => import('@/views/demo/TheWelcome.vue'),
+                meta: {
+                    title: '小说列表'
+                }
+            }
+        ]
+    } as AppRouteRecordRaw,
 ]
 
 const router = createRouter({

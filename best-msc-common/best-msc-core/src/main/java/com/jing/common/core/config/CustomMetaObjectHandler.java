@@ -27,7 +27,7 @@ public class CustomMetaObjectHandler implements MetaObjectHandler {
         this.strictInsertFill(metaObject, "createTime", LocalDateTime.class, LocalDateTime.now());
         this.strictInsertFill(metaObject, "reviserId", Long.class, -1L);
         this.strictInsertFill(metaObject, "revisionTime", LocalDateTime.class, LocalDateTime.now());
-        logger.error("-- >>>> : ");
+        this.strictInsertFill(metaObject, "logicFlag", Integer.class, 0);
     }
 
     @Override

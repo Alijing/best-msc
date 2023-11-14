@@ -1,9 +1,8 @@
 package com.jing.common.core.base;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.Version;
+import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -16,39 +15,50 @@ import java.time.LocalDateTime;
  * @description :
  */
 public class BaseModel<T extends BaseModel<T>> extends Model<BaseModel<T>> implements Serializable {
+    private static final long serialVersionUID = -5569718322628749683L;
     /**
      * 主键
      */
-    private Long id;
+    @ApiModelProperty("自增主键")
+    @TableId(value = "id", type = IdType.ASSIGN_ID)
+    protected Long id;
     /**
      * 创建人Id
      */
-    @TableField(fill = FieldFill.INSERT)
-    private Long creatorId;
+    @ApiModelProperty("创建人Id")
+    @TableField(value = "creator_id", fill = FieldFill.INSERT)
+    protected Long creatorId;
     /**
      * 创建时间
      */
-    @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime createTime;
+    @ApiModelProperty("创建时间")
+    @TableField(value = "create_time", fill = FieldFill.INSERT)
+    protected LocalDateTime createTime;
     /**
      * 修改者Id
      */
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private Long reviserId;
+    @ApiModelProperty("修改者Id")
+    @TableField(value = "reviser_id", fill = FieldFill.INSERT_UPDATE)
+    protected Long reviserId;
     /**
      * 修改时间
      */
-    @TableField(fill = FieldFill.INSERT)
-    private LocalDateTime revisionTime;
+    @ApiModelProperty("修改时间")
+    @TableField(value = "revision_time", fill = FieldFill.INSERT)
+    protected LocalDateTime revisionTime;
     /**
      * 逻辑删除字段
      */
-    private Integer logicFlag;
+    @TableLogic
+    @ApiModelProperty("数据逻辑标识（0：正常，1：已删除）默认：0")
+    @TableField(value = "logic_flag", fill = FieldFill.INSERT)
+    protected Integer logicFlag;
     /**
      * 乐观锁
      */
     @Version
-    private Integer version;
+    @ApiModelProperty("乐观锁")
+    protected Integer version;
 
     @Override
     public Serializable pkVal() {

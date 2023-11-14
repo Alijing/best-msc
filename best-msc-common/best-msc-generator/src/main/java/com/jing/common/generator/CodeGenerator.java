@@ -25,7 +25,7 @@ import java.util.List;
 public class CodeGenerator {
 
     public static void main(String[] args) {
-        String url = "jdbc:mysql://localhost:3308/psma_dev?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8";
+        String url = "jdbc:mysql://localhost:3306/dev_jing_msc?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8";
         String userName = "root";
         String password = "Fullsee@123";
 
@@ -82,7 +82,7 @@ public class CodeGenerator {
      * @date 2022/4/19 10:40
      */
     private static List<String> includes() {
-        return Arrays.asList("TB_COMMON_DICT", "TB_COMMON_DICT_ITEM","TB_PSMA_GOODS");
+        return Arrays.asList("sys_department", "TB_COMMON_DICT_ITEM","TB_PSMA_GOODS");
     }
 
 

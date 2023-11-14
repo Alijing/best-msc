@@ -6,6 +6,7 @@ import com.jing.common.core.exception.CustomException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.HttpClientErrorException;
 
+import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
@@ -132,6 +134,32 @@ public class GlobalExceptionHandler {
     public BaseResp<Object> error(DuplicateKeyException e) {
         logger.error(e.getMessage(), e);
         return BaseResp.setResult(ResultEnum.DUPLICATE_KEY);
+    }
+
+    /**
+     * sql执行异常
+     *
+     * @param e
+     * @return
+     */
+    @ResponseBody
+    @ExceptionHandler(SQLException.class)
+    public BaseResp<Object> error(SQLException e) {
+        logger.error(e.getMessage(), e);
+        return BaseResp.setResult(ResultEnum.SQL_EXCEPTION);
+    }
+
+    /**
+     * sql执行异常
+     *
+     * @param e
+     * @return
+     */
+    @ResponseBody
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public BaseResp<Object> error(DataIntegrityViolationException e) {
+        logger.error(e.getMessage(), e);
+        return BaseResp.setResult(ResultEnum.SQL_EXCEPTION);
     }
 
 }

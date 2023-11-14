@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jing.msc.cobweb.dao.sys.DepartmentMapper">
+    <select id="selectByParams" resultType="com.jing.msc.cobweb.entity.sys.vo.DepartmentNode">
+        SELECT id, parent_id, name, status, remarks, creator_id, create_time, reviser_id,
+        revision_time
+        FROM sys_department
+        WHERE logic_flag = 0
+        <if test=" query.parentId != null ">
+            AND parent_id = #{query.parentId}
+        </if>
+        <if test=" query.name != null and query.name!= '' ">
+            AND name LIKE CONCAT('%', #{query.name}, '%')
+        </if>
+    </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

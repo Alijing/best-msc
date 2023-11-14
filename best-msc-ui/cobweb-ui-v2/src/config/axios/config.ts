@@ -69,14 +69,13 @@ const defaultRequestInterceptors = (config: InternalAxiosRequestConfig) => {
 }
 
 const defaultResponseInterceptors = (response: AxiosResponse<any>) => {
-    ElMessage.error(response.data.message)
     if ('blob' === response?.config?.responseType) {
         // 如果是文件流，直接过
         return response
     }
     switch (response.code) {
         case config.code:
-            return response.data;
+            return response;
         case 401:
             ElMessage.error(response.message)
             clear()

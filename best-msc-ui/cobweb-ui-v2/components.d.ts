@@ -53,4 +53,7 @@ declare module 'vue' {
     ThemeSwitch: typeof import('./src/components/ThemeSwitch/src/ThemeSwitch.vue')['default']
     UserInfo: typeof import('./src/components/UserInfo/src/UserInfo.vue')['default']
   }
+  export interface ComponentCustomProperties {
+    vLoading: typeof import('element-plus/es')['ElLoadingDirective']
+  }
 }

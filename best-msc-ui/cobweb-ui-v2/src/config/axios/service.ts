@@ -24,7 +24,8 @@ const axiosInstance: AxiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use((res: InternalAxiosRequestConfig) => {
     const controller = new AbortController();
-    res.headers.Authorization = getStorage(appStore.getUserInfo)
+    let storage = getStorage(appStore.getUserInfo);
+    res.headers.Authorization = storage?.data
     const url = res.url || '';
     res.signal = controller.signal;
     abortControllerMap.set(url, controller)
