@@ -118,3 +118,11 @@ buildNumber.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
 
+logs/
+/best-msc-binbin/src/main/resources/static/
+/best-msc-cobweb/src/test/
+/best-msc-ui/cobweb-ui/package-lock.json
+/best-msc-ui/cobweb-ui-v2/package-lock.json
+filed.sql
+update.sql
+samp.json

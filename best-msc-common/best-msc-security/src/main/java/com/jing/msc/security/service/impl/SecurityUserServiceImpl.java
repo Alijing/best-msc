@@ -4,11 +4,12 @@ import com.jing.common.core.base.BaseResp;
 import com.jing.common.core.constant.Constants;
 import com.jing.common.core.enums.ResultEnum;
 import com.jing.common.core.exception.CustomException;
+import com.jing.common.core.util.JsonUtils;
 import com.jing.msc.security.entity.LoginSpider;
 import com.jing.msc.security.entity.Spider;
 import com.jing.msc.security.service.SecurityUserService;
 import com.jing.msc.security.utils.JwtUtil;
-import com.jing.msc.security.utils.RedisCache;
+import com.jing.msc.security.utils.RedisUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.Objects;
 
 /**
@@ -35,8 +37,8 @@ public class SecurityUserServiceImpl implements SecurityUserService {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @Autowired
-    private RedisCache redisCache;
+    @Resource(name = "redisUtils")
+    private RedisUtils redisUtils;
 
     @Override
     public BaseResp<String> login(Spider spider) {
@@ -48,7 +50,7 @@ public class SecurityUserServiceImpl implements SecurityUserService {
         LoginSpider loginSpider = (LoginSpider) authenticate.getPrincipal();
         Long id = loginSpider.getSpider().getId();
         String jwt = JwtUtil.createJWT(id.toString());
-        redisCache.setCacheObject(Constants.LOGIN_USER_KEY + id, loginSpider);
+        redisUtils.set(Constants.LOGIN_USER_KEY + id, JsonUtils.toJson(loginSpider));
         return BaseResp.ok(jwt);
     }
 
@@ -56,7 +58,7 @@ public class SecurityUserServiceImpl implements SecurityUserService {
     public BaseResp<Boolean> logout() {
         UsernamePasswordAuthenticationToken authenticationToken = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
         LoginSpider loginSpider = (LoginSpider) authenticationToken.getPrincipal();
-        redisCache.deleteObject(Constants.LOGIN_USER_KEY + loginSpider.getSpider().getId());
+        redisUtils.delete(Constants.LOGIN_USER_KEY + loginSpider.getSpider().getId());
         return BaseResp.ok(true);
     }
 

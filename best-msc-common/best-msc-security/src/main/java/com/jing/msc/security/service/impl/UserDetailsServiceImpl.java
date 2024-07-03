@@ -41,6 +41,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new RuntimeException(ResultEnum.User_Not_Found.getMessage());
         }
         List<String> permissions = menuMapper.selectPermsByUserId(spider.getId());
+        spider.setPassword(null);
         return new LoginSpider(spider, permissions);
     }
 

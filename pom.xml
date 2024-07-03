@@ -20,12 +20,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <spring-boot.mybatis-plus>3.5.1</spring-boot.mybatis-plus>
-        <spring-boot.mybatis-plus-generator>3.5.2</spring-boot.mybatis-plus-generator>
+        <spring-boot.mybatis-plus>3.5.6</spring-boot.mybatis-plus>
+        <spring-boot.mybatis-plus-generator>3.5.6</spring-boot.mybatis-plus-generator>
         <velocity-engine-version>2.3</velocity-engine-version>
         <swagger3-version>3.0.0</swagger3-version>
         <knife4j-version>3.0.2</knife4j-version>
-        <fastjson-version>1.2.76</fastjson-version>
+        <fastjson-version>1.2.83</fastjson-version>
 
         <jwt-version>0.9.0</jwt-version>
 
@@ -34,6 +34,8 @@
 
         <commons.io.version>2.8.0</commons.io.version>
         <commons.fileupload.version>1.4</commons.fileupload.version>
+        <lombok.version>1.18.30</lombok.version>
+        <hutool.version>5.8.28</hutool.version>
     </properties>
 
     <dependencyManagement>
@@ -152,7 +154,22 @@
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>easyexcel</artifactId>
-                <version>3.2.1</version>
+                <version>3.3.3</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-bom</artifactId>
+                <version>${hutool.version}</version>
+                <type>pom</type>
+                <!-- 注意这里是import -->
+                <scope>import</scope>
             </dependency>
 
             <dependency>

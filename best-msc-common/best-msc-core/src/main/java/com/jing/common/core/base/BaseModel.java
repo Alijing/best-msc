@@ -1,7 +1,6 @@
 package com.jing.common.core.base;
 
 import com.baomidou.mybatisplus.annotation.*;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
@@ -14,7 +13,7 @@ import java.time.LocalDateTime;
  * @date : 2021/4/26 9:41
  * @description :
  */
-public class BaseModel<T extends BaseModel<T>> extends Model<BaseModel<T>> implements Serializable {
+public class BaseModel implements Serializable {
     private static final long serialVersionUID = -5569718322628749683L;
     /**
      * 主键
@@ -59,11 +58,6 @@ public class BaseModel<T extends BaseModel<T>> extends Model<BaseModel<T>> imple
     @Version
     @ApiModelProperty("乐观锁")
     protected Integer version;
-
-    @Override
-    public Serializable pkVal() {
-        return this.id;
-    }
 
     public Long getId() {
         return id;

@@ -6,9 +6,11 @@ import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.IFill;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
+import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.VelocityTemplateEngine;
 import com.baomidou.mybatisplus.generator.fill.Column;
+import org.apache.ibatis.type.JdbcType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,7 +27,7 @@ import java.util.List;
 public class CodeGenerator {
 
     public static void main(String[] args) {
-        String url = "jdbc:mysql://localhost:3306/dev_jing_msc?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8";
+        String url = "jdbc:mysql://localhost:3308/inoutbound?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8";
         String userName = "root";
         String password = "Fullsee@123";
 
@@ -40,11 +42,20 @@ public class CodeGenerator {
         // 设置mapperXml生成路径
         String xmlPath = projectPath + "/src/main/resources/mapper/" + moduleName;
         FastAutoGenerator.create(url, userName, password)
+                .dataSourceConfig(builder ->
+                        builder.typeConvertHandler((globalConfig, typeRegistry, metaInfo) -> {
+                            // 兼容旧版本转换成Integer
+                            if (JdbcType.TINYINT == metaInfo.getJdbcType()) {
+                                return DbColumnType.INTEGER;
+                            }
+                            return typeRegistry.getColumnType(metaInfo);
+                        })
+                )
                 .globalConfig(builder ->
                         builder.author("jing")
                                 .enableSwagger()
                                 .outputDir(outputPath)
-                                .dateType(DateType.ONLY_DATE)
+                                .dateType(DateType.TIME_PACK)
                                 .disableOpenDir()
                                 .commentDate("yyyy-MM-dd HH:mm:ss")
                 )
@@ -65,7 +76,8 @@ public class CodeGenerator {
                                 .addTableFills(tableFills())
                                 .idType(IdType.ASSIGN_ID)
                                 .enableRemoveIsPrefix()
-                                .fileOverride()
+                                .enableLombok()
+                                .enableFileOverride()
                                 .serviceBuilder()
                                 .formatServiceFileName("%sService")
                 )
@@ -82,7 +94,7 @@ public class CodeGenerator {
      * @date 2022/4/19 10:40
      */
     private static List<String> includes() {
-        return Arrays.asList("sys_department", "TB_COMMON_DICT_ITEM","TB_PSMA_GOODS");
+        return Arrays.asList("tb_inoutbound_out_process", "tb_inoutbound_out_process_detail");
     }
 
 
@@ -94,7 +106,10 @@ public class CodeGenerator {
      * @date 2022/4/19 10:40
      */
     private static List<String> tablePrefix() {
-        return Arrays.asList("tb_common_", "TB_SYSTEM_", "tb_cems_", "tb_basic_", "sys_", "tb_vioms_", "tb_psma_");
+        return Arrays.asList(
+                "tb_common_", "TB_SYSTEM_", "tb_cems_", "tb_basic_", "sys_", "tb_vioms_", "tb_psma_",
+                "tb_dams_", "tb_inoutbound_"
+        );
     }
 
     private static List<IFill> tableFills() {

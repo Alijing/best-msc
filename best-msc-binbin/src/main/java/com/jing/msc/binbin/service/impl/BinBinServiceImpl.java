@@ -1,8 +1,11 @@
 package com.jing.msc.binbin.service.impl;
 
+import com.alibaba.excel.EasyExcel;
 import com.jing.msc.binbin.entity.DeliveryOrder;
 import com.jing.msc.binbin.entity.DeliveryOrderItem;
+import com.jing.msc.binbin.entity.OrderInfo;
 import com.jing.msc.binbin.entity.vo.DeliveryOrderMergeCfg;
+import com.jing.msc.binbin.listener.OrderInfoReadListener;
 import com.jing.msc.binbin.service.BinBinService;
 import com.jing.msc.binbin.util.DateUtils;
 import org.apache.commons.collections4.CollectionUtils;
@@ -24,6 +27,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.net.URLEncoder;
 import java.util.*;
 
 /**
@@ -108,6 +112,33 @@ public class BinBinServiceImpl implements BinBinService {
         }
 
         writeDeliveryOrder2Excel(is, orders, response, outputEncoding);
+    }
+
+    @Override
+    public void goodsSum(DeliveryOrderMergeCfg cfg, HttpServletRequest request, HttpServletResponse response) {
+        File file = new File(cfg.getDeliveryOrderPath().get(0));
+        if (!file.exists()) {
+            throw new RuntimeException("文件不存在");
+        }
+        OrderInfoReadListener orderInfoReadListener = new OrderInfoReadListener();
+        EasyExcel.read(file, OrderInfo.class, orderInfoReadListener).sheet().doRead();
+        Map<String, OrderInfo> sumed = orderInfoReadListener.getSumed();
+        if (Objects.isNull(sumed) || sumed.isEmpty()) {
+            throw new RuntimeException("文件中没有数据");
+        }
+        List<OrderInfo> orderInfos = new ArrayList<>(sumed.values());
+        orderInfos.sort(Comparator.comparing(OrderInfo::getSerNumber));
+        try {
+            // 这里注意 有同学反应使用swagger 会导致各种问题，请直接用浏览器或者用postman
+            response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+            response.setCharacterEncoding("utf-8");
+            // 这里URLEncoder.encode可以防止中文乱码 当然和easyexcel没有关系
+            String fileName = URLEncoder.encode("测试", "UTF-8").replaceAll("\\+", "%20");
+            response.setHeader("Content-disposition", "attachment;filename*=utf-8''" + fileName + ".xlsx");
+            EasyExcel.write(response.getOutputStream(), OrderInfo.class).sheet("模板").doWrite(orderInfos);
+        } catch (Exception e) {
+            throw new RuntimeException("数据合并失败");
+        }
     }
 
     private void writeDeliveryOrder2Excel(InputStream is, List<DeliveryOrder> orders, HttpServletResponse response, String outputEncoding) {

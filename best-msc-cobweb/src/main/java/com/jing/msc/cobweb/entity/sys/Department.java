@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @TableName("sys_department")
 @ApiModel(value = "Department对象", description = "")
-public class Department extends BaseModel<Department> {
+public class Department extends BaseModel {
 
     private static final long serialVersionUID = 5917832367289484375L;
 

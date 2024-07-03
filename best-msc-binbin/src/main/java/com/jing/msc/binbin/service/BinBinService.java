@@ -26,5 +26,16 @@ public interface BinBinService {
      */
     void mergeDeliveryOrder(DeliveryOrderMergeCfg cfg, HttpServletRequest request, HttpServletResponse response);
 
+    /**
+     * 合并配送单信息
+     *
+     * @param cfg      配送单文件夹路径
+     * @param request  request
+     * @param response response
+     * @author jing
+     * @date 2023/8/12 11:18
+     */
+    void goodsSum(DeliveryOrderMergeCfg cfg, HttpServletRequest request, HttpServletResponse response);
+
 
 }

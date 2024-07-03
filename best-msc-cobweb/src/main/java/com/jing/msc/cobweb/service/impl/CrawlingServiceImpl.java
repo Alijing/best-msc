@@ -1,8 +1,8 @@
 package com.jing.msc.cobweb.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jing.common.core.base.BaseResp;
-import com.jing.common.core.util.JSONUtil;
 import com.jing.msc.cobweb.config.HttpClientDownloader;
 import com.jing.msc.cobweb.entity.Novel;
 import com.jing.msc.cobweb.entity.NovelChapter;
@@ -70,14 +70,14 @@ public class CrawlingServiceImpl implements CrawlingService {
     @Override
     public BaseResp<Boolean> saveOrUpdateConfig(CrawlConfig config) {
         try {
-            String json = JSONUtil.toJson(config);
-            Novel novel = JSONUtil.toBean(json, Novel.class);
+            Novel novel = BeanUtil.copyProperties(config, Novel.class);
             novel.setId(config.getNovelId());
             boolean update = novelService.saveOrUpdate(novel);
             if (!update) {
                 return BaseResp.error();
             }
-            NovelCrawlConfig crawlConfig = JSONUtil.toBean(json, NovelCrawlConfig.class);
+
+            NovelCrawlConfig crawlConfig = BeanUtil.copyProperties(config, NovelCrawlConfig.class);
             update = crawlConfigService.saveOrUpdate(crawlConfig);
             return BaseResp.ok(update);
         } catch (Exception e) {

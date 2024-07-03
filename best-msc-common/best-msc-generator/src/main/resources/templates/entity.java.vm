@@ -4,12 +4,10 @@ package ${package.Entity};
 import ${pkg};
 #end
 #if(${swagger})
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 #end
 #if(${entityLombokModel})
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
     #if(${chainModel})
     import lombok.experimental.Accessors;
     #end
@@ -24,8 +22,7 @@ import lombok.Setter;
  * @since ${date}
  */
 #if(${entityLombokModel})
-@Getter
-@Setter
+@Data
     #if(${chainModel})
     @Accessors(chain = true)
     #end
@@ -34,7 +31,7 @@ import lombok.Setter;
 @TableName("${schemaName}${table.name}")
 #end
 #if(${swagger})
-@ApiModel(value = "${entity}对象", description = "$!{table.comment}")
+@Schema(description = "$!{table.comment}")
 #end
 #if(${superEntityClass})
 public class ${entity} extends ${superEntityClass}#if(${activeRecord})<${entity}>#end {
@@ -57,7 +54,7 @@ private static final long serialVersionUID=1L;
     #end
     #if("$!field.comment" != "")
         #if(${swagger})
-        @ApiModelProperty("${field.comment}")
+        @Schema(description ="${field.comment}")
         #else
         /**
          * ${field.comment}
@@ -67,7 +64,7 @@ private static final long serialVersionUID=1L;
     #if(${field.keyFlag})
         ## 主键
         #if(${field.keyIdentityFlag})
-        @TableId(value = "${field.annotationColumnName}", type = IdType.AUTO)
+        @TableId(value = "${field.annotationColumnName}", type = IdType.ASSIGN_ID)
         #elseif(!$null.isNull(${idType}) && "$!idType" != "")
         @TableId(value = "${field.annotationColumnName}", type = IdType.${idType})
         #elseif(${field.convert})

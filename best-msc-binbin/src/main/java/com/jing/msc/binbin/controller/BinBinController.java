@@ -1,12 +1,14 @@
 package com.jing.msc.binbin.controller;
 
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
-import com.jing.msc.binbin.entity.BaseResp;
 import com.jing.msc.binbin.entity.vo.DeliveryOrderMergeCfg;
 import com.jing.msc.binbin.service.BinBinService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -34,11 +36,11 @@ public class BinBinController {
         service.mergeDeliveryOrder(cfg, request, response);
     }
 
-    @ApiOperation(value = "合并配送单信息")
+    @ApiOperation(value = "货物金额求和")
     @ApiOperationSupport(author = "Jing", order = 1)
-    @GetMapping(value = "test/merge")
-    public BaseResp<String> mergeDeliveryOrder() {
-        return BaseResp.ok("成功");
+    @PostMapping(value = "goods/sum", produces = "application/json;charset=UTF-8")
+    public void goodsSum(@RequestBody DeliveryOrderMergeCfg cfg, HttpServletRequest request, HttpServletResponse response) {
+        service.goodsSum(cfg, request, response);
     }
 
 

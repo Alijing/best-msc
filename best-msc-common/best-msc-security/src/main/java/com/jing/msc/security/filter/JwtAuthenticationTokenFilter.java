@@ -3,19 +3,20 @@ package com.jing.msc.security.filter;
 import com.jing.common.core.constant.Constants;
 import com.jing.common.core.enums.ResultEnum;
 import com.jing.common.core.exception.CustomException;
+import com.jing.common.core.util.JsonUtils;
 import com.jing.msc.security.entity.LoginSpider;
 import com.jing.msc.security.utils.JwtUtil;
-import com.jing.msc.security.utils.RedisCache;
+import com.jing.msc.security.utils.RedisUtils;
 import io.jsonwebtoken.Claims;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import javax.annotation.Resource;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -35,8 +36,8 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
-    private RedisCache redisCache;
+    @Resource(name = "redisUtils")
+    private RedisUtils redisUtils;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -53,12 +54,13 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             logger.error(e.getMessage(), e);
             throw new CustomException(ResultEnum.Token_Illegal);
         }
-        LoginSpider loginSpider = redisCache.getCacheObject(Constants.LOGIN_USER_KEY + userId);
+        String loginSpider = redisUtils.get(Constants.LOGIN_USER_KEY + userId);
         if (Objects.isNull(loginSpider)) {
             throw new RuntimeException(ResultEnum.UN_Login.getMessage());
         }
+        LoginSpider spider = JsonUtils.toBean(loginSpider, LoginSpider.class);
         // TODO 获取权限信息到  Authentication  中
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginSpider, null, loginSpider.getAuthorities());
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginSpider, null, spider.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         filterChain.doFilter(request, response);
     }
