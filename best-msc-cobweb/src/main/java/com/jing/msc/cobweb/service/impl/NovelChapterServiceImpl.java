@@ -1,7 +1,7 @@
 package com.jing.msc.cobweb.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.jing.msc.cobweb.dao.NovelChapterMapper;
+import com.jing.msc.cobweb.mapper.NovelChapterMapper;
 import com.jing.msc.cobweb.entity.NovelChapter;
 import com.jing.msc.cobweb.service.NovelChapterService;
 import org.apache.commons.lang3.StringUtils;

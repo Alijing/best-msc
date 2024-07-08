@@ -1,11 +1,12 @@
 package com.jing.msc.cobweb.entity.sys;
 
 import com.baomidou.mybatisplus.annotation.*;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.jing.msc.cobweb.enums.sys.RoleStatusEnum;
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -13,148 +14,66 @@ import java.util.Date;
  * </p>
  *
  * @author jing
- * @since 2023-07-21 17:33:12
+ * @since 2024-07-04 16:21:35
  */
+@Data
 @TableName("sys_role")
-@ApiModel(value = "Role对象", description = "系统角色信息表")
+@Schema(description = "系统角色信息表")
 public class Role implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty("主键")
+    @Schema(description = "主键")
     @TableId(value = "id", type = IdType.ASSIGN_ID)
     private Long id;
 
-    @ApiModelProperty("角色名称")
+    @Schema(description = "角色名称")
     @TableField("name")
     private String name;
 
-    @ApiModelProperty("角色编码")
+    @Schema(description = "角色编码")
     @TableField("code")
     private String code;
 
-    @ApiModelProperty("状态：0：可用，1：禁用")
+    @Schema(description = "状态：0：可用，1：禁用")
     @TableField("status")
-    private Integer status;
+    private RoleStatusEnum status;
 
-    @ApiModelProperty("创建人Id")
-    @TableField("creator_id")
+    @Schema(description = "备注")
+    @TableField("remark")
+    private String remark;
+
+    @Schema(description = "创建人Id")
+    @TableField(value = "creator_id", fill = FieldFill.INSERT)
     private Long creatorId;
 
-    @ApiModelProperty("创建时间")
+    @Schema(description = "创建时间")
     @TableField(value = "create_time", fill = FieldFill.INSERT)
-    private Date createTime;
+    private LocalDateTime createTime;
 
-    @ApiModelProperty("修改人Id")
-    @TableField("reviser_id")
+    @Schema(description = "修改人Id")
+    @TableField(value = "reviser_id", fill = FieldFill.INSERT_UPDATE)
     private Long reviserId;
 
-    @ApiModelProperty("修改时间")
-    @TableField("revision_time")
-    private Date revisionTime;
+    @Schema(description = "修改时间")
+    @TableField(value = "revision_time", fill = FieldFill.INSERT_UPDATE)
+    private LocalDateTime revisionTime;
 
-    @ApiModelProperty("数据逻辑标识（0：正常，1：已删除）默认：0")
+    @Schema(description = "数据逻辑标识（0：正常，1：已删除）默认：0")
     @TableField("logic_flag")
     private Integer logicFlag;
 
-    @ApiModelProperty("乐观锁")
+    @Schema(description = "乐观锁")
     @TableField("version")
     private Integer version;
 
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public Long getCreatorId() {
-        return creatorId;
-    }
-
-    public void setCreatorId(Long creatorId) {
-        this.creatorId = creatorId;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Long getReviserId() {
-        return reviserId;
-    }
-
-    public void setReviserId(Long reviserId) {
-        this.reviserId = reviserId;
-    }
-
-    public Date getRevisionTime() {
-        return revisionTime;
-    }
-
-    public void setRevisionTime(Date revisionTime) {
-        this.revisionTime = revisionTime;
-    }
-
-    public Integer getLogicFlag() {
-        return logicFlag;
-    }
-
-    public void setLogicFlag(Integer logicFlag) {
-        this.logicFlag = logicFlag;
-    }
-
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
 
     @Override
     public String toString() {
         return "Role{" +
                 "id=" + id +
-                ", name=" + name +
-                ", code=" + code +
-                ", status=" + status +
-                ", creatorId=" + creatorId +
-                ", createTime=" + createTime +
-                ", reviserId=" + reviserId +
-                ", revisionTime=" + revisionTime +
-                ", logicFlag=" + logicFlag +
-                ", version=" + version +
-                "}";
+                ", name='" + name + '\'' +
+                ", code='" + code + '\'' +
+                '}';
     }
 }

@@ -217,4 +217,13 @@ public class BaseResp<T> implements Serializable {
         this.pageSize = pageSize;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "BaseResp{" +
+                "code=" + code +
+                ", message='" + message + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

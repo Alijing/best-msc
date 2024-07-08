@@ -1,6 +1,8 @@
 package com.jing.msc.security.entity;
 
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,12 +18,15 @@ import java.util.stream.Collectors;
  * @date : 2023/7/4 10:33
  * @description :
  */
+@Setter
 public class LoginSpider implements UserDetails {
 
     private static final long serialVersionUID = -8312092472666046906L;
 
+    @Getter
     private Spider spider;
 
+    @Getter
     private List<String> permissions;
 
     private List<SimpleGrantedAuthority> authorities;
@@ -73,23 +78,4 @@ public class LoginSpider implements UserDetails {
         return true;
     }
 
-    public Spider getSpider() {
-        return spider;
-    }
-
-    public void setSpider(Spider spider) {
-        this.spider = spider;
-    }
-
-    public List<String> getPermissions() {
-        return permissions;
-    }
-
-    public void setPermissions(List<String> permissions) {
-        this.permissions = permissions;
-    }
-
-    public void setAuthorities(List<SimpleGrantedAuthority> authorities) {
-        this.authorities = authorities;
-    }
 }

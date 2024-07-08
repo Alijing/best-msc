@@ -25,4 +25,9 @@ public class Constants {
      */
     public static final String LOGIN_USER_KEY = "msc:login:";
 
+    /**
+     * token 过期时间 秒
+     */
+    public static final int TOKEN_EXPIRES_TIME = 3000;
+
 }

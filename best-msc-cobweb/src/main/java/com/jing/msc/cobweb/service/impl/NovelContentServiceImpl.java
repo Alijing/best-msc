@@ -1,7 +1,7 @@
 package com.jing.msc.cobweb.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.jing.msc.cobweb.dao.NovelContentMapper;
+import com.jing.msc.cobweb.mapper.NovelContentMapper;
 import com.jing.msc.cobweb.entity.NovelContent;
 import com.jing.msc.cobweb.service.NovelContentService;
 import org.springframework.stereotype.Service;

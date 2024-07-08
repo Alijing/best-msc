@@ -25,6 +25,8 @@ public enum ResultEnum {
     Token_Illegal(false, 20011, "token 非法"),
     UN_Login(false, 20012, "用户未登录"),
     ACCESS_DENIED(false, 20013, "用户未授权，不允许访问"),
+    ROLE_NOT_FOUND(false, 20014, "角色不存在"),
+    ROLE_NOT_SET(false, 20015, "用户未分配角色，无菜单权限"),
 
     ;
 

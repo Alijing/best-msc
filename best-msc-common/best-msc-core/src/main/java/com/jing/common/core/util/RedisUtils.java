@@ -1,6 +1,5 @@
-package com.jing.msc.security.utils;
+package com.jing.common.core.util;
 
-import com.jing.common.core.util.JsonUtils;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Range;
 import org.springframework.data.redis.connection.DataType;

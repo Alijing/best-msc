@@ -1,4 +1,4 @@
-package com.jing.msc.cobweb.dao;
+package com.jing.msc.cobweb.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.jing.msc.cobweb.entity.Novel;

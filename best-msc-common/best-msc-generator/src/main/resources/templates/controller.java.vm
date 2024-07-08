@@ -17,9 +17,7 @@ import ${superControllerClassPackage};
  * $!{table.comment} 前端控制器
  * </p>
  * @author : jing
- * @packageName : ${package.Controller}
  * @since : ${date}
- * @description :
  */
 #if(${restControllerStyle})
 @RestController

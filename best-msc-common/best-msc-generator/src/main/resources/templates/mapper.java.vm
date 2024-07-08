@@ -8,9 +8,7 @@ import ${superMapperClassPackage};
  * $!{table.comment} Mapper 接口
  * </p>
  * @author : jing
- * @packageName : ${package.Mapper}
  * @since : ${date}
- * @description :
  */
 #if(${kotlin})
 interface ${table.mapperName} : ${superMapperClass}<${entity}>

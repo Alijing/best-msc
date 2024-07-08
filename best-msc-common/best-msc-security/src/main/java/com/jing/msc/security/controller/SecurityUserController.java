@@ -4,6 +4,7 @@ import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.jing.common.core.base.BaseResp;
 import com.jing.common.log.aspect.WebLog;
 import com.jing.msc.security.entity.Spider;
+import com.jing.msc.security.entity.TokenInfo;
 import com.jing.msc.security.service.SecurityUserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
@@ -21,14 +22,14 @@ import javax.annotation.Resource;
 @RequestMapping("security/user/")
 public class SecurityUserController {
 
-    @Resource(name = "securityUserService")
+    @Resource(name = "userDetailsService")
     private SecurityUserService userService;
 
     @WebLog(description = "用户登录接口")
     @ApiOperation(value = "用户登录接口")
     @ApiOperationSupport(author = "Jing", order = 2)
     @PostMapping(value = "login")
-    public BaseResp<String> login(@RequestBody Spider spider) {
+    public BaseResp<TokenInfo> login(@RequestBody Spider spider) {
         return userService.login(spider);
     }
 

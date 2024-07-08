@@ -1,7 +1,6 @@
-package com.jing.msc.security.utils;
+package com.jing.common.core.util;
 
 import cn.hutool.core.date.DateUtil;
-import com.jing.common.core.util.JsonUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ClassUtils;
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jing.msc.cobweb.mapper.sys.MenuMapper">
+
+    <select id="selectByRoleId" resultType="com.jing.msc.cobweb.entity.sys.vo.MenuItem">
+        SELECT M.*
+        FROM sys_menu M
+        LEFT JOIN sys_role_menu_ref RM ON M.id = RM.menu_id
+        WHERE M.logic_flag = 0 AND M.status = 0
+        <if test="roleId != null and roleId.size() > 0">
+            AND RM.`role_id` IN
+            <foreach collection="roleId" index="index" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        ORDER BY M.create_time DESC
+    </select>
+
+</mapper>

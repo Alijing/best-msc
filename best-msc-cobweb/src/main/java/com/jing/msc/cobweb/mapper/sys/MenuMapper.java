@@ -1,7 +1,8 @@
-package com.jing.msc.security.mapper;
+package com.jing.msc.cobweb.mapper.sys;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.jing.msc.security.entity.Menu;
+import com.jing.msc.cobweb.entity.sys.Menu;
+import com.jing.msc.cobweb.entity.sys.vo.MenuItem;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -18,12 +19,6 @@ import java.util.List;
  */
 public interface MenuMapper extends BaseMapper<Menu> {
 
-    /**
-     * 通过 用户Id 查询权限信息
-     *
-     * @param spiderId 用户id
-     * @return {@link List}<{@link String}>
-     */
-    List<String> selectPermsByUserId(@Param("spiderId") Long spiderId);
+    List<MenuItem> selectByRoleId(@Param("roleId") List<Long> roleIds);
 
 }

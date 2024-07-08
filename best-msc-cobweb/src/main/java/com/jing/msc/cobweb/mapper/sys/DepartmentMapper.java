@@ -1,4 +1,4 @@
-package com.jing.msc.cobweb.dao.sys;
+package com.jing.msc.cobweb.mapper.sys;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;

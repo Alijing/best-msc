@@ -2,6 +2,7 @@ package com.jing.msc.security.service;
 
 import com.jing.common.core.base.BaseResp;
 import com.jing.msc.security.entity.Spider;
+import com.jing.msc.security.entity.TokenInfo;
 
 /**
  * @author : jing
@@ -19,7 +20,7 @@ public interface SecurityUserService {
      * @author jing
      * @date 2023/7/4 14:09
      */
-    BaseResp<String> login(Spider spider);
+    BaseResp<TokenInfo> login(Spider spider);
 
     /**
      * 通过 token 注销退出登录

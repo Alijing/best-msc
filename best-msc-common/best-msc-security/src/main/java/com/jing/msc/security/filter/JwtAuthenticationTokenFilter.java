@@ -6,7 +6,7 @@ import com.jing.common.core.exception.CustomException;
 import com.jing.common.core.util.JsonUtils;
 import com.jing.msc.security.entity.LoginSpider;
 import com.jing.msc.security.utils.JwtUtil;
-import com.jing.msc.security.utils.RedisUtils;
+import com.jing.common.core.util.RedisUtils;
 import io.jsonwebtoken.Claims;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

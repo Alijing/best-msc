@@ -3,13 +3,15 @@ package com.jing.msc.cobweb.service.sys.impl;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.jing.msc.cobweb.dao.sys.DepartmentMapper;
+import com.jing.msc.cobweb.mapper.sys.DepartmentMapper;
 import com.jing.msc.cobweb.entity.sys.Department;
 import com.jing.msc.cobweb.entity.sys.vo.DepartmentNode;
 import com.jing.msc.cobweb.entity.sys.vo.DepartmentQuery;
 import com.jing.msc.cobweb.service.sys.DepartmentService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Objects;
@@ -25,6 +27,7 @@ import java.util.Objects;
  * @since : 2023-10-16 20:52:26
  */
 @Service(value = "departmentService")
+@Transactional(rollbackFor = Exception.class, propagation = Propagation.NESTED)
 public class DepartmentServiceImpl extends ServiceImpl<DepartmentMapper, Department> implements DepartmentService {
 
     @Override

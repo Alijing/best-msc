@@ -14,7 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @EnableCustomSwagger
 @SpringBootApplication(scanBasePackages = {"com.jing"})
-@MapperScan({"com.jing.msc.security.mapper", "com.jing.msc.cobweb.dao"})
+@MapperScan({"com.jing.msc.security.mapper", "com.jing.msc.cobweb.mapper"})
 public class CobwebApp8135 {
 
     public static void main(String[] args) {

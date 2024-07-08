@@ -27,12 +27,12 @@ import java.util.List;
 public class CodeGenerator {
 
     public static void main(String[] args) {
-        String url = "jdbc:mysql://localhost:3308/inoutbound?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8";
+        String url = "jdbc:mysql://localhost:3308/cobweb_dev?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8";
         String userName = "root";
         String password = "Fullsee@123";
 
         // 设置父包名
-        String pkg = "com.fullsee.integratedbis";
+        String pkg = "com.jing.msc";
         // 设置父包模块名
         String moduleName = "";
 
@@ -80,6 +80,8 @@ public class CodeGenerator {
                                 .enableFileOverride()
                                 .serviceBuilder()
                                 .formatServiceFileName("%sService")
+                                .controllerBuilder()
+                                .enableRestStyle()
                 )
                 // 使用Freemarker引擎模板，默认的是Velocity引擎模板
                 .templateEngine(new VelocityTemplateEngine())
@@ -94,7 +96,7 @@ public class CodeGenerator {
      * @date 2022/4/19 10:40
      */
     private static List<String> includes() {
-        return Arrays.asList("tb_inoutbound_out_process", "tb_inoutbound_out_process_detail");
+        return Arrays.asList("sys_menu", "sys_role");
     }
 
 
@@ -117,9 +119,13 @@ public class CodeGenerator {
         fills.add(new Column("create_time", FieldFill.INSERT));
         fills.add(new Column("create_by", FieldFill.INSERT));
         fills.add(new Column("creator", FieldFill.INSERT));
+        fills.add(new Column("creator_id", FieldFill.INSERT));
+
+        fills.add(new Column("reviser_id", FieldFill.INSERT_UPDATE));
         fills.add(new Column("update_by", FieldFill.INSERT_UPDATE));
         fills.add(new Column("updater", FieldFill.INSERT_UPDATE));
         fills.add(new Column("update_time", FieldFill.INSERT_UPDATE));
+        fills.add(new Column("revision_time", FieldFill.INSERT_UPDATE));
         return fills;
     }
 

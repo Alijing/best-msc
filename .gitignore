@@ -121,6 +121,7 @@ buildNumber.properties
 logs/
 /best-msc-binbin/src/main/resources/static/
 /best-msc-common/best-msc-generator/src/main/java/com/fullsee/
+/best-msc-common/best-msc-generator/src/main/java/com/jing/msc/
 /best-msc-cobweb/src/test/
 /best-msc-ui/cobweb-ui/package-lock.json
 /best-msc-ui/cobweb-ui-v2/package-lock.json

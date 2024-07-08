@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jing.common.core.base.BaseResp;
-import com.jing.msc.cobweb.dao.NovelMapper;
+import com.jing.msc.cobweb.mapper.NovelMapper;
 import com.jing.msc.cobweb.entity.Novel;
 import com.jing.msc.cobweb.entity.NovelChapter;
 import com.jing.msc.cobweb.entity.NovelContent;
