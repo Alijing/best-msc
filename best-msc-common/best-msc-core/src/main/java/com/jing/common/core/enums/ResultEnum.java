@@ -27,6 +27,9 @@ public enum ResultEnum {
     ACCESS_DENIED(false, 20013, "用户未授权，不允许访问"),
     ROLE_NOT_FOUND(false, 20014, "角色不存在"),
     ROLE_NOT_SET(false, 20015, "用户未分配角色，无菜单权限"),
+    FILE_READ_ERROR(false, 20016, "文件读取异常"),
+    TEMPLATE_NOT_EXIST(false, 20017, "模板不存在"),
+    FILE_GENERATION_FAILED(false, 20018, "文件生成失败"),
 
     ;
 

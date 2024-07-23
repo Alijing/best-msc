@@ -12,6 +12,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * @author : jing
@@ -97,8 +98,10 @@ public class WebLogAspect {
     public Object doAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         long startTime = System.currentTimeMillis();
         Object result = proceedingJoinPoint.proceed();
-        // 打印出参
-        logger.info("Response Args      : {}", result.toString());
+        if(!Objects.isNull(result)){
+            // 打印出参
+            logger.info("Response Args      : {}", result);
+        }
         // 执行耗时
         logger.info("Time-Consuming     : {}", System.currentTimeMillis() - startTime);
         return result;

@@ -8,10 +8,7 @@ import com.jing.common.log.aspect.WebLog;
 import com.jing.msc.cobweb.entity.sys.Role;
 import com.jing.msc.cobweb.service.sys.RoleService;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -33,10 +30,46 @@ public class RoleController {
     @WebLog(description = "查询角色信息")
     @ApiOperation(value = "查询角色信息")
     @ApiOperationSupport(author = "Jing", order = 1)
-    @GetMapping("/info")
+    @GetMapping("/info/list")
     public BaseResp<IPage<Role>> list(@RequestParam(value = "name", required = false) String name,
                                       @RequestParam(value = "current", required = false) Long current,
                                       @RequestParam(value = "size", required = false) Long size) {
+        Role role = new Role();
+        role.setName(name);
+        return BaseResp.ok(service.roleList(role, current, size));
+    }
+
+    @WebLog(description = "新增角色信息")
+    @ApiOperation(value = "新增角色信息")
+    @ApiOperationSupport(author = "Jing", order = 2)
+    @PostMapping("/info")
+    public BaseResp<IPage<Role>> add(@RequestParam(value = "name", required = false) String name,
+                                     @RequestParam(value = "current", required = false) Long current,
+                                     @RequestParam(value = "size", required = false) Long size) {
+        Role role = new Role();
+        role.setName(name);
+        return BaseResp.ok(service.roleList(role, current, size));
+    }
+
+    @WebLog(description = "修改角色信息")
+    @ApiOperation(value = "修改角色信息")
+    @ApiOperationSupport(author = "Jing", order = 3)
+    @PutMapping("/info")
+    public BaseResp<IPage<Role>> edit(@RequestParam(value = "name", required = false) String name,
+                                      @RequestParam(value = "current", required = false) Long current,
+                                      @RequestParam(value = "size", required = false) Long size) {
+        Role role = new Role();
+        role.setName(name);
+        return BaseResp.ok(service.roleList(role, current, size));
+    }
+
+    @WebLog(description = "删除角色信息")
+    @ApiOperation(value = "删除角色信息")
+    @ApiOperationSupport(author = "Jing", order = 4)
+    @DeleteMapping("/info")
+    public BaseResp<IPage<Role>> delete(@RequestParam(value = "name", required = false) String name,
+                                        @RequestParam(value = "current", required = false) Long current,
+                                        @RequestParam(value = "size", required = false) Long size) {
         Role role = new Role();
         role.setName(name);
         return BaseResp.ok(service.roleList(role, current, size));

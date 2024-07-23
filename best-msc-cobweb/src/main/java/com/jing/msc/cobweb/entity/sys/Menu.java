@@ -98,6 +98,10 @@ public class Menu implements Serializable {
     @TableField("status")
     private Integer status;
 
+    @Schema(description = "排序")
+    @TableField("sort")
+    private Double sort;
+
     @Schema(description = "创建人Id")
     @TableField(value = "creator_id", fill = FieldFill.INSERT)
     private Long creatorId;

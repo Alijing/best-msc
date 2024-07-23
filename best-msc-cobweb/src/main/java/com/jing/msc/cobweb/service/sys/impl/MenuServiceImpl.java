@@ -1,18 +1,22 @@
 package com.jing.msc.cobweb.service.sys.impl;
 
 import cn.hutool.core.bean.BeanUtil;
+import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jing.common.core.enums.ResultEnum;
 import com.jing.common.core.exception.CustomException;
 import com.jing.common.core.util.JsonUtils;
 import com.jing.msc.cobweb.entity.sys.Menu;
+import com.jing.msc.cobweb.entity.sys.MenuName;
 import com.jing.msc.cobweb.entity.sys.vo.MenuItem;
 import com.jing.msc.cobweb.entity.sys.vo.RouteMetaCustom;
 import com.jing.msc.cobweb.entity.sys.vo.RouteRecord;
 import com.jing.msc.cobweb.enums.sys.RoleEnum;
 import com.jing.msc.cobweb.mapper.sys.MenuMapper;
 import com.jing.msc.cobweb.service.sys.MenuService;
+import com.jing.msc.security.entity.LoginSpider;
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
@@ -39,13 +43,37 @@ import java.util.stream.Collectors;
  * @since : 2023-07-21 17:27:53
  */
 @Service(value = "menuService")
-@Transactional(rollbackFor = Exception.class, propagation = Propagation.NESTED)
 public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements MenuService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    @Override
+    public void initI18n() {
+        List<Menu> list = list();
+        List<MenuName> names = new ArrayList<>();
+        for (Menu it : list) {
+            if (StringUtils.isBlank(it.getTitle())) {
+                continue;
+            }
+            MenuName name = new MenuName();
+            name.setId(IdWorker.getId());
+            name.setMenuId(it.getId());
+            name.setLang("zh-CN");
+            name.setName(it.getTitle());
+            names.add(name);
+            MenuName name2 = new MenuName();
+            name2.setId(IdWorker.getId());
+            name2.setMenuId(it.getId());
+            name2.setLang("en");
+            name2.setName(it.getTitle());
+            names.add(name2);
+        }
+        baseMapper.deleteNameById(list.stream().map(Menu::getId).collect(Collectors.toList()));
+        baseMapper.insertMenuName(names);
+    }
 
     @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.NESTED)
     public void initMenu() {
         try (BufferedReader reader = new BufferedReader(new FileReader("D:\\alijing\\my\\code\\BestMSC\\samp.json"))) {
             StringBuilder json = new StringBuilder();
@@ -60,6 +88,20 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
             logger.error("读取文件异常", e);
             throw new CustomException(ResultEnum.UNKNOWN_ERROR);
         }
+    }
+
+    @Override
+    public List<RouteRecord> simpleInfo(Menu query) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (Objects.isNull(authentication)) {
+            throw new CustomException(ResultEnum.UN_Login);
+        }
+        LoginSpider principal = (LoginSpider) authentication.getPrincipal();
+        List<MenuItem> menuItems = baseMapper.selectSimpleInfo(query, Objects.isNull(principal.getLang()) ? "zh-CN" : principal.getLang());
+        if (CollectionUtils.isNotEmpty(menuItems)) {
+            return buildRoute(0L, menuItems);
+        }
+        return Collections.emptyList();
     }
 
     private List<Menu> findChildren(List<MenuItem> children, Long parentId) {
@@ -95,11 +137,56 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
         if (RoleEnum.hasRoleById(RoleEnum.ADMIN, roleIds)) {
             roleIds = null;
         }
-        List<MenuItem> menuItems = baseMapper.selectByRoleId(roleIds);
+        LoginSpider principal = (LoginSpider) authentication.getPrincipal();
+        List<MenuItem> menuItems = baseMapper.selectByRoleId(roleIds, Objects.isNull(principal.getLang()) ? "zh-CN" : principal.getLang());
         if (CollectionUtils.isNotEmpty(menuItems)) {
             return buildRoute(0L, menuItems);
         }
         return Collections.emptyList();
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.NESTED)
+    public boolean addMenu(RouteRecord route) {
+        Menu menu = BeanUtil.copyProperties(route, Menu.class);
+        BeanUtil.copyProperties(route.getMeta(), menu);
+        boolean update = save(menu);
+        if (!update) {
+            throw new CustomException(ResultEnum.SQL_EXCEPTION);
+        }
+        refreshMenuName(route.getI18ns(), menu.getId());
+        return true;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.NESTED)
+    public boolean editMenu(RouteRecord route) {
+        Menu menu = BeanUtil.copyProperties(route, Menu.class);
+        BeanUtil.copyProperties(route.getMeta(), menu);
+        boolean update = updateById(menu);
+        if (!update) {
+            throw new CustomException(ResultEnum.SQL_EXCEPTION);
+        }
+        refreshMenuName(route.getI18ns(), menu.getId());
+        return true;
+    }
+
+    private void refreshMenuName(List<MenuName> i18ns, long menuId) {
+        if (CollectionUtils.isEmpty(i18ns)) {
+            return;
+        }
+        i18ns.forEach(it -> it.setMenuId(menuId));
+        baseMapper.deleteNameById(Collections.singletonList(menuId));
+        baseMapper.insertMenuName(i18ns);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.NESTED)
+    public boolean deleteMenu(List<Long> ids) {
+        if (CollectionUtils.isEmpty(ids)) {
+            throw new CustomException(ResultEnum.PARAM_ERROR);
+        }
+        return removeByIds(ids);
     }
 
     private List<RouteRecord> buildRoute(Long parentId, List<MenuItem> menuItems) {
@@ -108,6 +195,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
         }
         List<RouteRecord> routes = new ArrayList<>();
         for (MenuItem item : menuItems) {
+
             if (!Objects.equals(item.getParentId(), parentId)) {
                 continue;
             }
@@ -117,6 +205,8 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
             BeanUtil.copyProperties(item, meta);
             routeRecord.setMeta(meta);
             routeRecord.setChildren(buildRoute(item.getId(), menuItems));
+            List<MenuName> menuNames = baseMapper.selectMenuName(item.getId());
+            routeRecord.setI18ns(menuNames);
             routes.add(routeRecord);
         }
         return routes;

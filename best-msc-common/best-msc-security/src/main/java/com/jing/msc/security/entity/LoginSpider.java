@@ -27,6 +27,9 @@ public class LoginSpider implements UserDetails {
     private Spider spider;
 
     @Getter
+    private String lang = "zh-CN";
+
+    @Getter
     private List<String> permissions;
 
     private List<SimpleGrantedAuthority> authorities;

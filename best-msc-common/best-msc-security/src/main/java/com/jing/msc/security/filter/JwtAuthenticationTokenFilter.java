@@ -59,8 +59,12 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             throw new RuntimeException(ResultEnum.UN_Login.getMessage());
         }
         LoginSpider spider = JsonUtils.toBean(loginSpider, LoginSpider.class);
+        String lang = request.getHeader("Lang");
+        if (StringUtils.isNotBlank(lang)) {
+            spider.setLang(lang);
+        }
         // TODO 获取权限信息到  Authentication  中
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginSpider, null, spider.getAuthorities());
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(spider, null, spider.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         filterChain.doFilter(request, response);
     }

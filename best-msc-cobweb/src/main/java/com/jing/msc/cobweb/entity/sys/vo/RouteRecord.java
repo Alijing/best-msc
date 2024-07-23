@@ -1,5 +1,6 @@
 package com.jing.msc.cobweb.entity.sys.vo;
 
+import com.jing.msc.cobweb.entity.sys.MenuName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
@@ -33,6 +34,9 @@ public class RouteRecord implements Serializable {
 
     @Schema(description = "路由自定义属性")
     private RouteMetaCustom meta;
+
+    @Schema(description = "菜单名称国际化")
+    private List<MenuName> i18ns;
 
     @Schema(description = "子菜单")
     private List<RouteRecord> children;
