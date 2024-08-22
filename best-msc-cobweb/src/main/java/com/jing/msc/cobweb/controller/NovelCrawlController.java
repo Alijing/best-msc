@@ -7,8 +7,8 @@ import com.jing.common.log.aspect.WebLog;
 import com.jing.msc.cobweb.entity.NovelCrawlConfig;
 import com.jing.msc.cobweb.entity.vo.CrawlConfig;
 import com.jing.msc.cobweb.service.CrawlingService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,14 +23,14 @@ import org.springframework.web.bind.annotation.*;
  * @since : 2023-03-31 09:41:11
  */
 @RestController
-@Api(tags = "爬取小说相关接口")
+@Tag(name = "爬取小说相关接口")
 @RequestMapping("/novel/crawl")
 public class NovelCrawlController {
 
     @Autowired
     private CrawlingService crawlingService;
 
-    @ApiOperation(value = "通过 ID 查询小说爬取配置信息")
+    @Operation(summary = "通过 ID 查询小说爬取配置信息")
     @ApiOperationSupport(author = "Jing", order = 1)
     @GetMapping("config/{novelId}")
     public BaseResp<NovelCrawlConfig> crawlConfigByNovelId(@PathVariable("novelId") Long novelId) {
@@ -38,14 +38,14 @@ public class NovelCrawlController {
     }
 
     @WebLog(description = "新增或编辑爬取小说的配置信息")
-    @ApiOperation(value = "新增或编辑爬取小说的配置信息")
+    @Operation(summary = "新增或编辑爬取小说的配置信息")
     @ApiOperationSupport(author = "Jing", order = 2)
     @PostMapping("config/update")
     public BaseResp<Boolean> configUpdate(@RequestBody CrawlConfig config) {
         return crawlingService.saveOrUpdateConfig(config);
     }
 
-    @ApiOperation(value = "通过 ID 复制小说爬取配置")
+    @Operation(summary = "通过 ID 复制小说爬取配置")
     @ApiOperationSupport(author = "Jing", order = 2)
     @GetMapping("config/copy/{novelId}")
     public BaseResp<Boolean> configCopy(@PathVariable("novelId") Long novelId) {
@@ -55,7 +55,7 @@ public class NovelCrawlController {
         return BaseResp.ok();
     }
 
-    @ApiOperation(value = "爬取章节")
+    @Operation(summary = "爬取章节")
     @ApiOperationSupport(author = "Jing", order = 2)
     @GetMapping("chapter/{novelId}")
     public BaseResp<Object> crawlingChapter(@PathVariable("novelId") Long novelId) {

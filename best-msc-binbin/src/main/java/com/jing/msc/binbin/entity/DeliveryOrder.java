@@ -1,7 +1,9 @@
 package com.jing.msc.binbin.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.Data;
 
 import java.util.List;
 
@@ -12,51 +14,21 @@ import java.util.List;
  * @date : 2023/8/12 12:43
  * @description :
  */
-@ApiModel(value = "配送单对象", description = "配送单对象")
+@Data
+@Tag(name = "配送单", description = "配送单实体类")
 public class DeliveryOrder {
 
 
-    @ApiModelProperty("收货方")
+    @Schema(name = "收货方", type = "string", description = "ces 收货方")
     private String shipTo;
 
-    @ApiModelProperty("送货日期")
+    @Schema(name = "送货日期")
     private String deliveryDate;
 
-    @ApiModelProperty("订单编号")
+    @Schema(name = "订单编号")
     private String orderCode;
 
-    @ApiModelProperty("货物项")
+    @Schema(name = "货物项")
     private List<DeliveryOrderItem> items;
 
-    public String getShipTo() {
-        return shipTo;
-    }
-
-    public void setShipTo(String shipTo) {
-        this.shipTo = shipTo;
-    }
-
-    public String getDeliveryDate() {
-        return deliveryDate;
-    }
-
-    public void setDeliveryDate(String deliveryDate) {
-        this.deliveryDate = deliveryDate;
-    }
-
-    public String getOrderCode() {
-        return orderCode;
-    }
-
-    public void setOrderCode(String orderCode) {
-        this.orderCode = orderCode;
-    }
-
-    public List<DeliveryOrderItem> getItems() {
-        return items;
-    }
-
-    public void setItems(List<DeliveryOrderItem> items) {
-        this.items = items;
-    }
 }

@@ -1,8 +1,8 @@
 package com.jing.msc.cobweb.entity.sys.vo;
 
 import com.jing.common.core.base.BasePage;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 import java.util.List;
 
@@ -13,16 +13,16 @@ import java.util.List;
  * @date : 2023/11/10 16:04
  * @description :
  */
-@ApiModel(value = "Department 查询对象", description = "")
+@Tag(name = "单位组织", description = "单位组织查询对象")
 public class DepartmentQuery extends BasePage {
 
-    @ApiModelProperty("上级Id")
+   @Schema(name = "上级Id")
     private List<Long> ids;
 
-    @ApiModelProperty("上级Id")
+   @Schema(name = "上级Id")
     private Long parentId;
 
-    @ApiModelProperty("单位组织名称")
+   @Schema(name = "单位组织名称")
     private String name;
 
     public List<Long> getIds() {

@@ -1,6 +1,7 @@
 package com.jing.msc.cobweb.entity.work;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -11,7 +12,7 @@ import java.time.LocalDate;
  * @since : 2024/7/16 14:10
  */
 @Data
-@Schema(description = "禅道个人任务")
+@Tag(name = "工作相关", description = "禅道个人任务")
 public class TaskInfo implements Serializable {
 
     private static final long serialVersionUID = 60825214037290969L;

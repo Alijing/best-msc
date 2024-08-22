@@ -16,10 +16,6 @@
             <groupId>com.jing.msc</groupId>
             <artifactId>best-msc-core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.jing.msc</groupId>
-            <artifactId>best-msc-swagger</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>com.baomidou</groupId>

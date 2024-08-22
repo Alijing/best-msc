@@ -1,8 +1,7 @@
-package com.jing.common.core.config;
+package com.jing.msc.cobweb.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
-import springfox.documentation.service.Contact;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,10 +61,6 @@ public class SwaggerProperties {
      * host
      */
     private String host;
-    /**
-     * 联系人信息
-     */
-    private Contact contact;
     /**
      * 全局统一鉴权配置
      */
@@ -157,14 +152,6 @@ public class SwaggerProperties {
 
     public void setHost(String host) {
         this.host = host;
-    }
-
-    public Contact getContact() {
-        return contact;
-    }
-
-    public void setContact(Contact contact) {
-        this.contact = contact;
     }
 
     public Authorization getAuthorization() {

@@ -1,6 +1,7 @@
 package com.jing.msc.cobweb.entity.sys.vo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -11,7 +12,7 @@ import java.util.List;
  * @since : 2024/7/4 17:02
  */
 @Data
-@Schema(description = "菜单信息实体")
+@Tag(name = "系统菜单", description = "菜单信息实体")
 public class MenuItem implements Serializable {
 
     private static final long serialVersionUID = -1858496324294208089L;

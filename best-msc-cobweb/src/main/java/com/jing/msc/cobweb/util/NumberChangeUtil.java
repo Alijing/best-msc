@@ -1,6 +1,7 @@
 package com.jing.msc.cobweb.util;
 
-import org.apache.commons.collections.CollectionUtils;
+
+import org.apache.commons.collections4.CollectionUtils;
 
 import java.math.BigDecimal;
 import java.util.Arrays;

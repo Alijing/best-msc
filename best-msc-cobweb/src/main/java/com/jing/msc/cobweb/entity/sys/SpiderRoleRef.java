@@ -3,8 +3,8 @@ package com.jing.msc.cobweb.entity.sys;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 import java.io.Serializable;
 
@@ -17,16 +17,16 @@ import java.io.Serializable;
  * @since 2023-07-21 17:33:12
  */
 @TableName("sys_spider_role_ref")
-@ApiModel(value = "SpiderRoleRef对象", description = "系统用户与角色关联表")
+@Tag(name = "系统用户", description = "系统用户与角色关联表")
 public class SpiderRoleRef implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty("用户Id")
+    @Schema(name = "用户Id")
     @TableId(value = "spider_id", type = IdType.ASSIGN_ID)
     private Long spiderId;
 
-    @ApiModelProperty("角色Id")
+    @Schema(name = "角色Id")
     @TableId(value = "role_id", type = IdType.ASSIGN_ID)
     private Long roleId;
 

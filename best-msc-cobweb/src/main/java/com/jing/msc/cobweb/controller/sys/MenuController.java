@@ -7,7 +7,7 @@ import com.jing.common.log.aspect.WebLog;
 import com.jing.msc.cobweb.entity.sys.Menu;
 import com.jing.msc.cobweb.entity.sys.vo.RouteRecord;
 import com.jing.msc.cobweb.service.sys.MenuService;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +31,7 @@ public class MenuController {
     private MenuService service;
 
     @WebLog(description = "新增菜单")
-    @ApiOperation(value = "新增菜单")
+    @Operation(summary = "新增菜单")
     @ApiOperationSupport(author = "Jing", order = 1)
     @PostMapping("/info")
     public BaseResp<Boolean> add(@RequestBody RouteRecord route) {
@@ -39,7 +39,7 @@ public class MenuController {
     }
 
     @WebLog(description = "编辑菜单")
-    @ApiOperation(value = "编辑菜单")
+    @Operation(summary = "编辑菜单")
     @ApiOperationSupport(author = "Jing", order = 2)
     @PutMapping("/info")
     public BaseResp<Boolean> edit(@RequestBody RouteRecord route) {
@@ -47,7 +47,7 @@ public class MenuController {
     }
 
     @WebLog(description = "删除菜单")
-    @ApiOperation(value = "删除菜单")
+    @Operation(summary = "删除菜单")
     @ApiOperationSupport(author = "Jing", order = 3)
     @DeleteMapping("/info")
     public BaseResp<Boolean> delete(@RequestParam(value = "ids", required = true) List<Long> ids) {
@@ -55,7 +55,7 @@ public class MenuController {
     }
 
     @WebLog(description = "获取当前用户的菜单")
-    @ApiOperation(value = "获取当前用户的菜单")
+    @Operation(summary = "获取当前用户的菜单")
     @ApiOperationSupport(author = "Jing", order = 4)
     @GetMapping("/current/user")
     public BaseResp<List<RouteRecord>> currentUserMenu() {
@@ -63,7 +63,7 @@ public class MenuController {
     }
 
     @WebLog(description = "查询所有菜单信息")
-    @ApiOperation(value = "查询所有菜单信息")
+    @Operation(summary = "查询所有菜单信息")
     @ApiOperationSupport(author = "Jing", order = 5)
     @GetMapping("/info/list")
     public BaseResp<List<RouteRecord>> list() {
@@ -71,7 +71,7 @@ public class MenuController {
     }
 
     @WebLog(description = "查询所有菜单简单信息")
-    @ApiOperation(value = "查询所有菜单简单信息")
+    @Operation(summary = "查询所有菜单简单信息")
     @ApiOperationSupport(author = "Jing", order = 6)
     @GetMapping("/info/simple")
     public BaseResp<List<RouteRecord>> simpleList() {
@@ -79,7 +79,7 @@ public class MenuController {
     }
 
     @WebLog(description = "获取当前用户的菜单")
-    @ApiOperation(value = "获取当前用户的菜单")
+    @Operation(summary = "获取当前用户的菜单")
     @ApiOperationSupport(author = "Jing", order = 99)
     @GetMapping("/info/add")
     public BaseResp<Boolean> add() {
@@ -89,7 +89,7 @@ public class MenuController {
 
 
     @WebLog(description = "获取当前用户的菜单")
-    @ApiOperation(value = "获取当前用户的菜单")
+    @Operation(summary = "获取当前用户的菜单")
     @ApiOperationSupport(author = "Jing", order = 99)
     @GetMapping("/info/i18n")
     public BaseResp<Boolean> i18n() {

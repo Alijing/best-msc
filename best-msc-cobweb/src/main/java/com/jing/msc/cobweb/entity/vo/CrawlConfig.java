@@ -1,7 +1,7 @@
 package com.jing.msc.cobweb.entity.vo;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
  * @author : jing
@@ -10,46 +10,46 @@ import io.swagger.annotations.ApiModelProperty;
  * @date : 2023/3/31 11:29
  * @description :
  */
-@ApiModel(value = "NovelCrawlConfig对象", description = "")
+@Tag(name = "小说模块", description = "小说爬虫配置信息")
 public class CrawlConfig {
 
-    @ApiModelProperty("配置主键Id")
+    @Schema(name = "配置主键Id")
     private Long id;
 
-    @ApiModelProperty("小说Id")
+    @Schema(name = "小说Id")
     private Long novelId;
 
-    @ApiModelProperty("小说名称")
+    @Schema(name = "小说名称")
     private String name;
 
-    @ApiModelProperty("小说地址")
+    @Schema(name = "小说地址")
     private String path;
 
-    @ApiModelProperty("内容爬取类型（0：网页爬取，1：API爬取）")
+    @Schema(name = "内容爬取类型（0：网页爬取，1：API爬取）")
     private Integer type;
 
-    @ApiModelProperty("匹配规则")
+    @Schema(name = "匹配规则")
     private String regex;
 
-    @ApiModelProperty("章节条目样式")
+    @Schema(name = "章节条目样式")
     private String chapterStyle;
 
-    @ApiModelProperty("章节名称样式")
+    @Schema(name = "章节名称样式")
     private String chapterValueStyle;
 
-    @ApiModelProperty("下一页样式")
+    @Schema(name = "下一页样式")
     private String nextChapterStyle;
 
-    @ApiModelProperty("下一页链接样式")
+    @Schema(name = "下一页链接样式")
     private String nextChapterValueStyle;
 
-    @ApiModelProperty("章节内容样式")
+    @Schema(name = "章节内容样式")
     private String contentStyle;
 
-    @ApiModelProperty("内容下一页样式")
+    @Schema(name = "内容下一页样式")
     private String nextContentStyle;
 
-    @ApiModelProperty("内容下一页链接样式")
+    @Schema(name = "内容下一页链接样式")
     private String nextContentValueStyle;
 
     public Long getId() {

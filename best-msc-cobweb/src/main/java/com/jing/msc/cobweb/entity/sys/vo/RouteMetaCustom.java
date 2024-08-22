@@ -1,6 +1,7 @@
 package com.jing.msc.cobweb.entity.sys.vo;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Data;
 
 /**
@@ -8,7 +9,7 @@ import lombok.Data;
  * @since : 2024/7/5 13:57
  */
 @Data
-@Schema(description = "前端路由自定义属性实体")
+@Tag(name = "系统菜单", description = "前端路由自定义属性实体")
 public class RouteMetaCustom {
 
     @Schema(description = "路由在侧边栏和面包屑中展示的名字")

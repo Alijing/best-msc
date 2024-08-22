@@ -7,7 +7,8 @@ import com.jing.common.core.base.BaseResp;
 import com.jing.common.log.aspect.WebLog;
 import com.jing.msc.cobweb.entity.sys.Role;
 import com.jing.msc.cobweb.service.sys.RoleService;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -20,6 +21,7 @@ import javax.annotation.Resource;
  * @author : jing
  * @since : 2024-07-04 16:21:35
  */
+@Tag(name = "角色相关接口")
 @RestController
 @RequestMapping("/role")
 public class RoleController {
@@ -28,7 +30,7 @@ public class RoleController {
     private RoleService service;
 
     @WebLog(description = "查询角色信息")
-    @ApiOperation(value = "查询角色信息")
+    @Operation(summary = "查询角色信息")
     @ApiOperationSupport(author = "Jing", order = 1)
     @GetMapping("/info/list")
     public BaseResp<IPage<Role>> list(@RequestParam(value = "name", required = false) String name,
@@ -40,7 +42,7 @@ public class RoleController {
     }
 
     @WebLog(description = "新增角色信息")
-    @ApiOperation(value = "新增角色信息")
+    @Operation(summary = "新增角色信息")
     @ApiOperationSupport(author = "Jing", order = 2)
     @PostMapping("/info")
     public BaseResp<IPage<Role>> add(@RequestParam(value = "name", required = false) String name,
@@ -52,7 +54,7 @@ public class RoleController {
     }
 
     @WebLog(description = "修改角色信息")
-    @ApiOperation(value = "修改角色信息")
+    @Operation(summary = "修改角色信息")
     @ApiOperationSupport(author = "Jing", order = 3)
     @PutMapping("/info")
     public BaseResp<IPage<Role>> edit(@RequestParam(value = "name", required = false) String name,
@@ -64,7 +66,7 @@ public class RoleController {
     }
 
     @WebLog(description = "删除角色信息")
-    @ApiOperation(value = "删除角色信息")
+    @Operation(summary = "删除角色信息")
     @ApiOperationSupport(author = "Jing", order = 4)
     @DeleteMapping("/info")
     public BaseResp<IPage<Role>> delete(@RequestParam(value = "name", required = false) String name,

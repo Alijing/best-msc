@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 import java.io.Serializable;
 
@@ -18,56 +18,56 @@ import java.io.Serializable;
  * @since 2023-03-31 09:41:11
  */
 @TableName("novel_crawl_config")
-@ApiModel(value = "NovelCrawlConfig对象", description = "")
+@Tag(name = "小说模块", description = "小说爬虫配置信息表实体类")
 public class NovelCrawlConfig implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty("自增主键")
+    @Schema(name = "自增主键")
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty("小说Id")
+    @Schema(name = "小说Id")
     @TableField("novel_id")
     private Long novelId;
 
-    @ApiModelProperty("内容爬取类型（0：网页爬取，1：API爬取）")
+    @Schema(name = "内容爬取类型（0：网页爬取，1：API爬取）")
     @TableField("type")
     private Integer type;
 
-    @ApiModelProperty("匹配规则")
+    @Schema(name = "匹配规则")
     @TableField("regex")
     private String regex;
 
-    @ApiModelProperty("章节条目样式")
+    @Schema(name = "章节条目样式")
     @TableField("chapter_style")
     private String chapterStyle;
 
-    @ApiModelProperty("章节名称样式")
+    @Schema(name = "章节名称样式")
     @TableField("chapter_value_style")
     private String chapterValueStyle;
 
-    @ApiModelProperty("下一页样式")
+    @Schema(name = "下一页样式")
     @TableField("next_chapter_style")
     private String nextChapterStyle;
 
-    @ApiModelProperty("下一页链接样式")
+    @Schema(name = "下一页链接样式")
     @TableField("next_chapter_value_style")
     private String nextChapterValueStyle;
 
-    @ApiModelProperty("章节内容样式")
+    @Schema(name = "章节内容样式")
     @TableField("content_style")
     private String contentStyle;
 
-    @ApiModelProperty("内容下一页样式")
+    @Schema(name = "内容下一页样式")
     @TableField("next_content_style")
     private String nextContentStyle;
 
-    @ApiModelProperty("内容下一页链接样式")
+    @Schema(name = "内容下一页链接样式")
     @TableField("next_content_value_style")
     private String nextContentValueStyle;
 
-    @ApiModelProperty("爬取状态（0：未爬取，1：已爬取）")
+    @Schema(name = "爬取状态（0：未爬取，1：已爬取）")
     @TableField("status")
     private Integer status;
 

@@ -6,7 +6,8 @@ import com.jing.common.log.aspect.WebLog;
 import com.jing.msc.security.entity.Spider;
 import com.jing.msc.security.entity.TokenInfo;
 import com.jing.msc.security.service.SecurityUserService;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -18,6 +19,7 @@ import javax.annotation.Resource;
  * @date : 2023/7/4 13:57
  * @description :
  */
+@Tag(name = "用户接口")
 @RestController
 @RequestMapping("security/user/")
 public class SecurityUserController {
@@ -26,7 +28,7 @@ public class SecurityUserController {
     private SecurityUserService userService;
 
     @WebLog(description = "用户登录接口")
-    @ApiOperation(value = "用户登录接口")
+    @Operation(summary = "用户登录接口")
     @ApiOperationSupport(author = "Jing", order = 2)
     @PostMapping(value = "login")
     public BaseResp<TokenInfo> login(@RequestBody Spider spider) {
@@ -34,7 +36,7 @@ public class SecurityUserController {
     }
 
     @WebLog(description = "用户注销接口")
-    @ApiOperation(value = "用户注销接口")
+    @Operation(summary = "用户注销接口")
     @ApiOperationSupport(author = "Jing", order = 2)
     @GetMapping(value = "logout")
     public BaseResp<Boolean> logout() {

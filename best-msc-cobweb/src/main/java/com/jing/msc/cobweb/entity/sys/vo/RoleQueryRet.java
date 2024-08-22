@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.jing.msc.cobweb.enums.sys.RoleStatusEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
  * @since : 2024/7/4 16:34
  */
 @Data
-@Schema(description = "角色查询返回实体类")
+@Tag(name = "系统角色", description = "角色查询返回实体类")
 public class RoleQueryRet {
 
     @Schema(description = "主键")

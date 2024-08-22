@@ -1,5 +1,8 @@
 package com.jing.msc.binbin.entity.vo;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import java.util.List;
 
 /**
@@ -10,8 +13,10 @@ import java.util.List;
  * @description :
  */
 
+@Tag(name = "配送单", description = "配送单实体类")
 public class DeliveryOrderMergeCfg {
 
+    @Schema(type = "string", description = "ces 收货方")
     private List<String> deliveryOrderPath;
 
     public List<String> getDeliveryOrderPath() {

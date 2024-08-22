@@ -9,8 +9,8 @@ import com.jing.msc.cobweb.entity.sys.Department;
 import com.jing.msc.cobweb.entity.sys.vo.DepartmentNode;
 import com.jing.msc.cobweb.entity.sys.vo.DepartmentQuery;
 import com.jing.msc.cobweb.service.sys.DepartmentService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +34,7 @@ import java.util.List;
  * @since : 2023-10-16 20:52:26
  */
 @RestController
-@Api(tags = "部门相关接口")
+@Tag(name = "部门相关接口")
 @RequestMapping("/sys/department")
 public class DepartmentController {
 
@@ -44,7 +44,7 @@ public class DepartmentController {
     private DepartmentService service;
 
     @WebLog(description = "查询单位组织信息")
-    @ApiOperation(value = "查询单位组织信息")
+    @Operation(summary = "查询单位组织信息")
     @ApiOperationSupport(author = "Jing", order = 1)
     @PreAuthorize("@sgex.hasAuthority('sys:department:list')")
     @PostMapping("/list")
@@ -62,7 +62,7 @@ public class DepartmentController {
 
 
     @WebLog(description = "新增或编辑单位组织信息")
-    @ApiOperation(value = "新增或编辑单位组织信息")
+    @Operation(summary = "新增或编辑单位组织信息")
     @ApiOperationSupport(author = "Jing", order = 1)
     @PreAuthorize("@sgex.hasAuthority('sys:department:update')")
     @PostMapping("/update")
@@ -75,7 +75,7 @@ public class DepartmentController {
     }
 
     @WebLog(description = "删除单位组织信息")
-    @ApiOperation(value = "删除单位组织信息")
+    @Operation(summary = "删除单位组织信息")
     @ApiOperationSupport(author = "Jing", order = 1)
     @PreAuthorize("@sgex.hasAuthority('sys:department:del')")
     @PostMapping("/del")

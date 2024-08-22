@@ -1,8 +1,8 @@
 package com.jing.msc.cobweb.entity.sys.vo;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 import java.util.Date;
 import java.util.List;
@@ -14,35 +14,35 @@ import java.util.List;
  * @date : 2023/11/10 14:43
  * @description :
  */
-@ApiModel(value = "Department对象", description = "")
+@Tag(name = "单位组织", description = "单位组织节点实体类")
 public class DepartmentNode {
 
-    @ApiModelProperty("自增主键")
+    @Schema(name = "自增主键")
     private Long id;
 
-    @ApiModelProperty("上级Id")
+    @Schema(name = "上级Id")
     private Long parentId;
 
-    @ApiModelProperty("部门名称")
+    @Schema(name = "部门名称")
     private String name;
 
-    @ApiModelProperty("状态，0：启用，1禁用")
+    @Schema(name = "状态，0：启用，1禁用")
     private Integer status;
 
-    @ApiModelProperty("备注")
+    @Schema(name = "备注")
     private String remarks;
 
-    @ApiModelProperty("创建人Id")
+    @Schema(name = "创建人Id")
     private Long creatorId;
 
-    @ApiModelProperty("创建时间")
+    @Schema(name = "创建时间")
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
-    @ApiModelProperty("修改人Id")
+    @Schema(name = "修改人Id")
     private Long reviserId;
 
-    @ApiModelProperty("修改时间")
+    @Schema(name = "修改时间")
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date revisionTime;
 

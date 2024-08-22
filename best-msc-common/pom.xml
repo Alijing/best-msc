@@ -13,7 +13,6 @@
 
     <modules>
         <module>best-msc-core</module>
-        <module>best-msc-swagger</module>
         <module>best-msc-generator</module>
         <module>best-msc-log</module>
         <module>best-msc-security</module>

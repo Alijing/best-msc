@@ -1,7 +1,7 @@
 package com.jing.msc.cobweb.spider;
 
 import com.jing.msc.cobweb.processor.MagicPageProcessor;
-import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.SerializationUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

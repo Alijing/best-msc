@@ -5,8 +5,8 @@ import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.jing.common.core.base.BaseResp;
 import com.jing.msc.cobweb.service.impl.SpiderServiceImpl;
 import com.jing.msc.security.entity.Spider;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -26,7 +26,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/test")
-@Api(tags = "测试接口")
+@Tag(name = "测试接口")
 public class TestController {
 
     protected final Logger logger = LoggerFactory.getLogger(TestController.class);
@@ -34,7 +34,7 @@ public class TestController {
     @Resource(name = "spiderService")
     private SpiderServiceImpl service;
 
-    @ApiOperation(value = "查询所有用户信息")
+    @Operation(summary = "查询所有用户信息")
     @PreAuthorize("hasAuthority('test11')")
     @ApiOperationSupport(author = "Jing", order = 2)
     @GetMapping(value = "/spider", produces = "application/json;charset=UTF-8")
@@ -44,7 +44,7 @@ public class TestController {
         return BaseResp.ok(list);
     }
 
-    @ApiOperation(value = "新增或者更新用户")
+    @Operation(summary = "新增或者更新用户")
     @ApiOperationSupport(author = "Jing", order = 1)
     @PostMapping(value = "/spider/update", produces = "application/json;charset=UTF-8")
     public BaseResp<List<Spider>> updateSpider(@Validated @RequestBody Spider info) {
@@ -53,7 +53,7 @@ public class TestController {
         return BaseResp.ok(list);
     }
 
-    @ApiOperation(value = "通过 excel 导入")
+    @Operation(summary = "通过 excel 导入")
     @ApiOperationSupport(author = "Jing", order = 1)
     @PostMapping(value = "/read/excel")
     public BaseResp<Boolean> readExcel(Integer type, MultipartFile file) {
@@ -61,7 +61,7 @@ public class TestController {
         return BaseResp.ok();
     }
 
-    @ApiOperation(value = "生成 sql ")
+    @Operation(summary = "生成 sql ")
     @ApiOperationSupport(author = "Jing", order = 1)
     @GetMapping(value = "/generator/sql/{targetNodeId}/{startId}/{fieldNum}")
     public BaseResp<Boolean> generateSql(

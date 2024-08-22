@@ -2,6 +2,7 @@ package com.jing.msc.cobweb.entity.sys;
 
 import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -17,7 +18,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @TableName("sys_menu")
-@Schema(description = "系统权限信息表")
+@Tag(name = "系统菜单", description = "系统菜单信息表")
 public class Menu implements Serializable {
 
     private static final long serialVersionUID = 1L;

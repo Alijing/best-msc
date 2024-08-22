@@ -1,14 +1,11 @@
 package com.jing.msc.binbin.controller;
 
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,12 +17,13 @@ import javax.servlet.http.HttpServletResponse;
  * @description :
  */
 @RestController
-@Api(tags = "接口")
+@RequestMapping("/other")
+@Tag(name = "其他接口")
 public class OtherController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @ApiOperation(value = "合并配送单信息")
+    @Operation(summary = "upload")
     @ApiOperationSupport(author = "Jing", order = 1)
     @PostMapping(value = "/backProxyApi/defense/saas/v1/file/image/upload")
     public void upload(@RequestParam(value = "file") MultipartFile file, HttpServletRequest request, HttpServletResponse response) {
@@ -33,7 +31,7 @@ public class OtherController {
     }
 
 
-    @ApiOperation(value = "合并配送单信息")
+    @Operation(summary = "file")
     @ApiOperationSupport(author = "Jing", order = 1)
     @GetMapping(value = "/defense/saas/v1/file/image")
     public void read(@RequestParam(value = "id") String id) {

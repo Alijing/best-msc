@@ -20,7 +20,6 @@ import us.codecraft.webmagic.selector.PlainText;
 import us.codecraft.webmagic.utils.CharsetUtils;
 import us.codecraft.webmagic.utils.HttpClientUtils;
 
-import javax.annotation.concurrent.ThreadSafe;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.HashMap;
@@ -33,7 +32,6 @@ import java.util.Map;
  * @date : 2023/2/10 17:00
  * @description :
  */
-@ThreadSafe
 public class HttpClientDownloader extends AbstractDownloader {
 
     private Logger logger = LoggerFactory.getLogger(getClass());

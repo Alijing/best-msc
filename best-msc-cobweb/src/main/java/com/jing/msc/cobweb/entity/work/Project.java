@@ -1,6 +1,7 @@
 package com.jing.msc.cobweb.entity.work;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -12,7 +13,7 @@ import java.util.List;
  * @since : 2024/7/18 16:01
  */
 @Data
-@Schema(description = "禅道项目")
+@Tag(name = "工作相关", description = "禅道项目")
 public class Project implements Serializable {
 
     private static final long serialVersionUID = -2830023723143854196L;

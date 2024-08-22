@@ -23,8 +23,6 @@
         <spring-boot.mybatis-plus>3.5.6</spring-boot.mybatis-plus>
         <spring-boot.mybatis-plus-generator>3.5.6</spring-boot.mybatis-plus-generator>
         <velocity-engine-version>2.3</velocity-engine-version>
-        <swagger3-version>3.0.0</swagger3-version>
-        <knife4j-version>3.0.2</knife4j-version>
         <fastjson-version>1.2.83</fastjson-version>
 
         <jwt-version>0.9.0</jwt-version>
@@ -37,6 +35,7 @@
         <lombok.version>1.18.30</lombok.version>
         <hutool.version>5.8.28</hutool.version>
         <apache.poi.version>5.2.3</apache.poi.version>
+        <knife4j.version>4.5.0</knife4j.version>
     </properties>
 
     <dependencyManagement>
@@ -88,20 +87,6 @@
                 <version>${velocity-engine-version}</version>
             </dependency>
 
-            <!-- swagger3 依赖配置 -->
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger2</artifactId>
-                <version>${swagger3-version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.github.xiaoymin</groupId>
-                <artifactId>knife4j-spring-boot-starter</artifactId>
-                <!--在引用时请在maven中央仓库搜索3.X最新版本号-->
-                <version>${knife4j-version}</version>
-            </dependency>
-
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
@@ -144,12 +129,12 @@
             <dependency>
                 <groupId>us.codecraft</groupId>
                 <artifactId>webmagic-core</artifactId>
-                <version>0.7.3</version>
+                <version>0.10.1</version>
             </dependency>
             <dependency>
                 <groupId>us.codecraft</groupId>
                 <artifactId>webmagic-extension</artifactId>
-                <version>0.7.3</version>
+                <version>0.10.1</version>
             </dependency>
 
             <dependency>
@@ -189,6 +174,18 @@
                 <groupId>org.apache.poi</groupId>
                 <artifactId>poi-ooxml-schemas</artifactId>
                 <version>4.1.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi3-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.14.0</version>
             </dependency>
 
             <dependency>

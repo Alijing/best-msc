@@ -6,8 +6,8 @@ import com.jing.common.log.aspect.WebLog;
 import com.jing.msc.cobweb.entity.Novel;
 import com.jing.msc.cobweb.entity.vo.NovelVo;
 import com.jing.msc.cobweb.service.NovelService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ import java.util.List;
  * @description :
  */
 @RestController
-@Api(tags = "小说相关接口")
+@Tag(name = "小说相关接口")
 @RequestMapping("novel")
 public class NovelController {
 
@@ -35,7 +35,7 @@ public class NovelController {
     private NovelService novelService;
 
     @WebLog(description = "查询所有小说信息")
-    @ApiOperation(value = "查询所有小说信息")
+    @Operation(summary = "查询所有小说信息")
     @ApiOperationSupport(author = "Jing", order = 1)
     @PreAuthorize("@sgex.hasAuthority('sys:novel:list1111')")
     @PostMapping("/list")
@@ -43,7 +43,7 @@ public class NovelController {
         return novelService.novels(info);
     }
 
-    @ApiOperation(value = "通过 ID 查询小说信息")
+    @Operation(summary = "通过 ID 查询小说信息")
     @ApiOperationSupport(author = "Jing", order = 2)
     @GetMapping("info/{novelId}")
     public BaseResp<Novel> novelInfoById(@PathVariable("novelId") Long novelId) {
@@ -51,7 +51,7 @@ public class NovelController {
     }
 
     @WebLog(description = "批量删除小说信息")
-    @ApiOperation(value = "批量删除小说信息")
+    @Operation(summary = "批量删除小说信息")
     @ApiOperationSupport(author = "Jing", order = 3)
     @PostMapping("batch/delete")
     public BaseResp<Boolean> batchDelete(@RequestBody NovelVo info) {

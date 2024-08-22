@@ -2,6 +2,7 @@ package com.jing.msc.cobweb.entity.sys.vo;
 
 import com.jing.msc.cobweb.entity.sys.MenuName;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -12,7 +13,7 @@ import java.util.List;
  * @since : 2024/7/5 13:56
  */
 @Data
-@Schema(description = "前端路由实体")
+@Tag(name = "系统菜单", description = "前端路由实体")
 public class RouteRecord implements Serializable {
 
     private static final long serialVersionUID = -1858496324294208089L;

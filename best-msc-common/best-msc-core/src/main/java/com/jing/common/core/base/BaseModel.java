@@ -1,7 +1,6 @@
 package com.jing.common.core.base;
 
 import com.baomidou.mybatisplus.annotation.*;
-import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -18,45 +17,38 @@ public class BaseModel implements Serializable {
     /**
      * 主键
      */
-    @ApiModelProperty("自增主键")
     @TableId(value = "id", type = IdType.ASSIGN_ID)
     protected Long id;
     /**
      * 创建人Id
      */
-    @ApiModelProperty("创建人Id")
     @TableField(value = "creator_id", fill = FieldFill.INSERT)
     protected Long creatorId;
     /**
      * 创建时间
      */
-    @ApiModelProperty("创建时间")
     @TableField(value = "create_time", fill = FieldFill.INSERT)
     protected LocalDateTime createTime;
     /**
      * 修改者Id
      */
-    @ApiModelProperty("修改者Id")
     @TableField(value = "reviser_id", fill = FieldFill.INSERT_UPDATE)
     protected Long reviserId;
     /**
      * 修改时间
      */
-    @ApiModelProperty("修改时间")
     @TableField(value = "revision_time", fill = FieldFill.INSERT)
     protected LocalDateTime revisionTime;
     /**
      * 逻辑删除字段
      */
     @TableLogic
-    @ApiModelProperty("数据逻辑标识（0：正常，1：已删除）默认：0")
     @TableField(value = "logic_flag", fill = FieldFill.INSERT)
     protected Integer logicFlag;
     /**
      * 乐观锁
      */
     @Version
-    @ApiModelProperty("乐观锁")
     protected Integer version;
 
     public Long getId() {

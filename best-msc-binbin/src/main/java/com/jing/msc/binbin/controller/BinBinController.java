@@ -3,8 +3,8 @@ package com.jing.msc.binbin.controller;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.jing.msc.binbin.entity.vo.DeliveryOrderMergeCfg;
 import com.jing.msc.binbin.service.BinBinService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,20 +23,20 @@ import javax.servlet.http.HttpServletResponse;
  */
 @RestController
 @RequestMapping("/binbin")
-@Api(tags = "接口")
+@Tag(name = "BinBin接口")
 public class BinBinController {
 
     @Resource(name = "binBinService")
     private BinBinService service;
 
-    @ApiOperation(value = "合并配送单信息")
+    @Operation(summary = "合并配送单信息")
     @ApiOperationSupport(author = "Jing", order = 1)
     @PostMapping(value = "deliveryOrder/merge", produces = "application/json;charset=UTF-8")
     public void mergeDeliveryOrder(@RequestBody DeliveryOrderMergeCfg cfg, HttpServletRequest request, HttpServletResponse response) {
         service.mergeDeliveryOrder(cfg, request, response);
     }
 
-    @ApiOperation(value = "货物金额求和")
+    @Operation(summary = "货物金额求和")
     @ApiOperationSupport(author = "Jing", order = 1)
     @PostMapping(value = "goods/sum", produces = "application/json;charset=UTF-8")
     public void goodsSum(@RequestBody DeliveryOrderMergeCfg cfg, HttpServletRequest request, HttpServletResponse response) {
