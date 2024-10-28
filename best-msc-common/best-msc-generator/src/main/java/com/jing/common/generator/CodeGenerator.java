@@ -32,7 +32,7 @@ public class CodeGenerator {
         String password = "Fullsee@123";
 
         // 设置父包名
-        String pkg = "com.fullsee.integratedbis";
+        String pkg = "com.jing.msc.cobweb";
         // 设置父包模块名
         String moduleName = "";
 
@@ -96,7 +96,7 @@ public class CodeGenerator {
      * @date 2022/4/19 10:40
      */
     private static List<String> includes() {
-        return Arrays.asList("sys_dict", "sys_dict_item");
+        return Arrays.asList("video_taste");
     }
 
 
@@ -116,16 +116,19 @@ public class CodeGenerator {
 
     private static List<IFill> tableFills() {
         List<IFill> fills = new ArrayList<>();
+        fills.add(new Column("gmt_create", FieldFill.INSERT));
         fills.add(new Column("create_time", FieldFill.INSERT));
         fills.add(new Column("create_by", FieldFill.INSERT));
         fills.add(new Column("creator", FieldFill.INSERT));
         fills.add(new Column("creator_id", FieldFill.INSERT));
+        fills.add(new Column("gmt_creator", FieldFill.INSERT));
 
         fills.add(new Column("reviser_id", FieldFill.INSERT_UPDATE));
         fills.add(new Column("update_by", FieldFill.INSERT_UPDATE));
         fills.add(new Column("updater", FieldFill.INSERT_UPDATE));
         fills.add(new Column("update_time", FieldFill.INSERT_UPDATE));
         fills.add(new Column("revision_time", FieldFill.INSERT_UPDATE));
+        fills.add(new Column("gmt_modified", FieldFill.INSERT_UPDATE));
         return fills;
     }
 

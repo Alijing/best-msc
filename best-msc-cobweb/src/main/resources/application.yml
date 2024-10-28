@@ -42,7 +42,6 @@ mybatis-plus:
   # 实体扫描，多个 package 用逗号或分号隔开
   mapper-locations: classpath*:/mapper/**/*.xml
   type-aliases-package: com.jing.msc.**.entity
-  type-enums-package: com.jing.msc.**.enums
   global-config:
     db-config:
       # 主键类型
@@ -70,38 +69,46 @@ mybatis-plus:
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
-    tags-sorter: alpha
+    #tags-sorter: alpha
     operations-sorter: alpha
   api-docs:
     path: /v3/api-docs
+    enabled: true
   group-configs:
-    - group: 'default'
+    - group: 'cobweb'
       paths-to-match:
         - /**
       packages-to-scan:
-        - com.jing.msc.cobweb.controller
+        - com.jing.msc
+#    - group: 'security'
+#      paths-to-match:
+#        - /**
+#      packages-to-scan:
+#        - com.jing.msc.security.controller
 # knife4j 的增强配置
 knife4j:
   # 是否开启增强
   enable: true
+  basePackage: com.jing.msc.binbin.controller
   # 开启生产环境屏蔽
   production: false
   setting:
     language: zh_cn
-  #  title: 罗网模块接口文档
+  title: CobWeb接口文档
+  description: <p>CobWeb接口文档</p>
+  version: 0.0.0.1-alpha
   basic:
     enable: false
     username: test
     password: 123
-#  contact:
-#    name: jing
-#    url: http://www.jing.com
-#    email: flm894634186@qq.com
-#  license:
-#    name: Apache 2.0
-#    url: http://www.apache.org/licenses/LICENSE-2.0
-#  basePackage: com.jing.msc.binbin.controller
-#  version: 1.0.0
+  contact:
+    name: jing
+    url: http://www.jing.com
+    email: flm894634186@qq.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
+  termsOfServiceUrl: http://www.jing.com/termsOfServiceUrl
 
 logging:
   level:

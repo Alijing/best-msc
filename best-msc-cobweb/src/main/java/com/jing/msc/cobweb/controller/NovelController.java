@@ -1,6 +1,7 @@
 package com.jing.msc.cobweb.controller;
 
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
+import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.jing.common.core.base.BaseResp;
 import com.jing.common.log.aspect.WebLog;
 import com.jing.msc.cobweb.entity.Novel;
@@ -11,7 +12,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -25,7 +25,8 @@ import java.util.List;
  * @description :
  */
 @RestController
-@Tag(name = "小说相关接口")
+@ApiSupport(order = 21)
+@Tag(name = "小说相关接口", description = "小说相关接口描述")
 @RequestMapping("novel")
 public class NovelController {
 
@@ -37,7 +38,7 @@ public class NovelController {
     @WebLog(description = "查询所有小说信息")
     @Operation(summary = "查询所有小说信息")
     @ApiOperationSupport(author = "Jing", order = 1)
-    @PreAuthorize("@sgex.hasAuthority('sys:novel:list1111')")
+    //@PreAuthorize("@sgex.hasAuthority('sys:novel:list1111')")
     @PostMapping("/list")
     public BaseResp<List<Novel>> novels(@RequestBody NovelVo info) {
         return novelService.novels(info);

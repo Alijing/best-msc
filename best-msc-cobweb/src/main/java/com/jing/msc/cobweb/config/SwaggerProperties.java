@@ -1,5 +1,8 @@
 package com.jing.msc.cobweb.config;
 
+import io.swagger.v3.oas.models.info.Contact;
+import io.swagger.v3.oas.models.info.License;
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +16,7 @@ import java.util.List;
  * @date : 2021/4/22 16:03
  * @description :
  */
+@Data
 @Component
 @ConfigurationProperties("knife4j")
 public class SwaggerProperties {
@@ -46,13 +50,13 @@ public class SwaggerProperties {
      */
     private String version = "1.0";
     /**
+     * 作者
+     */
+    private Contact contact;
+    /**
      * 许可证
      */
-    private String license;
-    /**
-     * 许可证 url
-     */
-    private String licenseUrl;
+    private License license;
     /**
      * 服务条款 url
      */
@@ -66,102 +70,7 @@ public class SwaggerProperties {
      */
     private Authorization authorization = new Authorization();
 
-    public Boolean getEnable() {
-        return enable;
-    }
-
-    public void setEnable(Boolean enable) {
-        this.enable = enable;
-    }
-
-    public String getBasePackage() {
-        return basePackage;
-    }
-
-    public void setBasePackage(String basePackage) {
-        this.basePackage = basePackage;
-    }
-
-    public List<String> getBasePath() {
-        return basePath;
-    }
-
-    public void setBasePath(List<String> basePath) {
-        this.basePath = basePath;
-    }
-
-    public List<String> getExcludePath() {
-        return excludePath;
-    }
-
-    public void setExcludePath(List<String> excludePath) {
-        this.excludePath = excludePath;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
-    public String getLicense() {
-        return license;
-    }
-
-    public void setLicense(String license) {
-        this.license = license;
-    }
-
-    public String getLicenseUrl() {
-        return licenseUrl;
-    }
-
-    public void setLicenseUrl(String licenseUrl) {
-        this.licenseUrl = licenseUrl;
-    }
-
-    public String getTermsOfServiceUrl() {
-        return termsOfServiceUrl;
-    }
-
-    public void setTermsOfServiceUrl(String termsOfServiceUrl) {
-        this.termsOfServiceUrl = termsOfServiceUrl;
-    }
-
-    public String getHost() {
-        return host;
-    }
-
-    public void setHost(String host) {
-        this.host = host;
-    }
-
-    public Authorization getAuthorization() {
-        return authorization;
-    }
-
-    public void setAuthorization(Authorization authorization) {
-        this.authorization = authorization;
-    }
-
+    @Data
     public static class Authorization {
 
         /**
@@ -179,40 +88,9 @@ public class SwaggerProperties {
 
         private List<String> tokenUrls = new ArrayList<>();
 
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getAuthRegex() {
-            return authRegex;
-        }
-
-        public void setAuthRegex(String authRegex) {
-            this.authRegex = authRegex;
-        }
-
-        public List<AuthorizationScope> getAuthorizationScopes() {
-            return authorizationScopes;
-        }
-
-        public void setAuthorizationScopes(List<AuthorizationScope> authorizationScopes) {
-            this.authorizationScopes = authorizationScopes;
-        }
-
-        public List<String> getTokenUrls() {
-            return tokenUrls;
-        }
-
-        public void setTokenUrls(List<String> tokenUrls) {
-            this.tokenUrls = tokenUrls;
-        }
     }
 
-
+    @Data
     public static class AuthorizationScope {
         /**
          * 作用域名称
@@ -223,21 +101,6 @@ public class SwaggerProperties {
          */
         private String description;
 
-        public String getScope() {
-            return scope;
-        }
-
-        public void setScope(String scope) {
-            this.scope = scope;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public void setDescription(String description) {
-            this.description = description;
-        }
     }
 
 }

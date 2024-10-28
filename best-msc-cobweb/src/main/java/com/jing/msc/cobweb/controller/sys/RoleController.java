@@ -3,6 +3,7 @@ package com.jing.msc.cobweb.controller.sys;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
+import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.jing.common.core.base.BaseResp;
 import com.jing.common.log.aspect.WebLog;
 import com.jing.msc.cobweb.entity.sys.Role;
@@ -21,8 +22,9 @@ import javax.annotation.Resource;
  * @author : jing
  * @since : 2024-07-04 16:21:35
  */
-@Tag(name = "角色相关接口")
 @RestController
+@ApiSupport(order = 2)
+@Tag(name = "角色相关接口", description = "角色相关接口描述")
 @RequestMapping("/role")
 public class RoleController {
 

@@ -2,6 +2,7 @@ package com.jing.msc.cobweb.controller.sys;
 
 
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
+import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.jing.common.core.base.BaseResp;
 import com.jing.common.log.aspect.WebLog;
 import com.jing.msc.cobweb.entity.sys.Menu;
@@ -22,8 +23,9 @@ import java.util.List;
  * @author : jing
  * @since : 2024-07-04 16:04:54
  */
-@Tag(name = "菜单相关接口")
 @RestController
+@ApiSupport(order = 3)
+@Tag(name = "菜单相关接口", description = "菜单相关接口描述")
 @RequestMapping("/menu")
 public class MenuController {
 

@@ -3,6 +3,7 @@ package com.jing.msc.cobweb.controller.sys;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
+import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.jing.common.core.base.BaseResp;
 import com.jing.common.log.aspect.WebLog;
 import com.jing.msc.cobweb.entity.sys.Department;
@@ -34,7 +35,8 @@ import java.util.List;
  * @since : 2023-10-16 20:52:26
  */
 @RestController
-@Tag(name = "部门相关接口")
+@ApiSupport(order = 3)
+@Tag(name = "部门相关接口", description = "部门相关接口描述")
 @RequestMapping("/sys/department")
 public class DepartmentController {
 

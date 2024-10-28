@@ -2,6 +2,7 @@ package com.jing.msc.cobweb.controller;
 
 
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
+import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.jing.common.core.base.BaseResp;
 import com.jing.common.log.aspect.WebLog;
 import com.jing.msc.cobweb.entity.NovelCrawlConfig;
@@ -23,7 +24,8 @@ import org.springframework.web.bind.annotation.*;
  * @since : 2023-03-31 09:41:11
  */
 @RestController
-@Tag(name = "爬取小说相关接口")
+@ApiSupport(order = 22)
+@Tag(name = "爬取小说相关接口", description = "爬取小说相关接口描述")
 @RequestMapping("/novel/crawl")
 public class NovelCrawlController {
 

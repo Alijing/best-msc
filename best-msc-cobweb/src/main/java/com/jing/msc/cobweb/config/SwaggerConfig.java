@@ -1,10 +1,8 @@
 package com.jing.msc.binbin.config;
 
-import com.github.xiaoymin.knife4j.spring.configuration.Knife4jProperties;
+import com.jing.msc.cobweb.config.SwaggerProperties;
 import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
-import io.swagger.v3.oas.models.info.License;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -35,26 +33,25 @@ public class SwaggerConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public OpenAPI api(Knife4jProperties properties) {
-        return new OpenAPI()
-                .info(apiInfo(properties));
-                //.addSecurityItem(new SecurityRequirement().addList(HttpHeaders.AUTHORIZATION))
-                //.components(
-                //        new Components()
-                //                .addSecuritySchemes(HttpHeaders.AUTHORIZATION, new SecurityScheme().name(HttpHeaders.AUTHORIZATION)
-                //                        .type(SecurityScheme.Type.HTTP).scheme("bearer")
-                //                )
-                //);
+    public OpenAPI api(SwaggerProperties properties) {
+        return new OpenAPI().info(apiInfo(properties));
+        //.addSecurityItem(new SecurityRequirement().addList(HttpHeaders.AUTHORIZATION))
+        //.components(
+        //        new Components()
+        //                .addSecuritySchemes(HttpHeaders.AUTHORIZATION, new SecurityScheme().name(HttpHeaders.AUTHORIZATION)
+        //                        .type(SecurityScheme.Type.HTTP).scheme("bearer")
+        //                )
+        //);
     }
 
-    private Info apiInfo(Knife4jProperties properties) {
+    private Info apiInfo(SwaggerProperties properties) {
         return new Info()
-                .title("测试")
-                .description("1")
-                .version("properties.getVersion()")
-                .termsOfService("properties.getTermsOfServiceUrl()")
-                .contact(new Contact().name("jing").email("jing@jing.com").url("http://jing.com"))
-                .license(new License().name("properties.getLicense()").url("http://jing.com"));
+                .title(properties.getTitle())
+                .description(properties.getDescription())
+                .version(properties.getVersion())
+                .termsOfService(properties.getTermsOfServiceUrl())
+                .contact(properties.getContact())
+                .license(properties.getLicense());
     }
 
 }
