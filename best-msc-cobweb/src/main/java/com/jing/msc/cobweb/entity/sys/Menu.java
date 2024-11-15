@@ -120,7 +120,7 @@ public class Menu implements Serializable {
     private LocalDateTime revisionTime;
 
     @Schema(description = "数据逻辑标识（0：正常，1：已删除）默认：0")
-    @TableField("logic_flag")
+    @TableLogic()
     private Integer logicFlag;
 
     @Schema(description = "乐观锁")

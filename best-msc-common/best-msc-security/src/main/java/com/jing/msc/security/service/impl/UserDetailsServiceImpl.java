@@ -6,7 +6,6 @@ import com.jing.common.core.base.BaseResp;
 import com.jing.common.core.constant.Constants;
 import com.jing.common.core.enums.ResultEnum;
 import com.jing.common.core.exception.CustomException;
-import com.jing.common.core.util.JsonUtils;
 import com.jing.common.core.util.RedisUtils;
 import com.jing.msc.security.entity.LoginSpider;
 import com.jing.msc.security.entity.Spider;
@@ -30,6 +29,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -63,7 +63,13 @@ public class UserDetailsServiceImpl extends ServiceImpl<SpiderMapper, Spider> im
         LoginSpider loginSpider = (LoginSpider) authenticate.getPrincipal();
         Long id = loginSpider.getSpider().getId();
         String jwt = JwtUtil.createJWT(id.toString());
-        redisUtils.set(Constants.LOGIN_USER_KEY + id, JsonUtils.toJson(loginSpider));
+        try {
+            String compress = JwtUtil.compress(jwt);
+            logger.info("jwt compress :{}", compress);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        //redisUtils.set(Constants.LOGIN_USER_KEY + id, JsonUtils.toJson(loginSpider));
         return BaseResp.ok(new TokenInfo(jwt, Constants.TOKEN_EXPIRES_TIME));
     }
 

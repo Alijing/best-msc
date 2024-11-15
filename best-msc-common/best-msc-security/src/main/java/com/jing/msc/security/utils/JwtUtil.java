@@ -8,9 +8,14 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.Base64;
 import java.util.Date;
 import java.util.UUID;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 
 /**
  * JWT工具类
@@ -18,17 +23,18 @@ import java.util.UUID;
 public class JwtUtil {
 
     //有效期为
-    public static final Long JWT_TTL = 60 * 60 *1000L;// 60 * 60 *1000  一个小时
+    public static final Long JWT_TTL = 60 * 60 * 1000L;// 60 * 60 *1000  一个小时
     //设置秘钥明文
     public static final String JWT_KEY = "sangeng";
 
-    public static String getUUID(){
+    public static String getUUID() {
         String token = UUID.randomUUID().toString().replaceAll("-", "");
         return token;
     }
-    
+
     /**
      * 生成jtw
+     *
      * @param subject token中要存放的数据（json格式）
      * @return
      */
@@ -39,7 +45,8 @@ public class JwtUtil {
 
     /**
      * 生成jtw
-     * @param subject token中要存放的数据（json格式）
+     *
+     * @param subject   token中要存放的数据（json格式）
      * @param ttlMillis token超时时间
      * @return
      */
@@ -53,8 +60,8 @@ public class JwtUtil {
         SecretKey secretKey = generalKey();
         long nowMillis = System.currentTimeMillis();
         Date now = new Date(nowMillis);
-        if(ttlMillis==null){
-            ttlMillis=JwtUtil.JWT_TTL;
+        if (ttlMillis == null) {
+            ttlMillis = JwtUtil.JWT_TTL;
         }
         long expMillis = nowMillis + ttlMillis;
         Date expDate = new Date(expMillis);
@@ -69,6 +76,7 @@ public class JwtUtil {
 
     /**
      * 创建token
+     *
      * @param id
      * @param subject
      * @param ttlMillis
@@ -89,6 +97,7 @@ public class JwtUtil {
 
     /**
      * 生成加密后的秘钥 secretKey
+     *
      * @return
      */
     public static SecretKey generalKey() {
@@ -96,7 +105,7 @@ public class JwtUtil {
         SecretKey key = new SecretKeySpec(encodedKey, 0, encodedKey.length, "AES");
         return key;
     }
-    
+
     /**
      * 解析
      *
@@ -112,5 +121,29 @@ public class JwtUtil {
                 .getBody();
     }
 
+    public static String compress(String token) throws IOException {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        GZIPOutputStream gzipOutputStream = new GZIPOutputStream(outputStream);
+        gzipOutputStream.write(token.getBytes("UTF-8"));
+        gzipOutputStream.close();
+        byte[] compressedBytes = outputStream.toByteArray();
+        outputStream.close();
+        return new String(compressedBytes, "ISO-8859-1");
+    }
+
+    public static String decompress(String compressedToken) throws IOException {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(compressedToken.getBytes("ISO-8859-1"));
+        GZIPInputStream gzipInputStream = new GZIPInputStream(inputStream);
+        byte[] buffer = new byte[256];
+        int n;
+        while ((n = gzipInputStream.read(buffer)) >= 0) {
+            outputStream.write(buffer, 0, n);
+        }
+        gzipInputStream.close();
+        inputStream.close();
+        outputStream.close();
+        return new String(outputStream.toByteArray(), "UTF-8");
+    }
 
 }

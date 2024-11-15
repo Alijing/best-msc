@@ -150,6 +150,8 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
     public boolean addMenu(RouteRecord route) {
         Menu menu = BeanUtil.copyProperties(route, Menu.class);
         BeanUtil.copyProperties(route.getMeta(), menu);
+        menu.setParentId(Objects.isNull(route.getParentId()) ? 0L : route.getParentId());
+        menu.setPermKey("test:info:all");
         boolean update = save(menu);
         if (!update) {
             throw new CustomException(ResultEnum.SQL_EXCEPTION);

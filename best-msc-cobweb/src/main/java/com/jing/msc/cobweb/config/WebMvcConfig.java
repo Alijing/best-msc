@@ -82,7 +82,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 // 日期格式转换
                 SerializerFeature.WriteDateUseDateFormat,
                 // 避免循环引用
-                SerializerFeature.DisableCircularReferenceDetect
+                SerializerFeature.DisableCircularReferenceDetect,
+                // 较大整数javascript丢失精度问题
+                SerializerFeature.BrowserCompatible
         );
 
         // 将 FastJson 加到消息转换器中

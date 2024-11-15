@@ -21,6 +21,9 @@ public class RouteRecord implements Serializable {
     @Schema(description = "主键")
     private Long id;
 
+    @Schema(description = "上级Id")
+    private Long parentId;
+
     @Schema(description = "路由的名字，一定要填写不然使用<keep-alive>时会出现各种问题")
     private String name;
 
