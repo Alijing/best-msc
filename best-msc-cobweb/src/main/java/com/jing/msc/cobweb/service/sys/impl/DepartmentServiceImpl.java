@@ -1,5 +1,6 @@
 package com.jing.msc.cobweb.service.sys.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -9,10 +10,13 @@ import com.jing.msc.cobweb.entity.sys.vo.DepartmentNode;
 import com.jing.msc.cobweb.entity.sys.vo.DepartmentQuery;
 import com.jing.msc.cobweb.service.sys.DepartmentService;
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -36,7 +40,9 @@ public class DepartmentServiceImpl extends ServiceImpl<DepartmentMapper, Departm
         if (!Objects.isNull(query.getCurrentPage()) && !Objects.isNull(query.getPageSize())) {
             page = new Page<>(query.getCurrentPage(), query.getPageSize());
         }
-        query.setParentId(-1L);
+        if (StringUtils.isBlank(query.getName()) && Objects.isNull(query.getParentId())) {
+            query.setParentId(-1L);
+        }
         List<DepartmentNode> nodes = baseMapper.selectByParams(page, query);
         if (CollectionUtils.isEmpty(nodes)) {
             return page;
@@ -46,6 +52,46 @@ public class DepartmentServiceImpl extends ServiceImpl<DepartmentMapper, Departm
         }
         page.setRecords(nodes);
         return page;
+    }
+
+    @Override
+    public List<DepartmentNode> simpleList() {
+        QueryWrapper<Department> queryWrapper = new QueryWrapper<>();
+        queryWrapper.select("id", "name", "parent_id");
+        List<Department> allNodes = list(queryWrapper);
+        if (CollectionUtils.isEmpty(allNodes)) {
+            return Collections.emptyList();
+        }
+
+        List<DepartmentNode> nodes = new ArrayList<>();
+        for (Department item : allNodes) {
+            if (!Objects.equals(item.getParentId(), -1L)) {
+                continue;
+            }
+            DepartmentNode node = new DepartmentNode();
+            node.setId(item.getId());
+            node.setName(item.getName());
+            node.setParentId(item.getParentId());
+            node.setChildren(findChildren(node.getId(), allNodes));
+            nodes.add(node);
+        }
+
+        return nodes;
+    }
+
+    private List<DepartmentNode> findChildren(Long parentId, List<Department> allNodes) {
+        List<DepartmentNode> children = new ArrayList<>();
+        for (Department item : allNodes) {
+            if (Objects.equals(item.getParentId(), parentId)) {
+                DepartmentNode node = new DepartmentNode();
+                node.setId(item.getId());
+                node.setName(item.getName());
+                node.setParentId(item.getParentId());
+                node.setChildren(findChildren(node.getId(), allNodes));
+                children.add(node);
+            }
+        }
+        return children;
     }
 
     /**

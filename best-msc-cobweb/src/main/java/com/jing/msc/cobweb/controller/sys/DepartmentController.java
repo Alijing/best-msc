@@ -15,13 +15,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -48,7 +45,7 @@ public class DepartmentController {
     @WebLog(description = "查询单位组织信息")
     @Operation(summary = "查询单位组织信息")
     @ApiOperationSupport(author = "Jing", order = 1)
-    @PreAuthorize("@sgex.hasAuthority('sys:department:list')")
+    //@PreAuthorize("@sgex.hasAuthority('sys:department:list')")
     @PostMapping("/list")
     public BaseResp<List<DepartmentNode>> list(@RequestBody DepartmentQuery query) {
         IPage<DepartmentNode> departments = service.departmentTree(query);
@@ -62,11 +59,24 @@ public class DepartmentController {
         return ok;
     }
 
+    @WebLog(description = "查询单位组织简单信息")
+    @Operation(summary = "查询单位组织简单信息")
+    @ApiOperationSupport(author = "Jing", order = 1)
+    //@PreAuthorize("@sgex.hasAuthority('sys:department:list')")
+    @GetMapping("/simple/list")
+    public BaseResp<List<DepartmentNode>> simpleList() {
+        List<DepartmentNode> departments = service.simpleList();
+        if (CollectionUtils.isEmpty(departments)){
+            return BaseResp.ok(new ArrayList<>());
+        }
+        return BaseResp.ok(departments);
+    }
+
 
     @WebLog(description = "新增或编辑单位组织信息")
     @Operation(summary = "新增或编辑单位组织信息")
     @ApiOperationSupport(author = "Jing", order = 1)
-    @PreAuthorize("@sgex.hasAuthority('sys:department:update')")
+    //@PreAuthorize("@sgex.hasAuthority('sys:department:update')")
     @PostMapping("/update")
     public BaseResp<Long> update(@RequestBody Department department) {
         boolean update = service.saveOrUpdate(department);
@@ -79,7 +89,7 @@ public class DepartmentController {
     @WebLog(description = "删除单位组织信息")
     @Operation(summary = "删除单位组织信息")
     @ApiOperationSupport(author = "Jing", order = 1)
-    @PreAuthorize("@sgex.hasAuthority('sys:department:del')")
+    //@PreAuthorize("@sgex.hasAuthority('sys:department:del')")
     @PostMapping("/del")
     public BaseResp<Long> del(@RequestBody DepartmentQuery query) {
         if (CollectionUtils.isEmpty(query.getIds())) {

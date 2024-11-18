@@ -6,6 +6,8 @@ import com.jing.msc.cobweb.entity.sys.Department;
 import com.jing.msc.cobweb.entity.sys.vo.DepartmentNode;
 import com.jing.msc.cobweb.entity.sys.vo.DepartmentQuery;
 
+import java.util.List;
+
 /**
  * <p>
  * 服务类
@@ -18,7 +20,6 @@ import com.jing.msc.cobweb.entity.sys.vo.DepartmentQuery;
  */
 public interface DepartmentService extends IService<Department> {
 
-
     /**
      * 查询单位组织，以树形的结构返回
      *
@@ -26,5 +27,12 @@ public interface DepartmentService extends IService<Department> {
      * @return {@link IPage}<{@link DepartmentNode}>
      */
     IPage<DepartmentNode> departmentTree(DepartmentQuery query);
+
+    /**
+     * 查询单位简单组织，以树形的形式返回
+     *
+     * @return {@link List }<{@link DepartmentNode }>
+     */
+    List<DepartmentNode> simpleList();
 
 }
