@@ -103,6 +103,7 @@ hs_err_pid*
 # IntelliJ project files
 .idea
 *.iml
+*.ipr
 out
 gen
 ### Maven template
@@ -122,9 +123,11 @@ logs/
 /best-msc-binbin/src/main/resources/static/
 /best-msc-common/best-msc-generator/src/main/java/com/fullsee/
 /best-msc-common/best-msc-generator/src/main/java/com/jing/msc/
+/best-msc-common/best-msc-generator/src/main/resources/mapper/
 /best-msc-cobweb/src/test/
 /best-msc-ui/cobweb-ui/package-lock.json
 /best-msc-ui/cobweb-ui-v2/package-lock.json
 filed.sql
 update.sql
-samp.json
+samp.*
+task.json

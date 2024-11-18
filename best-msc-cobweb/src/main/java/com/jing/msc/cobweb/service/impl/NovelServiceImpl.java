@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.jing.common.core.base.BasePageResp;
 import com.jing.common.core.base.BaseResp;
 import com.jing.msc.cobweb.entity.Novel;
 import com.jing.msc.cobweb.entity.NovelChapter;
@@ -63,7 +64,7 @@ public class NovelServiceImpl extends ServiceImpl<NovelMapper, Novel> implements
         }
         IPage<Novel> page = new Page<>(novel.getCurrentPage(), novel.getPageSize());
         IPage<Novel> iPage = page(page, wrapper);
-        return BaseResp.ok(iPage.getRecords()).setCurrentPage(iPage.getCurrent()).setTotal(iPage.getTotal()).setPageSize(iPage.getSize());
+        return BasePageResp.ok(iPage.getRecords(), iPage.getTotal(), iPage.getCurrent(), iPage.getSize());
     }
 
     @Override

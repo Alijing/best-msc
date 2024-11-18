@@ -4,6 +4,7 @@ package com.jing.msc.cobweb.controller.video;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
+import com.jing.common.core.base.BasePageResp;
 import com.jing.common.core.base.BaseResp;
 import com.jing.common.log.aspect.WebLog;
 import com.jing.msc.cobweb.controller.NovelController;
@@ -44,7 +45,7 @@ public class VideoTasteController {
     @PostMapping("/list")
     public BaseResp<List<VideoTaste>> novels(@RequestBody VideoTasteQueryPara para) {
         IPage<VideoTaste> iPage = tasteService.tastes(para);
-        return BaseResp.ok(iPage.getRecords()).setCurrentPage(iPage.getCurrent()).setTotal(iPage.getTotal()).setPageSize(iPage.getSize());
+        return BasePageResp.ok(iPage.getRecords(), iPage.getTotal(), iPage.getCurrent(), iPage.getSize());
     }
 
     @WebLog(description = "新增 Taste 视频")

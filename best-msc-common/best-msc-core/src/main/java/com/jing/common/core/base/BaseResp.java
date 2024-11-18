@@ -22,20 +22,7 @@ public class BaseResp<T> implements Serializable {
 
     private T data;
 
-    /**
-     * 总共多少条记录
-     */
-    private Long total;
-    /**
-     * 当前页
-     */
-    private Long currentPage;
-    /**
-     * 每页条数
-     */
-    private Long pageSize;
-
-    private BaseResp() {
+    BaseResp() {
     }
 
     /**
@@ -188,33 +175,6 @@ public class BaseResp<T> implements Serializable {
 
     public BaseResp<T> setData(T data) {
         this.data = data;
-        return this;
-    }
-
-    public Long getTotal() {
-        return total;
-    }
-
-    public BaseResp<T> setTotal(Long total) {
-        this.total = total;
-        return this;
-    }
-
-    public Long getCurrentPage() {
-        return currentPage;
-    }
-
-    public BaseResp<T> setCurrentPage(Long currentPage) {
-        this.currentPage = currentPage;
-        return this;
-    }
-
-    public Long getPageSize() {
-        return pageSize;
-    }
-
-    public BaseResp<T> setPageSize(Long pageSize) {
-        this.pageSize = pageSize;
         return this;
     }
 

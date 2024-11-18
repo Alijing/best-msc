@@ -4,6 +4,7 @@ package com.jing.msc.cobweb.controller.sys;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
+import com.jing.common.core.base.BasePageResp;
 import com.jing.common.core.base.BaseResp;
 import com.jing.common.log.aspect.WebLog;
 import com.jing.msc.cobweb.entity.sys.Department;
@@ -52,11 +53,7 @@ public class DepartmentController {
         if (CollectionUtils.isEmpty(departments.getRecords())) {
             return BaseResp.ok();
         }
-        BaseResp<List<DepartmentNode>> ok = BaseResp.ok(departments.getRecords());
-        ok.setTotal(departments.getTotal());
-        ok.setCurrentPage(departments.getCurrent());
-        ok.setPageSize(departments.getSize());
-        return ok;
+        return BasePageResp.ok(departments.getRecords(), departments.getTotal(), departments.getCurrent(), departments.getSize());
     }
 
     @WebLog(description = "查询单位组织简单信息")
@@ -66,7 +63,7 @@ public class DepartmentController {
     @GetMapping("/simple/list")
     public BaseResp<List<DepartmentNode>> simpleList() {
         List<DepartmentNode> departments = service.simpleList();
-        if (CollectionUtils.isEmpty(departments)){
+        if (CollectionUtils.isEmpty(departments)) {
             return BaseResp.ok(new ArrayList<>());
         }
         return BaseResp.ok(departments);
