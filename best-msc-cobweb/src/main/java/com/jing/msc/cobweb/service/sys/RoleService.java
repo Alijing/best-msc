@@ -25,4 +25,10 @@ public interface RoleService extends IService<Role> {
      */
     IPage<Role> roleList(Role role, Long current, Long size);
 
+    /**
+     * 获取角色简单信息
+     *
+     * @return {@link List }<{@link Role }>
+     */
+    List<Role> simpleList();
 }

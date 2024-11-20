@@ -15,7 +15,7 @@ public class BasePage {
     /**
      * 当前页
      */
-    private Integer currentPage;
+    private Integer pageIndex;
     /**
      * 每页条数
      */
@@ -24,9 +24,9 @@ public class BasePage {
     public BasePage() {
     }
 
-    public BasePage(Integer total, Integer currentPage, Integer pageSize) {
+    public BasePage(Integer total, Integer pageIndex, Integer pageSize) {
         this.total = total;
-        this.currentPage = currentPage;
+        this.pageIndex = pageIndex;
         this.pageSize = pageSize;
     }
 
@@ -38,12 +38,12 @@ public class BasePage {
         this.total = total;
     }
 
-    public Integer getCurrentPage() {
-        return currentPage;
+    public Integer getPageIndex() {
+        return pageIndex;
     }
 
-    public void setCurrentPage(Integer currentPage) {
-        this.currentPage = currentPage;
+    public void setPageIndex(Integer pageIndex) {
+        this.pageIndex = pageIndex;
     }
 
     public Integer getPageSize() {

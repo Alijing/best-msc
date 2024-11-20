@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jing.msc.cobweb.mapper.sys.SpiderMapper">
+
+    <select id="selectByParams" resultType="com.jing.msc.cobweb.entity.sys.vo.SpiderInfo">
+        SELECT S.id, S.name, S.account, S.phone, S.create_time,
+        GROUP_CONCAT( DISTINCT R2.role_id) AS roleName,
+        GROUP_CONCAT( DISTINCT D.department_id) AS department
+        FROM SYS_SPIDER S
+        LEFT JOIN SYS_SPIDER_DEPARTMENT_REF D ON S.id = D.spider_id
+        LEFT JOIN SYS_SPIDER_ROLE_REF R2 ON S.id = R2.spider_id
+        WHERE S.logic_flag = 0 AND S.id <![CDATA[ <> ]]> -1
+        <if test="query.departmentId != null">
+            AND D.department_id = #{query.departmentId}
+        </if>
+        <if test="query.name != null">
+            AND S.name LIKE CONCAT('%',#{query.name},'%')
+        </if>
+        <if test="query.account != null">
+            AND S.account LIKE CONCAT('%',#{query.account},'%')
+        </if>
+        GROUP BY S.id, S.create_time
+        ORDER BY S.create_time DESC
+    </select>
+
+    <delete id="deleteSpiderDepartmentRef">
+        DELETE
+        FROM SYS_SPIDER_DEPARTMENT_REF
+        WHERE spider_id IN
+        <foreach item="item" index="index" collection="spiderId" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+    <delete id="deleteSpiderRoleRef">
+        DELETE
+        FROM SYS_SPIDER_ROLE_REF
+        WHERE spider_id IN
+        <foreach item="item" index="index" collection="spiderId" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+    <insert id="insertSpiderDepartmentRef">
+        INSERT INTO SYS_SPIDER_DEPARTMENT_REF(id, spider_id, department_id)
+        VALUES
+        <foreach collection="ref" item="item" separator=",">
+            (#{item.id}, #{item.spiderId}, #{item.departmentId})
+        </foreach>
+    </insert>
+
+    <insert id="insertSpiderRoleRef">
+        INSERT INTO SYS_SPIDER_ROLE_REF(id, spider_id, role_id)
+        VALUES
+        <foreach collection="ref" item="item" separator=",">
+            (#{item.id}, #{item.spiderId}, #{item.roleId})
+        </foreach>
+    </insert>
+
+</mapper>

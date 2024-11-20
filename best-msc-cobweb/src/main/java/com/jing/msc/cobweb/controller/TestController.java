@@ -3,7 +3,7 @@ package com.jing.msc.cobweb.controller;
 import com.alibaba.fastjson.JSON;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.jing.common.core.base.BaseResp;
-import com.jing.msc.cobweb.service.impl.SpiderServiceImpl;
+import com.jing.msc.cobweb.service.sys.impl.SpiderServiceImpl;
 import com.jing.msc.security.entity.Spider;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

@@ -37,8 +37,8 @@ public class DepartmentServiceImpl extends ServiceImpl<DepartmentMapper, Departm
     @Override
     public IPage<DepartmentNode> departmentTree(DepartmentQuery query) {
         IPage<DepartmentNode> page = new Page<>();
-        if (!Objects.isNull(query.getCurrentPage()) && !Objects.isNull(query.getPageSize())) {
-            page = new Page<>(query.getCurrentPage(), query.getPageSize());
+        if (!Objects.isNull(query.getPageIndex()) && !Objects.isNull(query.getPageSize())) {
+            page = new Page<>(query.getPageIndex(), query.getPageSize());
         }
         if (StringUtils.isBlank(query.getName()) && Objects.isNull(query.getParentId())) {
             query.setParentId(-1L);

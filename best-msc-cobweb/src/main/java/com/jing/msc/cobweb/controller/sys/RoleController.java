@@ -10,9 +10,12 @@ import com.jing.msc.cobweb.entity.sys.Role;
 import com.jing.msc.cobweb.service.sys.RoleService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -25,11 +28,24 @@ import javax.annotation.Resource;
 @RestController
 @ApiSupport(order = 2)
 @Tag(name = "角色相关接口", description = "角色相关接口描述")
-@RequestMapping("/role")
+@RequestMapping("/sys/role")
 public class RoleController {
 
     @Resource(name = "roleService")
     private RoleService service;
+
+    @WebLog(description = "查询角色简单信息")
+    @Operation(summary = "查询角色简单信息")
+    @ApiOperationSupport(author = "Jing", order = 1)
+    //@PreAuthorize("@sgex.hasAuthority('sys:department:list')")
+    @GetMapping("/simple/list")
+    public BaseResp<List<Role>> simpleList() {
+        List<Role> nodes = service.simpleList();
+        if (CollectionUtils.isEmpty(nodes)) {
+            return BaseResp.ok(new ArrayList<>());
+        }
+        return BaseResp.ok(nodes);
+    }
 
     @WebLog(description = "查询角色信息")
     @Operation(summary = "查询角色信息")

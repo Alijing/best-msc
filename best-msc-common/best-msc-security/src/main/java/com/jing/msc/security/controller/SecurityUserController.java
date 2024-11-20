@@ -22,7 +22,7 @@ import javax.annotation.Resource;
  */
 @RestController
 @ApiSupport(order = 1)
-@Tag(name = "用户接口", description = "用户接口描述")
+@Tag(name = "认证接口", description = "用户认证接口描述")
 @RequestMapping("security/user/")
 public class SecurityUserController {
 

@@ -6,11 +6,12 @@ import com.jing.common.core.base.BaseResp;
 import com.jing.common.core.constant.Constants;
 import com.jing.common.core.enums.ResultEnum;
 import com.jing.common.core.exception.CustomException;
+import com.jing.common.core.util.JsonUtils;
 import com.jing.common.core.util.RedisUtils;
 import com.jing.msc.security.entity.LoginSpider;
 import com.jing.msc.security.entity.Spider;
 import com.jing.msc.security.entity.TokenInfo;
-import com.jing.msc.security.mapper.SpiderMapper;
+import com.jing.msc.security.mapper.UserMapper;
 import com.jing.msc.security.service.SecurityUserService;
 import com.jing.msc.security.utils.JwtUtil;
 import org.slf4j.Logger;
@@ -43,7 +44,7 @@ import java.util.stream.Collectors;
  */
 @Service(value = "userDetailsService")
 @Transactional(rollbackFor = Exception.class, propagation = Propagation.NESTED)
-public class UserDetailsServiceImpl extends ServiceImpl<SpiderMapper, Spider> implements UserDetailsService, SecurityUserService {
+public class UserDetailsServiceImpl extends ServiceImpl<UserMapper, Spider> implements UserDetailsService, SecurityUserService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -69,7 +70,7 @@ public class UserDetailsServiceImpl extends ServiceImpl<SpiderMapper, Spider> im
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        //redisUtils.set(Constants.LOGIN_USER_KEY + id, JsonUtils.toJson(loginSpider));
+        redisUtils.set(Constants.LOGIN_USER_KEY + id, JsonUtils.toJson(loginSpider), Constants.TOKEN_EXPIRES_TIME);
         return BaseResp.ok(new TokenInfo(jwt, Constants.TOKEN_EXPIRES_TIME));
     }
 

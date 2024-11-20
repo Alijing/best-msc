@@ -34,7 +34,7 @@ public class VideoTasteServiceImpl extends ServiceImpl<VideoTasteMapper, VideoTa
         if (null != para.getPerformer()) {
             wrapper.like("performer", para.getPerformer());
         }
-        return page(new Page<>(para.getCurrentPage(), para.getPageSize()), wrapper);
+        return page(new Page<>(para.getPageIndex(), para.getPageSize()), wrapper);
     }
 
 }

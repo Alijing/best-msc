@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jing.msc.cobweb.mapper.sys.SpiderDepartmentRefMapper">
+
+    <select id="selectByParams" resultType="com.jing.msc.cobweb.entity.sys.SpiderDepartmentRef">
+        SELECT
+        id,
+        spider_id,
+        department_id
+        FROM
+        sys_spider_department_ref
+        <where>
+            <if test="departmentId != null">
+                AND department_id = #{departmentId}
+            </if>
+        </where>
+    </select>
+
+</mapper>

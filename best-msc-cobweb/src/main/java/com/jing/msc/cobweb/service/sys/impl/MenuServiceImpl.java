@@ -15,6 +15,7 @@ import com.jing.msc.cobweb.enums.sys.RoleEnum;
 import com.jing.msc.cobweb.mapper.sys.MenuMapper;
 import com.jing.msc.cobweb.service.sys.MenuService;
 import com.jing.msc.security.entity.LoginSpider;
+import com.jing.msc.security.utils.UserUtil;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -92,12 +93,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
 
     @Override
     public List<RouteRecord> simpleInfo(Menu query) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (Objects.isNull(authentication)) {
-            throw new CustomException(ResultEnum.UN_Login);
-        }
-        LoginSpider principal = (LoginSpider) authentication.getPrincipal();
-        List<MenuItem> menuItems = baseMapper.selectSimpleInfo(query, Objects.isNull(principal.getLang()) ? "zh-CN" : principal.getLang());
+        List<MenuItem> menuItems = baseMapper.selectSimpleInfo(query, UserUtil.getLang());
         if (CollectionUtils.isNotEmpty(menuItems)) {
             return buildRoute(0L, menuItems);
         }

@@ -13,7 +13,7 @@ import java.util.List;
  * @date : 2021/4/23 14:42
  * @description :
  */
-public interface SpiderMapper extends BaseMapper<Spider> {
+public interface UserMapper extends BaseMapper<Spider> {
 
 
     /**

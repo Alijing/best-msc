@@ -7,11 +7,14 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jing.msc.cobweb.entity.sys.Role;
 import com.jing.msc.cobweb.mapper.sys.RoleMapper;
 import com.jing.msc.cobweb.service.sys.RoleService;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -36,6 +39,19 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
             wrapper.like("name", role.getName());
         }
         return page(page, wrapper);
+    }
+
+    @Override
+    public List<Role> simpleList() {
+        QueryWrapper<Role> query = new QueryWrapper<>();
+        query.select("id", "name");
+        query.eq("status", 0);
+        query.orderByDesc("create_time");
+        List<Role> list = list(query);
+        if (CollectionUtils.isEmpty(list)) {
+            return Collections.emptyList();
+        }
+        return list;
     }
 
 }

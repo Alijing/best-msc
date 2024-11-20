@@ -62,7 +62,7 @@ public class NovelServiceImpl extends ServiceImpl<NovelMapper, Novel> implements
         if (null != novel.getName()) {
             wrapper.like("name", novel.getName());
         }
-        IPage<Novel> page = new Page<>(novel.getCurrentPage(), novel.getPageSize());
+        IPage<Novel> page = new Page<>(novel.getPageIndex(), novel.getPageSize());
         IPage<Novel> iPage = page(page, wrapper);
         return BasePageResp.ok(iPage.getRecords(), iPage.getTotal(), iPage.getCurrent(), iPage.getSize());
     }

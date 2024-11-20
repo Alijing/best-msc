@@ -1,6 +1,7 @@
 package com.jing.msc.cobweb.entity.sys;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -12,39 +13,28 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * <p>
- * 系统用户与角色关联表
- * </p>
- *
- * @author jing
- * @since 2023-07-21 17:33:12
+ * @author : jing
+ * @since : 2024/11/18 16:21
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("sys_spider_role_ref")
-@Tag(name = "系统用户", description = "系统用户与角色关联表")
-public class SpiderRoleRef implements Serializable {
+@TableName("sys_spider_department_ref")
+@Tag(name = "用户与部门关联表", description = "用户与部门关联表")
+public class SpiderDepartmentRef implements Serializable {
 
-    private static final long serialVersionUID = -8198330381285410082L;
+    private static final long serialVersionUID = -8375283031365517955L;
 
     @Schema(description = "主键")
     @TableId(value = "id", type = IdType.ASSIGN_ID)
     private Long id;
 
     @Schema(name = "用户Id")
-    @TableId(value = "spider_id", type = IdType.ASSIGN_ID)
+    @TableField(value = "spider_id")
     private Long spiderId;
 
     @Schema(name = "角色Id")
-    @TableId(value = "role_id", type = IdType.ASSIGN_ID)
-    private Long roleId;
+    @TableField(value = "department_id")
+    private Long departmentId;
 
-    @Override
-    public String toString() {
-        return "SpiderRoleRef{" +
-                "spiderId=" + spiderId +
-                ", roleId=" + roleId +
-                "}";
-    }
 }

@@ -1,6 +1,9 @@
-package com.jing.msc.cobweb.service;
+package com.jing.msc.cobweb.service.sys;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.jing.msc.cobweb.entity.sys.vo.SpiderInfo;
+import com.jing.msc.cobweb.entity.sys.vo.SpiderQueryParam;
 import com.jing.msc.cobweb.entity.test.ResGroup;
 import com.jing.msc.security.entity.Spider;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,6 +18,32 @@ import java.util.List;
  * @description : 系统登录用户相关服务类
  */
 public interface SpiderService extends IService<Spider> {
+
+    /**
+     * 分页查询
+     *
+     * @param query 查询参数
+     * @return {@link IPage }<{@link SpiderInfo }>
+     */
+    IPage<SpiderInfo> list(SpiderQueryParam query);
+
+    /**
+     * 新增或修改
+     *
+     * @param target 用户信息
+     * @return {@link IPage }<{@link SpiderInfo }>
+     */
+    boolean spiderSaveOrUpdate(SpiderInfo target);
+
+    /**
+     * 删除
+     *
+     * @param ids id集合
+     * @return boolean
+     */
+    boolean delete(List<Long> ids);
+
+    //---------------------------------------------------------------------------------------
 
     /**
      * 读取 excel 文件中的数据
@@ -47,4 +76,5 @@ public interface SpiderService extends IService<Spider> {
      * @date 2023/5/8 16:44
      */
     void generateSql(int startId, int targetNodeId, int fieldNum);
+
 }
