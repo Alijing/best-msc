@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Data;
 
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -28,14 +29,17 @@ public class Role implements Serializable {
     @TableId(value = "id", type = IdType.ASSIGN_ID)
     private Long id;
 
+    @NotEmpty
     @Schema(description = "角色名称")
     @TableField("name")
     private String name;
 
+    @NotEmpty
     @Schema(description = "角色编码")
     @TableField("code")
     private String code;
 
+    @NotEmpty
     @Schema(description = "状态：0：可用，1：禁用")
     @TableField("status")
     private RoleStatusEnum status;
@@ -61,7 +65,7 @@ public class Role implements Serializable {
     private LocalDateTime revisionTime;
 
     @Schema(description = "数据逻辑标识（0：正常，1：已删除）默认：0")
-    @TableField("logic_flag")
+    @TableLogic
     private Integer logicFlag;
 
     @Schema(description = "乐观锁")
@@ -75,6 +79,7 @@ public class Role implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", code='" + code + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
 }

@@ -5,7 +5,8 @@ import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.jing.common.core.base.BaseResp;
 import com.jing.common.log.aspect.WebLog;
-import com.jing.msc.cobweb.entity.sys.Menu;
+import com.jing.msc.cobweb.entity.sys.vo.CascaderDictItem;
+import com.jing.msc.cobweb.entity.sys.vo.RoleMenuPerm;
 import com.jing.msc.cobweb.entity.sys.vo.RouteRecord;
 import com.jing.msc.cobweb.service.sys.MenuService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -76,9 +77,22 @@ public class MenuController {
     @Operation(summary = "查询所有菜单简单信息")
     @ApiOperationSupport(author = "Jing", order = 6)
     @GetMapping("/info/simple")
-    public BaseResp<List<RouteRecord>> simpleList() {
-        return BaseResp.ok(service.simpleInfo(new Menu()));
+    public BaseResp<List<CascaderDictItem>> simpleList(@RequestParam(value = "all", required = false) boolean all,
+                                                       @RequestParam(value = "current", required = false) boolean current,
+                                                       @RequestParam(value = "permission", required = false) boolean permission) {
+        return BaseResp.ok(service.simpleInfo(all, current, permission));
     }
+
+    @WebLog(description = "查询当前登录人菜单权限")
+    @Operation(summary = "查询当前登录人菜单权限")
+    @ApiOperationSupport(author = "Jing", order = 7)
+    @GetMapping("/current/permission")
+    public BaseResp<List<RoleMenuPerm>> currentPermission() {
+        return BaseResp.ok(service.currentPermission());
+    }
+
+
+    // ----------------------------------------------------------------------------------------------------------------
 
     @WebLog(description = "获取当前用户的菜单")
     @Operation(summary = "获取当前用户的菜单")

@@ -5,8 +5,6 @@ import com.alibaba.fastjson.serializer.SerializeConfig;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.jing.common.core.serialize.LocalDateTimeDeserializer;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -14,8 +12,6 @@ import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.ResourceHttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
-import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -41,16 +37,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
         converters.add(new ResourceHttpMessageConverter());
         converters.add(new AllEncompassingFormHttpMessageConverter());
         converters.add(fastJsonHttpMessageConverter());
-    }
-
-    @Override
-    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-        ObjectMapper mapper = Jackson2ObjectMapperBuilder.json()
-                .featuresToDisable(
-                        SerializationFeature.WRITE_DATES_AS_TIMESTAMPS
-                )
-                .build();
-        converters.add(new MappingJackson2HttpMessageConverter(mapper));
     }
 
     private FastJsonHttpMessageConverter fastJsonHttpMessageConverter() {
@@ -84,7 +70,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 // 避免循环引用
                 SerializerFeature.DisableCircularReferenceDetect,
                 // 较大整数javascript丢失精度问题
-                SerializerFeature.BrowserCompatible
+                SerializerFeature.BrowserCompatible,
+                // 枚举转字符串
+                SerializerFeature.WriteEnumUsingToString
         );
 
         // 将 FastJson 加到消息转换器中

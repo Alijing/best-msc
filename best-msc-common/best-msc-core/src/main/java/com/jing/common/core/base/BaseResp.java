@@ -57,6 +57,22 @@ public class BaseResp<T> implements Serializable {
     }
 
     /**
+     * 通用 返回成功
+     *
+     * @return 响应结果
+     * @author jing
+     * @date 2022/5/31 10:27
+     */
+    public static <T> BaseResp<T> ok(T data, String message) {
+        BaseResp<T> br = new BaseResp<>();
+        br.setSuccess(ResultEnum.SUCCESS.getSuccess());
+        br.setCode(ResultEnum.SUCCESS.getCode());
+        br.setMessage(message);
+        br.setData(data);
+        return br;
+    }
+
+    /**
      * 通用返回失败，未知错误
      *
      * @return 失败，未知错误

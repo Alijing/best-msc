@@ -4,6 +4,9 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.jing.msc.cobweb.entity.sys.Menu;
 import com.jing.msc.cobweb.entity.sys.MenuName;
 import com.jing.msc.cobweb.entity.sys.vo.MenuItem;
+import com.jing.msc.cobweb.entity.sys.vo.MenuSimpleInfo;
+import com.jing.msc.cobweb.entity.sys.vo.RoleMenuPerm;
+import com.jing.msc.cobweb.entity.sys.vo.RouteRecord;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -23,10 +26,9 @@ public interface MenuMapper extends BaseMapper<Menu> {
     /**
      * 查询简单菜单信息
      *
-     * @param query 查询条件
      * @return {@link List }<{@link MenuItem }>
      */
-    List<MenuItem> selectSimpleInfo(@Param("query") Menu query, @Param("lang") String lang);
+    List<MenuSimpleInfo> selectSimpleInfo(@Param("lang") String lang);
 
     /**
      * 根据角色id查询菜单
@@ -35,7 +37,12 @@ public interface MenuMapper extends BaseMapper<Menu> {
      * @param lang    语言
      * @return {@link List }<{@link MenuItem }>
      */
-    List<MenuItem> selectByRoleId(@Param("roleId") List<Long> roleIds, @Param("lang") String lang);
+    List<MenuItem> selectByRole(
+            @Param("menuId") List<Long> menuId,
+            @Param("roleId") List<Long> roleIds,
+            @Param("roleCodes") List<String> roleCodes,
+            @Param("lang") String lang
+    );
 
     /**
      * 删除菜单名称
@@ -58,5 +65,28 @@ public interface MenuMapper extends BaseMapper<Menu> {
      * @return {@link List }<{@link MenuName }>
      */
     List<MenuName> selectMenuName(@Param("id") Long id);
+
+    /**
+     * 根据角色查询菜单id
+     *
+     * @param roleIds   角色id
+     * @param roleCodes 角色编码
+     * @return {@link List }<{@link Long }>
+     */
+    List<Long> menuIdsByRole(@Param("roleIds") List<Long> roleIds, @Param("roleCodes") List<String> roleCodes);
+
+    /**
+     * 查询当前登录人角色与菜单的权限
+     *
+     * @param roleIds   角色id
+     * @param roleCodes 角色编码
+     * @return {@link List }<{@link RouteRecord }>
+     */
+    List<RoleMenuPerm> selectPermissionsByRole(
+            @Param("roleIds") List<Long> roleIds,
+            @Param("roleCodes") List<String> roleCodes,
+            @Param("menuIds") List<Long> menuIds
+    );
+
 
 }

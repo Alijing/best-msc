@@ -2,8 +2,7 @@ package com.jing.msc.cobweb.service.sys;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.jing.msc.cobweb.entity.sys.Menu;
-import com.jing.msc.cobweb.entity.sys.vo.MenuItem;
-import com.jing.msc.cobweb.entity.sys.vo.RouteRecord;
+import com.jing.msc.cobweb.entity.sys.vo.*;
 
 import java.util.List;
 
@@ -30,10 +29,12 @@ public interface MenuService extends IService<Menu> {
     /**
      * 查询简单菜单信息
      *
-     * @param query 查询条件
+     * @param all        是否查询所有菜单
+     * @param current    是否查询当前用户菜单
+     * @param permission 是否查询当前用户菜单权限
      * @return {@link List }<{@link MenuItem }>
      */
-    List<RouteRecord> simpleInfo(Menu query);
+    List<CascaderDictItem> simpleInfo(boolean all, boolean current, boolean permission);
 
     /**
      * 获取当前用户菜单
@@ -66,5 +67,42 @@ public interface MenuService extends IService<Menu> {
      * @return boolean 是否成功
      */
     boolean deleteMenu(List<Long> ids);
+
+    /**
+     * 查询当前登录人菜单权限
+     *
+     * @return {@link List }<{@link RouteRecord }>
+     */
+    List<RoleMenuPerm> currentPermission();
+
+
+    /**
+     * 根据角色查询菜单id
+     *
+     * @param roleId   角色Id
+     * @param roleCode 角色编码
+     * @return {@link List }<{@link Long }>
+     */
+    List<Long> menuIdsByRole(List<Long> roleId, List<String> roleCode);
+
+
+    /**
+     * 根据角色查询菜单权限
+     *
+     * @param roleId   角色Id
+     * @param roleCode 角色编码
+     * @return {@link List }<{@link RoleMenuPerm }>
+     */
+    List<RoleMenuPerm> menuPermsByRole(List<Long> roleId, List<String> roleCode);
+
+    /**
+     * 根据角色查询菜单信息
+     *
+     * @param roleId     角色Id
+     * @param roleCode   角色编码
+     * @param permission 是否查询权限
+     * @return {@link List }<{@link MenuSimpleInfo }>
+     */
+    List<MenuSimpleInfo> menuByRole(List<Long> roleId, List<String> roleCode, Boolean permission);
 
 }
