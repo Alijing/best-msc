@@ -69,8 +69,8 @@ public class MenuController {
     @Operation(summary = "查询所有菜单信息")
     @ApiOperationSupport(author = "Jing", order = 5)
     @GetMapping("/info/list")
-    public BaseResp<List<RouteRecord>> list() {
-        return BaseResp.ok(service.currentUserMenu());
+    public BaseResp<List<RouteRecord>> list(@RequestParam(value = "name", required = false) String name) {
+        return BaseResp.ok(service.menuList(name));
     }
 
     @WebLog(description = "查询所有菜单简单信息")

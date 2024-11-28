@@ -37,6 +37,14 @@ public interface MenuService extends IService<Menu> {
     List<CascaderDictItem> simpleInfo(boolean all, boolean current, boolean permission);
 
     /**
+     * 获取菜单列表
+     *
+     * @param name 菜单名称
+     * @return 菜单信息
+     */
+    List<RouteRecord> menuList(String name);
+
+    /**
      * 获取当前用户菜单
      *
      * @return 菜单信息

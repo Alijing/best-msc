@@ -86,42 +86,6 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
         }
     }
 
-    @Override
-    public List<CascaderDictItem> simpleInfo(boolean all, boolean current, boolean permission) {
-        // 如果是超级管理员，则查询所有菜单
-        if (-1 == UserUtil.getUserId()) {
-            List<MenuSimpleInfo> menuItems = baseMapper.selectSimpleInfo(UserUtil.getLang());
-            if (CollectionUtils.isEmpty(menuItems)) {
-                return Collections.emptyList();
-            }
-            return buildCascaderDictItem(0L, menuItems);
-        }
-
-        if (current) {
-            List<String> role = UserUtil.getRole();
-            if (CollectionUtils.isEmpty(role)) {
-                throw new CustomException(ResultEnum.ROLE_NOT_SET);
-            }
-            List<MenuSimpleInfo> distinct = simpleMenuItemByRole(null, role, permission);
-            return buildCascaderDictItem(0L, distinct);
-        }
-
-        return Collections.emptyList();
-    }
-
-    private List<MenuSimpleInfo> findParent(Long parentId, List<MenuSimpleInfo> menuItems) {
-        List<MenuSimpleInfo> tar = new ArrayList<>();
-        for (MenuSimpleInfo it : menuItems) {
-            if (!Objects.equals(it.getId(), parentId)) {
-                continue;
-            }
-            tar.add(it);
-            tar.addAll(findParent(it.getParentId(), menuItems));
-        }
-        return tar;
-    }
-
-
     private List<Menu> findChildren(List<MenuItem> children, Long parentId) {
         List<Menu> temp = new ArrayList<>();
         for (MenuItem it1 : children) {
@@ -140,20 +104,160 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
         return temp;
     }
 
+    // ***********************************************************************************************************
+
     @Override
-    public List<RouteRecord> currentUserMenu() {
-        List<String> roleCodes = new ArrayList<>(UserUtil.getRole());
+    public List<CascaderDictItem> simpleInfo(boolean all, boolean current, boolean permission) {
         // 如果是超级管理员，则查询所有菜单
         if (-1 == UserUtil.getUserId()) {
-            roleCodes = null;
+            List<MenuSimpleInfo> menuItems = baseMapper.selectSimpleInfo(UserUtil.getLang());
+            if (CollectionUtils.isEmpty(menuItems)) {
+                return Collections.emptyList();
+            }
+            return buildCascaderDictItem(0L, menuItems);
         }
-        List<MenuItem> menuItems = baseMapper.selectByRole(null, null, roleCodes, UserUtil.getLang());
 
+        if (current) {
+            List<String> role = UserUtil.getRole();
+            if (CollectionUtils.isEmpty(role)) {
+                throw new CustomException(ResultEnum.ROLE_NOT_SET);
+            }
+
+            List<Long> curMenuIds = menuIdsByRole(null, role);
+            if (CollectionUtils.isEmpty(curMenuIds)) {
+                return Collections.emptyList();
+            }
+
+            List<MenuItem> menuItems = buildTreeAllNode(curMenuIds, null, role, permission);
+            if (CollectionUtils.isEmpty(menuItems)) {
+                return Collections.emptyList();
+            }
+
+            List<MenuSimpleInfo> distinct = new ArrayList<>();
+            for (MenuItem item : menuItems) {
+                MenuSimpleInfo msi = new MenuSimpleInfo();
+                BeanUtil.copyProperties(item, msi);
+                distinct.add(msi);
+            }
+            return buildCascaderDictItem(0L, distinct);
+        }
+
+        return Collections.emptyList();
+    }
+
+    private List<CascaderDictItem> buildCascaderDictItem(long parentId, List<MenuSimpleInfo> menuItems) {
+        if (CollectionUtils.isEmpty(menuItems)) {
+            return Collections.emptyList();
+        }
+        List<CascaderDictItem> dictItems = new ArrayList<>();
+        for (MenuSimpleInfo item : menuItems) {
+            if (!Objects.equals(item.getParentId(), parentId)) {
+                continue;
+            }
+            CascaderDictItem dict = new CascaderDictItem();
+            BeanUtil.copyProperties(item, dict);
+            dict.setChildren(buildCascaderDictItem(item.getId(), menuItems));
+            dictItems.add(dict);
+        }
+        return dictItems;
+    }
+
+    @Override
+    public List<RouteRecord> menuList(String name) {
+        Menu me = new Menu();
+        me.setName(name);
+        List<Long> collect = baseMapper.menuIdByParam(me, UserUtil.getLang());
+        if (CollectionUtils.isEmpty(collect)) {
+            return Collections.emptyList();
+        }
+        List<MenuItem> menuItems = buildTreeAllNode(collect, null, null, null);
+        if (CollectionUtils.isEmpty(menuItems)) {
+            return Collections.emptyList();
+        }
+        return buildRoute(0L, menuItems);
+    }
+
+    @Override
+    public List<RouteRecord> currentUserMenu() {
+        // 如果是超级管理员，则查询所有菜单
+        if (-1 == UserUtil.getUserId()) {
+            List<MenuItem> menuItems = baseMapper.selectMenuInfo(UserUtil.getLang());
+            return buildRoute(0L, menuItems);
+        }
+
+        List<String> roleCodes = new ArrayList<>(UserUtil.getRole());
+        List<Long> curMenuIds = menuIdsByRole(null, roleCodes);
+        if (CollectionUtils.isEmpty(curMenuIds)) {
+            return Collections.emptyList();
+        }
+
+        List<MenuItem> tarNodes = buildTreeAllNode(curMenuIds, null, null, null);
+        if (CollectionUtils.isEmpty(tarNodes)) {
+            return Collections.emptyList();
+        }
+        return buildRoute(0L, tarNodes);
+    }
+
+    /**
+     * 查询 当前角色有权限的菜单 并查询其所有上级菜单，以便构建菜单树
+     *
+     * @param roleIds    角色id
+     * @param roleCodes  角色编码
+     * @param permission 是否查询权限
+     * @return {@link List }<{@link MenuItem }>
+     */
+    private List<MenuItem> buildTreeAllNode(List<Long> curMenuIds, List<Long> roleIds, List<String> roleCodes, Boolean permission) {
+        List<MenuItem> menuItems = baseMapper.selectMenuInfo(UserUtil.getLang());
         if (CollectionUtils.isEmpty(menuItems)) {
             return Collections.emptyList();
         }
 
-        return buildRoute(0L, menuItems);
+        List<RoleMenuPerm> roleMenuPerms = new ArrayList<>();
+        if (Objects.nonNull(permission) && permission) {
+            roleMenuPerms = baseMapper.selectPermissionsByRole(roleIds, roleCodes, null);
+        }
+
+        List<MenuItem> tar = new ArrayList<>();
+        for (MenuItem it : menuItems) {
+            if (CollectionUtils.isEmpty(curMenuIds)) {
+                break;
+            }
+            if (!curMenuIds.contains(it.getId())) {
+                continue;
+            }
+            curMenuIds.remove(it.getId());
+
+            if (Objects.nonNull(permission) && permission) {
+                it.setPermission(findPermission(it.getId(), roleMenuPerms));
+            }
+
+            tar.add(it);
+            List<MenuItem> parent = findParent(it.getParentId(), menuItems);
+            if (CollectionUtils.isEmpty(parent)) {
+                continue;
+            }
+
+            if (Objects.nonNull(permission) && permission) {
+                for (MenuItem pt : parent) {
+                    pt.setPermission(findPermission(pt.getId(), roleMenuPerms));
+                }
+            }
+
+            tar.addAll(parent);
+        }
+        return tar.stream().distinct().collect(Collectors.toList());
+    }
+
+    private List<MenuItem> findParent(Long parentId, List<MenuItem> menuItems) {
+        List<MenuItem> tar = new ArrayList<>();
+        for (MenuItem it : menuItems) {
+            if (!Objects.equals(it.getId(), parentId)) {
+                continue;
+            }
+            tar.add(it);
+            tar.addAll(findParent(it.getParentId(), menuItems));
+        }
+        return tar;
     }
 
     @Override
@@ -264,50 +368,24 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
         if (CollectionUtils.isEmpty(roleId) && CollectionUtils.isEmpty(roleCode)) {
             throw new CustomException(ResultEnum.PARAM_ERROR);
         }
-        List<MenuSimpleInfo> menuSimpleInfos = simpleMenuItemByRole(roleId, roleCode, permission);
-        return simpleMenuInfoTree(0L, menuSimpleInfos);
-    }
 
-    private List<MenuSimpleInfo> simpleMenuItemByRole(List<Long> roleId, List<String> roleCode, Boolean permission) {
         List<Long> curMenuIds = menuIdsByRole(roleId, roleCode);
         if (CollectionUtils.isEmpty(curMenuIds)) {
             return Collections.emptyList();
         }
 
-        List<MenuSimpleInfo> menuItems = baseMapper.selectSimpleInfo(UserUtil.getLang());
+        List<MenuItem> menuItems = buildTreeAllNode(curMenuIds, roleId, roleCode, permission);
         if (CollectionUtils.isEmpty(menuItems)) {
             return Collections.emptyList();
         }
-        List<RoleMenuPerm> roleMenuPerms = new ArrayList<>();
-        if (Objects.nonNull(permission) && permission) {
-            roleMenuPerms = baseMapper.selectPermissionsByRole(roleId, roleCode, null);
+
+        List<MenuSimpleInfo> menuSimpleInfos = new ArrayList<>();
+        for (MenuItem item : menuItems) {
+            MenuSimpleInfo msi = new MenuSimpleInfo();
+            BeanUtil.copyProperties(item, msi);
+            menuSimpleInfos.add(msi);
         }
-
-        List<MenuSimpleInfo> tar = new ArrayList<>();
-        for (MenuSimpleInfo it : menuItems) {
-            if (CollectionUtils.isEmpty(curMenuIds)) {
-                break;
-            }
-            if (!curMenuIds.contains(it.getId())) {
-                continue;
-            }
-            curMenuIds.remove(it.getId());
-
-            it.setPermission(findPermission(it.getId(), roleMenuPerms));
-
-            tar.add(it);
-            List<MenuSimpleInfo> parent = findParent(it.getParentId(), menuItems);
-            if (CollectionUtils.isEmpty(parent)) {
-                continue;
-            }
-
-            for (MenuSimpleInfo pt : parent) {
-                pt.setPermission(findPermission(pt.getId(), roleMenuPerms));
-            }
-
-            tar.addAll(parent);
-        }
-        return tar.stream().distinct().collect(Collectors.toList());
+        return simpleMenuInfoTree(0L, menuSimpleInfos);
     }
 
     private String findPermission(long menuId, List<RoleMenuPerm> roleMenuPerms) {
@@ -362,23 +440,6 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
             routes.add(routeRecord);
         }
         return routes;
-    }
-
-    private List<CascaderDictItem> buildCascaderDictItem(long parentId, List<MenuSimpleInfo> menuItems) {
-        if (CollectionUtils.isEmpty(menuItems)) {
-            return Collections.emptyList();
-        }
-        List<CascaderDictItem> dictItems =  new ArrayList<>();
-        for (MenuSimpleInfo item : menuItems) {
-            if (!Objects.equals(item.getParentId(), parentId)) {
-                continue;
-            }
-            CascaderDictItem dict = new CascaderDictItem();
-            BeanUtil.copyProperties(item, dict);
-            dict.setChildren(buildCascaderDictItem(item.getId(), menuItems));
-            dictItems.add(dict);
-        }
-        return dictItems;
     }
 
 }

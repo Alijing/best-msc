@@ -25,9 +25,6 @@ public class MenuSimpleInfo {
     @Schema(description = "菜单名称")
     private String name;
 
-    @Schema(description = "菜单路径")
-    private String path;
-
     @Schema(description = "菜单权限")
     private String permission;
 

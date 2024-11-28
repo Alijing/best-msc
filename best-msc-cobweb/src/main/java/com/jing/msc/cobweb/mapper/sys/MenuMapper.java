@@ -31,18 +31,20 @@ public interface MenuMapper extends BaseMapper<Menu> {
     List<MenuSimpleInfo> selectSimpleInfo(@Param("lang") String lang);
 
     /**
-     * 根据角色id查询菜单
+     * 通过参数查询菜单id
      *
-     * @param roleIds 角色id
-     * @param lang    语言
+     * @param qw 菜单参数
+     * @return {@link List }<{@link Long }>
+     */
+    List<Long> menuIdByParam(@Param("qw") Menu qw, @Param("lang") String lang);
+
+    /**
+     * 根据角色查询菜单
+     *
+     * @param lang 语言
      * @return {@link List }<{@link MenuItem }>
      */
-    List<MenuItem> selectByRole(
-            @Param("menuId") List<Long> menuId,
-            @Param("roleId") List<Long> roleIds,
-            @Param("roleCodes") List<String> roleCodes,
-            @Param("lang") String lang
-    );
+    List<MenuItem> selectMenuInfo(@Param("lang") String lang);
 
     /**
      * 删除菜单名称
