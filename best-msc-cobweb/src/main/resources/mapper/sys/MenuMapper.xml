@@ -41,11 +41,11 @@
                M.status,
                M.creator_id,
                M.create_time,
+               M.sort,
                MN.name AS title
         FROM sys_menu M
                  LEFT JOIN sys_menu_name MN ON M.id = MN.menu_id
         WHERE M.logic_flag = 0
-          AND M.status = 0
           AND MN.lang = #{lang}
         GROUP BY M.id, M.sort
         ORDER BY M.sort

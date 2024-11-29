@@ -434,11 +434,14 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements Me
             RouteMetaCustom meta = new RouteMetaCustom();
             BeanUtil.copyProperties(item, meta);
             routeRecord.setMeta(meta);
-            routeRecord.setChildren(buildRoute(item.getId(), menuItems));
+            List<RouteRecord> children = buildRoute(item.getId(), menuItems);
+            children.sort(Comparator.comparing(RouteRecord::getSort));
+            routeRecord.setChildren(children);
             List<MenuName> menuNames = baseMapper.selectMenuName(item.getId());
             routeRecord.setI18ns(menuNames);
             routes.add(routeRecord);
         }
+        routes.sort(Comparator.comparing(RouteRecord::getSort));
         return routes;
     }
 

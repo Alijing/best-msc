@@ -65,6 +65,12 @@ public class MenuItem implements Serializable {
     @Schema(description = "设置为true即使hidden为true，也依然可以进行路由跳转(默认 false)")
     private Boolean canTo;
 
+    @Schema(description = "状态，0：可用，1：禁用")
+    private Integer status;
+
+    @Schema(description = "排序")
+    private Double sort;
+
     @Schema(description = "['edit','add', 'delete']    设置该路由的权限")
     private String permission;
 

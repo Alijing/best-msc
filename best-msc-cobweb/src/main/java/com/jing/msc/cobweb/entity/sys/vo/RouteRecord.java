@@ -36,6 +36,12 @@ public class RouteRecord implements Serializable {
     @Schema(description = "前端组件地址")
     private String component;
 
+    @Schema(description = "状态，0：可用，1：禁用")
+    private Integer status;
+
+    @Schema(description = "排序")
+    private Double sort;
+
     @Schema(description = "路由自定义属性")
     private RouteMetaCustom meta;
 
