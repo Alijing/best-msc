@@ -1,7 +1,7 @@
 package com.jing.msc.cobweb.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.jing.msc.cobweb.entity.Novel;
+import com.jing.msc.cobweb.entity.book.Novel;
 
 /**
  * @author : jing

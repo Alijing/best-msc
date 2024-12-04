@@ -3,7 +3,7 @@ package com.jing.msc.cobweb.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.jing.common.core.base.BaseResp;
-import com.jing.msc.cobweb.entity.Novel;
+import com.jing.msc.cobweb.entity.book.Novel;
 import com.jing.msc.cobweb.entity.vo.NovelVo;
 
 import javax.servlet.http.HttpServletResponse;
@@ -31,12 +31,12 @@ public interface NovelService extends IService<Novel> {
     /**
      * 通过 id 批量删除
      *
-     * @param novel 待删除的 id
+     * @param ids 待删除的 id
      * @return 是否成功
      * @author jing
      * @date 2023/3/31 16:37
      */
-    BaseResp<Boolean> batchDelete(NovelVo novel);
+    BaseResp<Boolean> batchDelete(List<Long> ids);
 
     /**
      * 下载小说

@@ -7,7 +7,7 @@ import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.jing.common.core.base.BasePageResp;
 import com.jing.common.core.base.BaseResp;
 import com.jing.common.log.aspect.WebLog;
-import com.jing.msc.cobweb.controller.NovelController;
+import com.jing.msc.cobweb.controller.book.NovelController;
 import com.jing.msc.cobweb.entity.video.VideoTaste;
 import com.jing.msc.cobweb.entity.video.vo.VideoTasteQueryPara;
 import com.jing.msc.cobweb.service.video.VideoTasteService;

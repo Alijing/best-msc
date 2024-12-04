@@ -1,4 +1,4 @@
-package com.jing.msc.cobweb.controller;
+package com.jing.msc.cobweb.controller.book;
 
 
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;

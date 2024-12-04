@@ -4,7 +4,7 @@ import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jing.common.core.base.BaseResp;
 import com.jing.msc.cobweb.config.HttpClientDownloader;
-import com.jing.msc.cobweb.entity.Novel;
+import com.jing.msc.cobweb.entity.book.Novel;
 import com.jing.msc.cobweb.entity.NovelChapter;
 import com.jing.msc.cobweb.entity.NovelCrawlConfig;
 import com.jing.msc.cobweb.entity.vo.CrawlConfig;

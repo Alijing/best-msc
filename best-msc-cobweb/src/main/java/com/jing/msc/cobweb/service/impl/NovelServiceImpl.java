@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jing.common.core.base.BasePageResp;
 import com.jing.common.core.base.BaseResp;
-import com.jing.msc.cobweb.entity.Novel;
+import com.jing.msc.cobweb.entity.book.Novel;
 import com.jing.msc.cobweb.entity.NovelChapter;
 import com.jing.msc.cobweb.entity.NovelContent;
 import com.jing.msc.cobweb.entity.NovelCrawlConfig;
@@ -68,19 +68,19 @@ public class NovelServiceImpl extends ServiceImpl<NovelMapper, Novel> implements
     }
 
     @Override
-    public BaseResp<Boolean> batchDelete(NovelVo novel) {
-        if (CollectionUtils.isEmpty(novel.getBatchId())) {
+    public BaseResp<Boolean> batchDelete(List<Long> ids) {
+        if (CollectionUtils.isEmpty(ids)) {
             return BaseResp.ok();
         }
-        removeBatchByIds(novel.getBatchId());
+        removeBatchByIds(ids);
 
         QueryWrapper<NovelCrawlConfig> configWrapper = new QueryWrapper<>();
-        configWrapper.in("novel_id", novel.getBatchId());
+        configWrapper.in("novel_id", ids);
         crawlConfigService.remove(configWrapper);
 
         QueryWrapper<NovelChapter> chapterWrapper = new QueryWrapper<>();
         chapterWrapper.select("id, novel_id");
-        chapterWrapper.in("novel_id", novel.getBatchId());
+        chapterWrapper.in("novel_id", ids);
         List<NovelChapter> chapters = chapterService.list(chapterWrapper);
         chapterService.remove(chapterWrapper);
 

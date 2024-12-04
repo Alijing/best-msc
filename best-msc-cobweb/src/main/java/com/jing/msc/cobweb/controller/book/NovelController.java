@@ -1,10 +1,10 @@
-package com.jing.msc.cobweb.controller;
+package com.jing.msc.cobweb.controller.book;
 
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.jing.common.core.base.BaseResp;
 import com.jing.common.log.aspect.WebLog;
-import com.jing.msc.cobweb.entity.Novel;
+import com.jing.msc.cobweb.entity.book.Novel;
 import com.jing.msc.cobweb.entity.vo.NovelVo;
 import com.jing.msc.cobweb.service.NovelService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -39,9 +39,17 @@ public class NovelController {
     @Operation(summary = "查询所有小说信息")
     @ApiOperationSupport(author = "Jing", order = 1)
     //@PreAuthorize("@sgex.hasAuthority('sys:novel:list1111')")
-    @PostMapping("/list")
-    public BaseResp<List<Novel>> novels(@RequestBody NovelVo info) {
-        return novelService.novels(info);
+    @GetMapping("/list")
+    public BaseResp<List<Novel>> novels(@RequestParam(value = "name", required = false) String name,
+                                        @RequestParam(value = "pageIndex") Integer current,
+                                        @RequestParam(value = "pageSize") Integer size) {
+        NovelVo novelVo = new NovelVo();
+        if (null != name) {
+            novelVo.setName(name);
+        }
+        novelVo.setPageIndex(current);
+        novelVo.setPageSize(size);
+        return novelService.novels(novelVo);
     }
 
     @Operation(summary = "通过 ID 查询小说信息")
@@ -51,12 +59,28 @@ public class NovelController {
         return BaseResp.ok(novelService.getById(novelId));
     }
 
+    @Operation(summary = "新增小说信息")
+    @ApiOperationSupport(author = "Jing", order = 2)
+    @PostMapping("info")
+    public BaseResp<Long> add(@RequestBody Novel novel) {
+        boolean save = novelService.save(novel);
+        return save ? BaseResp.ok(novel.getId()) : BaseResp.error("新增失败");
+    }
+
+    @Operation(summary = "编辑小说信息")
+    @ApiOperationSupport(author = "Jing", order = 2)
+    @PutMapping("info")
+    public BaseResp<Long> edit(@RequestBody Novel novel) {
+        boolean save = novelService.updateById(novel);
+        return save ? BaseResp.ok(novel.getId()) : BaseResp.error("编辑失败");
+    }
+
     @WebLog(description = "批量删除小说信息")
     @Operation(summary = "批量删除小说信息")
     @ApiOperationSupport(author = "Jing", order = 3)
-    @PostMapping("batch/delete")
-    public BaseResp<Boolean> batchDelete(@RequestBody NovelVo info) {
-        return novelService.batchDelete(info);
+    @DeleteMapping("info")
+    public BaseResp<Boolean> batchDelete(@RequestParam(value = "ids") List<Long> ids) {
+        return novelService.batchDelete(ids);
     }
 
     @GetMapping("download/{novelId}")
