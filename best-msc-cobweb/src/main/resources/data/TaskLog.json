@@ -1,0 +1,3410 @@
+[
+  {
+    "id": 157819,
+    "title": "[T]微服务改造：华为3800人脸布控、车辆技战法、统计分析、全息档案等相关接口移植到微服务并优化代码\t",
+    "start": "2024-01-02",
+    "end": "2024-01-02",
+    "url": "\/pro\/index.php?m=effort&f=view&id=157819&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 157820,
+    "title": "[T]微服务改造：华为3800人脸布控、车辆技战法、统计分析、全息档案等相关接口移植到微服务并优化代码\t",
+    "start": "2024-01-03",
+    "end": "2024-01-03",
+    "url": "\/pro\/index.php?m=effort&f=view&id=157820&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 157680,
+    "title": "[B]系统管理-系统应用-下载管理：获取不到数据",
+    "start": "2024-01-04",
+    "end": "2024-01-04",
+    "url": "\/pro\/index.php?m=effort&f=view&id=157680&onlybody=yes",
+    "consumed": "1"
+  },
+  {
+    "id": 157683,
+    "title": "[B]bug 修改 身份证号小于18位也能保存，不提示位数不够",
+    "start": "2024-01-04",
+    "end": "2024-01-04",
+    "url": "\/pro\/index.php?m=effort&f=view&id=157683&onlybody=yes",
+    "consumed": "1"
+  },
+  {
+    "id": 157684,
+    "title": "[B]bug 修改;工号输入限制",
+    "start": "2024-01-04",
+    "end": "2024-01-04",
+    "url": "\/pro\/index.php?m=effort&f=view&id=157684&onlybody=yes",
+    "consumed": "1"
+  },
+  {
+    "id": 157688,
+    "title": "[B]手机号输入限制",
+    "start": "2024-01-04",
+    "end": "2024-01-04",
+    "url": "\/pro\/index.php?m=effort&f=view&id=157688&onlybody=yes",
+    "consumed": "1"
+  },
+  {
+    "id": 157823,
+    "title": "[T]微服务改造：华为3800人脸布控、车辆技战法、统计分析、全息档案等相关接口移植到微服务并优化代码\t",
+    "start": "2024-01-04",
+    "end": "2024-01-04",
+    "url": "\/pro\/index.php?m=effort&f=view&id=157823&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 157818,
+    "title": "[T]开始了任务 : 微服务改造：华为3800人脸布控、车辆技战法、统计分析、全息档案等相关接口移植到微服务并优化代码",
+    "start": "2024-01-05",
+    "end": "2024-01-05",
+    "url": "\/pro\/index.php?m=effort&f=view&id=157818&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 157824,
+    "title": "[T]微服务改造：华为3800人脸布控、车辆技战法、统计分析、全息档案等相关接口移植到微服务并优化代码\t",
+    "start": "2024-01-05",
+    "end": "2024-01-05",
+    "url": "\/pro\/index.php?m=effort&f=view&id=157824&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 158007,
+    "title": "[T]微服务改造：华为3800人脸布控、车辆技战法、统计分析、全息档案等相关接口移植到微服务并优化代码\t",
+    "start": "2024-01-08",
+    "end": "2024-01-08",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158007&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 158008,
+    "title": "[T]微服务改造：华为3800人脸布控、车辆技战法、统计分析、全息档案等相关接口移植到微服务并优化代码\t",
+    "start": "2024-01-09",
+    "end": "2024-01-09",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158008&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 158182,
+    "title": "[T]微服务改造：SZ框架升级后人体、人脸相关接口代码优化使用方式调整",
+    "start": "2024-01-09",
+    "end": "2024-01-09",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158182&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 157977,
+    "title": "[B][bug fix] - 11188 : 主页配置：无数据",
+    "start": "2024-01-10",
+    "end": "2024-01-10",
+    "url": "\/pro\/index.php?m=effort&f=view&id=157977&onlybody=yes",
+    "consumed": "1"
+  },
+  {
+    "id": 158183,
+    "title": "[T]微服务改造：SZ框架升级后人体、人脸相关接口代码优化使用方式调整\t",
+    "start": "2024-01-10",
+    "end": "2024-01-10",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158183&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 158003,
+    "title": "[B][bug fix] - 11167 :  点击车牌结构化：提示车牌结构化无数据",
+    "start": "2024-01-11",
+    "end": "2024-01-11",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158003&onlybody=yes",
+    "consumed": "2.5"
+  },
+  {
+    "id": 158028,
+    "title": "[B]视图云搜导出失败",
+    "start": "2024-01-11",
+    "end": "2024-01-11",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158028&onlybody=yes",
+    "consumed": "1.5"
+  },
+  {
+    "id": 158186,
+    "title": "[T]微服务改造：华为3800人脸布控、车辆技战法、统计分析、全息档案等相关接口移植到微服务并优化代码\t",
+    "start": "2024-01-11",
+    "end": "2024-01-11",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158186&onlybody=yes",
+    "consumed": "6"
+  },
+  {
+    "id": 158062,
+    "title": "[B][bug fix]--- 10874 : 身份证号码既然是必填就给个必填的小红点、查看详细，域信息还是未显示",
+    "start": "2024-01-12",
+    "end": "2024-01-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158062&onlybody=yes",
+    "consumed": "1"
+  },
+  {
+    "id": 158066,
+    "title": "[B]修改bug：不选用户，直接点导出，导出文件报错",
+    "start": "2024-01-12",
+    "end": "2024-01-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158066&onlybody=yes",
+    "consumed": "1"
+  },
+  {
+    "id": 158181,
+    "title": "[T]开始了任务 : 微服务改造：SZ框架升级后人体、人脸相关接口代码优化使用方式调整",
+    "start": "2024-01-12",
+    "end": "2024-01-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158181&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 158184,
+    "title": "[T]开始了任务 : 微服务改造：华为3800人脸布控、车辆技战法、统计分析、全息档案等相关接口移植到微服务并优化代码",
+    "start": "2024-01-12",
+    "end": "2024-01-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158184&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 158185,
+    "title": "[T]微服务改造：华为3800人脸布控、车辆技战法、统计分析、全息档案等相关接口移植到微服务并优化代码\t",
+    "start": "2024-01-12",
+    "end": "2024-01-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158185&onlybody=yes",
+    "consumed": "6"
+  },
+  {
+    "id": 158218,
+    "title": "[B]解决视图云搜-综合查询\/以图搜图：人脸、机动车导出失败问题",
+    "start": "2024-01-13",
+    "end": "2024-01-13",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158218&onlybody=yes",
+    "consumed": "1"
+  },
+  {
+    "id": 158227,
+    "title": "[B]解决右上角基本信息：手机号（位数限制）、电话号、工号去掉加减号，输入值只能限制数字，证件限制纯数字加X（位数限制）",
+    "start": "2024-01-13",
+    "end": "2024-01-13",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158227&onlybody=yes",
+    "consumed": "1"
+  },
+  {
+    "id": 158229,
+    "title": "[B]解决系统管理-系统设置-用户管理：只勾选了特定的几个账号，点击导出，导出记录是全部账号",
+    "start": "2024-01-13",
+    "end": "2024-01-13",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158229&onlybody=yes",
+    "consumed": "1"
+  },
+  {
+    "id": 158438,
+    "title": "[T] 微服务改造：SZ项目单服务代码优化及移植微服务",
+    "start": "2024-01-15",
+    "end": "2024-01-15",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158438&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 158437,
+    "title": "[T]开始了任务 : 微服务改造：SZ项目单服务代码优化及移植微服务",
+    "start": "2024-01-16",
+    "end": "2024-01-16",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158437&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 158439,
+    "title": "[T] 微服务改造：SZ项目单服务代码优化及移植微服务",
+    "start": "2024-01-16",
+    "end": "2024-01-16",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158439&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 158543,
+    "title": "[T]微服务改造：SZ项目单服务代码优化及移植微服务",
+    "start": "2024-01-17",
+    "end": "2024-01-17",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158543&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 158581,
+    "title": "[T]微服务改造：SZ项目单服务代码优化及移植微服务",
+    "start": "2024-01-18",
+    "end": "2024-01-18",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158581&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 158652,
+    "title": "[T]开始了任务 : SZ现场bug修改",
+    "start": "2024-01-19",
+    "end": "2024-01-19",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158652&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 158653,
+    "title": "[T]SZ现场bug修改",
+    "start": "2024-01-19",
+    "end": "2024-01-19",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158653&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 158723,
+    "title": "[T]微服务改造：SZ项目单服务代码优化及移植微服务",
+    "start": "2024-01-20",
+    "end": "2024-01-20",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158723&onlybody=yes",
+    "consumed": "2"
+  },
+  {
+    "id": 158972,
+    "title": "[T]微服务改造：SZ项目单服务代码优化及移植微服务",
+    "start": "2024-01-22",
+    "end": "2024-01-22",
+    "url": "\/pro\/index.php?m=effort&f=view&id=158972&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 159420,
+    "title": "[T]微服务改造：公共服务前后端联调及bug修改",
+    "start": "2024-01-23",
+    "end": "2024-01-23",
+    "url": "\/pro\/index.php?m=effort&f=view&id=159420&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 159421,
+    "title": "[T]微服务改造：公共服务前后端联调及bug修改",
+    "start": "2024-01-24",
+    "end": "2024-01-24",
+    "url": "\/pro\/index.php?m=effort&f=view&id=159421&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 159419,
+    "title": "[T]开始了任务 : 微服务改造：公共服务前后端联调及bug修改",
+    "start": "2024-01-25",
+    "end": "2024-01-25",
+    "url": "\/pro\/index.php?m=effort&f=view&id=159419&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 159429,
+    "title": "[T]微服务改造：公共服务前后端联调及bug修改",
+    "start": "2024-01-25",
+    "end": "2024-01-25",
+    "url": "\/pro\/index.php?m=effort&f=view&id=159429&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 159975,
+    "title": "[T]微服务改造：单体架构function id及目录调整",
+    "start": "2024-02-01",
+    "end": "2024-02-01",
+    "url": "\/pro\/index.php?m=effort&f=view&id=159975&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 159974,
+    "title": "[T]开始了任务 : 微服务改造：单体架构function id及目录调整",
+    "start": "2024-02-02",
+    "end": "2024-02-02",
+    "url": "\/pro\/index.php?m=effort&f=view&id=159974&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 159976,
+    "title": "[T]微服务改造：单体架构function id及目录调整",
+    "start": "2024-02-02",
+    "end": "2024-02-02",
+    "url": "\/pro\/index.php?m=effort&f=view&id=159976&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 160042,
+    "title": "[T]微服务改造：单体架构function id及目录调整",
+    "start": "2024-02-04",
+    "end": "2024-02-04",
+    "url": "\/pro\/index.php?m=effort&f=view&id=160042&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 160242,
+    "title": "[T] 微服务改造：SZ项目单体服务接口服务测试，公共服务修改",
+    "start": "2024-02-05",
+    "end": "2024-02-05",
+    "url": "\/pro\/index.php?m=effort&f=view&id=160242&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 160241,
+    "title": "[T]开始了任务 : 微服务改造：SZ项目单体服务接口服务测试，公共服务修改",
+    "start": "2024-02-06",
+    "end": "2024-02-06",
+    "url": "\/pro\/index.php?m=effort&f=view&id=160241&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 160243,
+    "title": "[T] 微服务改造：SZ项目单体服务接口服务测试，公共服务修改",
+    "start": "2024-02-06",
+    "end": "2024-02-06",
+    "url": "\/pro\/index.php?m=effort&f=view&id=160243&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 160298,
+    "title": "[T]微服务改造：SZ项目单体服务接口服务测试，公共服务修改",
+    "start": "2024-02-07",
+    "end": "2024-02-07",
+    "url": "\/pro\/index.php?m=effort&f=view&id=160298&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 160469,
+    "title": "[T]微服务改造：SZ项目单体服务接口服务测试，公共服务修改",
+    "start": "2024-02-08",
+    "end": "2024-02-08",
+    "url": "\/pro\/index.php?m=effort&f=view&id=160469&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 160459,
+    "title": "[T]微服务改造：SZ项目单体服务接口服务测试，公共服务修改",
+    "start": "2024-02-18",
+    "end": "2024-02-18",
+    "url": "\/pro\/index.php?m=effort&f=view&id=160459&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 160470,
+    "title": "[T]微服务改造：SZ项目单体服务接口服务测试，公共服务修改",
+    "start": "2024-02-19",
+    "end": "2024-02-19",
+    "url": "\/pro\/index.php?m=effort&f=view&id=160470&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 160937,
+    "title": "[T]SZ项目单体服务接口服务测试",
+    "start": "2024-02-20",
+    "end": "2024-02-20",
+    "url": "\/pro\/index.php?m=effort&f=view&id=160937&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 160938,
+    "title": "[T]SZ项目单体服务接口服务测试",
+    "start": "2024-02-21",
+    "end": "2024-02-21",
+    "url": "\/pro\/index.php?m=effort&f=view&id=160938&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 160939,
+    "title": "[T]SZ项目单体服务接口服务测试",
+    "start": "2024-02-22",
+    "end": "2024-02-22",
+    "url": "\/pro\/index.php?m=effort&f=view&id=160939&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 160936,
+    "title": "[T]开始了任务 : SZ项目单体服务接口服务测试",
+    "start": "2024-02-23",
+    "end": "2024-02-23",
+    "url": "\/pro\/index.php?m=effort&f=view&id=160936&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 160940,
+    "title": "[T]SZ项目单体服务接口服务测试",
+    "start": "2024-02-23",
+    "end": "2024-02-23",
+    "url": "\/pro\/index.php?m=effort&f=view&id=160940&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 161792,
+    "title": "[T] 时空研判代码移植到微服务、单体服务分支",
+    "start": "2024-02-27",
+    "end": "2024-02-27",
+    "url": "\/pro\/index.php?m=effort&f=view&id=161792&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 161793,
+    "title": "[T] 时空研判代码移植到微服务、单体服务分支",
+    "start": "2024-02-28",
+    "end": "2024-02-28",
+    "url": "\/pro\/index.php?m=effort&f=view&id=161793&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 161794,
+    "title": "[T] 时空研判代码移植到微服务、单体服务分支",
+    "start": "2024-02-29",
+    "end": "2024-02-29",
+    "url": "\/pro\/index.php?m=effort&f=view&id=161794&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 161791,
+    "title": "[T]开始了任务 : 时空研判代码移植到微服务、单体服务分支",
+    "start": "2024-03-01",
+    "end": "2024-03-01",
+    "url": "\/pro\/index.php?m=effort&f=view&id=161791&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 161795,
+    "title": "[T]开始了任务 : 时空研判代码移植到TZ项目分支",
+    "start": "2024-03-01",
+    "end": "2024-03-01",
+    "url": "\/pro\/index.php?m=effort&f=view&id=161795&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 161796,
+    "title": "[T]时空研判代码移植到TZ项目分支",
+    "start": "2024-03-01",
+    "end": "2024-03-01",
+    "url": "\/pro\/index.php?m=effort&f=view&id=161796&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 162119,
+    "title": "[T]人像布控库设计与开发",
+    "start": "2024-03-04",
+    "end": "2024-03-04",
+    "url": "\/pro\/index.php?m=effort&f=view&id=162119&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 162120,
+    "title": "[T]人像布控库设计与开发",
+    "start": "2024-03-05",
+    "end": "2024-03-05",
+    "url": "\/pro\/index.php?m=effort&f=view&id=162120&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 161961,
+    "title": "[T]开始了任务 : 出库、电台、用户后台优化开发",
+    "start": "2024-03-06",
+    "end": "2024-03-06",
+    "url": "\/pro\/index.php?m=effort&f=view&id=161961&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 161962,
+    "title": "[T] 出库、电台、用户后台优化开发",
+    "start": "2024-03-06",
+    "end": "2024-03-06",
+    "url": "\/pro\/index.php?m=effort&f=view&id=161962&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 162121,
+    "title": "[T]人像布控库设计与开发",
+    "start": "2024-03-07",
+    "end": "2024-03-07",
+    "url": "\/pro\/index.php?m=effort&f=view&id=162121&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 162115,
+    "title": "[T]开始了任务 : 人像布控库设计与开发",
+    "start": "2024-03-08",
+    "end": "2024-03-08",
+    "url": "\/pro\/index.php?m=effort&f=view&id=162115&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 162123,
+    "title": "[T]开始了任务 : 网上报修新需求",
+    "start": "2024-03-08",
+    "end": "2024-03-08",
+    "url": "\/pro\/index.php?m=effort&f=view&id=162123&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 162126,
+    "title": "[T] 网上报修新需求",
+    "start": "2024-03-08",
+    "end": "2024-03-08",
+    "url": "\/pro\/index.php?m=effort&f=view&id=162126&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 162220,
+    "title": "[T]网上报修新需求",
+    "start": "2024-03-11",
+    "end": "2024-03-11",
+    "url": "\/pro\/index.php?m=effort&f=view&id=162220&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 162532,
+    "title": "[T]人像布控库设计与开发",
+    "start": "2024-03-12",
+    "end": "2024-03-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=162532&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 162533,
+    "title": "[T]人像布控库设计与开发",
+    "start": "2024-03-13",
+    "end": "2024-03-13",
+    "url": "\/pro\/index.php?m=effort&f=view&id=162533&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 162534,
+    "title": "[T]人像布控库设计与开发",
+    "start": "2024-03-14",
+    "end": "2024-03-14",
+    "url": "\/pro\/index.php?m=effort&f=view&id=162534&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 162530,
+    "title": "[T]开始了任务 : 人像布控库设计与开发",
+    "start": "2024-03-15",
+    "end": "2024-03-15",
+    "url": "\/pro\/index.php?m=effort&f=view&id=162530&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 162535,
+    "title": "[T]人像布控库设计与开发",
+    "start": "2024-03-15",
+    "end": "2024-03-15",
+    "url": "\/pro\/index.php?m=effort&f=view&id=162535&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 163103,
+    "title": "[T]人像库和车辆库相关功能设计与开发",
+    "start": "2024-03-18",
+    "end": "2024-03-18",
+    "url": "\/pro\/index.php?m=effort&f=view&id=163103&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 163104,
+    "title": "[T]人像库和车辆库相关功能设计与开发",
+    "start": "2024-03-19",
+    "end": "2024-03-19",
+    "url": "\/pro\/index.php?m=effort&f=view&id=163104&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 163105,
+    "title": "[T]人像库和车辆库相关功能设计与开发",
+    "start": "2024-03-20",
+    "end": "2024-03-20",
+    "url": "\/pro\/index.php?m=effort&f=view&id=163105&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 163101,
+    "title": "[T] 网上报修人员和用户增量同步相关代码优化\t",
+    "start": "2024-03-21",
+    "end": "2024-03-21",
+    "url": "\/pro\/index.php?m=effort&f=view&id=163101&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 163100,
+    "title": "[T]开始了任务 : 网上报修人员和用户增量同步相关代码优化",
+    "start": "2024-03-22",
+    "end": "2024-03-22",
+    "url": "\/pro\/index.php?m=effort&f=view&id=163100&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 163102,
+    "title": "[T]开始了任务 : 人像库和车辆库相关功能设计与开发",
+    "start": "2024-03-22",
+    "end": "2024-03-22",
+    "url": "\/pro\/index.php?m=effort&f=view&id=163102&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 163106,
+    "title": "[T]人像库和车辆库相关功能设计与开发",
+    "start": "2024-03-22",
+    "end": "2024-03-22",
+    "url": "\/pro\/index.php?m=effort&f=view&id=163106&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 164042,
+    "title": "[T]布控任务、紧急布控任务后端接口设计与开发，中间件对接百度接口开发\t",
+    "start": "2024-03-25",
+    "end": "2024-03-25",
+    "url": "\/pro\/index.php?m=effort&f=view&id=164042&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 164043,
+    "title": "[T]布控任务、紧急布控任务后端接口设计与开发，中间件对接百度接口开发\t",
+    "start": "2024-03-27",
+    "end": "2024-03-27",
+    "url": "\/pro\/index.php?m=effort&f=view&id=164043&onlybody=yes",
+    "consumed": "10.5"
+  },
+  {
+    "id": 164044,
+    "title": "[T]布控任务、紧急布控任务后端接口设计与开发，中间件对接百度接口开发\t",
+    "start": "2024-03-28",
+    "end": "2024-03-28",
+    "url": "\/pro\/index.php?m=effort&f=view&id=164044&onlybody=yes",
+    "consumed": "10.5"
+  },
+  {
+    "id": 164041,
+    "title": "[T]开始了任务 : 布控任务、紧急布控任务后端接口设计与开发，中间件对接百度接口开发",
+    "start": "2024-03-29",
+    "end": "2024-03-29",
+    "url": "\/pro\/index.php?m=effort&f=view&id=164041&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 164049,
+    "title": "[T]布控任务、紧急布控任务后端接口设计与开发，中间件对接百度接口开发\t",
+    "start": "2024-03-29",
+    "end": "2024-03-29",
+    "url": "\/pro\/index.php?m=effort&f=view&id=164049&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 164050,
+    "title": "[T]完成了任务 : 布控任务、紧急布控任务后端接口设计与开发，中间件对接百度接口开发",
+    "start": "2024-03-29",
+    "end": "2024-03-29",
+    "url": "\/pro\/index.php?m=effort&f=view&id=164050&onlybody=yes",
+    "consumed": "1"
+  },
+  {
+    "id": 164382,
+    "title": "[T]通州SZ项目布控任务（紧急布控）",
+    "start": "2024-04-02",
+    "end": "2024-04-02",
+    "url": "\/pro\/index.php?m=effort&f=view&id=164382&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 164383,
+    "title": "[T]通州SZ项目布控任务（紧急布控）",
+    "start": "2024-04-03",
+    "end": "2024-04-03",
+    "url": "\/pro\/index.php?m=effort&f=view&id=164383&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 164379,
+    "title": "[T]开始了任务 : 视综项目微服务人体接口迁移",
+    "start": "2024-04-07",
+    "end": "2024-04-07",
+    "url": "\/pro\/index.php?m=effort&f=view&id=164379&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 164380,
+    "title": "[T]视综项目微服务人体接口迁移",
+    "start": "2024-04-07",
+    "end": "2024-04-07",
+    "url": "\/pro\/index.php?m=effort&f=view&id=164380&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 164381,
+    "title": "[T]开始了任务 : 通州SZ项目布控任务（紧急布控）",
+    "start": "2024-04-07",
+    "end": "2024-04-07",
+    "url": "\/pro\/index.php?m=effort&f=view&id=164381&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 164664,
+    "title": "[T]布控库和布控任务为现场提供技术支持并修复bug",
+    "start": "2024-04-08",
+    "end": "2024-04-08",
+    "url": "\/pro\/index.php?m=effort&f=view&id=164664&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 164668,
+    "title": "[T]微服务公共服务相关功能自测并修改bug",
+    "start": "2024-04-08",
+    "end": "2024-04-08",
+    "url": "\/pro\/index.php?m=effort&f=view&id=164668&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 164665,
+    "title": "[T]布控库和布控任务为现场提供技术支持并修复bug",
+    "start": "2024-04-09",
+    "end": "2024-04-09",
+    "url": "\/pro\/index.php?m=effort&f=view&id=164665&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 164669,
+    "title": "[T]微服务公共服务相关功能自测并修改bug",
+    "start": "2024-04-09",
+    "end": "2024-04-09",
+    "url": "\/pro\/index.php?m=effort&f=view&id=164669&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 164662,
+    "title": "[T]网上报修新需求开发",
+    "start": "2024-04-10",
+    "end": "2024-04-10",
+    "url": "\/pro\/index.php?m=effort&f=view&id=164662&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 164666,
+    "title": "[T]布控库和布控任务为现场提供技术支持并修复bug",
+    "start": "2024-04-11",
+    "end": "2024-04-11",
+    "url": "\/pro\/index.php?m=effort&f=view&id=164666&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 164670,
+    "title": "[T]微服务公共服务相关功能自测并修改bug",
+    "start": "2024-04-11",
+    "end": "2024-04-11",
+    "url": "\/pro\/index.php?m=effort&f=view&id=164670&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 164658,
+    "title": "[T]开始了任务 : 网上报修新需求开发",
+    "start": "2024-04-12",
+    "end": "2024-04-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=164658&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 164663,
+    "title": "[T]开始了任务 : 布控库和布控任务为现场提供技术支持并修复bug",
+    "start": "2024-04-12",
+    "end": "2024-04-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=164663&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 164667,
+    "title": "[T]开始了任务 : 微服务公共服务相关功能自测并修改bug",
+    "start": "2024-04-12",
+    "end": "2024-04-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=164667&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 164671,
+    "title": "[T]微服务公共服务相关功能自测并修改bug",
+    "start": "2024-04-12",
+    "end": "2024-04-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=164671&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 164674,
+    "title": "[T]布控库和布控任务为现场提供技术支持并修复bug",
+    "start": "2024-04-12",
+    "end": "2024-04-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=164674&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 165130,
+    "title": "[T]SZ微服务项目公共服务模块功能自测",
+    "start": "2024-04-15",
+    "end": "2024-04-15",
+    "url": "\/pro\/index.php?m=effort&f=view&id=165130&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 165131,
+    "title": "[T]SZ微服务项目公共服务模块功能自测",
+    "start": "2024-04-16",
+    "end": "2024-04-16",
+    "url": "\/pro\/index.php?m=effort&f=view&id=165131&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 165126,
+    "title": "[T]TZSZ项目现场提供技术支持并修改已知问题，",
+    "start": "2024-04-17",
+    "end": "2024-04-17",
+    "url": "\/pro\/index.php?m=effort&f=view&id=165126&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 165132,
+    "title": "[T]SZ微服务项目公共服务模块功能自测",
+    "start": "2024-04-18",
+    "end": "2024-04-18",
+    "url": "\/pro\/index.php?m=effort&f=view&id=165132&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 165135,
+    "title": "[T]SZ微服务项目视综服务系统使用申请流程相关代码优化",
+    "start": "2024-04-18",
+    "end": "2024-04-18",
+    "url": "\/pro\/index.php?m=effort&f=view&id=165135&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 165125,
+    "title": "[T]开始了任务 : TZSZ项目现场提供技术支持并修改已知问题，",
+    "start": "2024-04-19",
+    "end": "2024-04-19",
+    "url": "\/pro\/index.php?m=effort&f=view&id=165125&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 165127,
+    "title": "[T]开始了任务 : SZ微服务项目视综服务系统使用申请流程相关代码优化",
+    "start": "2024-04-19",
+    "end": "2024-04-19",
+    "url": "\/pro\/index.php?m=effort&f=view&id=165127&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 165129,
+    "title": "[T]开始了任务 : SZ微服务项目公共服务模块功能自测",
+    "start": "2024-04-19",
+    "end": "2024-04-19",
+    "url": "\/pro\/index.php?m=effort&f=view&id=165129&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 165136,
+    "title": "[T]SZ微服务项目视综服务系统使用申请流程相关代码优化",
+    "start": "2024-04-19",
+    "end": "2024-04-19",
+    "url": "\/pro\/index.php?m=effort&f=view&id=165136&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 166260,
+    "title": "[T]SZ微服务公共服务部分接口拆分及同步到单体分支、TZSZ分支\t",
+    "start": "2024-04-22",
+    "end": "2024-04-22",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166260&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 166261,
+    "title": "[T]SZ微服务公共服务部分接口拆分及同步到单体分支、TZSZ分支\t",
+    "start": "2024-04-23",
+    "end": "2024-04-23",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166261&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 166262,
+    "title": "[T]SZ微服务公共服务部分接口拆分及同步到单体分支、TZSZ分支\t",
+    "start": "2024-04-24",
+    "end": "2024-04-24",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166262&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 166264,
+    "title": "[T] 布控任务（紧急布控）现场测试及bug修改",
+    "start": "2024-04-24",
+    "end": "2024-04-24",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166264&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 166265,
+    "title": "[T] 布控任务（紧急布控）现场测试及bug修改",
+    "start": "2024-04-25",
+    "end": "2024-04-25",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166265&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 166259,
+    "title": "[T]开始了任务 : SZ微服务公共服务部分接口拆分及同步到单体分支、TZSZ分支",
+    "start": "2024-04-26",
+    "end": "2024-04-26",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166259&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 166263,
+    "title": "[T]开始了任务 : 布控任务（紧急布控）现场测试及bug修改",
+    "start": "2024-04-26",
+    "end": "2024-04-26",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166263&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 166266,
+    "title": "[T] 布控任务（紧急布控）现场测试及bug修改",
+    "start": "2024-04-26",
+    "end": "2024-04-26",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166266&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 166544,
+    "title": "[T]: 微服务集群相关接口梳理并同步到单体分支、TZSZ分支",
+    "start": "2024-04-28",
+    "end": "2024-04-28",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166544&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 166545,
+    "title": "[T]: 微服务集群相关接口梳理并同步到单体分支、TZSZ分支",
+    "start": "2024-04-29",
+    "end": "2024-04-29",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166545&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 166543,
+    "title": "[T]开始了任务 : 微服务集群相关接口梳理并同步到单体分支、TZSZ分支",
+    "start": "2024-04-30",
+    "end": "2024-04-30",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166543&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 166546,
+    "title": "[T]开始了任务 : 布控任务（紧急布控）现场测试及bug修改",
+    "start": "2024-04-30",
+    "end": "2024-04-30",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166546&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 166548,
+    "title": "[T] 布控任务（紧急布控）现场测试及bug修改",
+    "start": "2024-04-30",
+    "end": "2024-04-30",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166548&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 166604,
+    "title": "[B]bug修改：综合布控，布控任务，新增布控任务，选择完毕后，点击保存，提示：“deviceCodeIdList:设备列表不能为空”，实际有选择点位，无法保存",
+    "start": "2024-05-06",
+    "end": "2024-05-06",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166604&onlybody=yes",
+    "consumed": "1"
+  },
+  {
+    "id": 166605,
+    "title": "[B]bug修改：综合布控，人像布控，人员管理，添加布控人员，上传布控人员照片时提示跨域及权限问题，无法添加布控人员",
+    "start": "2024-05-06",
+    "end": "2024-05-06",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166605&onlybody=yes",
+    "consumed": "1"
+  },
+  {
+    "id": 166846,
+    "title": "[T]全息档案联调及bug修改",
+    "start": "2024-05-06",
+    "end": "2024-05-06",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166846&onlybody=yes",
+    "consumed": "6"
+  },
+  {
+    "id": 166850,
+    "title": "[T]全息档案联调及bug修改",
+    "start": "2024-05-07",
+    "end": "2024-05-07",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166850&onlybody=yes",
+    "consumed": "6"
+  },
+  {
+    "id": 166854,
+    "title": "[T] 框架基础功能代码梳理：basic_develop分支SZ相关代码移除",
+    "start": "2024-05-07",
+    "end": "2024-05-07",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166854&onlybody=yes",
+    "consumed": "2"
+  },
+  {
+    "id": 166852,
+    "title": "[T]: 网上报修新需求提交",
+    "start": "2024-05-08",
+    "end": "2024-05-08",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166852&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 166855,
+    "title": "[T] 框架基础功能代码梳理：basic_develop分支SZ相关代码移除",
+    "start": "2024-05-09",
+    "end": "2024-05-09",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166855&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 166857,
+    "title": "[T] 布控任务（紧急布控）现场测试及bug修改",
+    "start": "2024-05-10",
+    "end": "2024-05-10",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166857&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 166858,
+    "title": "[T]框架基础功能代码梳理：basic_develop分支SZ相关代码移除",
+    "start": "2024-05-10",
+    "end": "2024-05-10",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166858&onlybody=yes",
+    "consumed": "1"
+  },
+  {
+    "id": 166845,
+    "title": "[T]开始了任务 : 全息档案联调及bug修改",
+    "start": "2024-05-11",
+    "end": "2024-05-11",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166845&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 166851,
+    "title": "[T]开始了任务 : 网上报修新需求提交",
+    "start": "2024-05-11",
+    "end": "2024-05-11",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166851&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 166853,
+    "title": "[T]开始了任务 : 框架基础功能代码梳理：basic_develop分支SZ相关代码移除",
+    "start": "2024-05-11",
+    "end": "2024-05-11",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166853&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 166856,
+    "title": "[T]开始了任务 : 布控任务（紧急布控）现场测试及bug修改",
+    "start": "2024-05-11",
+    "end": "2024-05-11",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166856&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 166950,
+    "title": "[T]框架基础功能代码梳理：basic_develop分支SZ相关代码移除",
+    "start": "2024-05-11",
+    "end": "2024-05-11",
+    "url": "\/pro\/index.php?m=effort&f=view&id=166950&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 167426,
+    "title": "[T]资产管理相关功能开发",
+    "start": "2024-05-13",
+    "end": "2024-05-13",
+    "url": "\/pro\/index.php?m=effort&f=view&id=167426&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 167427,
+    "title": "[T]资产管理相关功能开发",
+    "start": "2024-05-14",
+    "end": "2024-05-14",
+    "url": "\/pro\/index.php?m=effort&f=view&id=167427&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 167429,
+    "title": "[T] 项目管理相关功能开发",
+    "start": "2024-05-15",
+    "end": "2024-05-15",
+    "url": "\/pro\/index.php?m=effort&f=view&id=167429&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 167430,
+    "title": "[T] 项目管理相关功能开发",
+    "start": "2024-05-16",
+    "end": "2024-05-16",
+    "url": "\/pro\/index.php?m=effort&f=view&id=167430&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 167332,
+    "title": "[T]完成了任务 : 框架基础功能代码梳理：basic_develop分支SZ相关代码移除",
+    "start": "2024-05-17",
+    "end": "2024-05-17",
+    "url": "\/pro\/index.php?m=effort&f=view&id=167332&onlybody=yes",
+    "consumed": "1"
+  },
+  {
+    "id": 167422,
+    "title": "[T]开始了任务 : 布控任务（紧急布控）现场测试及bug修改",
+    "start": "2024-05-17",
+    "end": "2024-05-17",
+    "url": "\/pro\/index.php?m=effort&f=view&id=167422&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 167424,
+    "title": "[T]布控任务（紧急布控）现场测试及bug修改",
+    "start": "2024-05-17",
+    "end": "2024-05-17",
+    "url": "\/pro\/index.php?m=effort&f=view&id=167424&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 167425,
+    "title": "[T]开始了任务 : 资产管理相关功能开发",
+    "start": "2024-05-17",
+    "end": "2024-05-17",
+    "url": "\/pro\/index.php?m=effort&f=view&id=167425&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 167428,
+    "title": "[T]开始了任务 : 项目管理相关功能开发",
+    "start": "2024-05-17",
+    "end": "2024-05-17",
+    "url": "\/pro\/index.php?m=effort&f=view&id=167428&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 168114,
+    "title": "[T]（项目管理、资产管理）需求开发",
+    "start": "2024-05-20",
+    "end": "2024-05-20",
+    "url": "\/pro\/index.php?m=effort&f=view&id=168114&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 168115,
+    "title": "[T]（项目管理、资产管理）需求开发",
+    "start": "2024-05-21",
+    "end": "2024-05-21",
+    "url": "\/pro\/index.php?m=effort&f=view&id=168115&onlybody=yes",
+    "consumed": "6"
+  },
+  {
+    "id": 168117,
+    "title": "[T]ZD-资产设备管理系统、出入库管理系统、产品分支基础数据同步相关功能代码迁移并优化\t",
+    "start": "2024-05-21",
+    "end": "2024-05-21",
+    "url": "\/pro\/index.php?m=effort&f=view&id=168117&onlybody=yes",
+    "consumed": "2"
+  },
+  {
+    "id": 168118,
+    "title": "[T]ZD-资产设备管理系统、出入库管理系统、产品分支基础数据同步相关功能代码迁移并优化\t",
+    "start": "2024-05-22",
+    "end": "2024-05-22",
+    "url": "\/pro\/index.php?m=effort&f=view&id=168118&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 168120,
+    "title": "[T] 待办列表（划拨管理、移交管理）流程审批相关功能开发",
+    "start": "2024-05-22",
+    "end": "2024-05-22",
+    "url": "\/pro\/index.php?m=effort&f=view&id=168120&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 168121,
+    "title": "[T] 待办列表（划拨管理、移交管理）流程审批相关功能开发",
+    "start": "2024-05-23",
+    "end": "2024-05-23",
+    "url": "\/pro\/index.php?m=effort&f=view&id=168121&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 168113,
+    "title": "[T]开始了任务 : （项目管理、资产管理）需求开发",
+    "start": "2024-05-24",
+    "end": "2024-05-24",
+    "url": "\/pro\/index.php?m=effort&f=view&id=168113&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 168116,
+    "title": "[T]开始了任务 : ZD-资产设备管理系统、出入库管理系统、产品分支基础数据同步相关功能代码迁移并优化",
+    "start": "2024-05-24",
+    "end": "2024-05-24",
+    "url": "\/pro\/index.php?m=effort&f=view&id=168116&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 168119,
+    "title": "[T]开始了任务 : 待办列表（划拨管理、移交管理）流程审批相关功能开发",
+    "start": "2024-05-24",
+    "end": "2024-05-24",
+    "url": "\/pro\/index.php?m=effort&f=view&id=168119&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 168208,
+    "title": "[T]待办列表（划拨管理、移交管理）流程审批相关功能开发",
+    "start": "2024-05-24",
+    "end": "2024-05-24",
+    "url": "\/pro\/index.php?m=effort&f=view&id=168208&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 168934,
+    "title": "[T]设备耗材申领系统出库申请待办\/已办模块开发",
+    "start": "2024-05-27",
+    "end": "2024-05-27",
+    "url": "\/pro\/index.php?m=effort&f=view&id=168934&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 168935,
+    "title": "[T]设备耗材申领系统出库申请待办\/已办模块开发",
+    "start": "2024-05-28",
+    "end": "2024-05-28",
+    "url": "\/pro\/index.php?m=effort&f=view&id=168935&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 168938,
+    "title": "[T]设备耗材申领系统出库申请待办\/已办模块开发",
+    "start": "2024-05-29",
+    "end": "2024-05-29",
+    "url": "\/pro\/index.php?m=effort&f=view&id=168938&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 168929,
+    "title": "[T]设备资产管理系统bug修改",
+    "start": "2024-05-30",
+    "end": "2024-05-30",
+    "url": "\/pro\/index.php?m=effort&f=view&id=168929&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 168930,
+    "title": "[T]设备资产管理系统bug修改",
+    "start": "2024-05-30",
+    "end": "2024-05-30",
+    "url": "\/pro\/index.php?m=effort&f=view&id=168930&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 168928,
+    "title": "[T]开始了任务 : 设备资产管理系统bug修改",
+    "start": "2024-05-31",
+    "end": "2024-05-31",
+    "url": "\/pro\/index.php?m=effort&f=view&id=168928&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 168931,
+    "title": "[T]开始了任务 : 设备耗材申领系统出库申请待办\/已办模块开发",
+    "start": "2024-05-31",
+    "end": "2024-05-31",
+    "url": "\/pro\/index.php?m=effort&f=view&id=168931&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 168936,
+    "title": "[T]开始了任务 : 现场技术支持及bug修改",
+    "start": "2024-05-31",
+    "end": "2024-05-31",
+    "url": "\/pro\/index.php?m=effort&f=view&id=168936&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 168937,
+    "title": "[T]现场技术支持及bug修改",
+    "start": "2024-05-31",
+    "end": "2024-05-31",
+    "url": "\/pro\/index.php?m=effort&f=view&id=168937&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 168939,
+    "title": "[T]设备耗材申领系统出库申请待办\/已办模块开发",
+    "start": "2024-05-31",
+    "end": "2024-05-31",
+    "url": "\/pro\/index.php?m=effort&f=view&id=168939&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 169313,
+    "title": "[T]优化及bug修改",
+    "start": "2024-06-03",
+    "end": "2024-06-03",
+    "url": "\/pro\/index.php?m=effort&f=view&id=169313&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 169318,
+    "title": "[T]出库申请（待办、已办）相关业务开发",
+    "start": "2024-06-03",
+    "end": "2024-06-03",
+    "url": "\/pro\/index.php?m=effort&f=view&id=169318&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 169314,
+    "title": "[T]优化及bug修改",
+    "start": "2024-06-04",
+    "end": "2024-06-04",
+    "url": "\/pro\/index.php?m=effort&f=view&id=169314&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 169319,
+    "title": "[T]出库申请（待办、已办）相关业务开发",
+    "start": "2024-06-04",
+    "end": "2024-06-04",
+    "url": "\/pro\/index.php?m=effort&f=view&id=169319&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 169315,
+    "title": "[T]优化及bug修改",
+    "start": "2024-06-05",
+    "end": "2024-06-05",
+    "url": "\/pro\/index.php?m=effort&f=view&id=169315&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 169320,
+    "title": "[T]出库申请（待办、已办）相关业务开发",
+    "start": "2024-06-05",
+    "end": "2024-06-05",
+    "url": "\/pro\/index.php?m=effort&f=view&id=169320&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 169321,
+    "title": "[T]出库申请（待办、已办）相关业务开发",
+    "start": "2024-06-06",
+    "end": "2024-06-06",
+    "url": "\/pro\/index.php?m=effort&f=view&id=169321&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 169327,
+    "title": "[T]ZD民警、派出所民警、维修员（辅警）申请记录相关业务开发",
+    "start": "2024-06-06",
+    "end": "2024-06-06",
+    "url": "\/pro\/index.php?m=effort&f=view&id=169327&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 169311,
+    "title": "[T]开始了任务 : 优化及bug修改",
+    "start": "2024-06-07",
+    "end": "2024-06-07",
+    "url": "\/pro\/index.php?m=effort&f=view&id=169311&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 169316,
+    "title": "[T]开始了任务 : 出库申请（待办、已办）相关业务开发",
+    "start": "2024-06-07",
+    "end": "2024-06-07",
+    "url": "\/pro\/index.php?m=effort&f=view&id=169316&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 169323,
+    "title": "[T]开始了任务 : ZD民警、派出所民警、维修员（辅警）申请记录相关业务开发",
+    "start": "2024-06-07",
+    "end": "2024-06-07",
+    "url": "\/pro\/index.php?m=effort&f=view&id=169323&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 169335,
+    "title": "[T]ZD民警、派出所民警、维修员（辅警）申请记录相关业务开发",
+    "start": "2024-06-07",
+    "end": "2024-06-07",
+    "url": "\/pro\/index.php?m=effort&f=view&id=169335&onlybody=yes",
+    "consumed": "9"
+  },
+  {
+    "id": 169593,
+    "title": "[T]网上报修优化，电台管理系统信息变更新需求实现",
+    "start": "2024-06-11",
+    "end": "2024-06-11",
+    "url": "\/pro\/index.php?m=effort&f=view&id=169593&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 169594,
+    "title": "[T]网上报修优化，电台管理系统信息变更新需求实现",
+    "start": "2024-06-12",
+    "end": "2024-06-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=169594&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 169596,
+    "title": "[T] 出库管理、回库管理模块开发、联调",
+    "start": "2024-06-12",
+    "end": "2024-06-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=169596&onlybody=yes",
+    "consumed": "5"
+  },
+  {
+    "id": 169597,
+    "title": "[T] 出库管理、回库管理模块开发、联调",
+    "start": "2024-06-13",
+    "end": "2024-06-13",
+    "url": "\/pro\/index.php?m=effort&f=view&id=169597&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 169592,
+    "title": "[T]开始了任务 : 网上报修优化，电台管理系统信息变更新需求实现",
+    "start": "2024-06-14",
+    "end": "2024-06-14",
+    "url": "\/pro\/index.php?m=effort&f=view&id=169592&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 169595,
+    "title": "[T]开始了任务 : 出库管理、回库管理模块开发、联调",
+    "start": "2024-06-14",
+    "end": "2024-06-14",
+    "url": "\/pro\/index.php?m=effort&f=view&id=169595&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 169598,
+    "title": "[T] 出库管理、回库管理模块开发、联调",
+    "start": "2024-06-14",
+    "end": "2024-06-14",
+    "url": "\/pro\/index.php?m=effort&f=view&id=169598&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 170025,
+    "title": "[T]消息业务、出库单回库单打印业务模块开发及相关功能联调，测试的bug修改\t",
+    "start": "2024-06-17",
+    "end": "2024-06-17",
+    "url": "\/pro\/index.php?m=effort&f=view&id=170025&onlybody=yes",
+    "consumed": "9"
+  },
+  {
+    "id": 170026,
+    "title": "[T]消息业务、出库单回库单打印业务模块开发及相关功能联调，测试的bug修改\t",
+    "start": "2024-06-18",
+    "end": "2024-06-18",
+    "url": "\/pro\/index.php?m=effort&f=view&id=170026&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 170027,
+    "title": "[T]消息业务、出库单回库单打印业务模块开发及相关功能联调，测试的bug修改\t",
+    "start": "2024-06-19",
+    "end": "2024-06-19",
+    "url": "\/pro\/index.php?m=effort&f=view&id=170027&onlybody=yes",
+    "consumed": "10.5"
+  },
+  {
+    "id": 170028,
+    "title": "[T]消息业务、出库单回库单打印业务模块开发及相关功能联调，测试的bug修改\t",
+    "start": "2024-06-20",
+    "end": "2024-06-20",
+    "url": "\/pro\/index.php?m=effort&f=view&id=170028&onlybody=yes",
+    "consumed": "0.5"
+  },
+  {
+    "id": 170030,
+    "title": "[T]TZSZ项目及微服务与前端接口联调",
+    "start": "2024-06-20",
+    "end": "2024-06-20",
+    "url": "\/pro\/index.php?m=effort&f=view&id=170030&onlybody=yes",
+    "consumed": "3"
+  },
+  {
+    "id": 170034,
+    "title": "[T]电台、网上报修现场问题分析并解决",
+    "start": "2024-06-20",
+    "end": "2024-06-20",
+    "url": "\/pro\/index.php?m=effort&f=view&id=170034&onlybody=yes",
+    "consumed": "7"
+  },
+  {
+    "id": 170024,
+    "title": "[T]开始了任务 : 消息业务、出库单回库单打印业务模块开发及相关功能联调，测试的bug修改",
+    "start": "2024-06-21",
+    "end": "2024-06-21",
+    "url": "\/pro\/index.php?m=effort&f=view&id=170024&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 170029,
+    "title": "[T]开始了任务 : TZSZ项目及微服务与前端接口联调",
+    "start": "2024-06-21",
+    "end": "2024-06-21",
+    "url": "\/pro\/index.php?m=effort&f=view&id=170029&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 170031,
+    "title": "[T]TZSZ项目及微服务与前端接口联调",
+    "start": "2024-06-21",
+    "end": "2024-06-21",
+    "url": "\/pro\/index.php?m=effort&f=view&id=170031&onlybody=yes",
+    "consumed": "3"
+  },
+  {
+    "id": 170032,
+    "title": "[T]开始了任务 : 电台、网上报修现场问题分析并解决",
+    "start": "2024-06-21",
+    "end": "2024-06-21",
+    "url": "\/pro\/index.php?m=effort&f=view&id=170032&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 170078,
+    "title": "[T]电台、网上报修现场问题分析并解决",
+    "start": "2024-06-21",
+    "end": "2024-06-21",
+    "url": "\/pro\/index.php?m=effort&f=view&id=170078&onlybody=yes",
+    "consumed": "6"
+  },
+  {
+    "id": 170906,
+    "title": "[T]电台管理系统、网上报修系统、设备资产管理系统、出入库管理系统出库模块bug修改\t",
+    "start": "2024-06-24",
+    "end": "2024-06-24",
+    "url": "\/pro\/index.php?m=effort&f=view&id=170906&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 170907,
+    "title": "[T]电台管理系统、网上报修系统、设备资产管理系统、出入库管理系统出库模块bug修改\t",
+    "start": "2024-06-26",
+    "end": "2024-06-26",
+    "url": "\/pro\/index.php?m=effort&f=view&id=170907&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 170909,
+    "title": "[T] SJ微服务联调支持",
+    "start": "2024-06-27",
+    "end": "2024-06-27",
+    "url": "\/pro\/index.php?m=effort&f=view&id=170909&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 170911,
+    "title": "[T]对接 SJ 门户",
+    "start": "2024-06-27",
+    "end": "2024-06-27",
+    "url": "\/pro\/index.php?m=effort&f=view&id=170911&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 170904,
+    "title": "[T]开始了任务 : 电台管理系统、网上报修系统、设备资产管理系统、出入库管理系统出库模块bug修改",
+    "start": "2024-06-28",
+    "end": "2024-06-28",
+    "url": "\/pro\/index.php?m=effort&f=view&id=170904&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 170908,
+    "title": "[T]开始了任务 : SJ微服务联调支持",
+    "start": "2024-06-28",
+    "end": "2024-06-28",
+    "url": "\/pro\/index.php?m=effort&f=view&id=170908&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 170910,
+    "title": "[T]开始了任务 : 对接 SJ 门户",
+    "start": "2024-06-28",
+    "end": "2024-06-28",
+    "url": "\/pro\/index.php?m=effort&f=view&id=170910&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 170912,
+    "title": "[T]对接 SJ 门户",
+    "start": "2024-06-28",
+    "end": "2024-06-28",
+    "url": "\/pro\/index.php?m=effort&f=view&id=170912&onlybody=yes",
+    "consumed": "2"
+  },
+  {
+    "id": 170968,
+    "title": "[T]电台管理系统、网上报修系统、设备资产管理系统、出入库管理系统出库模块bug修改\t\r\n",
+    "start": "2024-06-28",
+    "end": "2024-06-28",
+    "url": "\/pro\/index.php?m=effort&f=view&id=170968&onlybody=yes",
+    "consumed": "6"
+  },
+  {
+    "id": 171490,
+    "title": "[T]SJ微服务联调支持与bug修改",
+    "start": "2024-07-01",
+    "end": "2024-07-01",
+    "url": "\/pro\/index.php?m=effort&f=view&id=171490&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 171491,
+    "title": "[T]SJ微服务联调支持与bug修改",
+    "start": "2024-07-02",
+    "end": "2024-07-02",
+    "url": "\/pro\/index.php?m=effort&f=view&id=171491&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 171492,
+    "title": "[T]SJ微服务联调支持与bug修改",
+    "start": "2024-07-03",
+    "end": "2024-07-03",
+    "url": "\/pro\/index.php?m=effort&f=view&id=171492&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 171499,
+    "title": "[T]SJ微服务新需求预研",
+    "start": "2024-07-03",
+    "end": "2024-07-03",
+    "url": "\/pro\/index.php?m=effort&f=view&id=171499&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 171500,
+    "title": "[T]SJ微服务联调支持与bug修改",
+    "start": "2024-07-03",
+    "end": "2024-07-03",
+    "url": "\/pro\/index.php?m=effort&f=view&id=171500&onlybody=yes",
+    "consumed": "1"
+  },
+  {
+    "id": 171501,
+    "title": "[T]SJ微服务联调支持与bug修改",
+    "start": "2024-07-04",
+    "end": "2024-07-04",
+    "url": "\/pro\/index.php?m=effort&f=view&id=171501&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 171504,
+    "title": "[T]SJ微服务新需求预研",
+    "start": "2024-07-04",
+    "end": "2024-07-04",
+    "url": "\/pro\/index.php?m=effort&f=view&id=171504&onlybody=yes",
+    "consumed": "5"
+  },
+  {
+    "id": 171489,
+    "title": "[T]开始了任务 : SJ微服务联调支持与bug修改",
+    "start": "2024-07-05",
+    "end": "2024-07-05",
+    "url": "\/pro\/index.php?m=effort&f=view&id=171489&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 171496,
+    "title": "[T]开始了任务 : SJ微服务新需求预研",
+    "start": "2024-07-05",
+    "end": "2024-07-05",
+    "url": "\/pro\/index.php?m=effort&f=view&id=171496&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 171502,
+    "title": "[T]SJ微服务联调支持与bug修改",
+    "start": "2024-07-05",
+    "end": "2024-07-05",
+    "url": "\/pro\/index.php?m=effort&f=view&id=171502&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 171505,
+    "title": "[T]SJ微服务新需求预研",
+    "start": "2024-07-05",
+    "end": "2024-07-05",
+    "url": "\/pro\/index.php?m=effort&f=view&id=171505&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 171773,
+    "title": "[T]服务总线需求熟悉",
+    "start": "2024-07-08",
+    "end": "2024-07-08",
+    "url": "\/pro\/index.php?m=effort&f=view&id=171773&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 171774,
+    "title": "[T]服务总线需求熟悉",
+    "start": "2024-07-09",
+    "end": "2024-07-09",
+    "url": "\/pro\/index.php?m=effort&f=view&id=171774&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 171775,
+    "title": "[T]服务总线需求熟悉",
+    "start": "2024-07-10",
+    "end": "2024-07-10",
+    "url": "\/pro\/index.php?m=effort&f=view&id=171775&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 171777,
+    "title": "[T]308运维项目现场问题支持",
+    "start": "2024-07-10",
+    "end": "2024-07-10",
+    "url": "\/pro\/index.php?m=effort&f=view&id=171777&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 171779,
+    "title": "[T]: bug修改、电台变更单位审批流程修改",
+    "start": "2024-07-11",
+    "end": "2024-07-11",
+    "url": "\/pro\/index.php?m=effort&f=view&id=171779&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 171772,
+    "title": "[T]开始了任务 : 需求熟悉",
+    "start": "2024-07-12",
+    "end": "2024-07-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=171772&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 171776,
+    "title": "[T]开始了任务 : 现场问题支持",
+    "start": "2024-07-12",
+    "end": "2024-07-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=171776&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 171778,
+    "title": "[T]开始了任务 : bug修改、电台变更单位审批流程修改",
+    "start": "2024-07-12",
+    "end": "2024-07-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=171778&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 171850,
+    "title": "[T] bug修改、电台变更单位审批流程修改",
+    "start": "2024-07-12",
+    "end": "2024-07-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=171850&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 172407,
+    "title": "[T]一键图搜、属性检索后台开发",
+    "start": "2024-07-15",
+    "end": "2024-07-15",
+    "url": "\/pro\/index.php?m=effort&f=view&id=172407&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 172408,
+    "title": "[T]一键图搜、属性检索后台开发",
+    "start": "2024-07-16",
+    "end": "2024-07-16",
+    "url": "\/pro\/index.php?m=effort&f=view&id=172408&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 172405,
+    "title": "[T]Redis集群预研及测试",
+    "start": "2024-07-17",
+    "end": "2024-07-17",
+    "url": "\/pro\/index.php?m=effort&f=view&id=172405&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 172409,
+    "title": "[T]一键图搜、属性检索后台开发",
+    "start": "2024-07-18",
+    "end": "2024-07-18",
+    "url": "\/pro\/index.php?m=effort&f=view&id=172409&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 172411,
+    "title": "[T] 网上报修bug修改",
+    "start": "2024-07-19",
+    "end": "2024-07-19",
+    "url": "\/pro\/index.php?m=effort&f=view&id=172411&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 172404,
+    "title": "[T]开始了任务 : Redis集群预研及测试",
+    "start": "2024-07-23",
+    "end": "2024-07-23",
+    "url": "\/pro\/index.php?m=effort&f=view&id=172404&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 172406,
+    "title": "[T]开始了任务 : 一键图搜、属性检索后台开发",
+    "start": "2024-07-23",
+    "end": "2024-07-23",
+    "url": "\/pro\/index.php?m=effort&f=view&id=172406&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 172410,
+    "title": "[T]开始了任务 : 网上报修bug修改",
+    "start": "2024-07-23",
+    "end": "2024-07-23",
+    "url": "\/pro\/index.php?m=effort&f=view&id=172410&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 173184,
+    "title": "[T] 菜单新增显示隐藏字段并实现功能，一键图搜、属性检索视图库接口预研及对接代码修改\t",
+    "start": "2024-07-23",
+    "end": "2024-07-23",
+    "url": "\/pro\/index.php?m=effort&f=view&id=173184&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 173185,
+    "title": "[T] 菜单新增显示隐藏字段并实现功能，一键图搜、属性检索视图库接口预研及对接代码修改\t",
+    "start": "2024-07-24",
+    "end": "2024-07-24",
+    "url": "\/pro\/index.php?m=effort&f=view&id=173185&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 173190,
+    "title": "[T]电台新需求开发，bug修改",
+    "start": "2024-07-25",
+    "end": "2024-07-25",
+    "url": "\/pro\/index.php?m=effort&f=view&id=173190&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 173183,
+    "title": "[T]开始了任务 : 菜单新增显示隐藏字段并实现功能，一键图搜、属性检索视图库接口预研及对接代码修改",
+    "start": "2024-07-26",
+    "end": "2024-07-26",
+    "url": "\/pro\/index.php?m=effort&f=view&id=173183&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 173186,
+    "title": "[T]开始了任务 : 电台新需求开发，bug修改",
+    "start": "2024-07-26",
+    "end": "2024-07-26",
+    "url": "\/pro\/index.php?m=effort&f=view&id=173186&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 173229,
+    "title": "[T]菜单新增显示隐藏字段并实现功能，一键图搜、属性检索视图库接口预研及对接代码修改\t\r\n",
+    "start": "2024-07-26",
+    "end": "2024-07-26",
+    "url": "\/pro\/index.php?m=effort&f=view&id=173229&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 173731,
+    "title": "[T] 公共服务，视图云搜以图搜图模块测试并修改已知bug",
+    "start": "2024-07-29",
+    "end": "2024-07-29",
+    "url": "\/pro\/index.php?m=effort&f=view&id=173731&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 173732,
+    "title": "[T] 公共服务，视图云搜以图搜图模块测试并修改已知bug",
+    "start": "2024-07-30",
+    "end": "2024-07-30",
+    "url": "\/pro\/index.php?m=effort&f=view&id=173732&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 173724,
+    "title": "[T]出入库管理系统，网上报修bug修改",
+    "start": "2024-07-31",
+    "end": "2024-07-31",
+    "url": "\/pro\/index.php?m=effort&f=view&id=173724&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 173733,
+    "title": "[T] 公共服务，视图云搜以图搜图模块测试并修改已知bug",
+    "start": "2024-08-01",
+    "end": "2024-08-01",
+    "url": "\/pro\/index.php?m=effort&f=view&id=173733&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 173737,
+    "title": "[T] ZD统一门户对接接口开发",
+    "start": "2024-08-01",
+    "end": "2024-08-01",
+    "url": "\/pro\/index.php?m=effort&f=view&id=173737&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 173723,
+    "title": "[T]开始了任务 : 出入库管理系统，网上报修bug修改",
+    "start": "2024-08-02",
+    "end": "2024-08-02",
+    "url": "\/pro\/index.php?m=effort&f=view&id=173723&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 173726,
+    "title": "[T]开始了任务 : 公共服务，视图云搜以图搜图模块测试并修改已知bug",
+    "start": "2024-08-02",
+    "end": "2024-08-02",
+    "url": "\/pro\/index.php?m=effort&f=view&id=173726&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 173736,
+    "title": "[T]开始了任务 : ZD统一门户对接接口开发",
+    "start": "2024-08-02",
+    "end": "2024-08-02",
+    "url": "\/pro\/index.php?m=effort&f=view&id=173736&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 173794,
+    "title": "[T]公共服务，视图云搜以图搜图模块测试并修改已知bug",
+    "start": "2024-08-02",
+    "end": "2024-08-02",
+    "url": "\/pro\/index.php?m=effort&f=view&id=173794&onlybody=yes",
+    "consumed": "9"
+  },
+  {
+    "id": 174026,
+    "title": "[T]ZD统一门户对接接口开发",
+    "start": "2024-08-05",
+    "end": "2024-08-05",
+    "url": "\/pro\/index.php?m=effort&f=view&id=174026&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 174386,
+    "title": "[B]出入库管理将我的消息未读状态设置为已读失败",
+    "start": "2024-08-05",
+    "end": "2024-08-05",
+    "url": "\/pro\/index.php?m=effort&f=view&id=174386&onlybody=yes",
+    "consumed": "0.5"
+  },
+  {
+    "id": 174027,
+    "title": "[T]ZD统一门户对接接口开发",
+    "start": "2024-08-06",
+    "end": "2024-08-06",
+    "url": "\/pro\/index.php?m=effort&f=view&id=174027&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 174029,
+    "title": "[T]属性检索接口联调及测试",
+    "start": "2024-08-07",
+    "end": "2024-08-07",
+    "url": "\/pro\/index.php?m=effort&f=view&id=174029&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 173949,
+    "title": "[B]修改bug：系统管理-用户管理，新增用户“用户等级”必填项限制未生效",
+    "start": "2024-08-08",
+    "end": "2024-08-08",
+    "url": "\/pro\/index.php?m=effort&f=view&id=173949&onlybody=yes",
+    "consumed": "0.5"
+  },
+  {
+    "id": 173950,
+    "title": "[B]修改bug：用户管理，删除用户失败",
+    "start": "2024-08-08",
+    "end": "2024-08-08",
+    "url": "\/pro\/index.php?m=effort&f=view&id=173950&onlybody=yes",
+    "consumed": "0.5"
+  },
+  {
+    "id": 174030,
+    "title": "[T]属性检索接口联调及测试",
+    "start": "2024-08-08",
+    "end": "2024-08-08",
+    "url": "\/pro\/index.php?m=effort&f=view&id=174030&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 174115,
+    "title": "[T]公共服务、以图搜图功能测试及bug修改",
+    "start": "2024-08-08",
+    "end": "2024-08-08",
+    "url": "\/pro\/index.php?m=effort&f=view&id=174115&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 174028,
+    "title": "[T]开始了任务 : 属性检索接口联调及测试",
+    "start": "2024-08-09",
+    "end": "2024-08-09",
+    "url": "\/pro\/index.php?m=effort&f=view&id=174028&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 174114,
+    "title": "[T]开始了任务 : 公共服务、以图搜图功能测试及bug修改",
+    "start": "2024-08-09",
+    "end": "2024-08-09",
+    "url": "\/pro\/index.php?m=effort&f=view&id=174114&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 174116,
+    "title": "[T]公共服务、以图搜图功能测试及bug修改",
+    "start": "2024-08-09",
+    "end": "2024-08-09",
+    "url": "\/pro\/index.php?m=effort&f=view&id=174116&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 174388,
+    "title": "[T]小视频：人脸、车辆布控库，人脸、车辆增删查改等相关代码修改\t",
+    "start": "2024-08-12",
+    "end": "2024-08-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=174388&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 174389,
+    "title": "[T]小视频：人脸、车辆布控库，人脸、车辆增删查改等相关代码修改\t",
+    "start": "2024-08-13",
+    "end": "2024-08-13",
+    "url": "\/pro\/index.php?m=effort&f=view&id=174389&onlybody=yes",
+    "consumed": "9"
+  },
+  {
+    "id": 174391,
+    "title": "[T] 视图库：视频片段相关接口开发",
+    "start": "2024-08-14",
+    "end": "2024-08-14",
+    "url": "\/pro\/index.php?m=effort&f=view&id=174391&onlybody=yes",
+    "consumed": "9.5"
+  },
+  {
+    "id": 174392,
+    "title": "[T] 视图库：视频片段相关接口开发",
+    "start": "2024-08-15",
+    "end": "2024-08-15",
+    "url": "\/pro\/index.php?m=effort&f=view&id=174392&onlybody=yes",
+    "consumed": "10"
+  },
+  {
+    "id": 174387,
+    "title": "[T]开始了任务 : 小视频：人脸、车辆布控库，人脸、车辆增删查改等相关代码修改",
+    "start": "2024-08-16",
+    "end": "2024-08-16",
+    "url": "\/pro\/index.php?m=effort&f=view&id=174387&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 174390,
+    "title": "[T]开始了任务 : 视图库：视频片段相关接口开发",
+    "start": "2024-08-16",
+    "end": "2024-08-16",
+    "url": "\/pro\/index.php?m=effort&f=view&id=174390&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 174393,
+    "title": "[T] 视图库：视频片段相关接口开发",
+    "start": "2024-08-16",
+    "end": "2024-08-16",
+    "url": "\/pro\/index.php?m=effort&f=view&id=174393&onlybody=yes",
+    "consumed": "9.5"
+  },
+  {
+    "id": 174942,
+    "title": "[T]视频片段相关接口开发",
+    "start": "2024-08-19",
+    "end": "2024-08-19",
+    "url": "\/pro\/index.php?m=effort&f=view&id=174942&onlybody=yes",
+    "consumed": "9.5"
+  },
+  {
+    "id": 174943,
+    "title": "[T]视频片段相关接口开发",
+    "start": "2024-08-20",
+    "end": "2024-08-20",
+    "url": "\/pro\/index.php?m=effort&f=view&id=174943&onlybody=yes",
+    "consumed": "9"
+  },
+  {
+    "id": 174964,
+    "title": "[T] 视图库项目：图像信息相关接口开发",
+    "start": "2024-08-21",
+    "end": "2024-08-21",
+    "url": "\/pro\/index.php?m=effort&f=view&id=174964&onlybody=yes",
+    "consumed": "9"
+  },
+  {
+    "id": 174965,
+    "title": "[T] 视图库项目：图像信息相关接口开发",
+    "start": "2024-08-22",
+    "end": "2024-08-22",
+    "url": "\/pro\/index.php?m=effort&f=view&id=174965&onlybody=yes",
+    "consumed": "9"
+  },
+  {
+    "id": 174936,
+    "title": "[T]开始了任务 : 视频片段相关接口开发",
+    "start": "2024-08-23",
+    "end": "2024-08-23",
+    "url": "\/pro\/index.php?m=effort&f=view&id=174936&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 174953,
+    "title": "[T]开始了任务 : 视图库项目：图像信息相关接口开发",
+    "start": "2024-08-23",
+    "end": "2024-08-23",
+    "url": "\/pro\/index.php?m=effort&f=view&id=174953&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 175011,
+    "title": "[T]视图库项目：图像信息相关接口开发",
+    "start": "2024-08-23",
+    "end": "2024-08-23",
+    "url": "\/pro\/index.php?m=effort&f=view&id=175011&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 175781,
+    "title": "[T]视图库项目：视频片段相关接口现场联调并修改bug",
+    "start": "2024-08-26",
+    "end": "2024-08-26",
+    "url": "\/pro\/index.php?m=effort&f=view&id=175781&onlybody=yes",
+    "consumed": "9"
+  },
+  {
+    "id": 175782,
+    "title": "[T]视图库项目：视频片段相关接口现场联调并修改bug",
+    "start": "2024-08-27",
+    "end": "2024-08-27",
+    "url": "\/pro\/index.php?m=effort&f=view&id=175782&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 175787,
+    "title": "[T] 视图库项目：图像信息相关接口现场联调并修改bug",
+    "start": "2024-08-27",
+    "end": "2024-08-27",
+    "url": "\/pro\/index.php?m=effort&f=view&id=175787&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 175784,
+    "title": "[T]通信设备管理项目：电台新优化需求",
+    "start": "2024-08-28",
+    "end": "2024-08-28",
+    "url": "\/pro\/index.php?m=effort&f=view&id=175784&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 175785,
+    "title": "[T]通信设备管理项目：电台新优化需求",
+    "start": "2024-08-29",
+    "end": "2024-08-29",
+    "url": "\/pro\/index.php?m=effort&f=view&id=175785&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 175780,
+    "title": "[T]开始了任务 : 视图库项目：视频片段相关接口现场联调并修改bug",
+    "start": "2024-08-30",
+    "end": "2024-08-30",
+    "url": "\/pro\/index.php?m=effort&f=view&id=175780&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 175783,
+    "title": "[T]开始了任务 : 通信设备管理项目：电台新优化需求",
+    "start": "2024-08-30",
+    "end": "2024-08-30",
+    "url": "\/pro\/index.php?m=effort&f=view&id=175783&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 175786,
+    "title": "[T]开始了任务 : 视图库项目：图像信息相关接口现场联调并修改bug",
+    "start": "2024-08-30",
+    "end": "2024-08-30",
+    "url": "\/pro\/index.php?m=effort&f=view&id=175786&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 175788,
+    "title": "[T] 视图库项目：图像信息相关接口现场联调并修改bug",
+    "start": "2024-08-30",
+    "end": "2024-08-30",
+    "url": "\/pro\/index.php?m=effort&f=view&id=175788&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 176123,
+    "title": "[T]视图库项目：文件相关接口开发",
+    "start": "2024-09-02",
+    "end": "2024-09-02",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176123&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 176124,
+    "title": "[T]视图库项目：文件相关接口开发",
+    "start": "2024-09-03",
+    "end": "2024-09-03",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176124&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 176126,
+    "title": "[T]为现场对接总队统一门户提供技术支持并修改bug",
+    "start": "2024-09-04",
+    "end": "2024-09-04",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176126&onlybody=yes",
+    "consumed": "9"
+  },
+  {
+    "id": 176127,
+    "title": "[T]为现场对接总队统一门户提供技术支持并修改bug",
+    "start": "2024-09-05",
+    "end": "2024-09-05",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176127&onlybody=yes",
+    "consumed": "11"
+  },
+  {
+    "id": 176122,
+    "title": "[T]开始了任务 : 视图库项目：文件相关接口开发",
+    "start": "2024-09-06",
+    "end": "2024-09-06",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176122&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 176125,
+    "title": "[T]开始了任务 : 为现场对接总队统一门户提供技术支持并修改bug",
+    "start": "2024-09-06",
+    "end": "2024-09-06",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176125&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 176165,
+    "title": "[T]开始了任务 : 视图库项目：视频片段相关接口现场联调并修改bug",
+    "start": "2024-09-06",
+    "end": "2024-09-06",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176165&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 176166,
+    "title": "[T]视图库项目：视频片段相关接口现场联调并修改bug",
+    "start": "2024-09-06",
+    "end": "2024-09-06",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176166&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 176490,
+    "title": "[T]视图库项目：视频片段及图像相关接口现场联调并修改bug",
+    "start": "2024-09-09",
+    "end": "2024-09-09",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176490&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 176236,
+    "title": "[B]人车搜索-以图搜图-导出-勾选导出前1条数据，导出结果为当前查询界面的全部数据",
+    "start": "2024-09-10",
+    "end": "2024-09-10",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176236&onlybody=yes",
+    "consumed": "1"
+  },
+  {
+    "id": 176237,
+    "title": "[B]解决：人车搜索（人脸）-属性检索，区域设备数数量显示错误",
+    "start": "2024-09-10",
+    "end": "2024-09-10",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176237&onlybody=yes",
+    "consumed": "1"
+  },
+  {
+    "id": 176491,
+    "title": "[T]视图库项目：视频片段及图像相关接口现场联调并修改bug",
+    "start": "2024-09-10",
+    "end": "2024-09-10",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176491&onlybody=yes",
+    "consumed": "10"
+  },
+  {
+    "id": 176492,
+    "title": "[T]视图库项目：视频片段及图像相关接口现场联调并修改bug",
+    "start": "2024-09-11",
+    "end": "2024-09-11",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176492&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 176496,
+    "title": "[T]小视频项目：禅道bug修改",
+    "start": "2024-09-12",
+    "end": "2024-09-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176496&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 176404,
+    "title": "[B]解决bug：人车搜索-属性搜索，右侧选择设备，统计设备数异常",
+    "start": "2024-09-13",
+    "end": "2024-09-13",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176404&onlybody=yes",
+    "consumed": "2"
+  },
+  {
+    "id": 176405,
+    "title": "[B]解决bug：人车检索-属性检索，右边默认选的区域设备，区域设备数显示的0，不正确",
+    "start": "2024-09-13",
+    "end": "2024-09-13",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176405&onlybody=yes",
+    "consumed": "2"
+  },
+  {
+    "id": 176497,
+    "title": "[T]小视频项目：禅道bug修改",
+    "start": "2024-09-13",
+    "end": "2024-09-13",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176497&onlybody=yes",
+    "consumed": "9"
+  },
+  {
+    "id": 176486,
+    "title": "[T]开始了任务 : 视图库项目：视频片段及图像相关接口现场联调并修改bug",
+    "start": "2024-09-14",
+    "end": "2024-09-14",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176486&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 176495,
+    "title": "[T]开始了任务 : 小视频项目：禅道bug修改",
+    "start": "2024-09-14",
+    "end": "2024-09-14",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176495&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 176526,
+    "title": "[T]小视频项目：禅道bug修改",
+    "start": "2024-09-14",
+    "end": "2024-09-14",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176526&onlybody=yes",
+    "consumed": "9"
+  },
+  {
+    "id": 176869,
+    "title": "[T]短信相关接口开发",
+    "start": "2024-09-18",
+    "end": "2024-09-18",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176869&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 176870,
+    "title": "[T]短信相关接口开发",
+    "start": "2024-09-19",
+    "end": "2024-09-19",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176870&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 176864,
+    "title": "[T]开始了任务 : 短信相关接口开发",
+    "start": "2024-09-20",
+    "end": "2024-09-20",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176864&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 176872,
+    "title": "[T]开始了任务 : 小视频禅道bug修改  ",
+    "start": "2024-09-20",
+    "end": "2024-09-20",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176872&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 176874,
+    "title": "[T] 小视频禅道bug修改",
+    "start": "2024-09-20",
+    "end": "2024-09-20",
+    "url": "\/pro\/index.php?m=effort&f=view&id=176874&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 177697,
+    "title": "[T]: 短信相关接口开发",
+    "start": "2024-09-23",
+    "end": "2024-09-23",
+    "url": "\/pro\/index.php?m=effort&f=view&id=177697&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 177699,
+    "title": "[T] : 统计查询接口开发及联调",
+    "start": "2024-09-24",
+    "end": "2024-09-24",
+    "url": "\/pro\/index.php?m=effort&f=view&id=177699&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 177700,
+    "title": "[T] : 统计查询接口开发及联调",
+    "start": "2024-09-25",
+    "end": "2024-09-25",
+    "url": "\/pro\/index.php?m=effort&f=view&id=177700&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 177701,
+    "title": "[T] : 统计查询接口开发及联调",
+    "start": "2024-09-26",
+    "end": "2024-09-26",
+    "url": "\/pro\/index.php?m=effort&f=view&id=177701&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 177696,
+    "title": "[T]开始了任务 : 短信相关接口开发",
+    "start": "2024-09-27",
+    "end": "2024-09-27",
+    "url": "\/pro\/index.php?m=effort&f=view&id=177696&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 177698,
+    "title": "[T]开始了任务 : 统计查询接口开发及联调",
+    "start": "2024-09-27",
+    "end": "2024-09-27",
+    "url": "\/pro\/index.php?m=effort&f=view&id=177698&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 177702,
+    "title": "[T] : 统计查询接口开发及联调",
+    "start": "2024-09-27",
+    "end": "2024-09-27",
+    "url": "\/pro\/index.php?m=effort&f=view&id=177702&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 178078,
+    "title": "[T]短信相关接口开发及联调",
+    "start": "2024-09-29",
+    "end": "2024-09-29",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178078&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 178309,
+    "title": "[T] 统计查询、短信相关接口开发及联调测试",
+    "start": "2024-09-29",
+    "end": "2024-09-29",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178309&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 178079,
+    "title": "[T]短信相关接口开发及联调",
+    "start": "2024-09-30",
+    "end": "2024-09-30",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178079&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 178310,
+    "title": "[T] 统计查询、短信相关接口开发及联调测试",
+    "start": "2024-09-30",
+    "end": "2024-09-30",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178310&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 178311,
+    "title": "[T] 统计查询、短信相关接口开发及联调测试",
+    "start": "2024-10-08",
+    "end": "2024-10-08",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178311&onlybody=yes",
+    "consumed": "9"
+  },
+  {
+    "id": 178312,
+    "title": "[T] 统计查询、短信相关接口开发及联调测试",
+    "start": "2024-10-09",
+    "end": "2024-10-09",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178312&onlybody=yes",
+    "consumed": "9"
+  },
+  {
+    "id": 178315,
+    "title": "[T]电台相关bug修改",
+    "start": "2024-10-10",
+    "end": "2024-10-10",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178315&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 178316,
+    "title": "[T]电台相关bug修改",
+    "start": "2024-10-11",
+    "end": "2024-10-11",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178316&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 178318,
+    "title": "[T]老版配置工具：漏洞修复",
+    "start": "2024-10-11",
+    "end": "2024-10-11",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178318&onlybody=yes",
+    "consumed": "5"
+  },
+  {
+    "id": 178308,
+    "title": "[T]开始了任务 : 统计查询、短信相关接口开发及联调测试",
+    "start": "2024-10-12",
+    "end": "2024-10-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178308&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 178313,
+    "title": "[T]开始了任务 : 老版配置工具：漏洞修复",
+    "start": "2024-10-12",
+    "end": "2024-10-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178313&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 178314,
+    "title": "[T]开始了任务 : 电台相关bug修改",
+    "start": "2024-10-12",
+    "end": "2024-10-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178314&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 178317,
+    "title": "[T]电台相关bug修改",
+    "start": "2024-10-12",
+    "end": "2024-10-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178317&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 178454,
+    "title": "[T]老版配置工具：漏洞修复",
+    "start": "2024-10-12",
+    "end": "2024-10-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178454&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 178672,
+    "title": "[T]统计查询、短信相关接口联调测试",
+    "start": "2024-10-14",
+    "end": "2024-10-14",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178672&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 178688,
+    "title": "[T]视图库：图像接口-非机动车告警转发联调",
+    "start": "2024-10-14",
+    "end": "2024-10-14",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178688&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 178673,
+    "title": "[T]统计查询、短信相关接口联调测试",
+    "start": "2024-10-15",
+    "end": "2024-10-15",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178673&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 178689,
+    "title": "[T]视图库：图像接口-非机动车告警转发联调",
+    "start": "2024-10-15",
+    "end": "2024-10-15",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178689&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 178674,
+    "title": "[T]统计查询、短信相关接口联调测试",
+    "start": "2024-10-16",
+    "end": "2024-10-16",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178674&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 178690,
+    "title": "[T]视图库：图像接口-非机动车告警转发联调",
+    "start": "2024-10-16",
+    "end": "2024-10-16",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178690&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 178675,
+    "title": "[T]统计查询、短信相关接口联调测试",
+    "start": "2024-10-17",
+    "end": "2024-10-17",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178675&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 178691,
+    "title": "[T]视图库：图像接口-非机动车告警转发联调",
+    "start": "2024-10-17",
+    "end": "2024-10-17",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178691&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 178671,
+    "title": "[T]开始了任务 : 统计查询、短信相关接口联调测试",
+    "start": "2024-10-18",
+    "end": "2024-10-18",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178671&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 178687,
+    "title": "[T]开始了任务 : 视图库：图像接口-非机动车告警转发联调",
+    "start": "2024-10-18",
+    "end": "2024-10-18",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178687&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 178745,
+    "title": "[T]视图库：图像接口-非机动车告警转发联调",
+    "start": "2024-10-18",
+    "end": "2024-10-18",
+    "url": "\/pro\/index.php?m=effort&f=view&id=178745&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 179360,
+    "title": "[T]视频片段、图像、文件相关接口代码优化",
+    "start": "2024-10-21",
+    "end": "2024-10-21",
+    "url": "\/pro\/index.php?m=effort&f=view&id=179360&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 179364,
+    "title": "[T]劝导员相关代码移除",
+    "start": "2024-10-21",
+    "end": "2024-10-21",
+    "url": "\/pro\/index.php?m=effort&f=view&id=179364&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 179361,
+    "title": "[T]视频片段、图像、文件相关接口代码优化",
+    "start": "2024-10-22",
+    "end": "2024-10-22",
+    "url": "\/pro\/index.php?m=effort&f=view&id=179361&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 179366,
+    "title": "[T]劝导员相关代码移除",
+    "start": "2024-10-22",
+    "end": "2024-10-22",
+    "url": "\/pro\/index.php?m=effort&f=view&id=179366&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 179362,
+    "title": "[T]视频片段、图像、文件相关接口代码优化",
+    "start": "2024-10-23",
+    "end": "2024-10-23",
+    "url": "\/pro\/index.php?m=effort&f=view&id=179362&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 179367,
+    "title": "[T]劝导员相关代码移除",
+    "start": "2024-10-23",
+    "end": "2024-10-23",
+    "url": "\/pro\/index.php?m=effort&f=view&id=179367&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 179374,
+    "title": "[T]需求熟悉，功能分析",
+    "start": "2024-10-24",
+    "end": "2024-10-24",
+    "url": "\/pro\/index.php?m=effort&f=view&id=179374&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 179359,
+    "title": "[T]开始了任务 : 视频片段、图像、文件相关接口代码优化",
+    "start": "2024-10-25",
+    "end": "2024-10-25",
+    "url": "\/pro\/index.php?m=effort&f=view&id=179359&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 179363,
+    "title": "[T]开始了任务 : 劝导员相关代码移除",
+    "start": "2024-10-25",
+    "end": "2024-10-25",
+    "url": "\/pro\/index.php?m=effort&f=view&id=179363&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 179373,
+    "title": "[T]开始了任务 : 需求熟悉，功能分析",
+    "start": "2024-10-25",
+    "end": "2024-10-25",
+    "url": "\/pro\/index.php?m=effort&f=view&id=179373&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 179389,
+    "title": "[T]需求熟悉，功能分析",
+    "start": "2024-10-25",
+    "end": "2024-10-25",
+    "url": "\/pro\/index.php?m=effort&f=view&id=179389&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 180045,
+    "title": "[T]服务授权、服务目录、服务列表模块后台管理相关接口开发",
+    "start": "2024-10-28",
+    "end": "2024-10-28",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180045&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 180046,
+    "title": "[T]服务授权、服务目录、服务列表模块后台管理相关接口开发",
+    "start": "2024-10-29",
+    "end": "2024-10-29",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180046&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 180047,
+    "title": "[T]服务授权、服务目录、服务列表模块后台管理相关接口开发",
+    "start": "2024-10-30",
+    "end": "2024-10-30",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180047&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 180104,
+    "title": "[T]服务授权、服务目录、服务列表模块后台管理相关接口开发",
+    "start": "2024-10-31",
+    "end": "2024-10-31",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180104&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 180038,
+    "title": "[T]开始了任务 : 服务授权、服务目录、服务列表模块后台管理相关接口开发",
+    "start": "2024-11-01",
+    "end": "2024-11-01",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180038&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 180105,
+    "title": "[T]服务授权、服务目录、服务列表模块后台管理相关接口开发",
+    "start": "2024-11-01",
+    "end": "2024-11-01",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180105&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 180291,
+    "title": "[T]1、生成2个运维人员的排班记录，并生成2023.09.01至今的考勤数据\r\n2、开发一个定时任务功能，模拟创建第一点中这2个运维人员2024.11.01以后的考勤数据",
+    "start": "2024-11-02",
+    "end": "2024-11-02",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180291&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 180292,
+    "title": "[T]3、新增个人的考勤记录查询接口，对接小程序的考勤页面\r\n4、考勤导出功能新增经度和维度字段，移除温度字段；考勤记录查询接口添加经纬度字段",
+    "start": "2024-11-04",
+    "end": "2024-11-04",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180292&onlybody=yes",
+    "consumed": "10"
+  },
+  {
+    "id": 180293,
+    "title": "[T]3、新增个人的考勤记录查询接口，对接小程序的考勤页面\r\n4、考勤导出功能新增经度和维度字段，移除温度字段；考勤记录查询接口添加经纬度字段",
+    "start": "2024-11-05",
+    "end": "2024-11-05",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180293&onlybody=yes",
+    "consumed": "2"
+  },
+  {
+    "id": 180446,
+    "title": "[T]天翼视联能力开放平台资源组及其下资源同步开发及联调",
+    "start": "2024-11-05",
+    "end": "2024-11-05",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180446&onlybody=yes",
+    "consumed": "6"
+  },
+  {
+    "id": 180290,
+    "title": "[T]开始了任务 : 考勤功能开发",
+    "start": "2024-11-06",
+    "end": "2024-11-06",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180290&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 180447,
+    "title": "[T]天翼视联能力开放平台资源组及其下资源同步开发及联调",
+    "start": "2024-11-06",
+    "end": "2024-11-06",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180447&onlybody=yes",
+    "consumed": "10"
+  },
+  {
+    "id": 180448,
+    "title": "[T]天翼视联能力开放平台资源组及其下资源同步开发及联调",
+    "start": "2024-11-07",
+    "end": "2024-11-07",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180448&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 180445,
+    "title": "[T]开始了任务 : 天翼视联能力开放平台资源组及其下资源同步开发及联调",
+    "start": "2024-11-08",
+    "end": "2024-11-08",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180445&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 180728,
+    "title": "[T] 外勤优化需求开发",
+    "start": "2024-11-11",
+    "end": "2024-11-11",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180728&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 180730,
+    "title": "[T]实时视频播放地址接口开发及联调",
+    "start": "2024-11-11",
+    "end": "2024-11-11",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180730&onlybody=yes",
+    "consumed": "5"
+  },
+  {
+    "id": 180731,
+    "title": "[T]实时视频播放地址接口开发及联调",
+    "start": "2024-11-12",
+    "end": "2024-11-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180731&onlybody=yes",
+    "consumed": "9.5"
+  },
+  {
+    "id": 180738,
+    "title": "[T]天翼视联能力开放平台资源组及其下资源同步开发及联调",
+    "start": "2024-11-13",
+    "end": "2024-11-13",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180738&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 180740,
+    "title": "[T]实时视频播放地址接口开发及联调",
+    "start": "2024-11-14",
+    "end": "2024-11-14",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180740&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 180724,
+    "title": "[T]开始了任务 : 外勤优化需求开发",
+    "start": "2024-11-15",
+    "end": "2024-11-15",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180724&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 180729,
+    "title": "[T]开始了任务 : 实时视频播放地址接口开发及联调",
+    "start": "2024-11-15",
+    "end": "2024-11-15",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180729&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 180734,
+    "title": "[T]开始了任务 : 视图库：图像批量数据接口联调",
+    "start": "2024-11-15",
+    "end": "2024-11-15",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180734&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 180735,
+    "title": "[T] 视图库：图像批量数据接口联调",
+    "start": "2024-11-15",
+    "end": "2024-11-15",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180735&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 180741,
+    "title": "[T]实时视频播放地址接口开发及联调",
+    "start": "2024-11-15",
+    "end": "2024-11-15",
+    "url": "\/pro\/index.php?m=effort&f=view&id=180741&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 181107,
+    "title": "[T]天翼视联能力开放平台资源组及其下资源同步开发及联调",
+    "start": "2024-11-18",
+    "end": "2024-11-18",
+    "url": "\/pro\/index.php?m=effort&f=view&id=181107&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 181110,
+    "title": "[T]实时视频播放地址接口开发及联调",
+    "start": "2024-11-19",
+    "end": "2024-11-19",
+    "url": "\/pro\/index.php?m=effort&f=view&id=181110&onlybody=yes",
+    "consumed": "9"
+  },
+  {
+    "id": 181111,
+    "title": "[T]实时视频播放地址接口开发及联调",
+    "start": "2024-11-20",
+    "end": "2024-11-20",
+    "url": "\/pro\/index.php?m=effort&f=view&id=181111&onlybody=yes",
+    "consumed": "4.5"
+  },
+  {
+    "id": 181115,
+    "title": "[T]天翼视联能力开放平台资源组及其下资源同步开发及联调",
+    "start": "2024-11-20",
+    "end": "2024-11-20",
+    "url": "\/pro\/index.php?m=effort&f=view&id=181115&onlybody=yes",
+    "consumed": "7"
+  },
+  {
+    "id": 181117,
+    "title": "[T]天翼视联能力开放平台资源组及其下资源同步开发及联调",
+    "start": "2024-11-21",
+    "end": "2024-11-21",
+    "url": "\/pro\/index.php?m=effort&f=view&id=181117&onlybody=yes",
+    "consumed": "1"
+  },
+  {
+    "id": 181125,
+    "title": "[T]实时视频播放地址接口开发及联调",
+    "start": "2024-11-21",
+    "end": "2024-11-21",
+    "url": "\/pro\/index.php?m=effort&f=view&id=181125&onlybody=yes",
+    "consumed": "10"
+  },
+  {
+    "id": 181112,
+    "title": "[T]开始了任务 : 设备订阅AI告警消息接口对接",
+    "start": "2024-11-22",
+    "end": "2024-11-22",
+    "url": "\/pro\/index.php?m=effort&f=view&id=181112&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 181113,
+    "title": "[T]设备订阅AI告警消息接口对接",
+    "start": "2024-11-22",
+    "end": "2024-11-22",
+    "url": "\/pro\/index.php?m=effort&f=view&id=181113&onlybody=yes",
+    "consumed": "6"
+  },
+  {
+    "id": 181124,
+    "title": "[T]开始了任务 : 实时视频播放地址接口开发及联调",
+    "start": "2024-11-22",
+    "end": "2024-11-22",
+    "url": "\/pro\/index.php?m=effort&f=view&id=181124&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 181289,
+    "title": "[T]实时视频播放地址接口开发及联调",
+    "start": "2024-11-22",
+    "end": "2024-11-22",
+    "url": "\/pro\/index.php?m=effort&f=view&id=181289&onlybody=yes",
+    "consumed": "2"
+  },
+  {
+    "id": 182100,
+    "title": "[T]设备ai告警订阅联调",
+    "start": "2024-11-25",
+    "end": "2024-11-25",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182100&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 182106,
+    "title": "[T] 服务授权、服务目录、服务列表后台接口开发",
+    "start": "2024-11-25",
+    "end": "2024-11-25",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182106&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 182101,
+    "title": "[T]设备ai告警订阅联调",
+    "start": "2024-11-26",
+    "end": "2024-11-26",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182101&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 182107,
+    "title": "[T] 服务授权、服务目录、服务列表后台接口开发",
+    "start": "2024-11-26",
+    "end": "2024-11-26",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182107&onlybody=yes",
+    "consumed": "4"
+  },
+  {
+    "id": 182108,
+    "title": "[T] 服务授权、服务目录、服务列表后台接口开发",
+    "start": "2024-11-27",
+    "end": "2024-11-27",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182108&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 182110,
+    "title": "[T] 服务授权、服务目录、服务列表后台接口开发",
+    "start": "2024-11-28",
+    "end": "2024-11-28",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182110&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 182097,
+    "title": "[T]开始了任务 : 设备ai告警订阅联调",
+    "start": "2024-11-29",
+    "end": "2024-11-29",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182097&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 182102,
+    "title": "[T]开始了任务 : 服务授权、服务目录、服务列表后台接口开发",
+    "start": "2024-11-29",
+    "end": "2024-11-29",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182102&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 182186,
+    "title": "[T]开始了任务 : 打卡数据未推送到平台原因分析并解决",
+    "start": "2024-11-29",
+    "end": "2024-11-29",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182186&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 182187,
+    "title": "[T]打卡数据未推送到平台原因分析并解决",
+    "start": "2024-11-29",
+    "end": "2024-11-29",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182187&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 182444,
+    "title": "[T]现场提的问题修改",
+    "start": "2024-12-02",
+    "end": "2024-12-02",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182444&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 182458,
+    "title": "[T]服务总线-Sentinel 预研",
+    "start": "2024-12-03",
+    "end": "2024-12-03",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182458&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 182459,
+    "title": "[T]服务总线-Sentinel 预研",
+    "start": "2024-12-04",
+    "end": "2024-12-04",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182459&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 182461,
+    "title": "[T]概要、详细、接口、技术白皮书文档编写",
+    "start": "2024-12-05",
+    "end": "2024-12-05",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182461&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 182443,
+    "title": "[T]开始了任务 : 现场提的问题修改",
+    "start": "2024-12-06",
+    "end": "2024-12-06",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182443&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 182457,
+    "title": "[T]开始了任务 : 服务总线-Sentinel 预研",
+    "start": "2024-12-06",
+    "end": "2024-12-06",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182457&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 182460,
+    "title": "[T]开始了任务 : 概要、详细、接口、技术白皮书文档编写（黎）",
+    "start": "2024-12-06",
+    "end": "2024-12-06",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182460&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 182462,
+    "title": "[T]概要、详细、接口、技术白皮书文档编写",
+    "start": "2024-12-06",
+    "end": "2024-12-06",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182462&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 182726,
+    "title": "[T]概要、详细、接口、技术白皮书文档编写",
+    "start": "2024-12-09",
+    "end": "2024-12-09",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182726&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 182727,
+    "title": "[T]概要、详细、接口、技术白皮书文档编写",
+    "start": "2024-12-10",
+    "end": "2024-12-10",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182727&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 182728,
+    "title": "[T]概要、详细、接口、技术白皮书文档编写",
+    "start": "2024-12-11",
+    "end": "2024-12-11",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182728&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 182736,
+    "title": "[T]通州SZ项目概要、详细、接口、技术白皮书文档编写",
+    "start": "2024-12-12",
+    "end": "2024-12-12",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182736&onlybody=yes",
+    "consumed": "9"
+  },
+  {
+    "id": 182729,
+    "title": "[T]开始了任务 : 设计文档及白皮书编写",
+    "start": "2024-12-13",
+    "end": "2024-12-13",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182729&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 182737,
+    "title": "[T]通州SZ项目概要、详细、接口、技术白皮书文档编写",
+    "start": "2024-12-13",
+    "end": "2024-12-13",
+    "url": "\/pro\/index.php?m=effort&f=view&id=182737&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 183110,
+    "title": "[T]通州SZ项目概要、详细、接口、技术白皮书文档编写",
+    "start": "2024-12-16",
+    "end": "2024-12-16",
+    "url": "\/pro\/index.php?m=effort&f=view&id=183110&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 183111,
+    "title": "[T]通州SZ项目概要、详细、接口、技术白皮书文档编写",
+    "start": "2024-12-17",
+    "end": "2024-12-17",
+    "url": "\/pro\/index.php?m=effort&f=view&id=183111&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 183112,
+    "title": "[T]通州SZ项目概要、详细、接口、技术白皮书文档编写",
+    "start": "2024-12-18",
+    "end": "2024-12-18",
+    "url": "\/pro\/index.php?m=effort&f=view&id=183112&onlybody=yes",
+    "consumed": "7"
+  },
+  {
+    "id": 183156,
+    "title": "[T]订阅上级视图库相关功能开发",
+    "start": "2024-12-18",
+    "end": "2024-12-18",
+    "url": "\/pro\/index.php?m=effort&f=view&id=183156&onlybody=yes",
+    "consumed": "1"
+  },
+  {
+    "id": 183154,
+    "title": "[T]订阅上级视图库相关功能开发",
+    "start": "2024-12-19",
+    "end": "2024-12-19",
+    "url": "\/pro\/index.php?m=effort&f=view&id=183154&onlybody=yes",
+    "consumed": "9"
+  },
+  {
+    "id": 183120,
+    "title": "[T]开始了任务 : 订阅上级视图库相关功能开发",
+    "start": "2024-12-20",
+    "end": "2024-12-20",
+    "url": "\/pro\/index.php?m=effort&f=view&id=183120&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 183351,
+    "title": "[T]订阅上级视图库相关功能开发",
+    "start": "2024-12-20",
+    "end": "2024-12-20",
+    "url": "\/pro\/index.php?m=effort&f=view&id=183351&onlybody=yes",
+    "consumed": "6"
+  },
+  {
+    "id": 184065,
+    "title": "[T]订阅上级视图库相关功能开发",
+    "start": "2024-12-24",
+    "end": "2024-12-24",
+    "url": "\/pro\/index.php?m=effort&f=view&id=184065&onlybody=yes",
+    "consumed": "9"
+  },
+  {
+    "id": 184066,
+    "title": "[T]订阅上级视图库相关功能开发",
+    "start": "2024-12-25",
+    "end": "2024-12-25",
+    "url": "\/pro\/index.php?m=effort&f=view&id=184066&onlybody=yes",
+    "consumed": "9"
+  },
+  {
+    "id": 184067,
+    "title": "[T]订阅上级视图库相关功能开发",
+    "start": "2024-12-26",
+    "end": "2024-12-26",
+    "url": "\/pro\/index.php?m=effort&f=view&id=184067&onlybody=yes",
+    "consumed": "6"
+  },
+  {
+    "id": 184069,
+    "title": "[T]设备资源临近设备关系接口对接，并推送到华智",
+    "start": "2024-12-26",
+    "end": "2024-12-26",
+    "url": "\/pro\/index.php?m=effort&f=view&id=184069&onlybody=yes",
+    "consumed": "3"
+  },
+  {
+    "id": 184068,
+    "title": "[T]开始了任务 : 设备资源临近设备关系接口对接，并推送到华智",
+    "start": "2024-12-27",
+    "end": "2024-12-27",
+    "url": "\/pro\/index.php?m=effort&f=view&id=184068&onlybody=yes",
+    "consumed": "0"
+  },
+  {
+    "id": 184116,
+    "title": "[T]设备资源临近设备关系接口对接，并推送到华智",
+    "start": "2024-12-27",
+    "end": "2024-12-27",
+    "url": "\/pro\/index.php?m=effort&f=view&id=184116&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 184548,
+    "title": "[T]设备资源临近设备关系接口对接，并推送到华智",
+    "start": "2024-12-30",
+    "end": "2024-12-30",
+    "url": "\/pro\/index.php?m=effort&f=view&id=184548&onlybody=yes",
+    "consumed": "8"
+  },
+  {
+    "id": 184549,
+    "title": "[T]设备资源临近设备关系接口对接，并推送到华智",
+    "start": "2024-12-31",
+    "end": "2024-12-31",
+    "url": "\/pro\/index.php?m=effort&f=view&id=184549&onlybody=yes",
+    "consumed": "8"
+  }
+]
