@@ -96,7 +96,7 @@ public class CodeGenerator {
      * @date 2022/4/19 10:40
      */
     private static List<String> includes() {
-        return Arrays.asList("sys_department");
+        return Arrays.asList("crawl_config");
     }
 
 

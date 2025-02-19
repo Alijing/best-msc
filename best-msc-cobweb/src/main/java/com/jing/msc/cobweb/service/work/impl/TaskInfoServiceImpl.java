@@ -4,28 +4,46 @@ import cn.hutool.core.util.RandomUtil;
 import com.jing.common.core.enums.ResultEnum;
 import com.jing.common.core.exception.CustomException;
 import com.jing.common.core.util.JsonUtils;
+import com.jing.msc.cobweb.entity.work.Overtime;
 import com.jing.msc.cobweb.entity.work.Project;
 import com.jing.msc.cobweb.entity.work.TaskInfo;
+import com.jing.msc.cobweb.entity.work.TaskLog;
 import com.jing.msc.cobweb.service.work.TaskInfoService;
+import com.jing.msc.cobweb.util.PoiUtils;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.poi.util.IOUtils;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.xwpf.usermodel.*;
+import org.jsoup.Jsoup;
+import org.jsoup.select.Elements;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.STMerge;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.time.DayOfWeek;
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author : jing
@@ -42,40 +60,7 @@ public class TaskInfoServiceImpl implements TaskInfoService {
         if (CollectionUtils.isEmpty(taskInfos)) {
             return;
         }
-        ByteArrayInputStream bais = null;
-        OutputStream os = null;
-        try {
-            bais = generateWord(taskInfos);
-
-            String outputEncoding = "GBK";
-            Enumeration<String> headers = request.getHeaderNames();
-            while (headers.hasMoreElements()) {
-                String headKey = headers.nextElement();
-                if (request.getHeader(headKey) != null && request.getHeader(headKey).toLowerCase().contains("firefox")) {
-                    outputEncoding = "UTF-8";
-                    break;
-                }
-            }
-            response.setCharacterEncoding(outputEncoding);
-            String fileName = "禅道任务_" + RandomUtil.randomNumbers(6) + ".docx";
-            fileName = URLEncoder.encode(fileName, StandardCharsets.UTF_8.displayName());
-            response.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM_VALUE);
-            response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
-            response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName + ";filename*=utf-8''" + fileName);
-            response.addHeader(HttpHeaders.CONTENT_LENGTH, "" + bais.available());
-            os = response.getOutputStream();
-            byte[] b = new byte[2048];
-            int length;
-            while ((length = bais.read(b)) > 0) {
-                os.write(b, 0, length);
-            }
-        } catch (Exception e) {
-            logger.error("导出文件失败", e);
-            throw new CustomException(ResultEnum.FILE_GENERATION_FAILED);
-        } finally {
-            IOUtils.closeQuietly(os);
-            IOUtils.closeQuietly(bais);
-        }
+        write2Response(generateWord(taskInfos), "禅道任务_" + RandomUtil.randomNumbers(6) + ".docx", request, response);
     }
 
     @Override
@@ -160,29 +145,7 @@ public class TaskInfoServiceImpl implements TaskInfoService {
             doc.write(bao);
             bais = new ByteArrayInputStream(bao.toByteArray());
 
-            String outputEncoding = "GBK";
-            Enumeration<String> headers = request.getHeaderNames();
-            while (headers.hasMoreElements()) {
-                String headKey = headers.nextElement();
-                if (request.getHeader(headKey) != null && request.getHeader(headKey).toLowerCase().contains("firefox")) {
-                    outputEncoding = "UTF-8";
-                    break;
-                }
-            }
-            response.setCharacterEncoding(outputEncoding);
-            String fileName = "禅道任务_" + RandomUtil.randomNumbers(6) + ".docx";
-            fileName = URLEncoder.encode(fileName, StandardCharsets.UTF_8.displayName());
-            response.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM_VALUE);
-            response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
-            response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName + ";filename*=utf-8''" + fileName);
-            response.addHeader(HttpHeaders.CONTENT_LENGTH, "" + bais.available());
-            os = response.getOutputStream();
-            byte[] b = new byte[2048];
-            int length;
-            while ((length = bais.read(b)) > 0) {
-                os.write(b, 0, length);
-            }
-
+            write2Response(bais, "禅道任务_" + RandomUtil.randomNumbers(6) + ".docx", request, response);
         } catch (IOException e) {
             throw new CustomException(ResultEnum.FILE_GENERATION_FAILED);
         } finally {
@@ -192,13 +155,175 @@ public class TaskInfoServiceImpl implements TaskInfoService {
             IOUtils.closeQuietly(os);
             IOUtils.closeQuietly(bais);
         }
-        logger.info("projects : {}", JsonUtils.toJson(projects));
+    }
+
+    @Override
+    public void obtainOvertimeInfo(String startDate, String endDate, HttpServletRequest request, HttpServletResponse response) throws IOException, URISyntaxException {
+        Map<LocalDate, List<TaskLog>> workLogs = readTaskLogHtml(startDate, endDate);
+        Assert.notEmpty(workLogs, "工作日志为空");
+        List<TaskInfo> tasks = readTaskFile(startDate, endDate);
+        Assert.notEmpty(tasks, "工作任务为空");
+
+        List<Overtime> overtimes = new ArrayList<>();
+
+        Iterator<Map.Entry<LocalDate, List<TaskLog>>> iterator = workLogs.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<LocalDate, List<TaskLog>> entry = iterator.next();
+            List<TaskLog> logs = entry.getValue();
+            if (CollectionUtils.isEmpty(logs)) {
+                continue;
+            }
+
+            List<String> title = new ArrayList<>();
+            List<String> execution = new ArrayList<>();
+
+            double consumed = 0;
+            for (TaskLog log : logs) {
+                consumed += log.getConsumed();
+
+                title.add(log.getTitle());
+
+                TaskInfo task = tasks.stream().filter(t -> t.getId().equals(log.getTaskId())).findFirst().orElse(null);
+                if (Objects.nonNull(task)) {
+                    execution.add(task.getProjectName());
+                }
+            }
+
+            // 周末，小于8小时，直接标记加班
+            DayOfWeek dayOfWeek = entry.getKey().getDayOfWeek();
+            if (consumed < 8 && (dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY)) {
+                Overtime ot = new Overtime();
+                ot.setWordDate(entry.getKey().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                ot.setOvertime("未知-未知");
+                ot.setDuration(consumed);
+                ot.setExecution(execution);
+                ot.setTitle(title);
+                overtimes.add(ot);
+                continue;
+            }
+
+            double overtime = consumed - 8;
+            if (overtime <= 0) {
+                iterator.remove();
+                continue;
+            }
+
+            Overtime ot = new Overtime();
+            ot.setWordDate(entry.getKey().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+
+            // 将 加班时长 小时转换为分钟
+            LocalDateTime end = entry.getKey().atTime(17, 30).plus(Duration.ofMinutes((long) overtime * 60));
+            ot.setOvertime("17:30:00-" + end.format(DateTimeFormatter.ofPattern("HH:mm")));
+            ot.setDuration(overtime);
+            ot.setExecution(execution);
+            ot.setTitle(title);
+            overtimes.add(ot);
+        }
+
+        overtimes.sort(Comparator.comparing(Overtime::getWordDate));
+
+        write2Response(generateOvertimeExcel(overtimes, request, response), "加班信息_" + RandomUtil.randomNumbers(6) + ".xlsx", request, response);
+    }
+
+    private ByteArrayInputStream generateOvertimeExcel(List<Overtime> overtimes, HttpServletRequest request, HttpServletResponse response) {
+        Assert.notEmpty(overtimes, "加班信息为空");
+
+        InputStream is = this.getClass().getClassLoader().getResourceAsStream("template/overtime_template.xlsx");
+        Assert.notNull(is, "模板不存在");
+
+        XSSFWorkbook wb = null;
+        ByteArrayOutputStream bao = null;
+        try {
+            wb = new XSSFWorkbook(is);
+            // 进行模板的克隆(接下来的操作都是针对克隆后的sheet)
+            XSSFSheet sheet = wb.cloneSheet(0);
+            wb.setSheetName(1, "加班日志表");
+
+            XSSFCellStyle cellStyle = PoiUtils.createDefaultCellStyle(wb);
+            int startIdx = 1;
+            for (Overtime ot : overtimes) {
+                logger.info("overtime date: {}, time: {}", ot.getWordDate(), ot.getOvertime());
+
+                XSSFRow row = sheet.createRow(startIdx);
+                //设置行高
+                row.setHeightInPoints(25);
+                PoiUtils.setCell(row.createCell(0), ot.getWordDate() + " " + ot.getOvertime(), cellStyle);
+                PoiUtils.setCell(row.createCell(1), ot.getDuration(), cellStyle);
+
+                String execution = StringUtils.join(ot.getExecution(), "、");
+                PoiUtils.setCell(row.createCell(2), execution, cellStyle);
+
+                String title = StringUtils.join(ot.getTitle(), "、");
+                PoiUtils.setCell(row.createCell(3), title, cellStyle);
+
+                startIdx++;
+            }
+
+            // 移除workbook中的模板sheet
+            wb.removeSheetAt(0);
+            bao = new ByteArrayOutputStream();
+            wb.write(bao);
+            return new ByteArrayInputStream(bao.toByteArray());
+        } catch (IOException e) {
+            throw new CustomException(ResultEnum.IOException.getCode(), "加班日志表生成失败");
+        } finally {
+            IOUtils.closeQuietly(is);
+            IOUtils.closeQuietly(wb);
+            IOUtils.closeQuietly(bao);
+        }
+    }
+
+    private Map<LocalDate, List<TaskLog>> readTaskLogHtml(String startDate, String endDate) throws IOException, URISyntaxException {
+        Map<LocalDate, List<TaskLog>> target = new HashMap<>();
+        org.jsoup.nodes.Document doc = Jsoup.parse(this.getClass().getClassLoader().getResourceAsStream("data/allTaskLog.html"), "UTF-8", "");
+        Elements tr = doc.select("tr");
+        for (org.jsoup.nodes.Element value : tr) {
+            String dataId = value.attr("data-id");
+            if (StringUtils.isBlank(dataId)) {
+                continue;
+            }
+            TaskLog log = new TaskLog();
+            log.setId(Long.parseLong(dataId));
+
+            Elements td = value.select("td");
+            for (org.jsoup.nodes.Element element : td) {
+                String clazz = element.attr("class");
+                String text = element.text();
+
+                if ("c-objectType c-name".equals(clazz)) {
+                    URI uri = new URI(element.select("a").attr("href"));
+                    Map<String, String> collect = URLEncodedUtils.parse(uri, StandardCharsets.UTF_8).stream()
+                            .collect(Collectors.toMap(NameValuePair::getName, NameValuePair::getValue));
+                    log.setTaskId(Long.parseLong(collect.get("id")));
+                }
+
+                if ("c-work c-name".equals(clazz)) {
+                    log.setTitle(text.replaceAll("<[^>]*>", ""));
+                }
+
+                if ("c-date".equals(clazz)) {
+                    LocalDate date = LocalDate.parse(text, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                    log.setWorkDate(date);
+                }
+
+                if ("c-consumed".equals(clazz)) {
+                    log.setConsumed(Double.parseDouble(text));
+                }
+            }
+            List<TaskLog> logs = target.get(log.getWorkDate());
+            if (Objects.isNull(logs)) {
+                logs = new ArrayList<>();
+                target.put(log.getWorkDate(), logs);
+            }
+            logs.add(log);
+        }
+        return target;
     }
 
     @SuppressWarnings("all")
     private List<TaskInfo> readTaskFile(String startDate, String endDate) {
-        String path = "D:\\alijing\\my\\code\\BestMSC\\task.json";
-        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+        InputStream is = this.getClass().getClassLoader().getResourceAsStream("data/task.json");
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
             StringBuilder sb = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {
@@ -414,6 +539,40 @@ public class TaskInfoServiceImpl implements TaskInfoService {
         run.setFontFamily(StringUtils.isBlank(fontFamily) ? "仿宋" : fontFamily);
         // 是否粗体
         run.setBold(false);
+    }
+
+
+    private void write2Response(ByteArrayInputStream bais, String fileName, HttpServletRequest request, HttpServletResponse response) {
+        OutputStream os = null;
+        try {
+            String outputEncoding = "GBK";
+            Enumeration<String> headers = request.getHeaderNames();
+            while (headers.hasMoreElements()) {
+                String headKey = headers.nextElement();
+                if (request.getHeader(headKey) != null && request.getHeader(headKey).toLowerCase().contains("firefox")) {
+                    outputEncoding = "UTF-8";
+                    break;
+                }
+            }
+            response.setCharacterEncoding(outputEncoding);
+            fileName = URLEncoder.encode(fileName, StandardCharsets.UTF_8.displayName());
+            response.setHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_OCTET_STREAM_VALUE);
+            response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
+            response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileName + ";filename*=utf-8''" + fileName);
+            response.addHeader(HttpHeaders.CONTENT_LENGTH, "" + bais.available());
+            os = response.getOutputStream();
+            byte[] b = new byte[2048];
+            int length;
+            while ((length = bais.read(b)) > 0) {
+                os.write(b, 0, length);
+            }
+        } catch (IOException e) {
+            throw new CustomException(ResultEnum.FILE_GENERATION_FAILED);
+        } finally {
+            IOUtils.closeQuietly(os);
+            IOUtils.closeQuietly(bais);
+        }
+
     }
 
 

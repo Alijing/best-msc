@@ -6,12 +6,13 @@ import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.jing.common.core.base.BaseResp;
 import com.jing.common.log.aspect.WebLog;
 import com.jing.msc.cobweb.entity.NovelCrawlConfig;
-import com.jing.msc.cobweb.entity.vo.CrawlConfig;
+import com.jing.msc.cobweb.entity.vo.CrawlConfigOld;
 import com.jing.msc.cobweb.service.CrawlingService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -29,7 +30,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/novel/crawl")
 public class NovelCrawlController {
 
-    @Autowired
+    @Resource(name = "crawlingService")
     private CrawlingService crawlingService;
 
     @Operation(summary = "通过 ID 查询小说爬取配置信息")
@@ -43,7 +44,7 @@ public class NovelCrawlController {
     @Operation(summary = "新增或编辑爬取小说的配置信息")
     @ApiOperationSupport(author = "Jing", order = 2)
     @PostMapping("config/update")
-    public BaseResp<Boolean> configUpdate(@RequestBody CrawlConfig config) {
+    public BaseResp<Boolean> configUpdate(@RequestBody CrawlConfigOld config) {
         return crawlingService.saveOrUpdateConfig(config);
     }
 

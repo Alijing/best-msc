@@ -11,7 +11,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
  * @description :
  */
 @Tag(name = "小说模块", description = "小说爬虫配置信息")
-public class CrawlConfig {
+public class CrawlConfigOld {
 
     @Schema(name = "配置主键Id")
     private Long id;

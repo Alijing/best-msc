@@ -3,7 +3,8 @@ package com.jing.msc.cobweb.controller;
 import com.alibaba.fastjson.JSON;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.jing.common.core.base.BaseResp;
-import com.jing.msc.cobweb.service.sys.impl.SpiderServiceImpl;
+import com.jing.msc.cobweb.service.TestService;
+import com.jing.msc.cobweb.service.sys.SpiderService;
 import com.jing.msc.security.entity.Spider;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -32,7 +33,10 @@ public class TestController {
     protected final Logger logger = LoggerFactory.getLogger(TestController.class);
 
     @Resource(name = "spiderService")
-    private SpiderServiceImpl service;
+    private SpiderService service;
+
+    @Resource(name = "testService")
+    private TestService testService;
 
     @Operation(summary = "查询所有用户信息")
     @PreAuthorize("hasAuthority('test11')")
@@ -57,7 +61,7 @@ public class TestController {
     @ApiOperationSupport(author = "Jing", order = 1)
     @PostMapping(value = "/read/excel")
     public BaseResp<Boolean> readExcel(Integer type, MultipartFile file) {
-        service.readResGroupExcel(type, file);
+        testService.readResGroupExcel(type, file);
         return BaseResp.ok();
     }
 
@@ -68,8 +72,15 @@ public class TestController {
             @PathVariable("targetNodeId") Integer targetNodeId,
             @PathVariable("startId") Integer startId,
             @PathVariable("fieldNum") Integer fieldNum) {
-        service.generateSql(startId, targetNodeId, fieldNum);
+        testService.generateSql(startId, targetNodeId, fieldNum);
         return BaseResp.ok();
+    }
+
+    @Operation(summary = "获取所有json key ")
+    @ApiOperationSupport(author = "Jing", order = 1)
+    @PostMapping(value = "/json/keys")
+    public BaseResp<List<String>> generateSql(@RequestBody String json) {
+        return BaseResp.ok(testService.getJsonKeys(json));
     }
 
 }

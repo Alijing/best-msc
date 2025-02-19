@@ -7,7 +7,7 @@ import com.jing.msc.cobweb.config.HttpClientDownloader;
 import com.jing.msc.cobweb.entity.book.Novel;
 import com.jing.msc.cobweb.entity.NovelChapter;
 import com.jing.msc.cobweb.entity.NovelCrawlConfig;
-import com.jing.msc.cobweb.entity.vo.CrawlConfig;
+import com.jing.msc.cobweb.entity.vo.CrawlConfigOld;
 import com.jing.msc.cobweb.pipeline.NovelChapterPipeline;
 import com.jing.msc.cobweb.pipeline.NovelContentPipeline;
 import com.jing.msc.cobweb.processor.NovelChapterProcessor;
@@ -68,7 +68,7 @@ public class CrawlingServiceImpl implements CrawlingService {
     }
 
     @Override
-    public BaseResp<Boolean> saveOrUpdateConfig(CrawlConfig config) {
+    public BaseResp<Boolean> saveOrUpdateConfig(CrawlConfigOld config) {
         try {
             Novel novel = BeanUtil.copyProperties(config, Novel.class);
             novel.setId(config.getNovelId());

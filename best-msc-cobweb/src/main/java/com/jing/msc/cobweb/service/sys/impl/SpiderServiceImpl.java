@@ -1,7 +1,6 @@
 package com.jing.msc.cobweb.service.sys.impl;
 
 import cn.hutool.core.lang.Assert;
-import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -15,8 +14,6 @@ import com.jing.msc.cobweb.entity.sys.SpiderDepartmentRef;
 import com.jing.msc.cobweb.entity.sys.SpiderRoleRef;
 import com.jing.msc.cobweb.entity.sys.vo.SpiderInfo;
 import com.jing.msc.cobweb.entity.sys.vo.SpiderQueryParam;
-import com.jing.msc.cobweb.entity.test.ResGroup;
-import com.jing.msc.cobweb.listener.ResGroupReadListener;
 import com.jing.msc.cobweb.mapper.sys.SpiderMapper;
 import com.jing.msc.cobweb.service.sys.DepartmentService;
 import com.jing.msc.cobweb.service.sys.RoleService;
@@ -30,10 +27,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -51,7 +46,7 @@ import java.util.stream.Collectors;
 @Transactional(rollbackFor = Exception.class)
 public class SpiderServiceImpl extends ServiceImpl<SpiderMapper, Spider> implements SpiderService {
 
-    protected final Logger logger = LoggerFactory.getLogger(SpiderServiceImpl.class);
+    private final Logger logger = LoggerFactory.getLogger(SpiderServiceImpl.class);
 
     @Resource
     private PasswordEncoder passwordEncoder;
@@ -197,54 +192,6 @@ public class SpiderServiceImpl extends ServiceImpl<SpiderMapper, Spider> impleme
             }
         }
 
-    }
-
-
-    @Override
-    public void readResGroupExcel(Integer type, MultipartFile file) {
-        try {
-            logger.info("--------- type : {} ", type);
-            EasyExcel.read(file.getInputStream(), ResGroup.class, new ResGroupReadListener(this)).sheet().doRead();
-        } catch (IOException e) {
-            throw new CustomException(ResultEnum.IOException);
-        }
-    }
-
-    @Override
-    public void buildInsertSql(List<ResGroup> groups, int startIdx, long parentId) {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < groups.size(); i++) {
-            ResGroup it = groups.get(i);
-            builder.append("INSERT INTO `tb_dict_region` (`id`, `name`, `pinyin`, `code`, `letter`, `parent_id`, `remarks`, `sort_no`) ");
-            builder.append("VALUES (").append(startIdx).append(", ")
-                    .append("'").append(it.getName()).append("', 'Pin Yin', ")
-                    .append("'").append(it.getCode()).append("', 'PY', ").append(parentId).append(", ")
-                    .append("'").append(it.getCode()).append("', ").append(i).append(".00);")
-                    .append("\n");
-            startIdx++;
-        }
-
-        logger.info("-------------- builder ------------------ \n");
-        logger.info("\n" + builder);
-        logger.info("-------------- builder ------------------ \n");
-    }
-
-    @Override
-    public void generateSql(int startId, int targetNodeId, int fieldNum) {
-        String prefix = "INSERT INTO `tb_plf_process_formprop_permis` (`id`, `node_id`, `property_id`, `see_able`, " +
-                "`editable`, `required`, `create_time`, `update_time`) VALUES (";
-        String suffix = ", 1, 0, 0, NOW(), NOW());";
-        StringBuilder builder = new StringBuilder();
-        int propertyId = 300;
-        for (int i = 0; i < fieldNum; i++) {
-            String str = startId + ", " + targetNodeId + ", " + propertyId;
-            builder.append(prefix).append(str).append(suffix).append("\n");
-            startId++;
-            propertyId++;
-        }
-        logger.info("-------------- builder ------------------ \n");
-        logger.info("\n" + builder);
-        logger.info("-------------- builder ------------------ \n");
     }
 
 }

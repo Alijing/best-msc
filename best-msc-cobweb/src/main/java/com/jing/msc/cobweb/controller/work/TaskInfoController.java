@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 /**
  * @author : jing
@@ -38,12 +40,22 @@ public class TaskInfoController {
 
     @WebLog(description = "获取任务信息")
     @Operation(summary = "获取任务信息")
-    @ApiOperationSupport(author = "Jing", order = 1)
+    @ApiOperationSupport(author = "Jing", order = 2)
     @GetMapping("/task/split")
     public void taskSplit(@RequestParam(value = "startDate") String startDate,
                           @RequestParam(value = "endDate") String endDate,
                           HttpServletRequest request, HttpServletResponse response) {
         service.taskSplit(startDate, endDate, request, response);
+    }
+
+    @WebLog(description = "获取加班信息")
+    @Operation(summary = "获取加班信息")
+    @ApiOperationSupport(author = "Jing", order = 3)
+    @GetMapping("/obtain/overtime")
+    public void obtainOvertimeInfo(@RequestParam(value = "startDate") String startDate,
+                                   @RequestParam(value = "endDate") String endDate,
+                                   HttpServletRequest request, HttpServletResponse response) throws IOException, URISyntaxException {
+        service.obtainOvertimeInfo(startDate, endDate, request, response);
     }
 
 

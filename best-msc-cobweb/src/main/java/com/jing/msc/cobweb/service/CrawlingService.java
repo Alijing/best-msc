@@ -2,7 +2,7 @@ package com.jing.msc.cobweb.service;
 
 import com.jing.common.core.base.BaseResp;
 import com.jing.msc.cobweb.entity.NovelCrawlConfig;
-import com.jing.msc.cobweb.entity.vo.CrawlConfig;
+import com.jing.msc.cobweb.entity.vo.CrawlConfigOld;
 
 /**
  * @author : jing
@@ -30,7 +30,7 @@ public interface CrawlingService {
      * @author jing
      * @date 2022/4/21 15:24
      */
-    BaseResp<Boolean> saveOrUpdateConfig(CrawlConfig config);
+    BaseResp<Boolean> saveOrUpdateConfig(CrawlConfigOld config);
 
     /**
      * 通过小说Id 复制爬取配置信息

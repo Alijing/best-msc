@@ -2,6 +2,8 @@ package com.jing.msc.cobweb.service.work;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 /**
  * 禅道上的日报处理服务类
@@ -32,5 +34,15 @@ public interface TaskInfoService {
      * @param response  响应
      */
     void taskSplit(String startDate, String endDate, HttpServletRequest request, HttpServletResponse response);
+
+    /**
+     * 获取加班信息
+     *
+     * @param startDate
+     * @param endDate
+     * @param request
+     * @param response
+     */
+    void obtainOvertimeInfo(String startDate, String endDate, HttpServletRequest request, HttpServletResponse response) throws IOException, URISyntaxException;
 
 }
