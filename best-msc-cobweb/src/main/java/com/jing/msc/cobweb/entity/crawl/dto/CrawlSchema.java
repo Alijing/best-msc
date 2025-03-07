@@ -16,14 +16,8 @@ public class CrawlSchema {
     @Schema(description = "地址")
     private String url;
 
-    @Schema(description = "返回类型（0：列表，1：文本）")
-    private Integer retType;
-
     @Schema(description = "爬取模式（0：网页爬取，1：API爬取）")
     private Integer mode;
-
-    @Schema(description = "匹配规则")
-    private String regex;
 
     @Schema(description = "策略名称")
     private String name;

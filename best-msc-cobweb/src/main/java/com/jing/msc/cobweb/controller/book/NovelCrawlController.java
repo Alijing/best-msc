@@ -5,14 +5,16 @@ import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.jing.common.core.base.BaseResp;
 import com.jing.common.log.aspect.WebLog;
-import com.jing.msc.cobweb.entity.NovelCrawlConfig;
-import com.jing.msc.cobweb.entity.vo.CrawlConfigOld;
-import com.jing.msc.cobweb.service.CrawlingService;
+import com.jing.msc.cobweb.entity.crawl.CrawlConfig;
+import com.jing.msc.cobweb.service.NovelService;
+import com.jing.msc.cobweb.service.crawl.CrawlConfigService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.net.MalformedURLException;
+import java.util.List;
 
 /**
  * <p>
@@ -30,44 +32,48 @@ import javax.annotation.Resource;
 @RequestMapping("/novel/crawl")
 public class NovelCrawlController {
 
-    @Resource(name = "crawlingService")
-    private CrawlingService crawlingService;
+    @Resource(name = "crawlConfigService")
+    private CrawlConfigService crawlService;
+
+    @Resource(name = "novelService")
+    private NovelService novelService;
 
     @Operation(summary = "通过 ID 查询小说爬取配置信息")
     @ApiOperationSupport(author = "Jing", order = 1)
     @GetMapping("config/{novelId}")
-    public BaseResp<NovelCrawlConfig> crawlConfigByNovelId(@PathVariable("novelId") Long novelId) {
-        return BaseResp.ok(crawlingService.crawlConfigByNovelId(novelId));
+    public BaseResp<List<CrawlConfig>> crawlConfigByNovelId(@PathVariable("novelId") Long novelId) {
+        return BaseResp.ok(crawlService.crawlConfigByNovelId(novelId));
     }
 
     @WebLog(description = "新增或编辑爬取小说的配置信息")
     @Operation(summary = "新增或编辑爬取小说的配置信息")
     @ApiOperationSupport(author = "Jing", order = 2)
-    @PostMapping("config/update")
-    public BaseResp<Boolean> configUpdate(@RequestBody CrawlConfigOld config) {
-        return crawlingService.saveOrUpdateConfig(config);
+    @PostMapping("config")
+    public BaseResp<List<Long>> crawlConfUpdate(@RequestBody List<CrawlConfig> config) {
+        return BaseResp.ok(crawlService.saveBatchConfig(config));
     }
 
     @Operation(summary = "通过 ID 复制小说爬取配置")
     @ApiOperationSupport(author = "Jing", order = 2)
     @GetMapping("config/copy/{novelId}")
     public BaseResp<Boolean> configCopy(@PathVariable("novelId") Long novelId) {
-        if (!crawlingService.configCopy(novelId)) {
-            return BaseResp.error("配置信息复制失败");
-        }
-        return BaseResp.ok();
+        crawlService.configCopy(novelId);
+        return BaseResp.ok(true);
     }
 
     @Operation(summary = "爬取章节")
     @ApiOperationSupport(author = "Jing", order = 2)
     @GetMapping("chapter/{novelId}")
-    public BaseResp<Object> crawlingChapter(@PathVariable("novelId") Long novelId) {
-        return crawlingService.crawlingNovelChapter(novelId);
+    public BaseResp<Integer> crawlingChapter(@PathVariable("novelId") Long novelId) throws MalformedURLException {
+        return BaseResp.ok(novelService.crawlChapter(novelId));
     }
 
+    @Operation(summary = "爬取章节内容")
+    @ApiOperationSupport(author = "Jing", order = 3)
     @GetMapping("content/{novelId}")
-    public BaseResp<Object> crawlingContent(@PathVariable("novelId") Long novelId) {
-        return crawlingService.crawlingNovelContent(novelId);
+    public BaseResp<Boolean> crawlingContent(@PathVariable("novelId") Long novelId) {
+        novelService.crawlContent(novelId);
+        return BaseResp.ok();
     }
 
 }

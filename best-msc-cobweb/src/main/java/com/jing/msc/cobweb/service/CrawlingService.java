@@ -11,6 +11,7 @@ import com.jing.msc.cobweb.entity.vo.CrawlConfigOld;
  * @date : 2021/11/12 10:19
  * @description :
  */
+@Deprecated
 public interface CrawlingService {
     /**
      * 通过小说Id 获取爬取配置信息

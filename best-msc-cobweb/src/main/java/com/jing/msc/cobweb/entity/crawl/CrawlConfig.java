@@ -1,8 +1,9 @@
 package com.jing.msc.cobweb.entity.crawl;
 
 import com.baomidou.mybatisplus.annotation.*;
-import com.baomidou.mybatisplus.extension.handlers.Fastjson2TypeHandler;
+import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
 import com.jing.msc.cobweb.entity.crawl.dto.CrawlField;
+import com.jing.msc.cobweb.enums.crawl.DataType;
 import com.jing.msc.cobweb.enums.crawl.Mode;
 import com.jing.msc.cobweb.enums.crawl.RetType;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -21,7 +22,7 @@ import java.util.List;
  * @since 2024-12-18 11:35:10
  */
 @Data
-@TableName("crawl_config")
+@TableName(value = "crawl_config", autoResultMap = true)
 @Schema(description = "爬取配置")
 public class CrawlConfig implements Serializable {
 
@@ -34,6 +35,10 @@ public class CrawlConfig implements Serializable {
     @Schema(description = "小说Id")
     @TableField("`novel_id`")
     private Long novelId;
+
+    @Schema(description = "数据类型，0：小说目录，1：小说文本")
+    @TableField("`type`")
+    private DataType type;
 
     @Schema(description = "返回类型（0：列表，1：文本）")
     @TableField("`ret_type`")
@@ -56,7 +61,7 @@ public class CrawlConfig implements Serializable {
     private String baseSelector;
 
     @Schema(description = "字段列表，当 ret_type = 0 时该字段有意义，返回的列表项字段信息")
-    @TableField(value = "`fields`", typeHandler = Fastjson2TypeHandler.class)
+    @TableField(value = "`fields`", typeHandler = JacksonTypeHandler.class)
     private List<CrawlField> fields;
 
     @Schema(description = "创建者用户Id")

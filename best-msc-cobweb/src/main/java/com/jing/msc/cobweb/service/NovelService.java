@@ -7,6 +7,7 @@ import com.jing.msc.cobweb.entity.book.Novel;
 import com.jing.msc.cobweb.entity.vo.NovelVo;
 
 import javax.servlet.http.HttpServletResponse;
+import java.net.MalformedURLException;
 import java.util.List;
 
 /**
@@ -57,5 +58,20 @@ public interface NovelService extends IService<Novel> {
      * @date 2022/4/22 16:49
      */
     BaseResp<Boolean> changeChapterName(Long novelId);
+
+    /**
+     * 爬取章节
+     *
+     * @param novelId 小说Id
+     * @return {@link Integer } 爬取数量
+     */
+    Integer crawlChapter(Long novelId) throws MalformedURLException;
+
+    /**
+     * 爬取章节内容
+     *
+     * @param novelId 小说Id
+     */
+    void crawlContent(Long novelId);
 
 }

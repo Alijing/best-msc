@@ -33,8 +33,9 @@ public class CrawlConfigController {
     @Operation(summary = "配置信息新增")
     @ApiOperationSupport(author = "Jing", order = 1)
     @PostMapping("config")
-    public BaseResp<Boolean> saveBatchConfig(@RequestBody List<CrawlConfig> configs) {
-        return crawlService.saveBatchConfig(configs);
+    public BaseResp<  List<Long>> saveBatchConfig(@RequestBody List<CrawlConfig> configs) {
+        List<Long> longs = crawlService.saveBatchConfig(configs);
+        return BaseResp.ok(longs);
     }
 
 

@@ -23,6 +23,9 @@ public class CustomMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
         // 起始版本 3.3.3(推荐)
+        this.strictInsertFill(metaObject, "gmtCreator", Long.class, -1L);
+        this.strictInsertFill(metaObject, "gmtCreate", LocalDateTime.class, LocalDateTime.now());
+        this.strictInsertFill(metaObject, "gmtModified", LocalDateTime.class, LocalDateTime.now());
         this.strictInsertFill(metaObject, "creatorId", Long.class, -1L);
         this.strictInsertFill(metaObject, "createTime", LocalDateTime.class, LocalDateTime.now());
         this.strictInsertFill(metaObject, "reviserId", Long.class, -1L);
@@ -35,6 +38,7 @@ public class CustomMetaObjectHandler implements MetaObjectHandler {
         // 起始版本 3.3.3(推荐)
         this.strictUpdateFill(metaObject, "reviserId", Long.class, -1L);
         this.strictUpdateFill(metaObject, "revisionTime", LocalDateTime.class, LocalDateTime.now());
+        this.strictInsertFill(metaObject, "gmtModified", LocalDateTime.class, LocalDateTime.now());
     }
 
 }

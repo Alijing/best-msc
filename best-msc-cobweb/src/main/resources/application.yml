@@ -110,6 +110,9 @@ knife4j:
     url: http://www.apache.org/licenses/LICENSE-2.0
   termsOfServiceUrl: http://www.jing.com/termsOfServiceUrl
 
+best-msc-py:
+  url: http://127.0.0.1:8020
+
 logging:
   level:
     com.jing.msc.cobweb: debug
