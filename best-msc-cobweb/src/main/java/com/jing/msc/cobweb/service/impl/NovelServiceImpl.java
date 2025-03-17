@@ -2,13 +2,14 @@ package com.jing.msc.cobweb.service.impl;
 
 import com.alibaba.fastjson.util.ParameterizedTypeImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Assert;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jing.common.core.base.BasePageResp;
 import com.jing.common.core.base.BaseResp;
+import com.jing.common.core.enums.ResultEnum;
+import com.jing.common.core.exception.CustomException;
 import com.jing.common.core.util.StringUtils;
 import com.jing.msc.cobweb.entity.NovelChapter;
 import com.jing.msc.cobweb.entity.NovelContent;
@@ -16,6 +17,7 @@ import com.jing.msc.cobweb.entity.NovelCrawlConfig;
 import com.jing.msc.cobweb.entity.book.Novel;
 import com.jing.msc.cobweb.entity.crawl.CrawlConfig;
 import com.jing.msc.cobweb.entity.crawl.dto.CrawlSchema;
+import com.jing.msc.cobweb.entity.socket.InfoText;
 import com.jing.msc.cobweb.entity.vo.NovelVo;
 import com.jing.msc.cobweb.enums.crawl.DataType;
 import com.jing.msc.cobweb.mapper.NovelMapper;
@@ -25,6 +27,8 @@ import com.jing.msc.cobweb.service.NovelCrawlConfigService;
 import com.jing.msc.cobweb.service.NovelService;
 import com.jing.msc.cobweb.service.crawl.CrawlConfigService;
 import com.jing.msc.cobweb.util.NumberChangeUtil;
+import com.jing.msc.cobweb.util.WebsocketUtil;
+import com.jing.msc.security.utils.UserUtil;
 import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,9 +47,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 
 /**
@@ -75,6 +80,12 @@ public class NovelServiceImpl extends ServiceImpl<NovelMapper, Novel> implements
 
     @Resource
     private ThreadPoolTaskExecutor taskExecutor;
+
+    /**
+     * 正在爬取的线程
+     */
+    private static final Map<Long, Future<?>> CRAWLING = new ConcurrentHashMap<>();
+
 
     @Override
     public BaseResp<List<Novel>> novels(NovelVo novel) {
@@ -144,43 +155,6 @@ public class NovelServiceImpl extends ServiceImpl<NovelMapper, Novel> implements
     }
 
     @Override
-    public BaseResp<Boolean> changeChapterName(Long novelId) {
-        try {
-            QueryWrapper<NovelChapter> queryWrapper = new QueryWrapper<>();
-            queryWrapper.eq("novel_id", novelId);
-            List<NovelChapter> chapters = chapterService.list(queryWrapper);
-            List<NovelChapter> candidate = new ArrayList<>();
-            for (int i = 1; i <= chapters.size(); i++) {
-                NovelChapter chapter = chapters.get(i - 1);
-                String name = chapter.getName().replaceAll("\\[", "")
-                        .replaceAll("]", "")
-                        .replaceAll("【", "")
-                        .replaceAll("】", "")
-                        .replaceAll("\\(", "")
-                        .replaceAll("\\)", "");
-                String cpr = "第" + NumberChangeUtil.digital2Chinese(i) + "章 ";
-                if (name.contains(cpr)) {
-                    continue;
-                }
-                chapter.setName(cpr + name);
-                candidate.add(chapter);
-            }
-            if (candidate.size() < 1) {
-                return BaseResp.ok(true);
-            }
-            boolean update = chapterService.updateBatchById(candidate);
-            logger.info("修改章节名称结果 : " + update);
-            if (update) {
-                return BaseResp.ok(true);
-            }
-            return BaseResp.error("章节名称修改失败，请联系管理员");
-        } catch (Exception e) {
-            logger.error(e.getMessage(), e);
-            return BaseResp.error(e.getMessage());
-        }
-    }
-
-    @Override
     public Integer crawlChapter(Long novelId) throws MalformedURLException {
         Assert.notNull(novelId, "小说ID不能为空");
         Novel novel = getById(novelId);
@@ -200,6 +174,8 @@ public class NovelServiceImpl extends ServiceImpl<NovelMapper, Novel> implements
         chapterWrapper.eq("novel_id", novelId);
         chapterService.remove(chapterWrapper);
 
+        int idx = 1;
+
         Iterator<NovelChapter> iterator = chapters.iterator();
         while (iterator.hasNext()) {
             NovelChapter next = iterator.next();
@@ -213,6 +189,19 @@ public class NovelServiceImpl extends ServiceImpl<NovelMapper, Novel> implements
             }
             next.setNovelId(novelId);
             next.setStatus(0);
+
+            String name = next.getName().replaceAll("\\[", "")
+                    .replaceAll("]", "")
+                    .replaceAll("【", "")
+                    .replaceAll("】", "")
+                    .replaceAll("\\(", "")
+                    .replaceAll("\\)", "");
+            String cpr = "第" + NumberChangeUtil.digital2Chinese(idx) + "章 ";
+            idx++;
+            if (name.contains(cpr)) {
+                continue;
+            }
+            next.setName(cpr + name);
         }
 
         chapterService.saveBatch(chapters);
@@ -222,6 +211,9 @@ public class NovelServiceImpl extends ServiceImpl<NovelMapper, Novel> implements
     @Override
     public void crawlContent(Long novelId) {
         Assert.notNull(novelId, "小说ID不能为空");
+        if (CRAWLING.containsKey(novelId)) {
+            throw new CustomException(ResultEnum.TASK_EXECUTING);
+        }
 
         QueryWrapper<NovelChapter> chapterWrapper = new QueryWrapper<>();
         chapterWrapper.eq("novel_id", novelId);
@@ -233,54 +225,97 @@ public class NovelServiceImpl extends ServiceImpl<NovelMapper, Novel> implements
         List<Long> crawled = new ArrayList<>();
         ParameterizedType outer = new ParameterizedTypeImpl(new Type[]{String.class}, null, BaseResp.class);
         CrawlSchema crawlSchema = getCrawlSchema(novelId, null, DataType.NOVEL_CONTENT);
-        taskExecutor.execute(() -> {
+
+        String account = UserUtil.getUserAccount();
+
+        Future<?> submit = taskExecutor.submit(() -> {
             int success = 0;
             for (NovelChapter it : chapters) {
-                crawlSchema.setUrl(it.getPath());
-                String content = crawlService.crawl("/api/v1/crawl/basic", crawlSchema, outer);
-                if (StringUtils.isBlank(content)) {
-                    continue;
+                if (Thread.currentThread().isInterrupted()) {
+                    logger.info("任务【{}】被中断", novelId);
+                    break;
                 }
+                //crawlSchema.setUrl(it.getPath());
+                //String content = crawlService.crawl("/api/v1/crawl/basic", crawlSchema, outer);
+                //if (StringUtils.isBlank(content)) {
+                //    continue;
+                //}
                 success += 1;
                 logger.info("拉取成功章节 : {}", it.getName());
+                //
+                //NovelContent nc = new NovelContent();
+                //nc.setChapterId(it.getId());
+                //nc.setContent(content);
+                //contents.add(nc);
+                //
+                //crawled.add(it.getId());
 
-                NovelContent nc = new NovelContent();
-                nc.setChapterId(it.getId());
-                nc.setContent(content);
-                contents.add(nc);
+                sendProgress(novelId, success, account);
 
-                crawled.add(it.getId());
-
-                if (contents.size() < 10) {
-                    continue;
+                try {
+                    Thread.sleep(3000); // 支持中断的阻塞操作
+                } catch (InterruptedException e) {
+                    logger.info("任务【{}】被中断2", novelId);
+                    break; // 捕获中断异常后退出任务
                 }
 
-                contentService.saveBatch(contents);
-
-                UpdateWrapper<NovelChapter> updateWrapper = new UpdateWrapper<>();
-                updateWrapper.set("status", 1);
-                updateWrapper.in("id", crawled);
-                chapterService.update(updateWrapper);
-
-                contents.clear();
-                crawled.clear();
+                //if (contents.size() < 10) {
+                //    continue;
+                //}
+                //
+                //contentService.saveBatch(contents);
+                //
+                //UpdateWrapper<NovelChapter> updateWrapper = new UpdateWrapper<>();
+                //updateWrapper.set("status", 1);
+                //updateWrapper.in("id", crawled);
+                //chapterService.update(updateWrapper);
+                //
+                //contents.clear();
+                //crawled.clear();
             }
 
-            contentService.saveBatch(contents);
-
-            UpdateWrapper<NovelChapter> updateWrapper = new UpdateWrapper<>();
-            updateWrapper.set("status", 1);
-            updateWrapper.in("id", crawled);
-            chapterService.update(updateWrapper);
+            //contentService.saveBatch(contents);
+            //
+            //UpdateWrapper<NovelChapter> updateWrapper = new UpdateWrapper<>();
+            //updateWrapper.set("status", 1);
+            //updateWrapper.in("id", crawled);
+            //chapterService.update(updateWrapper);
 
             logger.info("章节拉取完成 : {}", success);
+            CRAWLING.remove(novelId);
         });
+        CRAWLING.put(novelId, submit);
+    }
+
+    @Override
+    public void cancelCrawl(Long novelId) {
+        if (Objects.isNull(novelId)) {
+            return;
+        }
+        Future<?> future = CRAWLING.get(novelId);
+        if (Objects.isNull(future)) {
+            return;
+        }
+        future.cancel(true);
+        CRAWLING.remove(novelId);
+    }
+
+    private void sendProgress(long novelId, int success, String account) {
+        if (StringUtils.isBlank(account)) {
+            return;
+        }
+        InfoText infoText = new InfoText();
+        infoText.setTitle("内容获取进度");
+        infoText.setMessage(novelId + "_" + success);
+        infoText.setRecipientId(account);
+        infoText.setSendTime(LocalDateTime.now());
+        infoText.setLatestReceiveTime(LocalDateTime.now().plusHours(1));
+        WebsocketUtil.sendMessage(account, infoText, 0);
     }
 
 
     private CrawlSchema getCrawlSchema(Long novelId, String path, DataType type) {
         Assert.notNull(novelId, "目标小说Id不能为空");
-        Assert.notNull(path, "目标地址 url 不能为空");
 
         QueryWrapper<CrawlConfig> wrapper = new QueryWrapper<>();
         wrapper.eq("novel_id", novelId);

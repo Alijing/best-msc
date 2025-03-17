@@ -1,10 +1,13 @@
 package com.jing.common.core.util;
 
+import com.jing.common.core.base.BaseResp;
+import com.jing.common.core.enums.ResultEnum;
 import com.jing.common.core.vo.ResponseData;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.Consts;
 import org.apache.http.Header;
+import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.CookieStore;
 import org.apache.http.client.config.RequestConfig;
@@ -13,6 +16,7 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
+import org.apache.http.conn.HttpHostConnectException;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLContexts;
 import org.apache.http.conn.ssl.TrustStrategy;
@@ -41,6 +45,7 @@ import java.util.*;
 
 /**
  * 用于远程调用http接口的工具类
+ *
  * @author : jing
  * @since : 2025/3/6 17:37
  */
@@ -635,6 +640,10 @@ public class SouthInterfaceUtils {
                 southIfLogger.error(e.getMessage(), e);
             }
             responseData = new ResponseData();
+            if (e instanceof HttpHostConnectException) {
+                responseData.setStatus(HttpStatus.SC_BAD_GATEWAY);
+                responseData.setResponseBody(BaseResp.error(ResultEnum.SERVICE_UNAVAILABLE));
+            }
         } finally {
             try {
                 // 关闭连接,释放资源

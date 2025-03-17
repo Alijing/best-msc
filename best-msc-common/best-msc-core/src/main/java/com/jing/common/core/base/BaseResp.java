@@ -133,6 +133,21 @@ public class BaseResp<T> implements Serializable {
     }
 
     /**
+     * 通用返回失败，未知错误
+     *
+     * @return 失败，未知错误
+     * @author jing
+     * @date 2022/5/31 10:30
+     */
+    public static <T> BaseResp<T> error(ResultEnum error) {
+        BaseResp<T> br = new BaseResp<>();
+        br.setSuccess(ResultEnum.UNKNOWN_ERROR.getSuccess());
+        br.setCode(error.getCode());
+        br.setMessage(error.getMessage());
+        return br;
+    }
+
+    /**
      * 设置结果，形参为结果枚举
      *
      * @param result 结果枚举

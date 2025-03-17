@@ -56,6 +56,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/swagger-resources/**", "/v3/api-docs/**").permitAll()
                 .antMatchers("/sso/**").permitAll()
                 .antMatchers("/test/**").permitAll()
+                // 允许所有对"/ws/**"的请求
+                .antMatchers("/ws/**").permitAll()
 //                .antMatchers("/novel/**", "/binbin/**").permitAll()
                 .anyRequest().authenticated()
         ;

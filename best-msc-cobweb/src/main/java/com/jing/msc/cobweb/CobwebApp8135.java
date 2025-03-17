@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date : 2021/4/22 17:59
  * @description :
  */
+@EnableScheduling
 @SpringBootApplication(scanBasePackages = {"com.jing"})
 @MapperScan({"com.jing.msc.security.mapper", "com.jing.msc.cobweb.mapper"})
 public class CobwebApp8135 {

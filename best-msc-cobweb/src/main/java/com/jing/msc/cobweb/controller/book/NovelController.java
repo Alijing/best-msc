@@ -1,11 +1,14 @@
 package com.jing.msc.cobweb.controller.book;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.github.xiaoymin.knife4j.annotations.ApiSupport;
 import com.jing.common.core.base.BaseResp;
 import com.jing.common.log.aspect.WebLog;
+import com.jing.msc.cobweb.entity.NovelChapter;
 import com.jing.msc.cobweb.entity.book.Novel;
 import com.jing.msc.cobweb.entity.vo.NovelVo;
+import com.jing.msc.cobweb.service.NovelChapterService;
 import com.jing.msc.cobweb.service.NovelService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -14,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
@@ -34,6 +38,9 @@ public class NovelController {
 
     @Autowired
     private NovelService novelService;
+
+    @Resource
+    private NovelChapterService chapterService;
 
     @WebLog(description = "查询所有小说信息")
     @Operation(summary = "查询所有小说信息")
@@ -88,9 +95,11 @@ public class NovelController {
         novelService.download(novelId, response);
     }
 
-    @GetMapping("change/chapter/name/{novelId}")
-    public BaseResp<Boolean> changeChapterName(@PathVariable("novelId") Long novelId) {
-        return novelService.changeChapterName(novelId);
+    @GetMapping("chapter/size/{novelId}")
+    public BaseResp<Long> chapterSize(@PathVariable("novelId") Long novelId) {
+        QueryWrapper<NovelChapter> wrapper = new QueryWrapper<>();
+        wrapper.eq("novel_id", novelId);
+        return BaseResp.ok(chapterService.count(wrapper));
     }
 
 }

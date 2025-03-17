@@ -31,6 +31,12 @@ public enum ResultEnum {
     TEMPLATE_NOT_EXIST(false, 20017, "模板不存在"),
     FILE_GENERATION_FAILED(false, 20018, "文件生成失败"),
 
+    WEBSOCKET_SESSION_ERROR(false, 20019, "WEBSOCKET 关闭 session 异常"),
+
+    SERVICE_UNAVAILABLE(false, 20020, "服务不可用"),
+
+    TASK_EXECUTING(false, 20021, "任务执行中..."),
+
     ;
 
     /**
