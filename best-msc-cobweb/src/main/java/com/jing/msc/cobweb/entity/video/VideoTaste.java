@@ -1,10 +1,12 @@
 package com.jing.msc.cobweb.entity.video;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.jing.msc.cobweb.enums.video.VideoStatusEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -40,7 +42,7 @@ public class VideoTaste implements Serializable {
 
     @Schema(description = "发行时间")
     @TableField("`release_date`")
-    private LocalDateTime releaseDate;
+    private LocalDate releaseDate;
 
     @Schema(description = "评分")
     @TableField("`rating`")
@@ -49,6 +51,10 @@ public class VideoTaste implements Serializable {
     @Schema(description = "BT链接或下载口令")
     @TableField("`bt_link`")
     private String btLink;
+
+    @Schema(description = "状态，0：未下载，1：已下载，2：已观看")
+    @TableField("`status`")
+    private VideoStatusEnum status;
 
     @Schema(description = "创建者用户Id")
     @TableField(value = "`gmt_creator`", fill = FieldFill.INSERT)

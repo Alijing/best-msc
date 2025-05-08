@@ -16,7 +16,6 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.poi.util.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
-import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.xwpf.usermodel.*;
@@ -38,9 +37,7 @@ import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.time.DayOfWeek;
-import java.time.Duration;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -191,16 +188,16 @@ public class TaskInfoServiceImpl implements TaskInfoService {
 
             // 周末，小于8小时，直接标记加班
             DayOfWeek dayOfWeek = entry.getKey().getDayOfWeek();
-            if (consumed < 8 && (dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY)) {
-                Overtime ot = new Overtime();
-                ot.setWordDate(entry.getKey().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-                ot.setOvertime("未知-未知");
-                ot.setDuration(consumed);
-                ot.setExecution(execution);
-                ot.setTitle(title);
-                overtimes.add(ot);
-                continue;
-            }
+            //if (consumed < 8 && (dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY)) {
+            //    Overtime ot = new Overtime();
+            //    ot.setWordDate(entry.getKey().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+            //    ot.setOvertime("未知-未知");
+            //    ot.setDuration(consumed);
+            //    ot.setExecution(execution);
+            //    ot.setTitle(title);
+            //    overtimes.add(ot);
+            //    continue;
+            //}
 
             double overtime = consumed - 8;
             if (overtime <= 0) {
@@ -209,18 +206,18 @@ public class TaskInfoServiceImpl implements TaskInfoService {
             }
 
             Overtime ot = new Overtime();
-            ot.setWordDate(entry.getKey().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-
-            // 将 加班时长 小时转换为分钟
-            LocalDateTime end = entry.getKey().atTime(17, 30).plus(Duration.ofMinutes((long) overtime * 60));
-            ot.setOvertime("17:30:00-" + end.format(DateTimeFormatter.ofPattern("HH:mm")));
-            ot.setDuration(overtime);
-            ot.setExecution(execution);
-            ot.setTitle(title);
+            //ot.setWordDate(entry.getKey().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+            //
+            //// 将 加班时长 小时转换为分钟
+            //LocalDateTime end = entry.getKey().atTime(17, 30).plus(Duration.ofMinutes((long) overtime * 60));
+            //ot.setOvertime("17:30:00-" + end.format(DateTimeFormatter.ofPattern("HH:mm")));
+            //ot.setDuration(overtime);
+            //ot.setExecution(execution);
+            //ot.setTitle(title);
             overtimes.add(ot);
         }
 
-        overtimes.sort(Comparator.comparing(Overtime::getWordDate));
+        //overtimes.sort(Comparator.comparing(Overtime::getWordDate));
 
         write2Response(generateOvertimeExcel(overtimes, request, response), "加班信息_" + RandomUtil.randomNumbers(6) + ".xlsx", request, response);
     }
@@ -242,19 +239,19 @@ public class TaskInfoServiceImpl implements TaskInfoService {
             XSSFCellStyle cellStyle = PoiUtils.createDefaultCellStyle(wb);
             int startIdx = 1;
             for (Overtime ot : overtimes) {
-                logger.info("overtime date: {}, time: {}", ot.getWordDate(), ot.getOvertime());
-
-                XSSFRow row = sheet.createRow(startIdx);
-                //设置行高
-                row.setHeightInPoints(25);
-                PoiUtils.setCell(row.createCell(0), ot.getWordDate() + " " + ot.getOvertime(), cellStyle);
-                PoiUtils.setCell(row.createCell(1), ot.getDuration(), cellStyle);
-
-                String execution = StringUtils.join(ot.getExecution(), "、");
-                PoiUtils.setCell(row.createCell(2), execution, cellStyle);
-
-                String title = StringUtils.join(ot.getTitle(), "、");
-                PoiUtils.setCell(row.createCell(3), title, cellStyle);
+                //logger.info("overtime date: {}, time: {}", ot.getWordDate(), ot.getOvertime());
+                //
+                //XSSFRow row = sheet.createRow(startIdx);
+                ////设置行高
+                //row.setHeightInPoints(25);
+                //PoiUtils.setCell(row.createCell(0), ot.getWordDate() + " " + ot.getOvertime(), cellStyle);
+                //PoiUtils.setCell(row.createCell(1), ot.getDuration(), cellStyle);
+                //
+                //String execution = StringUtils.join(ot.getExecution(), "、");
+                //PoiUtils.setCell(row.createCell(2), execution, cellStyle);
+                //
+                //String title = StringUtils.join(ot.getTitle(), "、");
+                //PoiUtils.setCell(row.createCell(3), title, cellStyle);
 
                 startIdx++;
             }

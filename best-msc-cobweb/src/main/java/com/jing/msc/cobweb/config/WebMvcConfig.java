@@ -1,4 +1,4 @@
-package com.jing.msc.binbin.config;
+package com.jing.msc.cobweb.config;
 
 import com.alibaba.fastjson.parser.ParserConfig;
 import com.alibaba.fastjson.serializer.SerializeConfig;
@@ -45,8 +45,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
         converter.setDefaultCharset(StandardCharsets.UTF_8);
         // 定义配置，设置编码方式和格式化信息
         FastJsonConfig config = new FastJsonConfig();
-        // 设置成 PrettyFormat 格式
-        config.setSerializerFeatures(SerializerFeature.PrettyFormat);
         // 处理中文乱码
         List<MediaType> mediaTypes = new ArrayList<>();
         mediaTypes.add(MediaType.APPLICATION_JSON);
@@ -59,6 +57,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
         SerializeConfig serializeConfig = new SerializeConfig();
         config.setSerializeConfig(serializeConfig);
         config.setSerializerFeatures(
+                // 设置成 PrettyFormat 格式
+                SerializerFeature.PrettyFormat,
                 // 保留map空的字段
                 SerializerFeature.WriteMapNullValue,
                 // 将List类型的null转成[]

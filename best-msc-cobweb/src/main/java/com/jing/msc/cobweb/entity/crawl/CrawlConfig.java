@@ -1,7 +1,9 @@
 package com.jing.msc.cobweb.entity.crawl;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
+import com.jing.common.core.serialize.IEnumDeserializer;
 import com.jing.msc.cobweb.entity.crawl.dto.CrawlField;
 import com.jing.msc.cobweb.enums.crawl.DataType;
 import com.jing.msc.cobweb.enums.crawl.Mode;
@@ -36,14 +38,17 @@ public class CrawlConfig implements Serializable {
     @TableField("`novel_id`")
     private Long novelId;
 
+    @JSONField(deserializeUsing = IEnumDeserializer.class)
     @Schema(description = "数据类型，0：小说目录，1：小说文本")
     @TableField("`type`")
     private DataType type;
 
+    @JSONField(deserializeUsing = IEnumDeserializer.class)
     @Schema(description = "返回类型（0：列表，1：文本）")
     @TableField("`ret_type`")
     private RetType retType;
 
+    @JSONField(deserializeUsing = IEnumDeserializer.class)
     @Schema(description = "爬取模式（0：网页爬取，1：API爬取）")
     @TableField("`mode`")
     private Mode mode;
